@@ -62,6 +62,7 @@
 
 
 @extends('layouts.auth')
+@section('title', 'Admin Login')
 
 @section('content')
 <div class="auth-form">
@@ -90,7 +91,7 @@
                 </span>
             @enderror
         </div>
-        
+
         <div class="form-row d-flex justify-content-between mt-4 mb-2">
             <div class="form-group">
                 <div class="form-check ml-2">
@@ -107,10 +108,6 @@
             <button type="submit" class="btn btn-primary btn-block text-uppercase">{{ __('Sign me in') }}</button>
         </div>
     </form>
-
-    <div class="new-account text-center mt-3">
-        <p>{{ __("Don't have an account?") }} <a class="text-primary" href="{{ route('register') }}">{{ __('Sign up') }}</a></p>
-    </div>
 </div>
 @endsection
 

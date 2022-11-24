@@ -31,10 +31,11 @@ class CreateAdminsTable extends Migration
             $table->string('postal_code')->nullable();
             $table->string('country')->nullable();
             $table->mediumText('admin_comment')->nullable();
-            
+
             $table->string('profile_photo')->nullable();
             $table->string('cover_photo')->nullable();
 
+            $table->tinyInteger('role_as')->default('1')->comment('0=Admin, 1=Staff');
             $table->tinyInteger('is_active')->default('1')->comment('0=Deactive, 1=Active');
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->string('created_by')->nullable();

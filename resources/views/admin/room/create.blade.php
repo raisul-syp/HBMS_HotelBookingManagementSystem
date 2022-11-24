@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Create A New Room')
 
 @section('content')
 <div class="container-fluid">
@@ -176,7 +177,7 @@
                                         @endforelse
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="facilities">
                                         {{ __('Room Facility') }}
@@ -205,7 +206,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="room_seo" role="tabpanel">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="meta_title">

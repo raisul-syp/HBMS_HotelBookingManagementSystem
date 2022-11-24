@@ -67,6 +67,7 @@
 
 
 @extends('layouts.auth')
+@section('title', 'Guest Register')
 
 @section('content')
 <div class="auth-form">

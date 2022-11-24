@@ -60,4 +60,13 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::get('/edit/{room}', 'edit');
         Route::put('/edit/{room}', 'update');
     });
+
+    // User
+    Route::prefix('/admin/user')->controller(App\Http\Controllers\Admin\UserController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{user}', 'edit');
+        Route::put('/edit/{user}', 'update');
+    });
 });

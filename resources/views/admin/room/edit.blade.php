@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Edit Room')
 
 @section('content')
 <div class="container-fluid">
@@ -166,7 +167,7 @@
                                             <input type="checkbox" class="form-check-input" name="roomViews[]" value="{{ $roomViewItem->id }}">
                                             <label class="form-check-label">{{ $roomViewItem->name }}</label>
                                         </div>
-                                        @endif                                             
+                                        @endif
                                         @empty
                                             No Records Found
                                         @endforelse
@@ -177,7 +178,7 @@
                                     <div class="col-sm-2 col-form-label text-right" for="facilities">
                                         {{ __('Room Facility') }}
                                     </div>
-                                    <div class="col-sm-10">                                        
+                                    <div class="col-sm-10">
                                         @foreach($facilities as $facilityItem)
                                         @if($room->facilities->contains('id', $facilityItem->id))
                                         <div class="form-check mb-2">
@@ -189,7 +190,7 @@
                                             <input type="checkbox" class="form-check-input" name="facilities[]" value="{{ $facilityItem->id }}">
                                             <label class="form-check-label">{{ $facilityItem->name }}</label>
                                         </div>
-                                        @endif 
+                                        @endif
                                         @endforeach
                                     </div>
                                 </div>

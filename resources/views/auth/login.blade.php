@@ -62,6 +62,7 @@
 
 
 @extends('layouts.auth')
+@section('title', 'Guest Login')
 
 @section('content')
 <div class="auth-form">
@@ -90,7 +91,7 @@
                 </span>
             @enderror
         </div>
-        
+
         <div class="form-row d-flex justify-content-between mt-4 mb-2">
             <div class="form-group">
                 <div class="form-check ml-2">

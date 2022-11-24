@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Edit Facility')
 
 @section('content')
 <div class="container-fluid">
@@ -71,7 +72,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name" name="name" value="{{ $facility->name }}" placeholder="Add Name...">                        
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ $facility->name }}" placeholder="Add Name...">
                                         @error('name')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -83,7 +84,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="slug" name="slug" value="{{ $facility->slug }}" placeholder="Add Slug...">                        
+                                        <input type="text" class="form-control" id="slug" name="slug" value="{{ $facility->slug }}" placeholder="Add Slug...">
                                         @error('slug')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -123,7 +124,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="meta_title" name="meta_title" value="{{ $facility->meta_title }}" placeholder="Add Meta Title...">                        
+                                        <input type="text" class="form-control" id="meta_title" name="meta_title" value="{{ $facility->meta_title }}" placeholder="Add Meta Title...">
                                         @error('meta_title')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -135,7 +136,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" value="{{ $facility->meta_keyword }}" placeholder="Add Meta Keyword...">                        
+                                        <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" value="{{ $facility->meta_keyword }}" placeholder="Add Meta Keyword...">
                                         @error('meta_keyword')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -147,8 +148,8 @@
                                         <textarea class="form-control" id="meta_decription" name="meta_decription" rows="4" placeholder="Add Meta Description...">{{ $facility->meta_decription }}</textarea>
                                     </div>
                                 </div>
-                                                              
-                                <input type="text" hidden id="updated_by" name="updated_by" value="{{ Auth::guard('admin')->user()->role_as }}">  
+
+                                <input type="text" hidden id="updated_by" name="updated_by" value="{{ Auth::guard('admin')->user()->role_as }}">
                             </div>
                         </div>
                     </div>

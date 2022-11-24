@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Room Type List')
 
 @section('content')
 <div class="container-fluid">
@@ -17,7 +18,7 @@
             <a href="{{ url('admin/roomtype/create') }}" class="btn btn-success text-white ml-1">{{ __('Add Room Type') }}</a>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-lg-12">
             @if (session('message'))

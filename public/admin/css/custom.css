@@ -99,12 +99,12 @@ body {
 } */
 
 .note-editor.note-frame .panel-heading {
-    background: #f0edff;    
+    background: #f0edff;
     border-bottom: 2px solid #b4a7ef;
 }
 
 .note-editor.note-frame .note-statusbar .note-resizebar {
-    background: #f0edff;    
+    background: #f0edff;
 }
 
 .note-btn-group button:not(:disabled), .note-btn-group [type="button"]:not(:disabled), .note-btn-group [type="reset"]:not(:disabled), .note-btn-group [type="submit"]:not(:disabled) {
@@ -122,5 +122,24 @@ body {
     padding: 5px;
 }
 
+.user-data-table-image {
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+    background: #343957;
+    border: 1px solid #343957;
+}
+
+.user-preview-profilePhoto {
+    width: 40%;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.user-preview-coverPhoto {
+    width: 100%;
+    border: 1px solid;
+    padding: 5px;
+}
 
 
