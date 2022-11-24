@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules;
 
-class UserEditFormRequest extends FormRequest
+class GuestFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -39,6 +40,14 @@ class UserEditFormRequest extends FormRequest
                 'string',
                 'email',
                 'max:255',
+                'unique:users'
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                Rules\Password::defaults()
             ],
             'gender' => [
                 'nullable',
@@ -73,10 +82,7 @@ class UserEditFormRequest extends FormRequest
             'cover_photo' => [
                 'nullable',
             ],
-            'updated_by' => [
-                'nullable',
-            ],
-            'role_as' => [
+            'created_by' => [
                 'nullable',
             ],
         ];

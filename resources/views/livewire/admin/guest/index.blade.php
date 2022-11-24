@@ -10,7 +10,6 @@
                     <tr>
                         <th>ID</th>
                         <th colspan="2">Name</th>
-                        <th>Role</th>
                         <th>Date of Birth</th>
                         <th>Email</th>
                         <th>Phone</th>
@@ -19,40 +18,33 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @forelse ($users as $user)
+                    @forelse ($guests as $guest)
                     <tr>
-                        <td>{{ $user->id }}</td>
+                        <td>{{ $guest->id }}</td>
                         <td>
-                            @if ($user->profile_photo != null)
-                            <img src="{{ asset('uploads/users/profile_photo/'.$user->profile_photo) }}" class="user-data-table-image">
+                            @if ($guest->profile_photo != null)
+                            <img src="{{ asset('uploads/guests/profile_photo/'.$guest->profile_photo) }}" class="user-data-table-image">
                             @else
                             <img src="{{ asset('admin/images/no-photo.png') }}" class="user-data-table-image">
                             @endif
                         </td>
-                        <td>{{ $user->first_name.' '.$user->last_name }}</td>
+                        <td>{{ $guest->first_name.' '.$guest->last_name }}</td>
                         <td>
-                            @if ($user->role_as == 0)
-                            <strong>Admin</strong>
-                            @else
-                            <strong>Staff</strong>
-                            @endif
-                        </td>
-                        <td>
-                            @if ($user->date_of_birth)
-                            {{ $user->date_of_birth }}
+                            @if ($guest->date_of_birth)
+                            {{ $guest->date_of_birth }}
                             @else
                             <small class="text-danger">No Data</small>
                             @endif
                         </td>
-                        <td>{{ $user->email }}</td>
+                        <td>{{ $guest->email }}</td>
                         <td>
-                            @if ($user->phone)
-                            {{ $user->phone }}
+                            @if ($guest->phone)
+                            {{ $guest->phone }}
                             @else
                             <small class="text-danger">No Data</small>
                             @endif</td>
                         <td>
-                            @if ($user->is_active == '1')
+                            @if ($guest->is_active == '1')
                                 <span class="badge badge-success text-white">Active</span>
                             @else
                                 <span class="badge badge-danger">Deactive</span>
@@ -60,10 +52,10 @@
                         </td>
                         <td>
                             <span>
-                                <a href="{{ url('admin/user/edit/'.$user->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
+                                <a href="{{ url('admin/guest/edit/'.$guest->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
                             <span>
-                                <a href="#" wire:click="deleteRecord({{ $user->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
+                                <a href="#" wire:click="deleteRecord({{ $guest->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
                             @include('modal.admin.delete')
                         </td>
@@ -80,7 +72,7 @@
         </div>
 
         <div class="pagination-section">
-            {{ $users->links() }}
+            {{ $guests->links() }}
         </div>
     </div>
 

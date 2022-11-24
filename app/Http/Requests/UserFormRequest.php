@@ -44,6 +44,8 @@ class UserFormRequest extends FormRequest
             ],
             'password' => [
                 'required',
+                'string',
+                'min:8',
                 'confirmed',
                 Rules\Password::defaults()
             ],

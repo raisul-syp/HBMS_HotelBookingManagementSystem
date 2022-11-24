@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserEditFormRequest extends FormRequest
+class GuestEditFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -74,9 +74,6 @@ class UserEditFormRequest extends FormRequest
                 'nullable',
             ],
             'updated_by' => [
-                'nullable',
-            ],
-            'role_as' => [
                 'nullable',
             ],
         ];

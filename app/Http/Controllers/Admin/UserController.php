@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\UserEditFormRequest;
+use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
@@ -134,6 +135,6 @@ class UserController extends Controller
 
         $users->update();
 
-        return redirect('admin/user')->with('message','Congratulations! New User Has Been Updated Successfully.');
+        return redirect('admin/user')->with('message','Congratulations! Targeted User Has Been Updated Successfully.');
     }
 }

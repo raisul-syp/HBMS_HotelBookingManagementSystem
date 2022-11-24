@@ -39,6 +39,16 @@
         <li>
             <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                 <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Guests') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/guest/create') }}">{{ __('Add Guest') }}</a></li>
+                <li><a href="{{ url('admin/guest') }}">{{ __('Guest List') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
                 <span class="nav-text">{{ __('Users') }}</span>
             </a>
             <ul aria-expanded="false">
