@@ -176,7 +176,7 @@
                     <div class="rooms_sec">
                         <div class="card">
                             <div class="card-image">
-                                <img src="frontend/images/rooms/premium-room.jpg" alt="">
+                                <img src="{{ asset('frontend/images/rooms/premium-room.jpg') }}" alt="">
                             </div>
                             <div class="card-body">
                                 <div class="content">
