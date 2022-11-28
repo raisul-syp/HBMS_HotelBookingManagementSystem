@@ -13,9 +13,14 @@ class HomeController extends Controller
         return view('frontend.index');
     }
 
-    public function availableRoom(Request $request, $checkin_date)
+    public function availableRoom()
     {
-        $available_rooms = DB::select("SELECT * FROM hb_rooms WHERE id NOT IN (SELECT room_id FROM hb_bookings WHERE '$checkin_date' BETWEEN checkin_date AND checkout_date)");
-        return view('frontend.available-rooms', compact('available_rooms'));
+        return view('frontend.available-rooms');
     }
+
+    // public function availableRoom(Request $request, $checkin_date)
+    // {
+    //     $available_rooms = DB::select("SELECT * FROM hb_rooms WHERE id NOT IN (SELECT room_id FROM hb_bookings WHERE '$checkin_date' BETWEEN checkin_date AND checkout_date)");
+    //     return view('frontend.available-rooms', compact('available_rooms'));
+    // }
 }

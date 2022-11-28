@@ -473,7 +473,7 @@ About Us Section Start
 }
 .about_section .about_section_inner .content_box .card .card-body .content h4 {
     position: relative;
-    display: inline-block;    
+    display: inline-block;
     vertical-align: top;
     width: 100%;
     line-height: 25px;
@@ -934,12 +934,12 @@ Footer Section Start
 
 
 .footer_section .footer_section_inner .footer_top .footer_links {}
-.footer_section .footer_section_inner .footer_top .footer_links h4 {    
+.footer_section .footer_section_inner .footer_top .footer_links h4 {
     position: relative;
     width: fit-content;
     margin-bottom: 35px;
 }
-.footer_section .footer_section_inner .footer_top .footer_links h4 span {    
+.footer_section .footer_section_inner .footer_top .footer_links h4 span {
     color: var(--siteFont2);
     text-transform: uppercase;
     font-size: 16px;
@@ -989,12 +989,12 @@ Footer Section Start
 
 
 .footer_section .footer_section_inner .footer_top .footer_contact {}
-.footer_section .footer_section_inner .footer_top .footer_contact h4 {    
+.footer_section .footer_section_inner .footer_top .footer_contact h4 {
     position: relative;
     width: fit-content;
     margin-bottom: 35px;
 }
-.footer_section .footer_section_inner .footer_top .footer_contact h4 span {    
+.footer_section .footer_section_inner .footer_top .footer_contact h4 span {
     color: var(--siteFont2);
     text-transform: uppercase;
     font-size: 16px;
@@ -1144,3 +1144,66 @@ Footer Section End
     visibility: visible;
 }
 
+
+
+
+
+
+/* Check Room Availability */
+.roomAvailability_section {
+    padding: 40px 0;
+}
+.roomAvailability-form {}
+.roomAvailability-form .card {
+    background: var(--siteColor1);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    border: none;
+    border-radius: 0;
+}
+.roomAvailability-form .card .card-header {
+    background: var(--goldenBG2);
+    padding: 0.8rem 1rem;
+}
+.roomAvailability-form .card .card-header h4 {
+    color: var(--siteColor1);
+    font-size: 14px;
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 25px;
+    margin-bottom: 0;
+}
+.roomAvailability-form .card .card-body {}
+.roomAvailability-form .form_input .date-box {
+    position: relative;
+}
+.roomAvailability-form .form_input span {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 12px;
+    color: var(--siteColor2);
+}
+.roomAvailability-form .form_input input,
+.roomAvailability-form .form_input select {
+    height: 35px;
+    font-size: 12px;
+    padding: 0 8px;
+    margin: 0;
+    line-height: 35px;
+    border: 1px solid var(--siteFont3);
+    border-radius: 0;
+    color: var(--siteFont3);
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.roomAvailability-form .submit_btn button {
+    background: var(--goldenBG2);
+    border: 1px solid transparent;
+    color: var(--siteColor1);
+    font-size: 12px;
+    font-weight: 700;
+    width: 100%;
+    border-radius: 0;
+}
