@@ -24,11 +24,11 @@ class RoomFormRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'roomtype_id' => [
-            //     'required',
-            //     'integer'
-            // ],
             'name' => [
+                'required',
+                'string'
+            ],
+            'room_no' => [
                 'required',
                 'string'
             ],
@@ -41,6 +41,12 @@ class RoomFormRequest extends FormRequest
                 'string'
             ],
             'long_description' => [
+                'nullable'
+            ],
+            'max_adults' => [
+                'nullable'
+            ],
+            'max_childs' => [
                 'nullable'
             ],
             'quantity' => [

@@ -1,0 +1,39 @@
+body {
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    font-size: 14px;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+:root {
+    --siteBG1: #ffffff;
+    --siteBG2: #1e1e1eff;
+    --siteBG3: #e4e4e3;
+    --siteColor1: #0B0139;
+    --siteColor2: #ffd700;
+    --siteBorder: #777777;
+    --siteFont1: #888888;
+    --siteFont2: #ffffff;
+    --siteFont3: #c7c7c7;
+    --siteHover1: #ffffff;
+    
+    --facebook: #3b5998;
+    --twitter: #1da1f2;
+    --instagram: #34a853;
+    --youtube: #bd081c;
+
+    --goldenBG: linear-gradient(to right, #814d01, #996101, #b07701, #c88d01, #dea500, #dea500, #dea500, #dea500, #c88d01, #b07701, #996101, #814d01);
+    --goldenBG2: radial-gradient(circle, #ffd700, #f8c01f, #edab2e, #de9738, #cd853f);;
+}
+
+.decor-1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 150px;
+    height: 2px;
+    margin: 0 auto;
+    background: var(--goldenBG2);
+}

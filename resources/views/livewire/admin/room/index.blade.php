@@ -10,6 +10,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Room Number</th>
                         <th>Slug</th>
                         <th>Room View</th>
                         <th>Facilities</th>
@@ -24,28 +25,25 @@
                     <tr>
                         <td>{{ $room->id }}</td>
                         <td>{{ $room->name }}</td>
+                        <td>{{ $room->room_no }}</td>
                         <td>{{ $room->slug }}</td>
                         <td>
-                            @if($room->roomViews)
                             @forelse ($room->roomViews as $roomView)
                             <span class="badge badge-pill badge-primary">{{ $roomView->name }}</span>                                            
                             @empty
-                                <small class="text-danger">No Views Added!</small>
+                            <small class="text-danger">No Views Added!</small>
                             @endforelse
-                            @endif
                         </td>
                         <td>
-                            @if($room->facilities)
                             @forelse ($room->facilities as $facility)
-                                <div class="room-facilities" data-toggle="tooltip" data-placement="top" title="{{ $facility->name }}">
-                                @if ($facility->image != null)
-                                    <img src="{{ asset('uploads/facilities/'.$facility->image) }}">
-                                @endif
-                                </div>                                           
-                            @empty
-                                <small class="text-danger">No Facilities Added!</small>
-                            @endforelse
+                            <div class="room-facilities" data-toggle="tooltip" data-placement="top" title="{{ $facility->name }}">
+                            @if ($facility->image != null)
+                            <img src="{{ asset('uploads/facilities/'.$facility->image) }}">
                             @endif
+                            </div>                                           
+                            @empty
+                            <small class="text-danger">No Facilities Added!</small>
+                            @endforelse
                         </td>
                         <td>{{ $room->quantity }}</td>
                         <td>{{ $room->price }}</td>

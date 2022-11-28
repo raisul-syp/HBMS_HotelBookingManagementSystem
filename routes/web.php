@@ -15,9 +15,12 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('frontend.index');
+// });
+
+Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'index']);
+Route::get('/available-rooms', [App\Http\Controllers\Frontend\HomeController::class, 'availableRoom']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -77,5 +80,15 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::post('/', 'store');
         Route::get('/edit/{user}', 'edit');
         Route::put('/edit/{user}', 'update');
+    });
+
+    // Booking
+    Route::prefix('/admin/booking')->controller(App\Http\Controllers\Admin\BookingController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{room}', 'edit');
+        Route::put('/edit/{room}', 'update');
+        Route::get('/available-rooms/{checkin_date}', 'availableRooms');
     });
 });

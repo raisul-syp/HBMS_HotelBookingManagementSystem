@@ -16,9 +16,12 @@ class Room extends Model
 
     protected $fillable = [
         'name',
+        'room_no',
         'slug',
         'short_description',
         'long_description',
+        'max_adults',
+        'max_childs',
         'quantity',
         'price',
         'meta_title',
@@ -43,5 +46,10 @@ class Room extends Model
     public function roomViews()
     {
         return $this->belongsToMany(Roomtype::class, 'hb_roomtype_view');
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

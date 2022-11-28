@@ -98,6 +98,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label text-right" for="room_no">
+                                        {{ __('Room Number') }}
+                                        <small class="text-danger">*</small>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="room_no" name="room_no" placeholder="Add Room Number...">
+                                        @error('room_no')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="slug">
                                         {{ __('Slug') }}
                                         <small class="text-danger">*</small>
@@ -125,6 +137,18 @@
                                     <label class="col-sm-2 col-form-label text-right" for="long_description">{{ __('Long Description') }}</label>
                                     <div class="col-sm-10">
                                         <textarea class="form-control" id="long_description" name="long_description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label text-right" for="max_adults">{{ __('Max Adults') }}</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="max_adults" name="max_adults" placeholder="Add max adults...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label text-right" for="max_childs">{{ __('Max Childs') }}</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="max_childs" name="max_childs" placeholder="Add max childs...">
                                     </div>
                                 </div>
                                 <div class="form-group row">

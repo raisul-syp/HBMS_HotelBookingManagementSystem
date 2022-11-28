@@ -13,17 +13,7 @@
             </a>
             <ul aria-expanded="false">
                 <li><a href="{{ url('admin/roomtype/create') }}">{{ __('Add Room Type') }}</a></li>
-                <li><a href="{{ url('admin/roomtype') }}">{{ __('Room Type List') }}</a></li>
-            </ul>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                <i class="icon icon-single-04"></i>
-                <span class="nav-text">{{ __('Rooms') }}</span>
-            </a>
-            <ul aria-expanded="false">
-                <li><a href="{{ url('admin/room/create') }}">{{ __('Add Room') }}</a></li>
-                <li><a href="{{ url('admin/room') }}">{{ __('Room List') }}</a></li>
+                <li><a href="{{ url('admin/roomtype') }}">{{ __('All Room Type') }}</a></li>
             </ul>
         </li>
         <li>
@@ -33,7 +23,27 @@
             </a>
             <ul aria-expanded="false">
                 <li><a href="{{ url('admin/facility/create') }}">{{ __('Add Facility') }}</a></li>
-                <li><a href="{{ url('admin/facility') }}">{{ __('Facility List') }}</a></li>
+                <li><a href="{{ url('admin/facility') }}">{{ __('All Facility') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Rooms') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/room/create') }}">{{ __('Add Room') }}</a></li>
+                <li><a href="{{ url('admin/room') }}">{{ __('All Room') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Bookings') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/booking/create') }}">{{ __('Add Booking') }}</a></li>
+                <li><a href="{{ url('admin/booking') }}">{{ __('All Booking') }}</a></li>
             </ul>
         </li>
         <li>
@@ -43,7 +53,7 @@
             </a>
             <ul aria-expanded="false">
                 <li><a href="{{ url('admin/guest/create') }}">{{ __('Add Guest') }}</a></li>
-                <li><a href="{{ url('admin/guest') }}">{{ __('Guest List') }}</a></li>
+                <li><a href="{{ url('admin/guest') }}">{{ __('All Guest') }}</a></li>
             </ul>
         </li>
         <li>
@@ -53,7 +63,7 @@
             </a>
             <ul aria-expanded="false">
                 <li><a href="{{ url('admin/user/create') }}">{{ __('Add User') }}</a></li>
-                <li><a href="{{ url('admin/user') }}">{{ __('User List') }}</a></li>
+                <li><a href="{{ url('admin/user') }}">{{ __('All User') }}</a></li>
             </ul>
         </li>
     </ul>

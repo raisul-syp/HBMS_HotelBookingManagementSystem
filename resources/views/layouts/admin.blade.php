@@ -64,5 +64,6 @@
     <script src="{{ asset('admin/js/dashboard/dashboard-2.js') }}"></script>
     @livewireScripts
     {{-- @stack('script') --}}
+    @yield('scripts')
 </body>
 </html>

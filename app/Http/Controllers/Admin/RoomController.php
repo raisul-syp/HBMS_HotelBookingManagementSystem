@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Room;
 use App\Models\Facility;
 use App\Models\Roomtype;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoomFormRequest;
@@ -30,9 +31,12 @@ class RoomController extends Controller
         $room = new Room();
 
         $room->name = $validatedData['name'];
-        $room->slug = $validatedData['slug'];
+        $room->room_no = $validatedData['room_no'];
+        $room->slug = Str::slug($validatedData['slug']);
         $room->short_description = $validatedData['short_description'];
         $room->long_description = $validatedData['long_description'];
+        $room->max_adults = $validatedData['max_adults'];
+        $room->max_childs = $validatedData['max_childs'];
         $room->quantity = $validatedData['quantity'];
         $room->price = $validatedData['price'];
 
@@ -88,9 +92,12 @@ class RoomController extends Controller
         $room = Room::findOrFail($room_id);
 
         $room->name = $validatedData['name'];
-        $room->slug = $validatedData['slug'];
+        $room->room_no = $validatedData['room_no'];
+        $room->slug = Str::slug($validatedData['slug']);
         $room->short_description = $validatedData['short_description'];
         $room->long_description = $validatedData['long_description'];
+        $room->max_adults = $validatedData['max_adults'];
+        $room->max_childs = $validatedData['max_childs'];
         $room->quantity = $validatedData['quantity'];
         $room->price = $validatedData['price'];
 

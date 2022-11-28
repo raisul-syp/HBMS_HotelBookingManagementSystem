@@ -16,9 +16,12 @@ class CreateHbRoomsTable extends Migration
         Schema::create('hb_rooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('room_no');
             $table->string('slug');
             $table->mediumText('short_description');
             $table->longText('long_description')->nullable();
+            $table->integer('max_adults')->nullable();
+            $table->integer('max_childs')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('price')->nullable();
 
