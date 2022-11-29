@@ -18,7 +18,7 @@
                                     <div class="form_input col-12 mb-3">
                                         <div class="date-box">
                                             <input type="text" class="form-control" id="checkin_date" name="checkin_date" placeholder="Check-In">
-                                            <span class="lnr lnr-calendar-full icon"></span>       
+                                            <span class="lnr lnr-calendar-full icon"></span>
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
@@ -97,16 +97,14 @@
                                 {{ $booked->rooms->name }}
                             @endforeach --}}
 
-                            
+
                             {{-- @foreach ($available_rooms as $room)
                                 {{ $room->name }}
                             @endforeach --}}
 
 
 
-
-
-                            @foreach ($available_rooms as $room)
+                            @forelse ($available_rooms as $room)
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="availableRoom-card">
@@ -131,7 +129,7 @@
                                                             <strong>Room View: </strong>
                                                             <span>
                                                                 {{-- @forelse ($room->roomViews as $view)
-                                                                <span class="badge badge-pill badge-primary">{{ $view->name }}</span>                                            
+                                                                <span class="badge badge-pill badge-primary">{{ $view->name }}</span>
                                                                 @empty
                                                                 <small class="text-danger">No Views Added!</small>
                                                                 @endforelse  --}}
@@ -162,7 +160,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @empty
+                            No Rooms Found
+                            @endforelse
                         </div>
                     </div>
                 </div>
