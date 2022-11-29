@@ -20,7 +20,10 @@ use App\Http\Controllers\Admin\DashboardController;
 // });
 
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'index']);
-Route::get('/available-rooms', [App\Http\Controllers\Frontend\HomeController::class, 'availableRoom']);
+Route::prefix('/')->controller(App\Http\Controllers\Frontend\HomeController::class)->group(function (){
+    Route::get('/available-rooms', 'checkAvailability');
+    // Route::get('/', 'availableRooms');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

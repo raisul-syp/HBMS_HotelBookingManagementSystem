@@ -13,12 +13,12 @@
                             <h4>Check Room Availability</h4>
                         </div>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="{{ url('available-rooms') }}" method="GET">
                                 <div class="row">
                                     <div class="form_input col-12 mb-3">
                                         <div class="date-box">
                                             <input type="text" class="form-control" id="checkin_date" name="checkin_date" placeholder="Check-In">
-                                            <span class="lnr lnr-calendar-full icon"></span>
+                                            <span class="lnr lnr-calendar-full icon"></span>       
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
@@ -91,34 +91,67 @@
                 <div class="availableRoom-div">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card">
+
+
+                            {{-- @foreach ($booked_rooms as $booked)
+                                {{ $booked->rooms->name }}
+                            @endforeach --}}
+
+                            
+                            {{-- @foreach ($available_rooms as $room)
+                                {{ $room->name }}
+                            @endforeach --}}
+
+
+
+
+
+                            @foreach ($available_rooms as $room)
+                            <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="availableRoom-card">
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="room-img">
                                                     <img src="{{ asset('uploads/rooms/Suite-1669023019-1.jpg') }}" alt="">
+                                                    {{-- <img src="{{ $room->roomImages->image }}" alt=""> --}}
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-8">
                                                 <div class="room-info">
                                                     <div class="room-title">
-                                                        <h4>Suite</h4>
+                                                        <h4>{{ $room->name }}</h4>
                                                     </div>
                                                     <div class="room-dscrp">
-                                                        <p>This is the best room in this hote. This hotel is best in the town. This is the best room in this hote. This hotel is best in the town.</p>
+                                                        <p>{{ $room->short_description }}</p>
                                                     </div>
                                                     <div class="room-facility">
                                                         <p>
-                                                            <strong>Room View: </strong><span>City View</span>
+                                                            <strong>Room View: </strong>
+                                                            <span>
+                                                                {{-- @forelse ($room->roomViews as $view)
+                                                                <span class="badge badge-pill badge-primary">{{ $view->name }}</span>                                            
+                                                                @empty
+                                                                <small class="text-danger">No Views Added!</small>
+                                                                @endforelse  --}}
+                                                                {{-- @foreach ($room->roomViews as $roomView)
+                                                                    {{ $roomView->name }}
+                                                                @endforeach --}}
+                                                            </span>
                                                         </p>
                                                         <p>
                                                             <strong>Facilities: </strong><span>TV, Fridge</span>
                                                         </p>
+                                                        <span class="me-4">
+                                                            <strong>Max. Adults: </strong>{{ $room->max_adults }}
+                                                        </span>
+                                                        <span>
+                                                            <strong>Max. Childs: </strong>{{ $room->max_childs }}
+                                                        </span>
                                                     </div>
                                                     <div class="room-pricing">
-                                                        <h4>3000 TK / night</h4>
+                                                        <h4>{{ $room->price }} / night</h4>
                                                     </div>
                                                     <button class="btn btn-primary">
                                                         Book Now
@@ -129,6 +162,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

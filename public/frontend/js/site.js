@@ -77,11 +77,11 @@ $(document).ready(function () {
 
 
     $("#checkin_date").datepicker({
-        dateFormat: 'M d, yy'
+        dateFormat: 'yy-mm-dd'
     });
 
     $("#checkout_date").datepicker({
-        dateFormat: 'M d, yy'
+        dateFormat: 'yy-mm-dd'
     });
 });
 
