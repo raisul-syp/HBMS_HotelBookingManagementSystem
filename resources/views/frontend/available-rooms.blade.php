@@ -105,7 +105,7 @@
 
 
                             @forelse ($available_rooms as $room)
-                            <div class="card mb-3">
+                            <div class="card mb-4">
                                 <div class="card-body">
                                     <div class="availableRoom-card">
                                         <div class="row">
@@ -133,9 +133,6 @@
                                                                 @empty
                                                                 <small class="text-danger">No Views Added!</small>
                                                                 @endforelse  --}}
-                                                                {{-- @foreach ($room->roomViews as $roomView)
-                                                                    {{ $roomView->name }}
-                                                                @endforeach --}}
                                                             </span>
                                                         </p>
                                                         <p>

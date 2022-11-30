@@ -19,10 +19,10 @@ use App\Http\Controllers\Admin\DashboardController;
 //     return view('frontend.index');
 // });
 
-Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'index']);
+// Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'index']);
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\HomeController::class)->group(function (){
+    Route::get('/', 'index');
     Route::get('/available-rooms', 'checkAvailability');
-    // Route::get('/', 'availableRooms');
 });
 
 Route::get('/dashboard', function () {
@@ -93,5 +93,14 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::get('/edit/{room}', 'edit');
         Route::put('/edit/{room}', 'update');
         Route::get('/available-rooms/{checkin_date}', 'availableRooms');
+    });
+
+    // Website Navigation Menu
+    Route::prefix('/admin/website/menu')->controller(App\Http\Controllers\Admin\NavigationController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        // Route::get('/edit/{room}', 'edit');
+        // Route::put('/edit/{room}', 'update');
     });
 });

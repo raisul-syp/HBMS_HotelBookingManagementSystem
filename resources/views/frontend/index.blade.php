@@ -319,118 +319,22 @@
     <div class="coreFacility_section_inner">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-4">
+                @foreach ($facilities as $facility)
+                <div class="col-lg-2 col-mob-6 mb-2 mb-lg-4">
                     <div class="coreFacilities_sec">
                         <div class="card">
                             <div class="card-body">
                                 <div class="icon">
-                                    <img src="{{ asset('frontend/images/coreFacilities/airport.png') }}" alt="">
+                                    <img src="{{ asset('uploads/facilities/'.$facility->image) }}" alt="">
                                 </div>
                                 <div class="content">
-                                    <h4>Airport Pick-up</h4>
+                                    <h4>{{ $facility->name }}</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-4">
-                    <div class="coreFacilities_sec">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon">
-                                    <img src="{{ asset('frontend/images/coreFacilities/wifi.png') }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Free WiFi</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-4">
-                    <div class="coreFacilities_sec">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon">
-                                    <img src="{{ asset('frontend/images/coreFacilities/eat-drink.png') }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Eat & Drink</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-4">
-                    <div class="coreFacilities_sec">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon">
-                                    <img src="{{ asset('frontend/images/coreFacilities/spa.png') }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>SPA</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-0">
-                    <div class="coreFacilities_sec">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon">
-                                    <img src="{{ asset('frontend/images/coreFacilities/saloon.png') }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Saloon</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-0">
-                    <div class="coreFacilities_sec">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon">
-                                    <img src="{{ asset('frontend/images/coreFacilities/gym.png') }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Gym</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-0">
-                    <div class="coreFacilities_sec">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon">
-                                    <img src="{{ asset('frontend/images/coreFacilities/swimming.png') }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Swimming Pool</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-0">
-                    <div class="coreFacilities_sec">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon">
-                                    <img src="{{ asset('frontend/images/coreFacilities/service.png') }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>Service</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

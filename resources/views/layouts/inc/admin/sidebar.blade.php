@@ -66,5 +66,20 @@
                 <li><a href="{{ url('admin/user') }}">{{ __('All User') }}</a></li>
             </ul>
         </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Website') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Menu') }}</a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ url('admin/website/menu/create') }}">{{ __('Add Menu') }}</a></li>
+                        <li><a href="{{ url('admin/website/menu') }}">{{ __('All Menu') }}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>
