@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2022 at 09:02 AM
+-- Generation Time: Dec 01, 2022 at 12:05 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -434,7 +434,7 @@ INSERT INTO `hb_facilities` (`id`, `name`, `slug`, `description`, `image`, `meta
 CREATE TABLE `hb_rooms` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `room_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hotel_location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `short_description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `long_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -457,10 +457,12 @@ CREATE TABLE `hb_rooms` (
 -- Dumping data for table `hb_rooms`
 --
 
-INSERT INTO `hb_rooms` (`id`, `name`, `room_no`, `slug`, `short_description`, `long_description`, `max_adults`, `max_childs`, `quantity`, `price`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Suite', '101', 'suite-101', 'Suite', '<p>Suite<br></p>', 2, 1, 1, 3000, 'Suite', 'Suite', 'Suite', 1, 1, '0', '0', '2022-11-21 03:30:19', '2022-11-27 23:39:00'),
-(2, 'Deluxe', '102', 'deluxe-102', 'Deluxe', '<p>Deluxe<br></p>', 3, 2, 1, 5000, 'Deluxe', 'Deluxe', 'Deluxe', 1, 1, '0', '0', '2022-11-26 00:13:42', '2022-11-27 23:38:32'),
-(3, 'Deluxe Twin', '103', 'deluxe-twin-103', 'Deluxe Twin', '<p>Deluxe Twin<br></p>', 4, 2, 1, 8000, 'Deluxe Twin', 'Deluxe Twin', 'Deluxe Twin', 1, 1, '0', '0', '2022-11-27 23:37:04', '2022-11-27 23:38:44');
+INSERT INTO `hb_rooms` (`id`, `name`, `hotel_location`, `slug`, `short_description`, `long_description`, `max_adults`, `max_childs`, `quantity`, `price`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Suite', 'Dhaka', 'suite-dhaka', 'Approximate room size: 42 m2 , Ideal for families, the hotel’s 16 beautifully appointed Suite offer separate sleeping and living areas to maximize your privacy and ensure a great night’s sleep.', '<p>Approximate room size: 42 m2 , Ideal for families, the hotel’s 16 beautifully appointed Suite offer separate sleeping and living areas to maximize your privacy and ensure a great night’s sleep. Refresh your mind and body in a bathroom equipped with standing shower and enjoy complimentary welcome drinks on arrival as our way of welcoming you to Jashore .Booking for these suite also include complimentary airport transportation.<br></p>', 2, 1, 10, 18000, 'Suite', 'Suite', 'Suite', 1, 1, '0', '0', '2022-11-21 03:30:19', '2022-11-30 23:31:01'),
+(2, 'Deluxe', 'Dhaka', 'deluxe-dhaka', 'Approximate room size: 320 Sqft premium Rooms are larger than Deluxe Rooms and offer one king size or two twin size beds to suit your needs.', '<p>Approximate room size: 320 Sqft premium Rooms are larger than Deluxe Rooms and offer one king size or two twin size beds to suit your needs. Sink into one of two sofa chairs, and enjoy air conditioning plush bathrobes and free high speed wireless internet.<br></p>', 3, 2, 10, 11000, 'Deluxe', 'Deluxe', 'Deluxe', 1, 1, '0', '0', '2022-11-26 00:13:42', '2022-11-30 23:31:38'),
+(3, 'Deluxe Twin', 'Dhaka', 'deluxe-twin-dhaka', 'Approximate room size: 320 Sqft premium Rooms are larger than Deluxe Rooms and offer one king size or two twin size beds to suit your needs.', '<p>Approximate room size: 320 Sqft premium Rooms are larger than Deluxe Rooms and offer one king size or two twin size beds to suit your needs. Sink into one of two sofa chairs, and enjoy air conditioning plush bathrobes and free high speed wireless internet.<br></p>', 4, 2, 10, 13000, 'Deluxe Twin', 'Deluxe Twin', 'Deluxe Twin', 1, 1, '0', '0', '2022-11-27 23:37:04', '2022-12-01 00:04:55'),
+(4, 'Premium', 'Dhaka', 'premium-dhaka', 'Approximate room size: 320 Sqft premium Rooms are larger than Deluxe Rooms and offer one king size or two twin size beds to suit your needs.', '<p>Approximate room size: 320 Sqft premium Rooms are larger than Deluxe Rooms and offer one king size or two twin size beds to suit your needs. Sink into one of two sofa chairs, and enjoy air conditioning plush bathrobes and free high speed wireless internet.<br></p>', 3, 3, 10, 15000, 'Premium', 'Premium', 'Premium', 1, 1, '0', '0', '2022-11-30 00:56:00', '2022-11-30 23:32:02'),
+(5, 'Premium Twin', 'Dhaka', 'premium-twin-dhaka', 'Approximate room size: 320 Sqft premium Rooms are larger than Deluxe Rooms and offer one king size or two twin size beds to suit your needs.', '<p>Approximate room size: 320 Sqft premium Rooms are larger than Deluxe Rooms and offer one king size or two twin size beds to suit your needs. Sink into one of two sofa chairs, and enjoy air conditioning plush bathrobes and free high speed wireless internet.<br></p>', 4, 3, 10, 16000, 'Premium Twin', 'Premium Twin', 'Premium Twin', 1, 1, '0', '0', '2022-11-30 00:57:39', '2022-11-30 23:32:15');
 
 -- --------------------------------------------------------
 
@@ -516,7 +518,10 @@ INSERT INTO `hb_roomtype_view` (`id`, `room_id`, `roomtype_id`, `created_at`, `u
 (3, 2, 1, NULL, NULL),
 (4, 2, 2, NULL, NULL),
 (5, 3, 1, NULL, NULL),
-(6, 3, 2, NULL, NULL);
+(6, 3, 2, NULL, NULL),
+(7, 4, 1, NULL, NULL),
+(8, 4, 2, NULL, NULL),
+(9, 5, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -559,7 +564,22 @@ INSERT INTO `hb_room_facilities` (`id`, `room_id`, `facility_id`, `created_at`, 
 (20, 3, 6, NULL, NULL),
 (21, 3, 7, NULL, NULL),
 (22, 3, 8, NULL, NULL),
-(23, 3, 9, NULL, NULL);
+(23, 3, 9, NULL, NULL),
+(24, 4, 1, NULL, NULL),
+(25, 4, 2, NULL, NULL),
+(26, 4, 3, NULL, NULL),
+(27, 4, 4, NULL, NULL),
+(28, 4, 5, NULL, NULL),
+(29, 4, 6, NULL, NULL),
+(30, 4, 8, NULL, NULL),
+(31, 5, 1, NULL, NULL),
+(32, 5, 2, NULL, NULL),
+(33, 5, 3, NULL, NULL),
+(34, 5, 5, NULL, NULL),
+(35, 5, 6, NULL, NULL),
+(36, 5, 7, NULL, NULL),
+(37, 5, 8, NULL, NULL),
+(38, 5, 9, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -583,7 +603,44 @@ INSERT INTO `hb_room_images` (`id`, `room_id`, `image`, `created_at`, `updated_a
 (1, 1, 'uploads/rooms/Suite-1669023019-1.jpg', '2022-11-21 03:30:19', '2022-11-21 03:30:19'),
 (2, 1, 'uploads/rooms/Suite-1669023019-2.jpg', '2022-11-21 03:30:19', '2022-11-21 03:30:19'),
 (3, 2, 'uploads/rooms/Deluxe-1669443222-1.jpg', '2022-11-26 00:13:42', '2022-11-26 00:13:42'),
-(4, 3, 'uploads/rooms/Deluxe Twin 103-1669613824-1.jpg', '2022-11-27 23:37:04', '2022-11-27 23:37:04');
+(4, 3, 'uploads/rooms/Deluxe Twin 103-1669613824-1.jpg', '2022-11-27 23:37:04', '2022-11-27 23:37:04'),
+(5, 4, 'uploads/rooms/premium-104-1669791360-1.jpg', '2022-11-30 00:56:00', '2022-11-30 00:56:00'),
+(6, 5, 'uploads/rooms/premium-twin-105-1669791459-1.jpg', '2022-11-30 00:57:39', '2022-11-30 00:57:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hb_webnav`
+--
+
+CREATE TABLE `hb_webnav` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_webnav`
+--
+
+INSERT INTO `hb_webnav` (`id`, `name`, `slug`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Home', 'home', '1', 'Home', 'Home', 'Home', 1, 1, '0', NULL, '2022-11-30 02:39:22', '2022-11-30 02:39:22'),
+(2, 'Rooms', 'rooms', '2', 'Rooms', 'Rooms', 'Rooms', 1, 1, '0', NULL, '2022-11-30 02:50:30', '2022-11-30 02:50:30'),
+(3, 'Restaurents', 'restaurents', '3', 'Restaurents', 'Restaurents', 'Restaurents', 1, 1, '0', NULL, '2022-12-01 04:18:13', '2022-12-01 04:18:13'),
+(4, 'Meeting & Events', 'meeting-events', '4', 'Meeting & Events', 'Meeting & Events', 'Meeting & Events', 1, 1, '0', NULL, '2022-12-01 04:20:41', '2022-12-01 04:20:41'),
+(5, 'Wellness', 'wellness', '5', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', NULL, '2022-12-01 04:21:33', '2022-12-01 04:21:33'),
+(6, 'About Us', 'about-us', '6', 'About Us', 'About Us', 'About Us', 1, 1, '0', NULL, '2022-12-01 04:22:12', '2022-12-01 04:22:12'),
+(7, 'Contact Us', 'contact-us', '7', 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, '0', NULL, '2022-12-01 04:22:31', '2022-12-01 04:22:31');
 
 -- --------------------------------------------------------
 
@@ -614,7 +671,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2022_11_21_080237_create_hb_room_images_table', 4),
 (11, '2022_11_21_080329_create_hb_roomtype_view_table', 5),
 (12, '2022_11_21_080358_create_hb_room_facilities_table', 6),
-(13, '2022_11_26_064509_create_hb_bookings_table', 7);
+(13, '2022_11_26_064509_create_hb_bookings_table', 7),
+(14, '2022_11_30_080042_create_hb_webnav_table', 8);
 
 -- --------------------------------------------------------
 
@@ -762,6 +820,12 @@ ALTER TABLE `hb_room_images`
   ADD KEY `hb_room_images_room_id_foreign` (`room_id`);
 
 --
+-- Indexes for table `hb_webnav`
+--
+ALTER TABLE `hb_webnav`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -826,7 +890,7 @@ ALTER TABLE `hb_facilities`
 -- AUTO_INCREMENT for table `hb_rooms`
 --
 ALTER TABLE `hb_rooms`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `hb_roomtype`
@@ -838,25 +902,31 @@ ALTER TABLE `hb_roomtype`
 -- AUTO_INCREMENT for table `hb_roomtype_view`
 --
 ALTER TABLE `hb_roomtype_view`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `hb_room_facilities`
 --
 ALTER TABLE `hb_room_facilities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `hb_room_images`
 --
 ALTER TABLE `hb_room_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `hb_webnav`
+--
+ALTER TABLE `hb_webnav`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
