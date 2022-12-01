@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Website;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NavigationMenu extends Model
+class NavigationSubmenu extends Model
 {
     use HasFactory;
 
-    protected $table = 'hb_webnav';
+    protected $table = 'hb_websubnav';
 
     protected $fillable = [
         'name',
         'slug',
         'display_order',
-        'parent_id',
         'meta_title',
         'meta_keyword',
         'meta_decription',

@@ -28,9 +28,8 @@
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
-                                        <select class="form-select" id="location" name="location">
-                                            <option selected disabled>--Select Location--</option>
-                                            <option>All</option>
+                                        <select class="form-select" id="hotel_location" name="hotel_location">
+                                            <option selected disabled>--Select Hotel Location--</option>
                                             <option value="Dhaka">Dhaka</option>
                                             <option value="Jashore">Jashore</option>
                                           </select>
@@ -78,7 +77,7 @@
                                         </select>
                                     </div>
                                     <div class="form_input submit_btn col-12">
-                                        <button class="btn btn-primary btn-block">Check Availability</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Check Availability</button>
                                     </div>
                                 </div>
                             </form>
@@ -124,6 +123,12 @@
                                                     <div class="room-dscrp">
                                                         <p>{{ $room->short_description }}</p>
                                                     </div>
+                                                    <div class="hotel-location">
+                                                        <p>
+                                                            <strong>Hotel Location: </strong>
+                                                            <span>{{ $room->hotel_location }}</span>
+                                                        </p>
+                                                    </div>
                                                     <div class="room-facility">
                                                         <p>
                                                             <strong>Room View: </strong>
@@ -136,7 +141,11 @@
                                                             </span>
                                                         </p>
                                                         <p>
-                                                            <strong>Facilities: </strong><span>TV, Fridge</span>
+                                                            <strong>Facilities: </strong><span>
+                                                            {{-- @foreach ($room as $facility)
+                                                                {{ $facility->image }}
+                                                            @endforeach --}}
+                                                            </span>
                                                         </p>
                                                         <span class="me-4">
                                                             <strong>Max. Adults: </strong>{{ $room->max_adults }}

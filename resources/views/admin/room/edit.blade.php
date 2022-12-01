@@ -89,13 +89,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="room_no">
-                                        {{ __('Room Number') }}
+                                    <label class="col-sm-2 col-form-label text-right" for="hotel_location">
+                                        {{ __('Location') }}
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="room_no" name="room_no" value="{{ $room->room_no }}" placeholder="Add Room Number...">
-                                        @error('room_no')
+                                        <select class="form-control js-basic-single" id="hotel_location" name="hotel_location" >
+                                            <option value="Dhaka" {{ old('hotel_location', $room->hotel_location) == 'Dhaka' ? 'selected' : '' }}>Dhaka</option>
+                                            <option value="Jashore" {{ old('hotel_location', $room->hotel_location) == 'Jashore' ? 'selected' : '' }}>Jashore</option>
+                                        </select>
+                                        @error('slug')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Website;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -33,9 +33,6 @@ class NavmenuFormRequest extends FormRequest
                 'string'
             ],
             'display_order' => [
-                'nullable'
-            ],
-            'parent_id' => [
                 'nullable'
             ],
             'is_active' => [

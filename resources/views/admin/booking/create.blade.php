@@ -231,7 +231,7 @@
                 success: function(res){
                     var _html = '';
                     $.each(res.data,function(index,row){
-                        _html+='<option value="'+row.id+'">'+row.name+' - '+row.room_no+'</option>';
+                        _html+='<option value="'+row.id+'">'+row.name+' - '+row.hotel_location+'</option>';
                     });
                     $(".room-list").html(_html);
                 }

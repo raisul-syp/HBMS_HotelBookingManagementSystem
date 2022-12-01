@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Website;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\NavigationMenu;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\NavmenuFormRequest;
+use App\Models\Website\NavigationMenu;
+use App\Http\Requests\Website\NavmenuFormRequest;
 
 class NavigationController extends Controller
 {
@@ -17,8 +17,8 @@ class NavigationController extends Controller
 
     public function create()
     {
-        $parentMenu = NavigationMenu::all()->where('parent_id','0')->where('is_active','1')->where('is_delete','1');
-        return view('admin.website.menu.create', compact('parentMenu'));
+        $menuList = NavigationMenu::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.website.menu.create', compact('menuList'));
     }
 
     public function store(NavmenuFormRequest $request)
@@ -30,7 +30,6 @@ class NavigationController extends Controller
         $menu->name = $validatedData['name'];
         $menu->slug = Str::slug($validatedData['slug']);
         $menu->display_order = $validatedData['display_order'];
-        $menu->parent_id = $validatedData['parent_id'];
 
         $menu->meta_title = $validatedData['meta_title'];
         $menu->meta_keyword = $validatedData['meta_keyword'];

@@ -6,7 +6,7 @@
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h2 class="page-header-title">{{ __('Room List') }}</h2>
+                <h2 class="page-header-title">{{ __('Menu List') }}</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Website') }}</a></li>

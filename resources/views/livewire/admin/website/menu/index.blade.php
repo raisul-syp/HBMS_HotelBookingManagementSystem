@@ -11,7 +11,6 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Slug</th>
-                        <th>Parent Menu</th>
                         <th>Display Order</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -23,7 +22,6 @@
                         <td>{{ $menu->id }}</td>
                         <td>{{ $menu->name }}</td>
                         <td>{{ $menu->slug }}</td>
-                        <td>{{ $menu->parent_id }}</td>
                         <td>{{ $menu->display_order }}</td>
                         <td>
                             @if ($menu->is_active == '1')

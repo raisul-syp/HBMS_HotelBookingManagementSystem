@@ -28,7 +28,7 @@ class RoomFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'room_no' => [
+            'hotel_location' => [
                 'required',
                 'string'
             ],

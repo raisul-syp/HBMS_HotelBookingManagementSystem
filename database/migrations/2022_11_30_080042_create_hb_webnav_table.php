@@ -18,7 +18,6 @@ class CreateHbWebnavTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('display_order')->nullable();
-            $table->integer('parent_id')->default('0')->comment('0=Parent');
 
             $table->string('meta_title');
             $table->string('meta_keyword');

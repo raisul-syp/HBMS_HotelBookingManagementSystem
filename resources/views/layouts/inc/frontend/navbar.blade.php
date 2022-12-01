@@ -17,7 +17,16 @@
         </button>
         <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                @foreach ($menuItems as $item)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ $item->slug }}"><span>{{ $item->name }}</span></a>
+                </li>
+                @endforeach
+
+
+
+
+                {{-- <li class="nav-item active">
                     <a class="nav-link" href="index.html"><span>Home</span></a>
                 </li>
                 <li class="nav-item">
@@ -71,7 +80,7 @@
                         <i data-feather="shopping-bag"></i>
                         <span>0</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="collapse search-collapse" id="searchSupportedContent">

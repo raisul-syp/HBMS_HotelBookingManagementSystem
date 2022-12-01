@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Website\NavigationMenu;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $menuItems = NavigationMenu::where('is_active','1')->get();
+        view()->share('menuItems', $menuItems);
     }
 }

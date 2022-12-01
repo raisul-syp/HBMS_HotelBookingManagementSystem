@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHbRoomsTable extends Migration
+class CreateHbWebsubnavTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,11 @@ class CreateHbRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hb_rooms', function (Blueprint $table) {
+        Schema::create('hb_websubnav', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('hotel_location');
             $table->string('slug');
-            $table->mediumText('short_description');
-            $table->longText('long_description')->nullable();
-            $table->integer('max_adults')->nullable();
-            $table->integer('max_childs')->nullable();
-            $table->integer('quantity')->nullable();
-            $table->integer('price')->nullable();
+            $table->string('display_order')->nullable();
 
             $table->string('meta_title');
             $table->string('meta_keyword');
@@ -44,6 +38,6 @@ class CreateHbRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hb_rooms');
+        Schema::dropIfExists('hb_websubnav');
     }
 }

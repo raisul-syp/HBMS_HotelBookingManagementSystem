@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Admin\Website\Menu;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\NavigationMenu;
+use App\Models\Website\NavigationMenu;
 
 class Index extends Component
 {

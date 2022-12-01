@@ -200,6 +200,14 @@ Header Section End
 Hero Slider Section Start
 ==================================*/
 /* Hero Slider */
+.desktop-view {
+    display: block;
+}
+
+.mobile-view {
+    display: none;
+}
+
 .heroSlider_section .item .cover {
     position: absolute;
     width: 100%;

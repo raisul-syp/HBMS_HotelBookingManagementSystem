@@ -10,7 +10,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Room Number</th>
+                        <th>Location</th>
                         <th>Slug</th>
                         <th>Room View</th>
                         <th>Facilities</th>
@@ -25,7 +25,7 @@
                     <tr>
                         <td>{{ $room->id }}</td>
                         <td>{{ $room->name }}</td>
-                        <td>{{ $room->room_no }}</td>
+                        <td>{{ $room->hotel_location }}</td>
                         <td>{{ $room->slug }}</td>
                         <td>
                             @forelse ($room->roomViews as $roomView)
@@ -36,7 +36,7 @@
                         </td>
                         <td>
                             @forelse ($room->facilities as $facility)
-                            <div class="room-facilities" data-toggle="tooltip" data-placement="top" title="{{ $facility->name }}">
+                            <div class="room-facilities m-1" data-toggle="tooltip" data-placement="top" title="{{ $facility->name }}">
                             @if ($facility->image != null)
                             <img src="{{ asset('uploads/facilities/'.$facility->image) }}">
                             @endif

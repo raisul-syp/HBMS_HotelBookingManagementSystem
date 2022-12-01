@@ -98,17 +98,6 @@
                                         <input type="number" class="form-control" id="display_order" name="display_order" value="0">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="parent_id">{{ __('Parent Menu') }}</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control" name="parent_id" id="parent_id">
-                                            <option selected value="0">Parent Menu</option>
-                                            @foreach ($parentMenu as $menu)
-                                            <option value="{{ $menu->id }}">{{ $menu->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="is_active">{{ __('Status') }}</div>
                                     <div class="col-sm-10">

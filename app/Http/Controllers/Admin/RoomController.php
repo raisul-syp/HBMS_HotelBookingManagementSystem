@@ -31,7 +31,7 @@ class RoomController extends Controller
         $room = new Room();
 
         $room->name = $validatedData['name'];
-        $room->room_no = $validatedData['room_no'];
+        $room->hotel_location = $validatedData['hotel_location'];
         $room->slug = Str::slug($validatedData['slug']);
         $room->short_description = $validatedData['short_description'];
         $room->long_description = $validatedData['long_description'];
@@ -92,7 +92,7 @@ class RoomController extends Controller
         $room = Room::findOrFail($room_id);
 
         $room->name = $validatedData['name'];
-        $room->room_no = $validatedData['room_no'];
+        $room->hotel_location = $validatedData['hotel_location'];
         $room->slug = Str::slug($validatedData['slug']);
         $room->short_description = $validatedData['short_description'];
         $room->long_description = $validatedData['long_description'];

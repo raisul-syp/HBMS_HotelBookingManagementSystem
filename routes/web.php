@@ -95,8 +95,8 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::get('/available-rooms/{checkin_date}', 'availableRooms');
     });
 
-    // Website Navigation Menu
-    Route::prefix('/admin/website/menu')->controller(App\Http\Controllers\Admin\NavigationController::class)->group(function (){
+    // Website/Menu
+    Route::prefix('/admin/website/menu')->controller(App\Http\Controllers\Admin\Website\NavigationController::class)->group(function (){
         Route::get('/', 'index');
         Route::get('/create', 'create');
         Route::post('/', 'store');

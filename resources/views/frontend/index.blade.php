@@ -3,10 +3,30 @@
 
 @section('content')
 <section id="heroSlider_section" class="heroSlider_section">
-    <div class="heroSlider_section_inner">
+    <div class="heroSlider_section_inner desktop-view">
         <div class="owl-carousel owl-theme home-slider">
             <div class="item">
                 <img src="{{ asset('frontend/images/sliders/slider-1.png') }}" alt="">
+                <div class="cover">
+                    <div class="cover-inner">
+                        <div class="container">
+                            <div class="header-content">
+                                <h3>Welcome to</h3>
+                                <h1>Zabeer Hotel International</h1>
+                                <hr>
+                                <h4>A place that sparks creativity, fuels the imagination and<br>welcomes reflection and relaxation.</h4>
+                                <a href="aboutus.html" class="btn btn-primary btn-read-more">Know More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="heroSlider_section_inner mobile-view">
+        <div class="owl-carousel owl-theme home-slider">
+            <div class="item">
+                <img src="{{ asset('frontend/images/sliders/sliderMob-1.png') }}" alt="">
                 <div class="cover">
                     <div class="cover-inner">
                         <div class="container">
@@ -32,21 +52,20 @@
                         <div class="form_input col-6">
                             <label for="checkin_date" class="form-label text-white">Check-In:</label>
                             <div class="date-box">
-                                <input type="text" class="form-control" id="checkin_date" name="checkin_date">
+                                <input type="date" class="form-control" id="checkin_date" name="checkin_date">
                                 <span class="lnr lnr-calendar-full icon"></span> 
                             </div>
                         </div>
                         <div class="form_input col-6">
                             <label for="checkout_date" class="form-label text-white">Check-Out:</label>
                             <div class="date-box">
-                                <input type="text" class="form-control" id="checkout_date" name="checkout_date">
+                                <input type="date" class="form-control" id="checkout_date" name="checkout_date">
                                 <span class="lnr lnr-calendar-full icon"></span>
                             </div>
                         </div>
                         <div class="form_input col-6">
-                            <label for="location" class="form-label text-white">Location:</label>
-                            <select class="form-select" id="location" name="location">
-                                <option selected>All</option>
+                            <label for="hotel_location" class="form-label text-white">Hotel Location:</label>
+                            <select class="form-select" id="hotel_location" name="hotel_location">
                                 <option value="Dhaka">Dhaka</option>
                                 <option value="Jashore">Jashore</option>
                               </select>
@@ -94,7 +113,7 @@
                             </select>
                         </div>
                         <div class="form_input submit_btn d-grid gap-2 col-12 mx-auto">
-                            <button class="btn btn-primary">Check Availability</button>
+                            <button type="submit" class="btn btn-primary">Check Availability</button>
                         </div>
                     </div>
                 </form>
