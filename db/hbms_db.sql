@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2022 at 12:05 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Dec 03, 2022 at 07:36 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -423,7 +423,7 @@ INSERT INTO `hb_facilities` (`id`, `name`, `slug`, `description`, `image`, `meta
 (6, 'Fridge', 'fridge', 'Fridge', 'fridge.png', 'Fridge', 'Fridge', 'Fridge', 1, 1, '0', NULL, '2022-11-21 03:26:45', '2022-11-21 03:26:45'),
 (7, 'Geyser', 'geyser', 'Geyser', 'geyser.png', 'Geyser', 'Geyser', 'Geyser', 1, 1, '0', NULL, '2022-11-21 03:27:15', '2022-11-21 03:27:15'),
 (8, 'WiFi', 'wifi', 'WiFi', 'wifi.png', 'WiFi', 'WiFi', 'WiFi', 1, 1, '0', NULL, '2022-11-21 03:27:58', '2022-11-21 03:27:58'),
-(9, 'Intercom', 'intercom', 'Intercom', 'intercom.png', 'Intercom', 'Intercom', 'Intercom', 1, 1, '0', '0', '2022-11-21 03:28:24', '2022-11-21 03:28:38');
+(9, 'Intercom', 'intercom', 'Intercom', 'intercom.png', 'Intercom', 'Intercom', 'Intercom', 0, 1, '0', '0', '2022-11-21 03:28:24', '2022-12-03 00:08:36');
 
 -- --------------------------------------------------------
 
@@ -634,13 +634,57 @@ CREATE TABLE `hb_webnav` (
 --
 
 INSERT INTO `hb_webnav` (`id`, `name`, `slug`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Home', 'home', '1', 'Home', 'Home', 'Home', 1, 1, '0', NULL, '2022-11-30 02:39:22', '2022-11-30 02:39:22'),
+(1, 'Home', '/', '1', 'Home', 'Home', 'Home', 1, 1, '0', NULL, '2022-11-30 02:39:22', '2022-11-30 02:39:22'),
 (2, 'Rooms', 'rooms', '2', 'Rooms', 'Rooms', 'Rooms', 1, 1, '0', NULL, '2022-11-30 02:50:30', '2022-11-30 02:50:30'),
 (3, 'Restaurents', 'restaurents', '3', 'Restaurents', 'Restaurents', 'Restaurents', 1, 1, '0', NULL, '2022-12-01 04:18:13', '2022-12-01 04:18:13'),
 (4, 'Meeting & Events', 'meeting-events', '4', 'Meeting & Events', 'Meeting & Events', 'Meeting & Events', 1, 1, '0', NULL, '2022-12-01 04:20:41', '2022-12-01 04:20:41'),
 (5, 'Wellness', 'wellness', '5', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', NULL, '2022-12-01 04:21:33', '2022-12-01 04:21:33'),
 (6, 'About Us', 'about-us', '6', 'About Us', 'About Us', 'About Us', 1, 1, '0', NULL, '2022-12-01 04:22:12', '2022-12-01 04:22:12'),
 (7, 'Contact Us', 'contact-us', '7', 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, '0', NULL, '2022-12-01 04:22:31', '2022-12-01 04:22:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hb_websubnav`
+--
+
+CREATE TABLE `hb_websubnav` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parent_id` bigint(20) UNSIGNED NOT NULL,
+  `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_websubnav`
+--
+
+INSERT INTO `hb_websubnav` (`id`, `name`, `slug`, `parent_id`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Suite', 'rooms/room-details/1', 2, '1', 'Suite', 'Suite', 'Suite', 1, 1, '0', NULL, '2022-12-01 14:25:11', '2022-12-01 14:25:11'),
+(2, 'Premium', 'rooms/room-details/2', 2, '2', 'Premium', 'Premium', 'Premium', 1, 1, '0', NULL, '2022-12-01 14:27:12', '2022-12-01 14:27:12'),
+(3, 'Premium Twin', 'rooms/room-details/3', 2, '3', 'Premium Twin', 'Premium Twin', 'Premium Twin', 1, 1, '0', NULL, '2022-12-01 14:27:40', '2022-12-01 14:27:40'),
+(4, 'Deluxe', 'rooms/room-details/4', 2, '4', 'Deluxe', 'Deluxe', 'Deluxe', 1, 1, '0', NULL, '2022-12-01 14:28:05', '2022-12-01 14:28:05'),
+(5, 'Deluxe Twin', 'rooms/room-details/5', 2, '5', 'Deluxe Twin', 'Deluxe Twin', 'Deluxe Twin', 1, 1, '0', NULL, '2022-12-01 14:28:32', '2022-12-01 14:28:32'),
+(6, 'Cafe 24', 'cafe-24', 3, '1', 'Cafe 24', 'Cafe 24', 'Cafe 24', 1, 1, '0', NULL, '2022-12-01 14:53:03', '2022-12-01 14:53:03'),
+(7, 'Taste Of Heaven', 'taste-of-heaven', 3, '2', 'Taste Of Heaven', 'Taste Of Heaven', 'Taste Of Heaven', 1, 1, '0', NULL, '2022-12-01 14:53:42', '2022-12-01 14:53:42'),
+(8, 'Sky Line', 'sky-line', 3, '3', 'Sky Line', 'Sky Line', 'Sky Line', 1, 1, '0', NULL, '2022-12-01 14:54:05', '2022-12-01 14:54:05'),
+(9, 'Board Room', 'board-room', 4, '1', 'Board Room', 'Board Room', 'Board Room', 1, 1, '0', NULL, '2022-12-01 14:54:49', '2022-12-01 14:54:49'),
+(10, 'Olive Hall', 'olive-hall', 4, '2', 'Olive Hall', 'Olive Hall', 'Olive Hall', 1, 1, '0', NULL, '2022-12-01 14:55:10', '2022-12-01 14:55:10'),
+(11, 'Tulip Hall', 'tulip-hall', 4, '3', 'Tulip Hall', 'Tulip Hall', 'Tulip Hall', 1, 1, '0', NULL, '2022-12-01 14:55:32', '2022-12-01 14:55:32'),
+(12, 'Spa', 'spa', 5, '1', 'Spa', 'Spa', 'Spa', 1, 1, '0', NULL, '2022-12-01 14:56:00', '2022-12-01 14:56:00'),
+(13, 'Swimming Pool', 'swimming-pool', 5, '2', 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 1, 1, '0', NULL, '2022-12-01 14:56:33', '2022-12-01 14:56:33'),
+(14, 'Gym', 'gym', 5, '3', 'Gym', 'Gym', 'Gym', 1, 1, '0', NULL, '2022-12-01 14:56:58', '2022-12-01 14:56:58'),
+(15, 'Saloon', 'saloon', 5, '4', 'Saloon', 'Saloon', 'Saloon', 1, 1, '0', NULL, '2022-12-01 14:57:16', '2022-12-01 14:57:16');
 
 -- --------------------------------------------------------
 
@@ -672,7 +716,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2022_11_21_080329_create_hb_roomtype_view_table', 5),
 (12, '2022_11_21_080358_create_hb_room_facilities_table', 6),
 (13, '2022_11_26_064509_create_hb_bookings_table', 7),
-(14, '2022_11_30_080042_create_hb_webnav_table', 8);
+(14, '2022_11_30_080042_create_hb_webnav_table', 8),
+(15, '2022_12_01_104059_create_hb_websubnav_table', 9);
 
 -- --------------------------------------------------------
 
@@ -826,6 +871,12 @@ ALTER TABLE `hb_webnav`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hb_websubnav`
+--
+ALTER TABLE `hb_websubnav`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -920,13 +971,19 @@ ALTER TABLE `hb_room_images`
 -- AUTO_INCREMENT for table `hb_webnav`
 --
 ALTER TABLE `hb_webnav`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `hb_websubnav`
+--
+ALTER TABLE `hb_websubnav`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
