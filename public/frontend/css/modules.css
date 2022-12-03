@@ -66,7 +66,7 @@ var {
     margin: 0;
     padding: 0;
     vertical-align: baseline;
-    outline: 0
+    outline: 0;
 }
 
 article,
@@ -6276,26 +6276,26 @@ body #ui-datepicker-div {
 body #ui-datepicker-div.ui-widget-content {
     width: auto;
     font-family: "Nunito Sans", sans-serif;
-    background: rgba(255, 255, 255, .95);
+    background: var(--siteColor1);
     border: 0;
     z-index: 9999 !important
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-widget-header {
     padding: 15px 0;
-    background: rgba(255, 255, 255, .75);
+    background: var(--siteColor1);;
     border: 0
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-widget-header .ui-datepicker-title {
-    color: #1e1e1e;
-    font-size: 18px;
+    color: var(--siteColor2);
+    font-size: 14px;
     font-weight: 300
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-widget-header a {
     top: 50%;
-    opacity: .45;
+    opacity: 1;
     text-decoration: none;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -6310,7 +6310,8 @@ body #ui-datepicker-div.ui-widget-content .ui-datepicker-prev {
 body #ui-datepicker-div.ui-widget-content .ui-datepicker-next:after,
 body #ui-datepicker-div.ui-widget-content .ui-datepicker-prev:after {
     font-family: Linearicons-Free;
-    font-size: 16px
+    font-size: 12px;
+    color: var(--siteColor2);
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-datepicker-next span,
@@ -6344,11 +6345,13 @@ body #ui-datepicker-div.ui-widget-content table thead {
 }
 
 body #ui-datepicker-div.ui-widget-content table tr {
-    border: 0
+    border: 0;
+    color: var(--siteColor2);
+    background: var(--siteColor1);
 }
 
 body #ui-datepicker-div.ui-widget-content table th span {
-    font-size: 14px
+    font-size: 12px
 }
 
 body #ui-datepicker-div.ui-widget-content table td {
@@ -6363,11 +6366,11 @@ body #ui-datepicker-div.ui-widget-content table td.ui-datepicker-unselectable sp
 
 body #ui-datepicker-div.ui-widget-content table td a,
 body #ui-datepicker-div.ui-widget-content table td span {
-    padding: 13px 15px;
+    padding: 8px 10px;
     border: 0;
-    color: #999;
-    background: #fff;
-    font-size: 14px;
+    color: var(--siteColor2);
+    background: var(--siteColor1);
+    font-size: 12px;
     text-align: center
 }
 

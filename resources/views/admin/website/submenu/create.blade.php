@@ -1,22 +1,22 @@
 @extends('layouts.admin')
-@section('title', 'Create A New Menu')
+@section('title', 'Create A New Submenu')
 
 @section('content')
 <div class="container-fluid">
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h2 class="page-header-title">{{ __('Create A New Menu') }}</h2>
+                <h2 class="page-header-title">{{ __('Create A New Submenu') }}</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Website') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Menu') }}</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Add Menu') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Submenu') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Add Submenu') }}</a></li>
                 </ol>
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-            <a href="{{ url('admin/website/menu') }}" class="btn btn-dark text-white">{{ __('Back To List') }}</a>
+            <a href="{{ url('admin/website/submenu') }}" class="btn btn-dark text-white">{{ __('Back To List') }}</a>
         </div>
     </div>
 
@@ -32,13 +32,13 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form action="{{ url('admin/website/menu') }}" method="POST">
+            <form action="{{ url('admin/website/submenu') }}" method="POST">
                 @csrf
 
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div class="form-title">
-                            <h4>{{ __('Menu Form') }}</h4>
+                            <h4>{{ __('Submenu Form') }}</h4>
                         </div>
                         <ul class="nav nav-pills">
                             <li class="nav-item">
@@ -85,6 +85,24 @@
                                     </label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="slug" name="slug" placeholder="Add Slug...">
+                                        @error('slug')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label text-right" for="parent_id">
+                                        {{ __('Parent Menu') }}
+                                        <small class="text-danger">*</small>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control js-basic-single" name="parent_id" id="parent_id">
+                                            @forelse ($menuList as $menuItem)
+                                            <option value="{{ $menuItem->id }}">{{ $menuItem->name }}</option>
+                                            @empty
+                                            <option>No Menu Found</option>
+                                            @endforelse
+                                        </select>
                                         @error('slug')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror

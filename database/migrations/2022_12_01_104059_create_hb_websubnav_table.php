@@ -17,6 +17,7 @@ class CreateHbWebsubnavTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->unsignedBigInteger('parent_id');
             $table->string('display_order')->nullable();
 
             $table->string('meta_title');

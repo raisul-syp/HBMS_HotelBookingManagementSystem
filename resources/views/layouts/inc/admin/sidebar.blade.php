@@ -79,6 +79,13 @@
                         <li><a href="{{ url('admin/website/menu') }}">{{ __('All Menu') }}</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Submenu') }}</a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ url('admin/website/submenu/create') }}">{{ __('Add Submenu') }}</a></li>
+                        <li><a href="{{ url('admin/website/submenu') }}">{{ __('All Submenu') }}</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
     </ul>

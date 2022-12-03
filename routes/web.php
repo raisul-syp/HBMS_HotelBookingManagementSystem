@@ -23,6 +23,22 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\HomeController::class)->group(function (){
     Route::get('/', 'index');
     Route::get('/available-rooms', 'checkAvailability');
+    Route::get('/rooms/room-details/{room}', 'roomDetails');
+});
+
+Route::prefix('/rooms')->controller(App\Http\Controllers\Frontend\RoomController::class)->group(function (){
+    Route::get('/', 'index');
+    Route::get('/room-details/{room}', 'roomDetails');
+});
+
+Route::prefix('/')->controller(App\Http\Controllers\Frontend\ContactController::class)->group(function (){
+    Route::get('/contact-us', 'index');
+    // Route::get('/room-details/{room}', 'roomDetails');
+});
+
+Route::prefix('/')->controller(App\Http\Controllers\Frontend\AboutusController::class)->group(function (){
+    Route::get('/about-us', 'index');
+    // Route::get('/room-details/{room}', 'roomDetails');
 });
 
 Route::get('/dashboard', function () {
@@ -96,7 +112,16 @@ Route::group(['middleware' => 'isAdmin'], function() {
     });
 
     // Website/Menu
-    Route::prefix('/admin/website/menu')->controller(App\Http\Controllers\Admin\Website\NavigationController::class)->group(function (){
+    Route::prefix('/admin/website/menu')->controller(App\Http\Controllers\Admin\Website\MenuController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        // Route::get('/edit/{room}', 'edit');
+        // Route::put('/edit/{room}', 'update');
+    });
+
+    // Website/Submenu
+    Route::prefix('/admin/website/submenu')->controller(App\Http\Controllers\Admin\Website\SubmenuController::class)->group(function (){
         Route::get('/', 'index');
         Route::get('/create', 'create');
         Route::post('/', 'store');

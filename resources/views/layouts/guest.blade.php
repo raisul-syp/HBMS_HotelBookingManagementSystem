@@ -21,26 +21,28 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/modules.css') }}">
 
-    <!-- Vendor Stylesheet --> 
+    <!-- Vendor Stylesheet -->
     <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui-1.13.2.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/animate_css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/bootstrap-5.0.2/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/vendors/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/fontawesome-5.15.4/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/OwlCarousel2-2.3.4/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/OwlCarousel2-2.3.4/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/icon-font-1.0.0/icon-font.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/vendors/daterangepicker/daterangepicker.css') }}">
 
     @livewireStyles
 </head>
-<body>    
+<body>
     <div class="wrapper">
         <header id="header_section" class="header_section">
-            <div class="header_section_inner">                
+            <div class="header_section_inner">
                 <div class="header_top">
                     @include('layouts.inc.frontend.topbar')
                 </div>
-                
+
                 <div id="navbar_top" class="header_bottom">
                     @include('layouts.inc.frontend.navbar')
                 </div>
@@ -50,13 +52,13 @@
         <div class="main-body">
             @yield('content')
         </div>
-        
+
         <footer id="footer_section" class="footer_section">
             @include('layouts.inc.frontend.footer')
         </footer>
 
         <a href="#" class="back-to-top">
-            <i data-feather="chevron-up"></i>            
+            <i data-feather="chevron-up"></i>
         </a>
     </div>
 
@@ -71,10 +73,13 @@
     <!-- Vendor Scripts -->
     <script src="{{ asset('frontend/vendors/bootstrap-5.0.2/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/vendors/isotope/isotope.pkgd.js') }}"></script>
+    <script src="{{ asset('frontend/vendors/select2/js/select2.min.js') }}"></script>
     <script src="{{ asset('frontend/vendors/fontawesome-5.15.4/js/all.min.js') }}"></script>
     <script src="{{ asset('frontend/vendors/OwlCarousel2-2.3.4/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/vendors/feathericons-4.29.0/feather.min.js') }}"></script>
     <script src="{{ asset('frontend/vendors/iconify-icon/iconify-icon.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendors/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendors/daterangepicker/daterangepicker.min.js') }}"></script>
     @livewireScripts
     {{-- @stack('script') --}}
     @yield('scripts')

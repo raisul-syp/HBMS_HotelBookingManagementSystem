@@ -14,6 +14,7 @@ class NavigationSubmenu extends Model
     protected $fillable = [
         'name',
         'slug',
+        'parent_id',
         'display_order',
         'meta_title',
         'meta_keyword',
@@ -23,4 +24,9 @@ class NavigationSubmenu extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function menus()
+    {
+        return $this->belongsTo(NavigationMenu::class, 'parent_id');
+    }
 }

@@ -15,37 +15,37 @@
                             <div class="decor-1"></div>
                         </h4>
                         <ul>
-                            <li>           
+                            <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="#">About Us</a>
+                                <a href="{{ url('/about-us') }}">About Us</a>
                             </li>
-                            <li>           
+                            <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="#">Contact Us</a>
+                                <a href="{{ url('/contact-us') }}">Contact Us</a>
                             </li>
-                            <li>           
+                            <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="#">Offers</a>
+                                <a href="{{ url('/offers') }}">Offers</a>
                             </li>
-                            <li>           
+                            <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="#">News</a>
+                                <a href="{{ url('/news') }}">News</a>
                             </li>
-                            <li>           
+                            <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="#">Rooms</a>
+                                <a href="{{ url('/rooms') }}">Rooms</a>
                             </li>
-                            <li>           
+                            <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="#">Restaurant</a>
+                                <a href="{{ url('/about-us') }}">Restaurant</a>
                             </li>
-                            <li>           
+                            <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="#">Meeting & Events</a>
+                                <a href="{{ url('/meeting-rooms') }}">Meeting & Events</a>
                             </li>
-                            <li>           
+                            <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="#">Wellness</a>
+                                <a href="{{ url('/wellness') }}">Wellness</a>
                             </li>
                         </ul>
                     </div>
@@ -58,7 +58,7 @@
                             <div class="decor-1"></div>
                         </h4>
                         <ul class="contact">
-                            <li>                                            
+                            <li>
                                 <i data-feather="map-pin"></i>
                                 <a href="#">1256 M M Ali Road, Jashore</a>
                             </li>

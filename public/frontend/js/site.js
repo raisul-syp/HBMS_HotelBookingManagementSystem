@@ -5,7 +5,10 @@ $(document).ready(function () {
 
     // Feather Icons
     feather.replace();
-    
+
+    // Select 2
+    $('.js-basic-single').select2();
+
 
     // Fixed Navbar On Scroll
     $(document).ready(function () {
@@ -78,10 +81,27 @@ $(document).ready(function () {
 
     $("#checkin_date").datepicker({
         dateFormat: 'yy-mm-dd'
+        // dateFormat: 'd M yy'
     });
 
     $("#checkout_date").datepicker({
         dateFormat: 'yy-mm-dd'
+        // dateFormat: 'd M yy'
     });
+
+
+
+    $('.room-details-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: true,
+        items: 1,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+    })
 });
+
+
 

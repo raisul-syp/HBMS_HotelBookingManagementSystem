@@ -23,4 +23,9 @@ class NavigationMenu extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function submenus()
+    {
+        return $this->hasMany(NavigationSubmenu::class, 'parent_id')->where('is_active','1')->orderBy('display_order','ASC');
+    }
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Website\NavigationMenu;
 use App\Http\Requests\Website\NavmenuFormRequest;
 
-class NavigationController extends Controller
+class MenuController extends Controller
 {
     public function index()
     {
