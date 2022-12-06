@@ -86,6 +86,20 @@
                         <li><a href="{{ url('admin/website/submenu') }}">{{ __('All Submenu') }}</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Pages') }}</a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ url('admin/website/page/create') }}">{{ __('Add Page') }}</a></li>
+                        <li><a href="{{ url('admin/website/page') }}">{{ __('All Page') }}</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Slider') }}</a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ url('admin/website/slider/create') }}">{{ __('Add Slider') }}</a></li>
+                        <li><a href="{{ url('admin/website/slider') }}">{{ __('All Slider') }}</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
     </ul>

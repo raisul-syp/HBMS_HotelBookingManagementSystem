@@ -280,7 +280,8 @@ Hero Slider Section Start
     margin: 20px 0;
 }
 
-.heroSlider_section .owl-item a.btn-read-more {
+.heroSlider_section .owl-item a.btn-read-more,
+.heroSlider_section .owl-item button.btn-read-more {
     background: var(--goldenBG2);
     border: 2px solid transparent;
     font-size: 18px;
@@ -293,7 +294,8 @@ Hero Slider Section Start
     transition: all 0.3s;
 }
 
-.heroSlider_section .owl-item.active a.btn-read-more:hover {
+.heroSlider_section .owl-item.active a.btn-read-more:hover,
+.heroSlider_section .owl-item.active button.btn-read-more:hover {
     background: var(--siteColor1);
     color: var(--siteFont2);
 }
@@ -334,7 +336,8 @@ Hero Slider Section Start
     animation-delay: 0.3s;
 }
 
-.heroSlider_section .owl-item.active a.btn-read-more {
+.heroSlider_section .owl-item.active a.btn-read-more,
+.heroSlider_section .owl-item.active button.btn-read-more {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
@@ -391,6 +394,13 @@ Hero Slider Section Start
     background-color: transparent;
     -webkit-box-shadow: none;
     box-shadow: none;
+}
+.availability_form .form_input select option {
+    background-color: var(--siteColor1);
+    color: var(--siteFont3);
+}
+.availability_form .form_input select option:hover {
+    background-color: var(--goldenBG2) !important;
 }
 .availability_form .form_input input:focus,
 .availability_form .form_input select:focus {

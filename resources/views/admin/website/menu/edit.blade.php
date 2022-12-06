@@ -1,17 +1,17 @@
 @extends('layouts.admin')
-@section('title', 'Create A New Menu')
+@section('title', 'Edit Menu')
 
 @section('content')
 <div class="container-fluid">
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h2 class="page-header-title">{{ __('Create A New Menu') }}</h2>
+                <h2 class="page-header-title">{{ __('Edit Menu') }}</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Website') }}</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Menu') }}</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Add Menu') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Edit Menu') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -32,8 +32,9 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form action="{{ url('admin/website/menu') }}" method="POST">
+            <form action="{{ url('admin/website/menu/edit/'.$menu->id) }}" method="POST">
                 @csrf
+                @method('PUT')
 
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
@@ -72,7 +73,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Add Name...">
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ $menu->name }}" placeholder="Add Name...">
                                         @error('name')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -84,7 +85,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="slug" name="slug" placeholder="Add Slug...">
+                                        <input type="text" class="form-control" id="slug" name="slug" value="{{ $menu->slug }}" placeholder="Add Slug...">
                                         @error('slug')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -97,8 +98,8 @@
                                     </label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="hotel_location" id="hotel_location">
-                                            <option value="Dhaka">Dhaka</option>
-                                            <option value="Jashore">Jashore</option>
+                                            <option value="Dhaka" {{ old('hotel_location', $menu->hotel_location) == 'Dhaka' ? 'selected' : '' }}>Dhaka</option>
+                                            <option value="Jashore" {{ old('hotel_location', $menu->hotel_location) == 'Jashore' ? 'selected' : '' }}>Jashore</option>
                                         </select>
                                         @error('hotel_location')
                                             <small class="text-danger">{{ $message }}</small>
@@ -110,14 +111,14 @@
                                         {{ __('Display Order') }}
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="display_order" name="display_order" value="0">
+                                        <input type="number" class="form-control" id="display_order" name="display_order" value="{{ $menu->display_order }}">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="is_active">{{ __('Status') }}</div>
                                     <div class="col-sm-10">
                                         <label class="switch switch-square">
-                                            <input type="checkbox" class="switch-input" id="is_active" name="is_active" checked>
+                                            <input type="checkbox" class="switch-input" id="is_active" name="is_active" {{ $menu->is_active == '1' ? 'checked':'' }}>
                                             <span class="switch-toggle-slider"></span>
                                         </label>
                                     </div>
@@ -131,7 +132,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="meta_title" name="meta_title" placeholder="Add Meta Title...">
+                                        <input type="text" class="form-control" id="meta_title" name="meta_title" value="{{ $menu->meta_title }}" placeholder="Add Meta Title...">
                                         @error('meta_title')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -143,7 +144,7 @@
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" placeholder="Add Meta Keyword...">
+                                        <input type="text" class="form-control" id="meta_keyword" name="meta_keyword" value="{{ $menu->meta_keyword }}" placeholder="Add Meta Keyword...">
                                         @error('meta_keyword')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
@@ -152,18 +153,18 @@
                                 <div class="form-group row mb-0">
                                     <label class="col-sm-2 col-form-label text-right" for="meta_decription">{{ __('Meta Decription') }}</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="meta_decription" name="meta_decription" rows="4" placeholder="Add Meta Description..."></textarea>
+                                        <textarea class="form-control" id="meta_decription" name="meta_decription" rows="4" placeholder="Add Meta Description...">{{ $menu->meta_decription }}</textarea>
                                     </div>
                                 </div>
 
-                                <input type="text" hidden id="created_by" name="created_by" value="{{ Auth::guard('admin')->user()->role_as }}">
+                                <input type="text" hidden id="updated_by" name="updated_by" value="{{ Auth::guard('admin')->user()->role_as }}">
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary text-uppercase text-right">
-                                {{ __('Save') }}
+                                {{ __('Update') }}
                             </button>
                         </div>
                     </div>

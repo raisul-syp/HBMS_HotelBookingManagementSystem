@@ -23,7 +23,7 @@
                         <td>{{ $submenu->id }}</td>
                         <td>{{ $submenu->name }}</td>
                         <td>{{ $submenu->slug }}</td>
-                        <td>{{ $submenu->menus->name }}</td>
+                        <td>{{ $submenu->menus->name.' ('.$submenu->menus->hotel_location.')' }}</td>
                         <td>{{ $submenu->display_order }}</td>
                         <td>
                             @if ($submenu->is_active == '1')

@@ -14,6 +14,7 @@ class NavigationMenu extends Model
     protected $fillable = [
         'name',
         'slug',
+        'hotel_location',
         'display_order',
         'meta_title',
         'meta_keyword',
@@ -26,6 +27,6 @@ class NavigationMenu extends Model
 
     public function submenus()
     {
-        return $this->hasMany(NavigationSubmenu::class, 'parent_id')->where('is_active','1')->orderBy('display_order','ASC');
+        return $this->hasMany(NavigationSubmenu::class, 'parent_id')->where('is_active','1')->where('is_delete','1')->orderBy('display_order','ASC');
     }
 }

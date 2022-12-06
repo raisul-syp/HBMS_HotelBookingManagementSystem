@@ -98,7 +98,7 @@
                                     <div class="col-sm-10">
                                         <select class="form-control js-basic-single" name="parent_id" id="parent_id">
                                             @forelse ($menuList as $menuItem)
-                                            <option value="{{ $menuItem->id }}">{{ $menuItem->name }}</option>
+                                            <option value="{{ $menuItem->id }}">{{ $menuItem->name.' ('.$menuItem->hotel_location.')' }}</option>
                                             @empty
                                             <option>No Menu Found</option>
                                             @endforelse

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Website;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NavmenuFormRequest extends FormRequest
+class SliderFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,21 +28,47 @@ class NavmenuFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'slug' => [
+            'url' => [
+                'nullable'
+            ],
+            'desktop_image' => [
+                'string',
+                'mimes:jpg,jpeg,png'
+            ],
+            'mobile_image' => [
+                'string',
+                'mimes:jpg,jpeg,png'
+            ],
+            'content_1' => [
                 'required',
                 'string'
             ],
-            'hotel_location' => [
+            'content_2' => [
                 'required',
                 'string'
             ],
-            'display_order' => [
+            'content_3' => [
+                'required',
+                'string'
+            ],
+            'content_4' => [
                 'nullable'
             ],
-            'is_active' => [
+            'content_5' => [
                 'nullable'
             ],
-            'is_delete' => [
+            'button_1' => [
+                'required',
+                'string'
+            ],
+            'button_2' => [
+                'nullable'
+            ],
+            'button_1_url' => [
+                'required',
+                'string'
+            ],
+            'button_2_url' => [
                 'nullable'
             ],
             'meta_title' => [

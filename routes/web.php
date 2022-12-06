@@ -31,15 +31,8 @@ Route::prefix('/rooms')->controller(App\Http\Controllers\Frontend\RoomController
     Route::get('/room-details/{room}', 'roomDetails');
 });
 
-Route::prefix('/')->controller(App\Http\Controllers\Frontend\ContactController::class)->group(function (){
-    Route::get('/contact-us', 'index');
-    // Route::get('/room-details/{room}', 'roomDetails');
-});
-
-Route::prefix('/')->controller(App\Http\Controllers\Frontend\AboutusController::class)->group(function (){
-    Route::get('/about-us', 'index');
-    // Route::get('/room-details/{room}', 'roomDetails');
-});
+Route::get('/about-us', [App\Http\Controllers\Frontend\AboutusController::class, 'index']);
+Route::get('/contact-us', [App\Http\Controllers\Frontend\ContactController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -111,21 +104,35 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::get('/available-rooms/{checkin_date}', 'availableRooms');
     });
 
-    // Website/Menu
-    Route::prefix('/admin/website/menu')->controller(App\Http\Controllers\Admin\Website\MenuController::class)->group(function (){
-        Route::get('/', 'index');
-        Route::get('/create', 'create');
-        Route::post('/', 'store');
-        // Route::get('/edit/{room}', 'edit');
-        // Route::put('/edit/{room}', 'update');
+    
+    // Website
+    Route::prefix('/admin/website')->group(function (){
+        // Menu
+        Route::prefix('/menu')->controller(App\Http\Controllers\Admin\Website\MenuController::class)->group(function (){
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/edit/{menu}', 'edit');
+            Route::put('/edit/{menu}', 'update');
+        });
+
+        // Submenu
+        Route::prefix('/submenu')->controller(App\Http\Controllers\Admin\Website\SubmenuController::class)->group(function (){
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/edit/{submenu}', 'edit');
+            Route::put('/edit/{submenu}', 'update');
+        });
+
+        // Slider
+        Route::prefix('/slider')->controller(App\Http\Controllers\Admin\Website\SliderController::class)->group(function (){
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/edit/{slider}', 'edit');
+            Route::put('/edit/{slider}', 'update');
+        });
     });
 
-    // Website/Submenu
-    Route::prefix('/admin/website/submenu')->controller(App\Http\Controllers\Admin\Website\SubmenuController::class)->group(function (){
-        Route::get('/', 'index');
-        Route::get('/create', 'create');
-        Route::post('/', 'store');
-        // Route::get('/edit/{room}', 'edit');
-        // Route::put('/edit/{room}', 'update');
-    });
 });

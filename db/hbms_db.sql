@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2022 at 07:36 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Dec 06, 2022 at 12:45 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -617,6 +617,7 @@ CREATE TABLE `hb_webnav` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hotel_location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -633,14 +634,14 @@ CREATE TABLE `hb_webnav` (
 -- Dumping data for table `hb_webnav`
 --
 
-INSERT INTO `hb_webnav` (`id`, `name`, `slug`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Home', '/', '1', 'Home', 'Home', 'Home', 1, 1, '0', NULL, '2022-11-30 02:39:22', '2022-11-30 02:39:22'),
-(2, 'Rooms', 'rooms', '2', 'Rooms', 'Rooms', 'Rooms', 1, 1, '0', NULL, '2022-11-30 02:50:30', '2022-11-30 02:50:30'),
-(3, 'Restaurents', 'restaurents', '3', 'Restaurents', 'Restaurents', 'Restaurents', 1, 1, '0', NULL, '2022-12-01 04:18:13', '2022-12-01 04:18:13'),
-(4, 'Meeting & Events', 'meeting-events', '4', 'Meeting & Events', 'Meeting & Events', 'Meeting & Events', 1, 1, '0', NULL, '2022-12-01 04:20:41', '2022-12-01 04:20:41'),
-(5, 'Wellness', 'wellness', '5', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', NULL, '2022-12-01 04:21:33', '2022-12-01 04:21:33'),
-(6, 'About Us', 'about-us', '6', 'About Us', 'About Us', 'About Us', 1, 1, '0', NULL, '2022-12-01 04:22:12', '2022-12-01 04:22:12'),
-(7, 'Contact Us', 'contact-us', '7', 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, '0', NULL, '2022-12-01 04:22:31', '2022-12-01 04:22:31');
+INSERT INTO `hb_webnav` (`id`, `name`, `slug`, `hotel_location`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Home', '/', 'Dhaka', '1', 'Home', 'Home', 'Home', 1, 1, '0', '0', '2022-11-30 02:39:22', '2022-12-06 00:24:31'),
+(2, 'Rooms', 'rooms', 'Dhaka', '2', 'Rooms', 'Rooms', 'Rooms', 1, 1, '0', '0', '2022-11-30 02:50:30', '2022-12-05 02:53:00'),
+(3, 'Restaurents', 'restaurents', 'Dhaka', '3', 'Restaurents', 'Restaurents', 'Restaurents', 1, 1, '0', '0', '2022-12-01 04:18:13', '2022-12-05 03:49:34'),
+(4, 'Meeting & Events', 'meeting-events', 'Dhaka', '4', 'Meeting & Events', 'Meeting & Events', 'Meeting & Events', 1, 1, '0', '0', '2022-12-01 04:20:41', '2022-12-05 03:49:45'),
+(5, 'Wellness', 'wellness', 'Dhaka', '5', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', '0', '2022-12-01 04:21:33', '2022-12-05 03:50:18'),
+(6, 'About Us', 'about-us', 'Dhaka', '6', 'About Us', 'About Us', 'About Us', 1, 1, '0', '0', '2022-12-01 04:22:12', '2022-12-05 03:49:56'),
+(7, 'Contact Us', 'contact-us', 'Dhaka', '7', 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, '0', '0', '2022-12-01 04:22:31', '2022-12-06 00:28:08');
 
 -- --------------------------------------------------------
 
@@ -670,7 +671,7 @@ CREATE TABLE `hb_websubnav` (
 --
 
 INSERT INTO `hb_websubnav` (`id`, `name`, `slug`, `parent_id`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Suite', 'rooms/room-details/1', 2, '1', 'Suite', 'Suite', 'Suite', 1, 1, '0', NULL, '2022-12-01 14:25:11', '2022-12-01 14:25:11'),
+(1, 'Suite', 'rooms/room-details/1', 2, '1', 'Suite', 'Suite', 'Suite', 1, 1, '0', '0', '2022-12-01 14:25:11', '2022-12-06 02:00:04'),
 (2, 'Premium', 'rooms/room-details/2', 2, '2', 'Premium', 'Premium', 'Premium', 1, 1, '0', NULL, '2022-12-01 14:27:12', '2022-12-01 14:27:12'),
 (3, 'Premium Twin', 'rooms/room-details/3', 2, '3', 'Premium Twin', 'Premium Twin', 'Premium Twin', 1, 1, '0', NULL, '2022-12-01 14:27:40', '2022-12-01 14:27:40'),
 (4, 'Deluxe', 'rooms/room-details/4', 2, '4', 'Deluxe', 'Deluxe', 'Deluxe', 1, 1, '0', NULL, '2022-12-01 14:28:05', '2022-12-01 14:28:05'),
@@ -684,7 +685,7 @@ INSERT INTO `hb_websubnav` (`id`, `name`, `slug`, `parent_id`, `display_order`, 
 (12, 'Spa', 'spa', 5, '1', 'Spa', 'Spa', 'Spa', 1, 1, '0', NULL, '2022-12-01 14:56:00', '2022-12-01 14:56:00'),
 (13, 'Swimming Pool', 'swimming-pool', 5, '2', 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 1, 1, '0', NULL, '2022-12-01 14:56:33', '2022-12-01 14:56:33'),
 (14, 'Gym', 'gym', 5, '3', 'Gym', 'Gym', 'Gym', 1, 1, '0', NULL, '2022-12-01 14:56:58', '2022-12-01 14:56:58'),
-(15, 'Saloon', 'saloon', 5, '4', 'Saloon', 'Saloon', 'Saloon', 1, 1, '0', NULL, '2022-12-01 14:57:16', '2022-12-01 14:57:16');
+(15, 'Saloon', 'saloon', 5, '4', 'Saloon', 'Saloon', 'Saloon', 1, 1, '0', NULL, '2022-12-01 14:57:16', '2022-12-06 02:02:10');
 
 -- --------------------------------------------------------
 
@@ -717,7 +718,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2022_11_21_080358_create_hb_room_facilities_table', 6),
 (13, '2022_11_26_064509_create_hb_bookings_table', 7),
 (14, '2022_11_30_080042_create_hb_webnav_table', 8),
-(15, '2022_12_01_104059_create_hb_websubnav_table', 9);
+(15, '2022_12_01_104059_create_hb_websubnav_table', 9),
+(16, '2022_12_06_093656_create_hb_webslider_table', 10),
+(17, '2022_12_06_094648_create_hb_webslider_table', 11);
 
 -- --------------------------------------------------------
 
@@ -983,7 +986,7 @@ ALTER TABLE `hb_websubnav`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHbWebnavTable extends Migration
+class CreateHbWebsliderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,21 @@ class CreateHbWebnavTable extends Migration
      */
     public function up()
     {
-        Schema::create('hb_webnav', function (Blueprint $table) {
+        Schema::create('hb_webslider', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
-            $table->string('hotel_location');
-            $table->string('display_order')->nullable();
+            $table->string('url')->nullable();
+            $table->string('desktop_image');
+            $table->string('mobile_image');
+            $table->string('content_1');
+            $table->string('content_2');
+            $table->string('content_3');
+            $table->string('content_4')->nullable();
+            $table->string('content_5')->nullable();
+            $table->string('button_1');
+            $table->string('button_2')->nullable();
+            $table->string('button_1_url');
+            $table->string('button_2_url')->nullable();
 
             $table->string('meta_title');
             $table->string('meta_keyword');
@@ -39,6 +48,6 @@ class CreateHbWebnavTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hb_webnav');
+        Schema::dropIfExists('hb_webslider');
     }
 }

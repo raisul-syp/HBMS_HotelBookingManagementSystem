@@ -15,8 +15,8 @@
                                 <h1>The Zabeer Dhaka</h1>
                                 <hr>
                                 <h4>A place that sparks creativity, fuels the imagination and<br>welcomes reflection and relaxation.</h4>
-                                <a href="#" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
-                                <a href="#" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
+                                <a href="aboutus.html" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
+                                <a href="aboutus.html" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
                             </div>
                         </div>
                     </div>
@@ -36,8 +36,8 @@
                                 <h1>The Zabeer Dhaka</h1>
                                 <hr>
                                 <h4>A place that sparks creativity, fuels the imagination and<br>welcomes reflection and relaxation.</h4>
-                                <a href="#" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
-                                <a href="#" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
+                                <a href="aboutus.html" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
+                                <a href="aboutus.html" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,6 @@
                             <label for="hotel_location" class="form-label text-white">Hotel Location:</label>
                             <select class="form-select" id="hotel_location" name="hotel_location">
                                 <option value="Dhaka">Dhaka</option>
-                                <option value="Jashore">Jashore</option>
                               </select>
                         </div>
                         <div class="form_input col-12">

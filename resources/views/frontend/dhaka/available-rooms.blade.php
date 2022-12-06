@@ -29,7 +29,6 @@
                                     <div class="form_input col-12 mb-3">
                                         <select class="form-select" id="hotel_location" name="hotel_location">
                                             <option value="Dhaka">Dhaka</option>
-                                            <option value="Jashore">Jashore</option>
                                           </select>
                                     </div>
                                     <div class="form_input col-12 mb-3">

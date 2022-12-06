@@ -47,8 +47,6 @@ class HomeController extends Controller
         return view('frontend.available-rooms', compact('available_rooms','todayDate','tomorrowDate'));
     }
 
-
-
     public function roomDetails(int $room_id)
     {
         $roomDetail = Room::findOrFail($room_id);

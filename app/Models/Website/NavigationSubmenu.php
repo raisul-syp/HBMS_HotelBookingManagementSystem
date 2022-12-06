@@ -27,6 +27,6 @@ class NavigationSubmenu extends Model
 
     public function menus()
     {
-        return $this->belongsTo(NavigationMenu::class, 'parent_id');
+        return $this->belongsTo(NavigationMenu::class, 'parent_id')->where('is_active','1')->where('is_delete','1')->orderBy('display_order','ASC');
     }
 }
