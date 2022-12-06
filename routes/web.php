@@ -104,7 +104,7 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::get('/available-rooms/{checkin_date}', 'availableRooms');
     });
 
-    
+
     // Website
     Route::prefix('/admin/website')->group(function (){
         // Menu

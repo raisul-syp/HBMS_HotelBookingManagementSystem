@@ -32,11 +32,11 @@ class SliderFormRequest extends FormRequest
                 'nullable'
             ],
             'desktop_image' => [
-                'string',
+                'nullable',
                 'mimes:jpg,jpeg,png'
             ],
             'mobile_image' => [
-                'string',
+                'nullable',
                 'mimes:jpg,jpeg,png'
             ],
             'content_1' => [
@@ -48,8 +48,7 @@ class SliderFormRequest extends FormRequest
                 'string'
             ],
             'content_3' => [
-                'required',
-                'string'
+                'required'
             ],
             'content_4' => [
                 'nullable'
@@ -58,17 +57,18 @@ class SliderFormRequest extends FormRequest
                 'nullable'
             ],
             'button_1' => [
-                'required',
-                'string'
+                'nullable'
             ],
             'button_2' => [
                 'nullable'
             ],
             'button_1_url' => [
-                'required',
-                'string'
+                'nullable'
             ],
             'button_2_url' => [
+                'nullable'
+            ],
+            'display_order' => [
                 'nullable'
             ],
             'meta_title' => [

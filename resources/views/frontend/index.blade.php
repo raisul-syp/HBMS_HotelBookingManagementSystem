@@ -3,20 +3,21 @@
 
 @section('content')
 <section id="heroSlider_section" class="heroSlider_section">
+    @foreach ($sliders as $slider)
     <div class="heroSlider_section_inner desktop-view">
         <div class="owl-carousel owl-theme home-slider">
             <div class="item">
-                <img src="{{ asset('frontend/images/sliders/slider-1.png') }}" alt="">
+                <img src="{{ asset('frontend/images/sliders/'.$slider->desktop_image) }}" alt="">
                 <div class="cover">
                     <div class="cover-inner">
                         <div class="container">
                             <div class="header-content">
-                                <h3>Welcome to</h3>
-                                <h1>The Zabeer Dhaka</h1>
+                                <h3>{{ $slider->content_1 }}</h3>
+                                <h1>{{ $slider->content_2 }}</h1>
                                 <hr>
-                                <h4>A place that sparks creativity, fuels the imagination and<br>welcomes reflection and relaxation.</h4>
-                                <a href="#" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
-                                <a href="#" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
+                                <h4>{{ $slider->content_3 }}</h4>
+                                <a href="{{ $slider->button_1_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_1 }}</a>
+                                <a href="{{ $slider->button_2_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_2 }}</a>
                             </div>
                         </div>
                     </div>
@@ -27,17 +28,17 @@
     <div class="heroSlider_section_inner mobile-view">
         <div class="owl-carousel owl-theme home-slider">
             <div class="item">
-                <img src="{{ asset('frontend/images/sliders/sliderMob-1.png') }}" alt="">
+                <img src="{{ asset('frontend/images/sliders/'.$slider->mobile_image) }}" alt="">
                 <div class="cover">
                     <div class="cover-inner">
                         <div class="container">
                             <div class="header-content">
-                                <h3>Welcome to</h3>
-                                <h1>The Zabeer Dhaka</h1>
+                                <h3>{{ $slider->content_1 }}</h3>
+                                <h1>{{ $slider->content_2 }}</h1>
                                 <hr>
-                                <h4>A place that sparks creativity, fuels the imagination and<br>welcomes reflection and relaxation.</h4>
-                                <a href="#" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
-                                <a href="#" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
+                                <h4>{{ $slider->content_3 }}</h4>
+                                <a href="{{ $slider->button_1_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_1 }}</a>
+                                <a href="{{ $slider->button_2_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_2 }}</a>
                             </div>
                         </div>
                     </div>
@@ -45,6 +46,7 @@
             </div>
         </div>
     </div>
+    @endforeach
 
     <div class="availability_sec">
         <div class="container">

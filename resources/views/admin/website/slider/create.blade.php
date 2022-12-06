@@ -75,34 +75,26 @@
                                         <input type="url" class="form-control" id="url" name="url" placeholder="Add URL...">
                                     </div>
                                 </div>
-                                <div class="form-group row mb-0">
+                                <div class="form-group row">
                                     <div class="col-sm-2 col-form-label text-right" for="desktop_image">
-                                        {{ __('Desktop Image') }}
-                                        <small class="text-danger">*</small>
+                                        {{ __('Desktop Slider Image') }}
                                     </div>
                                     <div class="col-sm-10">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="desktop_image" name="desktop_image">
                                             <label class="custom-file-label">Choose file</label>
                                         </div>
-                                        @error('desktop_image')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row mb-0">
+                                <div class="form-group row">
                                     <div class="col-sm-2 col-form-label text-right" for="mobile_image">
-                                        {{ __('Mobile Image') }}
-                                        <small class="text-danger">*</small>
+                                        {{ __('Mobile Slider Image') }}
                                     </div>
                                     <div class="col-sm-10">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="mobile_image" name="mobile_image">
                                             <label class="custom-file-label">Choose file</label>
                                         </div>
-                                        @error('mobile_image')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -132,13 +124,9 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="content_3">
                                         {{ __('Content 3') }}
-                                        <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="content_3" name="content_3" placeholder="Add 3rd Content...">
-                                        @error('content_3')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -160,13 +148,9 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="button_1">
                                         {{ __('Button 1') }}
-                                        <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="button_1" name="button_1" placeholder="Add 1st Button Title...">
-                                        @error('button_1')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -180,13 +164,9 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="button_1_url">
                                         {{ __('Button 1 URL') }}
-                                        <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
                                         <input type="url" class="form-control" id="button_1_url" name="button_1_url" placeholder="Add 1st Button Title...">
-                                        @error('button_1_url')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -195,6 +175,14 @@
                                     </label>
                                     <div class="col-sm-10">
                                         <input type="url" class="form-control" id="button_2_url" name="button_2_url" placeholder="Add 2nd Button Title...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label text-right" for="display_order">
+                                        {{ __('Display Order') }}
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="display_order" name="display_order" value="0" placeholder="Add 2nd Button Title...">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0">
