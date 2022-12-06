@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2022 at 12:45 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Dec 06, 2022 at 08:05 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -646,6 +646,46 @@ INSERT INTO `hb_webnav` (`id`, `name`, `slug`, `hotel_location`, `display_order`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hb_websliders`
+--
+
+CREATE TABLE `hb_websliders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desktop_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content_2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content_3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_4` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `content_5` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `button_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `button_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `button_1_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `button_2_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_websliders`
+--
+
+INSERT INTO `hb_websliders` (`id`, `name`, `url`, `desktop_image`, `mobile_image`, `content_1`, `content_2`, `content_3`, `content_4`, `content_5`, `button_1`, `button_2`, `button_1_url`, `button_2_url`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Slider 1', NULL, 'desk-slider-1.png', 'mobl-slider-1.png', 'Welcome to', 'The Zabeer Dhaka', 'A place that sparks creativity, fuels the imagination and\r\nwelcomes reflection and relaxation.', NULL, NULL, 'The Zabeer Dhaka', 'The Zabeer Jashore', NULL, NULL, '1', 'Slider 1', 'Slider 1', 'Slider 1', 1, 1, '0', NULL, '2022-12-06 11:32:58', '2022-12-06 11:32:58');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hb_websubnav`
 --
 
@@ -720,7 +760,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2022_11_30_080042_create_hb_webnav_table', 8),
 (15, '2022_12_01_104059_create_hb_websubnav_table', 9),
 (16, '2022_12_06_093656_create_hb_webslider_table', 10),
-(17, '2022_12_06_094648_create_hb_webslider_table', 11);
+(17, '2022_12_06_094648_create_hb_webslider_table', 11),
+(18, '2022_12_06_163855_create_hb_websliders_table', 12),
+(19, '2022_12_06_171820_create_hb_websliders_table', 13),
+(20, '2022_12_06_172630_create_hb_websliders_table', 14);
 
 -- --------------------------------------------------------
 
@@ -874,6 +917,12 @@ ALTER TABLE `hb_webnav`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hb_websliders`
+--
+ALTER TABLE `hb_websliders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `hb_websubnav`
 --
 ALTER TABLE `hb_websubnav`
@@ -977,6 +1026,12 @@ ALTER TABLE `hb_webnav`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `hb_websliders`
+--
+ALTER TABLE `hb_websliders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `hb_websubnav`
 --
 ALTER TABLE `hb_websubnav`
@@ -986,7 +1041,7 @@ ALTER TABLE `hb_websubnav`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
