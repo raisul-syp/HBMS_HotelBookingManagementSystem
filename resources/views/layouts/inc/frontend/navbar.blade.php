@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('frontend/images/logo.png') }}" alt="Zabeer Hotel International">
+            <img src="{{ asset('frontend/images/logos/png/logo-dhaka.png') }}" alt="Zabeer Hotel International">
         </a>
         <button class="search-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse"
             data-bs-target="#searchSupportedContent" aria-controls="searchSupportedContent"

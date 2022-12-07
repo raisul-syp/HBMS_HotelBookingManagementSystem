@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="footer_logo">
-                        <img src="{{ asset('frontend/images/logo.png') }}" alt="">
+                        <img src="{{ asset('frontend/images/logos/png/logo-dhaka.png') }}" alt="">
                     </div>
                 </div>
 
