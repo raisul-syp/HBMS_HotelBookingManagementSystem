@@ -36,7 +36,7 @@ $(document).ready(function () {
         dots: false,
         navText: ["<iconify-icon icon='bytesize:chevron-left' style='color:white;font-size:40px;'></iconify-icon>", "<iconify-icon icon='bytesize:chevron-right' style='color:white;font-size:40px;'></iconify-icon>"],
         items: 1,
-        mouseDrag: false,
+        mouseDrag: true,
         animateOut: 'fadeOut',
         animateIn: 'flipInX',
         autoplay: false,

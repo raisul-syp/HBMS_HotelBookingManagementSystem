@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Room;
 use App\Models\Booking;
-use App\Models\Facility;
 use App\Models\Roomtype;
 use App\Models\RoomImage;
 use Illuminate\Http\Request;
@@ -12,6 +11,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Website\Slider;
+use App\Models\Website\Testimonial;
+use App\Models\Website\Facility;
 
 class HomeController extends Controller
 {
@@ -27,11 +28,12 @@ class HomeController extends Controller
 
         $sliders = Slider::all()->where('is_active','1')->where('is_delete','1');
         $rooms = Room::all()->where('is_active','1')->where('is_delete','1')->whereIn('id',[1,2,4]);
+        $testimonials = Testimonial::all()->where('is_active','1')->where('is_delete','1');
         $facilities = Facility::all()->where('is_active','1')->where('is_delete','1');
 
         $available_rooms = DB::select("SELECT * FROM hb_rooms WHERE id NOT IN (SELECT room_id FROM hb_bookings WHERE '$checkin_date' AND '$checkout_date' BETWEEN checkin_date AND checkout_date) AND hotel_location = '$hotel_location' AND max_adults >= '$total_adults' AND max_childs >= '$total_childs'");
 
-        return view('frontend.index', compact('sliders','rooms','facilities','todayDate','tomorrowDate','available_rooms'));
+        return view('frontend.index', compact('sliders','rooms','testimonials','facilities','todayDate','tomorrowDate','available_rooms'));
     }
 
     public function checkAvailability(Request $request)

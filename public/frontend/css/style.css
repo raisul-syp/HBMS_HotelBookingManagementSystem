@@ -208,6 +208,10 @@ Hero Slider Section Start
     display: none;
 }
 
+.heroSlider_section .desktop-view .home-slider .owl-stage-outer {
+    height: 600px;
+}
+
 .heroSlider_section .item .cover {
     position: absolute;
     width: 100%;
@@ -913,7 +917,7 @@ Core Facilities Section Start
 }
 .coreFacility_section .coreFacility_section_inner .coreFacilities_sec .card .card-body .content {}
 .coreFacility_section .coreFacility_section_inner .coreFacilities_sec .card .card-body .content h4 {
-    font-size: 18px;
+    font-size: 14px;
     color: var(--siteColor1);
     font-weight: 700;
     margin-bottom: 0;

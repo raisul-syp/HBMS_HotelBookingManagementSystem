@@ -94,10 +94,24 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Slider') }}</a>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Sliders') }}</a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ url('admin/website/slider/create') }}">{{ __('Add Slider') }}</a></li>
-                        <li><a href="{{ url('admin/website/slider') }}">{{ __('All Slider') }}</a></li>
+                        <li><a href="{{ url('admin/website/sliders/create') }}">{{ __('Add Slider') }}</a></li>
+                        <li><a href="{{ url('admin/website/sliders') }}">{{ __('All Slider') }}</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Testimonials') }}</a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ url('admin/website/testimonials/create') }}">{{ __('Add Testimonial') }}</a></li>
+                        <li><a href="{{ url('admin/website/testimonials') }}">{{ __('All Testimonials') }}</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Facilities') }}</a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ url('admin/website/facilities/create') }}">{{ __('Add Facility') }}</a></li>
+                        <li><a href="{{ url('admin/website/facilities') }}">{{ __('All Facilities') }}</a></li>
                     </ul>
                 </li>
             </ul>

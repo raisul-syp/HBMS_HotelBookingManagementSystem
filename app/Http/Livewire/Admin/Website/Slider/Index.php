@@ -24,7 +24,7 @@ class Index extends Component
         $sliders->is_delete = '0';
         $sliders->update();
 
-        return redirect('admin/website/slider')->with('message','Slider Has Been Deleted Successfully.');
+        return redirect('admin/website/sliders')->with('message','Slider Has Been Deleted Successfully.');
         $this->dispatchBrowserEvent('close-modal');
     }
 

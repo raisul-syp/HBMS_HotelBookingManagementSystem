@@ -150,4 +150,10 @@ body {
     padding: 2px;
 }
 
+.testimonial-list-img img {
+    width: 100%;
+    border: 1px solid #593bdb;
+    padding: 2px;
+}
+
 

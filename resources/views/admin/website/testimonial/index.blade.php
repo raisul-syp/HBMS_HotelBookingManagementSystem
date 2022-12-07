@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Slider List')
+@section('title', 'Testimonial List')
 
 @section('content')
 <div class="container-fluid">
@@ -10,13 +10,13 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Website') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Sliders') }}</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Slider List') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Testimonials') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Testimonial List') }}</a></li>
                 </ol>
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-            <a href="{{ url('admin/website/sliders/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Slider') }}</a>
+            <a href="{{ url('admin/website/testimonials/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Testimonial') }}</a>
         </div>
     </div>
 
@@ -30,7 +30,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <livewire:admin.website.slider.index />
+            <livewire:admin.website.testimonial.index />
         </div>
     </div>
 </div>

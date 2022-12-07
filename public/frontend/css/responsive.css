@@ -119,6 +119,9 @@
     .mobile-view {
         display: block;
     }
+    .heroSlider_section .mobile-view .home-slider .owl-stage-outer {
+        height: 290px;
+    }
     .heroSlider_section .item .cover .cover-inner {
         padding: 15px;
     }

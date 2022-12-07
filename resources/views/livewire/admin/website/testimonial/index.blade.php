@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h4 class="card-title">Menu Table</h4>
+        <h4 class="card-title">Testimonial Table</h4>
     </div>
 
     <div class="card-body">
@@ -11,24 +11,28 @@
                         <th>ID</th>
                         <th>Image</th>
                         <th>Name</th>
+                        <th>Designation</th>
+                        <th>Company</th>
                         <th>Display Order</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @forelse ($sliders as $slider)
+                    @forelse ($testimonials as $testimonial)
                     <tr>
-                        <td>{{ $slider->id }}</td>
-                        <td style="width: 15%;">
-                            <div class="slider-list-img">
-                                <img src="{{ asset('frontend/images/sliders/'.$slider->desktop_image) }}" alt="{{ $slider->name }}">
+                        <td>{{ $testimonial->id }}</td>
+                        <td style="width: 6%;">
+                            <div class="testimonial-list-img">
+                                <img src="{{ asset('frontend/images/testimonials/'.$testimonial->image) }}" alt="{{ $testimonial->name }}">
                             </div>
                         </td>
-                        <td>{{ $slider->name }}</td>
-                        <td>{{ $slider->display_order }}</td>
+                        <td>{{ $testimonial->name }}</td>
+                        <td>{{ $testimonial->designation }}</td>
+                        <td>{{ $testimonial->company }}</td>
+                        <td>{{ $testimonial->display_order }}</td>
                         <td>
-                            @if ($slider->is_active == '1')
+                            @if ($testimonial->is_active == '1')
                                 <span class="badge badge-success text-white">Active</span>
                             @else
                                 <span class="badge badge-danger">Deactive</span>
@@ -36,17 +40,17 @@
                         </td>
                         <td>
                             <span data-toggle="tooltip" data-placement="top" title="Edit">
-                                <a href="{{ url('admin/website/sliders/edit/'.$slider->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
+                                <a href="{{ url('admin/website/testimonials/edit/'.$testimonial->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
                             <span data-toggle="tooltip" data-placement="top" title="Delete">
-                                <a href="#" wire:click="deleteRecord({{ $slider->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
+                                <a href="#" wire:click="deleteRecord({{ $testimonial->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
                             @include('modal.admin.delete')
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7">
+                        <td colspan="8">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>
@@ -56,7 +60,7 @@
         </div>
 
         <div class="pagination-section">
-            {{ $sliders->links() }}
+            {{ $testimonials->links() }}
         </div>
     </div>
 </div>

@@ -2,12 +2,12 @@
 @section('title', 'Home')
 
 @section('content')
-<section id="heroSlider_section" class="heroSlider_section">
-    @foreach ($sliders as $slider)
+<section id="heroSlider_section" class="heroSlider_section">    
     <div class="heroSlider_section_inner desktop-view">
         <div class="owl-carousel owl-theme home-slider">
+            @foreach ($sliders as $slider)
             <div class="item">
-                <img src="{{ asset('frontend/images/sliders/'.$slider->desktop_image) }}" alt="">
+                <img src="{{ asset('frontend/images/sliders/'.$slider->desktop_image) }}" alt="" width="100%" height="603px">
                 <div class="cover">
                     <div class="cover-inner">
                         <div class="container">
@@ -23,12 +23,14 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
     <div class="heroSlider_section_inner mobile-view">
         <div class="owl-carousel owl-theme home-slider">
+            @foreach ($sliders as $slider)
             <div class="item">
-                <img src="{{ asset('frontend/images/sliders/'.$slider->mobile_image) }}" alt="">
+                <img src="{{ asset('frontend/images/sliders/'.$slider->mobile_image) }}" alt="" width="1320px" height="1000px">
                 <div class="cover">
                     <div class="cover-inner">
                         <div class="container">
@@ -44,9 +46,9 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
-    @endforeach
 
     <div class="availability_sec">
         <div class="container">
@@ -199,7 +201,7 @@
         <div class="row">
             <div class="col-lg-6 p-0">
                 <div class="facility_image">
-                    <img src="{{ asset('frontend/images/facilities/restaurent.png') }}" alt="">
+                    <img src="{{ asset('frontend/images/wellness/restaurent.png') }}" alt="">
                 </div>
             </div>
             <div class="col-lg-6 p-0">
@@ -220,14 +222,14 @@
             </div>
             <div class="col-lg-6 p-0">
                 <div class="facility_image">
-                    <img src="{{ asset('frontend/images/facilities/wellness.png') }}" alt="">
+                    <img src="{{ asset('frontend/images/wellness/wellness.png') }}" alt="">
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6 p-0">
                 <div class="facility_image">
-                    <img src="{{ asset('frontend/images/facilities/meeting.png') }}" alt="">
+                    <img src="{{ asset('frontend/images/wellness/meeting.png') }}" alt="">
                 </div>
             </div>
             <div class="col-lg-6 p-0">
@@ -274,22 +276,24 @@
             </div>
             <div class="row mt-4">
                 <div class="owl-carousel owl-theme testimonials-slider">
+                    @foreach ($testimonials as $testimonial)
                     <div class="item">
                         <div class="image">
-                            <img src="frontend/images/testimonials/mr_matiur_rahman.jpg" alt="">
+                            <img src="{{ asset('frontend/images/testimonials/'.$testimonial->image) }}" alt="">
                         </div>
                         <div class="content">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="title">Mr. Matiur Rahman</h4>
-                                    <h6 class="position">Owner</h6>
-                                    <h5 class="company">Sarothi Enterprise</h5>
+                                    <h4 class="title">{{ $testimonial->name }}</h4>
+                                    <h6 class="position">{{ $testimonial->designation }}</h6>
+                                    <h5 class="company">{{ $testimonial->company }}</h5>
 
-                                    <p class="message">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+                                    <p class="message">{{ $testimonial->message }}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>                        
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -306,7 +310,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="icon">
-                                    <img src="{{ asset('uploads/facilities/'.$facility->image) }}" alt="">
+                                    <img src="{{ asset('frontend/images/facilities/'.$facility->image) }}" alt="">
                                 </div>
                                 <div class="content">
                                     <h4>{{ $facility->name }}</h4>

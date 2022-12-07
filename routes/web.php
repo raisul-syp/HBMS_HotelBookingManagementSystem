@@ -126,12 +126,30 @@ Route::group(['middleware' => 'isAdmin'], function() {
         });
 
         // Slider
-        Route::prefix('/slider')->controller(App\Http\Controllers\Admin\Website\SliderController::class)->group(function (){
+        Route::prefix('/sliders')->controller(App\Http\Controllers\Admin\Website\SliderController::class)->group(function (){
             Route::get('/', 'index');
             Route::get('/create', 'create');
             Route::post('/', 'store');
             Route::get('/edit/{slider}', 'edit');
             Route::put('/edit/{slider}', 'update');
+        });
+
+        // Testimonial
+        Route::prefix('/testimonials')->controller(App\Http\Controllers\Admin\Website\TestimonialController::class)->group(function (){
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/edit/{testimonial}', 'edit');
+            Route::put('/edit/{testimonial}', 'update');
+        });
+
+        // Facility
+        Route::prefix('/facilities')->controller(App\Http\Controllers\Admin\Website\FacilityController::class)->group(function (){
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/edit/{facility}', 'edit');
+            Route::put('/edit/{facility}', 'update');
         });
     });
 

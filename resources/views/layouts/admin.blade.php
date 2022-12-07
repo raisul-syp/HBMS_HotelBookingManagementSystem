@@ -60,6 +60,7 @@
     <script src="{{ asset('admin/vendor/summernote/js/summernote.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/dropify/dist/js/dropify.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins-init/summernote-init.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins-init/dropify-init.js') }}"></script>
     <script src="{{ asset('admin/icons/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('admin/js/dashboard/dashboard-2.js') }}"></script>
     @livewireScripts
