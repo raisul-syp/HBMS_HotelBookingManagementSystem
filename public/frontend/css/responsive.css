@@ -615,6 +615,9 @@
     .header_section .header_section_inner .header_top .header_top_left ul li {
         font-size: 12px !important;
     }
+    .heroSlider_section .desktop-view .home-slider .owl-stage-outer {
+        height: 430px;
+    }
     .heroSlider_section .item .cover .header-content h3 {
         font-size: 22px;
     }
