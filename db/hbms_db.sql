@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2022 at 08:05 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Dec 07, 2022 at 02:06 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -610,6 +610,44 @@ INSERT INTO `hb_room_images` (`id`, `room_id`, `image`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hb_webfacilities`
+--
+
+CREATE TABLE `hb_webfacilities` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_webfacilities`
+--
+
+INSERT INTO `hb_webfacilities` (`id`, `name`, `url`, `description`, `image`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Complimentary Breakfast', NULL, 'Complimentary Breakfast', 'complimentary-breakfast.png', '1', 'Complimentary Breakfast placeholder= placeholder=', 'Complimentary Breakfast placeholder= placeholder=', 'Complimentary Breakfast', 1, 1, '0', '0', '2022-12-07 06:42:00', '2022-12-07 06:55:54'),
+(2, 'Complimentary Bottle of Water', NULL, 'Complimentary Bottle of Water', 'complimentary-bottle-of-water.png', '2', 'Complimentary Bottle of Water', 'Complimentary Bottle of Water', 'Complimentary Bottle of Water', 1, 1, '0', NULL, '2022-12-07 06:44:06', '2022-12-07 06:44:06'),
+(3, 'Free Wi-fi Access', NULL, 'Free Wi-fi Access', 'free-wi-fi-access.png', '3', 'Free Wi-fi Access', 'Free Wi-fi Access', 'Free Wi-fi Access', 1, 1, '0', NULL, '2022-12-07 06:45:03', '2022-12-07 06:45:03'),
+(4, 'Express Laundry Service', NULL, 'Express Laundry Service', 'express-laundry-service.png', '4', 'Express Laundry Service', 'Express Laundry Service', 'Express Laundry Service', 1, 1, '0', NULL, '2022-12-07 06:45:45', '2022-12-07 06:45:45'),
+(5, 'Complimentary Access of Gym', NULL, 'Complimentary Access of Gym', 'complimentary-access-of-gym.png', '5', 'Complimentary Access of Gym', 'Complimentary Access of Gym', 'Complimentary Access of Gym', 1, 1, '0', NULL, '2022-12-07 06:46:25', '2022-12-07 06:46:25'),
+(6, 'Free Parking', NULL, 'Free Parking', 'free-parking.png', '6', 'Free Parking', 'Free Parking', 'Free Parking', 1, 1, '0', NULL, '2022-12-07 06:46:50', '2022-12-07 06:46:50'),
+(7, 'Airport Pick-up & Drop', NULL, 'Airport Pick-up & Drop', 'airport-pick-up-drop.png', '7', 'Airport Pick-up & Drop', 'Airport Pick-up & Drop', 'Airport Pick-up & Drop', 1, 1, '0', NULL, '2022-12-07 06:47:25', '2022-12-07 06:47:25'),
+(8, 'Daily News Papers', NULL, 'Daily News Papers', 'daily-news-papers.png', '8', 'Daily News Papers', 'Daily News Papers', 'Daily News Papers', 1, 1, '0', NULL, '2022-12-07 06:47:53', '2022-12-07 06:47:53');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hb_webnav`
 --
 
@@ -681,7 +719,7 @@ CREATE TABLE `hb_websliders` (
 --
 
 INSERT INTO `hb_websliders` (`id`, `name`, `url`, `desktop_image`, `mobile_image`, `content_1`, `content_2`, `content_3`, `content_4`, `content_5`, `button_1`, `button_2`, `button_1_url`, `button_2_url`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Slider 1', NULL, 'desk-slider-1.png', 'mobl-slider-1.png', 'Welcome to', 'The Zabeer Dhaka', 'A place that sparks creativity, fuels the imagination and\r\nwelcomes reflection and relaxation.', NULL, NULL, 'The Zabeer Dhaka', 'The Zabeer Jashore', NULL, NULL, '1', 'Slider 1', 'Slider 1', 'Slider 1', 1, 1, '0', NULL, '2022-12-06 11:32:58', '2022-12-06 11:32:58');
+(1, 'Slider 1', NULL, 'desk-slider-1.png', 'mobl-slider-1.png', 'Welcome to', 'The Zabeer Dhaka', 'A place that sparks creativity, fuels the imagination andwelcomes reflection and relaxation.', NULL, NULL, 'The Zabeer Dhaka', 'The Zabeer Jashore', NULL, NULL, '1', 'Slider 1', 'Slider 1', 'Slider 1', 1, 1, '0', '0', '2022-12-06 11:32:58', '2022-12-07 02:32:46');
 
 -- --------------------------------------------------------
 
@@ -730,6 +768,39 @@ INSERT INTO `hb_websubnav` (`id`, `name`, `slug`, `parent_id`, `display_order`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hb_webtestimonials`
+--
+
+CREATE TABLE `hb_webtestimonials` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `designation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_webtestimonials`
+--
+
+INSERT INTO `hb_webtestimonials` (`id`, `name`, `designation`, `company`, `message`, `image`, `url`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Mr. Matiur Rahman', 'Owner', 'Sarothi Enterprise', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text', 'mr-matiur-rahman.jpg', NULL, '1', 'Mr. Matiur Rahman', 'Mr. Matiur Rahman', 'Mr. Matiur Rahman', 1, 1, '0', '0', '2022-12-07 04:34:39', '2022-12-07 05:17:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -763,7 +834,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (17, '2022_12_06_094648_create_hb_webslider_table', 11),
 (18, '2022_12_06_163855_create_hb_websliders_table', 12),
 (19, '2022_12_06_171820_create_hb_websliders_table', 13),
-(20, '2022_12_06_172630_create_hb_websliders_table', 14);
+(20, '2022_12_06_172630_create_hb_websliders_table', 14),
+(21, '2022_12_07_073142_create_hb_webtestimonials_table', 15),
+(22, '2022_12_07_115657_create_hb_webfacilities_table', 16);
 
 -- --------------------------------------------------------
 
@@ -911,6 +984,12 @@ ALTER TABLE `hb_room_images`
   ADD KEY `hb_room_images_room_id_foreign` (`room_id`);
 
 --
+-- Indexes for table `hb_webfacilities`
+--
+ALTER TABLE `hb_webfacilities`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `hb_webnav`
 --
 ALTER TABLE `hb_webnav`
@@ -926,6 +1005,12 @@ ALTER TABLE `hb_websliders`
 -- Indexes for table `hb_websubnav`
 --
 ALTER TABLE `hb_websubnav`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hb_webtestimonials`
+--
+ALTER TABLE `hb_webtestimonials`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1020,6 +1105,12 @@ ALTER TABLE `hb_room_images`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `hb_webfacilities`
+--
+ALTER TABLE `hb_webfacilities`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `hb_webnav`
 --
 ALTER TABLE `hb_webnav`
@@ -1038,10 +1129,16 @@ ALTER TABLE `hb_websubnav`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT for table `hb_webtestimonials`
+--
+ALTER TABLE `hb_webtestimonials`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
