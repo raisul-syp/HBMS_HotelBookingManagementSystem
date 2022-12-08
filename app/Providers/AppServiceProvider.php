@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Website\NavigationMenu;
+use App\Models\Website\Page;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $menuItems = NavigationMenu::where('is_active','1')->where('is_delete','1')->orderBy('display_order','ASC')->get();
-        view()->share('menuItems', $menuItems);
+        $pageItems = Page::where('is_active','1')->where('is_delete','1')->orderBy('display_order','ASC')->get();
+        view()->share(compact('menuItems', 'pageItems'));
+        // view()->share('menuItems',  $menuItems);
     }
 }

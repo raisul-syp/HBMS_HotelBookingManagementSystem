@@ -15,7 +15,13 @@
                             <div class="decor-1"></div>
                         </h4>
                         <ul>
+                            @foreach ($pageItems as $item)
                             <li>
+                                <i data-feather="chevron-right"></i>
+                                <a href="{{ $item->url }}">{{ $item->name }}</a>
+                            </li>                                
+                            @endforeach
+                            {{-- <li>
                                 <i data-feather="chevron-right"></i>
                                 <a href="{{ url('/about-us') }}">About Us</a>
                             </li>
@@ -46,7 +52,7 @@
                             <li>
                                 <i data-feather="chevron-right"></i>
                                 <a href="{{ url('/wellness') }}">Wellness</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

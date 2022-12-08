@@ -151,6 +151,15 @@ Route::group(['middleware' => 'isAdmin'], function() {
             Route::get('/edit/{facility}', 'edit');
             Route::put('/edit/{facility}', 'update');
         });
+
+        // Page
+        Route::prefix('/pages')->controller(App\Http\Controllers\Admin\Website\PageController::class)->group(function (){
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/edit/{page}', 'edit');
+            Route::put('/edit/{page}', 'update');
+        });
     });
 
 });

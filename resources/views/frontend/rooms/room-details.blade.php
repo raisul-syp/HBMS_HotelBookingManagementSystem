@@ -80,7 +80,7 @@
                                     {{ $roomDetail->short_description }}
                                 </div>
                                 <div class="long-descrp">
-                                    {{ $roomDetail->long_description }}
+                                    {!! html_entity_decode($roomDetail->long_description) !!}
                                 </div>
                             </div>
                         </div>
