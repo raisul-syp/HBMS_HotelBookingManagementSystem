@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2022 at 02:06 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Dec 10, 2022 at 04:48 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -636,11 +636,11 @@ CREATE TABLE `hb_webfacilities` (
 --
 
 INSERT INTO `hb_webfacilities` (`id`, `name`, `url`, `description`, `image`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Complimentary Breakfast', NULL, 'Complimentary Breakfast', 'complimentary-breakfast.png', '1', 'Complimentary Breakfast placeholder= placeholder=', 'Complimentary Breakfast placeholder= placeholder=', 'Complimentary Breakfast', 1, 1, '0', '0', '2022-12-07 06:42:00', '2022-12-07 06:55:54'),
-(2, 'Complimentary Bottle of Water', NULL, 'Complimentary Bottle of Water', 'complimentary-bottle-of-water.png', '2', 'Complimentary Bottle of Water', 'Complimentary Bottle of Water', 'Complimentary Bottle of Water', 1, 1, '0', NULL, '2022-12-07 06:44:06', '2022-12-07 06:44:06'),
-(3, 'Free Wi-fi Access', NULL, 'Free Wi-fi Access', 'free-wi-fi-access.png', '3', 'Free Wi-fi Access', 'Free Wi-fi Access', 'Free Wi-fi Access', 1, 1, '0', NULL, '2022-12-07 06:45:03', '2022-12-07 06:45:03'),
-(4, 'Express Laundry Service', NULL, 'Express Laundry Service', 'express-laundry-service.png', '4', 'Express Laundry Service', 'Express Laundry Service', 'Express Laundry Service', 1, 1, '0', NULL, '2022-12-07 06:45:45', '2022-12-07 06:45:45'),
-(5, 'Complimentary Access of Gym', NULL, 'Complimentary Access of Gym', 'complimentary-access-of-gym.png', '5', 'Complimentary Access of Gym', 'Complimentary Access of Gym', 'Complimentary Access of Gym', 1, 1, '0', NULL, '2022-12-07 06:46:25', '2022-12-07 06:46:25'),
+(1, 'Breakfast', NULL, 'Complimentary Breakfast', 'complimentary-breakfast.png', '1', 'Complimentary Breakfast placeholder= placeholder= placeholder=', 'Complimentary Breakfast placeholder= placeholder= placeholder=', 'Complimentary Breakfast', 1, 1, '0', '0', '2022-12-07 06:42:00', '2022-12-10 09:20:55'),
+(2, 'Bottle of Water', NULL, 'Complimentary Bottle of Water', 'complimentary-bottle-of-water.png', '2', 'Complimentary Bottle of Water placeholder=', 'Complimentary Bottle of Water placeholder=', 'Complimentary Bottle of Water', 1, 1, '0', '0', '2022-12-07 06:44:06', '2022-12-10 09:21:14'),
+(3, 'Free Wi-fi', NULL, 'Free Wi-fi Access', 'free-wi-fi-access.png', '3', 'Free Wi-fi Access placeholder=', 'Free Wi-fi Access placeholder=', 'Free Wi-fi Access', 1, 1, '0', '0', '2022-12-07 06:45:03', '2022-12-10 09:21:32'),
+(4, 'Laundry Service', NULL, 'Express Laundry Service', 'express-laundry-service.png', '4', 'Express Laundry Service placeholder=', 'Express Laundry Service placeholder=', 'Express Laundry Service', 1, 1, '0', '0', '2022-12-07 06:45:45', '2022-12-10 09:21:46'),
+(5, 'Access of Gym', NULL, 'Complimentary Access of Gym', 'complimentary-access-of-gym.png', '5', 'Complimentary Access of Gym placeholder=', 'Complimentary Access of Gym placeholder=', 'Complimentary Access of Gym', 1, 1, '0', '0', '2022-12-07 06:46:25', '2022-12-10 09:21:58'),
 (6, 'Free Parking', NULL, 'Free Parking', 'free-parking.png', '6', 'Free Parking', 'Free Parking', 'Free Parking', 1, 1, '0', NULL, '2022-12-07 06:46:50', '2022-12-07 06:46:50'),
 (7, 'Airport Pick-up & Drop', NULL, 'Airport Pick-up & Drop', 'airport-pick-up-drop.png', '7', 'Airport Pick-up & Drop', 'Airport Pick-up & Drop', 'Airport Pick-up & Drop', 1, 1, '0', NULL, '2022-12-07 06:47:25', '2022-12-07 06:47:25'),
 (8, 'Daily News Papers', NULL, 'Daily News Papers', 'daily-news-papers.png', '8', 'Daily News Papers', 'Daily News Papers', 'Daily News Papers', 1, 1, '0', NULL, '2022-12-07 06:47:53', '2022-12-07 06:47:53');
@@ -680,6 +680,41 @@ INSERT INTO `hb_webnav` (`id`, `name`, `slug`, `hotel_location`, `display_order`
 (5, 'Wellness', 'wellness', 'Dhaka', '5', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', '0', '2022-12-01 04:21:33', '2022-12-05 03:50:18'),
 (6, 'About Us', 'about-us', 'Dhaka', '6', 'About Us', 'About Us', 'About Us', 1, 1, '0', '0', '2022-12-01 04:22:12', '2022-12-05 03:49:56'),
 (7, 'Contact Us', 'contact-us', 'Dhaka', '7', 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, '0', '0', '2022-12-01 04:22:31', '2022-12-06 00:28:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hb_webpages`
+--
+
+CREATE TABLE `hb_webpages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sub_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `short_description` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `long_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `footer_item` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_webpages`
+--
+
+INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_description`, `long_description`, `url`, `display_order`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `footer_item`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'About Us', '\"A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.\"', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen.', '<p><span style=\"color: rgb(33, 37, 41); font-family: &quot;Nunito Sans&quot;, sans-serif; text-align: justify;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span><br></p>', 'about-us', '1', 'about-us.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '0', '0', '2022-12-10 01:06:08', '2022-12-10 01:09:07');
 
 -- --------------------------------------------------------
 
@@ -836,7 +871,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2022_12_06_171820_create_hb_websliders_table', 13),
 (20, '2022_12_06_172630_create_hb_websliders_table', 14),
 (21, '2022_12_07_073142_create_hb_webtestimonials_table', 15),
-(22, '2022_12_07_115657_create_hb_webfacilities_table', 16);
+(22, '2022_12_07_115657_create_hb_webfacilities_table', 16),
+(23, '2022_12_08_060320_create_hb_webpages_table', 17);
 
 -- --------------------------------------------------------
 
@@ -996,6 +1032,12 @@ ALTER TABLE `hb_webnav`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hb_webpages`
+--
+ALTER TABLE `hb_webpages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `hb_websliders`
 --
 ALTER TABLE `hb_websliders`
@@ -1117,6 +1159,12 @@ ALTER TABLE `hb_webnav`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `hb_webpages`
+--
+ALTER TABLE `hb_webpages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `hb_websliders`
 --
 ALTER TABLE `hb_websliders`
@@ -1138,7 +1186,7 @@ ALTER TABLE `hb_webtestimonials`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

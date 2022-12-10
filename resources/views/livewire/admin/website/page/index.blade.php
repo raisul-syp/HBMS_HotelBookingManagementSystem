@@ -12,6 +12,7 @@
                         <th>Name</th>
                         <th>URL</th>
                         <th>Display Order</th>
+                        <th>Footer Item</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -23,6 +24,13 @@
                         <td>{{ $page->name }}</td>
                         <td>{{ $page->url }}</td>
                         <td>{{ $page->display_order }}</td>
+                        <td>
+                            @if ($page->footer_item == '1')
+                                <span class="badge badge-success text-white">Yes</span>
+                            @else
+                                <span class="badge badge-danger">No</span>
+                            @endif
+                        </td>
                         <td>
                             @if ($page->is_active == '1')
                                 <span class="badge badge-success text-white">Active</span>

@@ -26,8 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $menuItems = NavigationMenu::where('is_active','1')->where('is_delete','1')->orderBy('display_order','ASC')->get();
-        $pageItems = Page::where('is_active','1')->where('is_delete','1')->orderBy('display_order','ASC')->get();
-        view()->share(compact('menuItems', 'pageItems'));
-        // view()->share('menuItems',  $menuItems);
+        $footerItems = Page::where('footer_item','1')->where('is_active','1')->where('is_delete','1')->orderBy('display_order','ASC')->get();
+        view()->share(compact('menuItems', 'footerItems'));
     }
 }

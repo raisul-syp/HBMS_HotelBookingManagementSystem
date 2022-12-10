@@ -7,7 +7,7 @@
     <title>@yield('title') - {{ config('app.name') }}</title>
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/favicon.ico') }}">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('admin/vendor/pg-calendar/css/pignose.calendar.min.css') }}">

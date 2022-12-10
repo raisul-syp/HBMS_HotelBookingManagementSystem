@@ -15,6 +15,11 @@
             </div>
 
             <ul class="navbar-nav header-right">
+                <li class="nav-item live_website">
+                    <a class="nav-link" href="{{ url('/') }}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Live Website">
+                        <i class="mdi mdi-web"></i>
+                    </a>
+                </li>
                 <li class="nav-item dropdown notification_dropdown">
                     <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                         <i class="mdi mdi-bell"></i>

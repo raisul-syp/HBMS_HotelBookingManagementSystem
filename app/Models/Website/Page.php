@@ -23,6 +23,7 @@ class Page extends Model
         'meta_title',
         'meta_keyword',
         'meta_decription',
+        'footer_item',
         'is_active',
         'is_delete',
         'created_by',

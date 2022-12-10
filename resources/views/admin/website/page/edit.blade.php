@@ -84,17 +84,25 @@
                                         </label>
                                         <input type="text" class="form-control" id="sub_title" name="sub_title" value="{{ $page->sub_title }}" placeholder="Add Sub Title...">
                                     </div>
-                                    <div class="form-group col-lg-8">
+                                    <div class="form-group col-lg-7">
                                         <label for="url">
                                             {{ __('URL') }}
                                         </label>
                                         <input type="text" class="form-control" id="url" name="url" value="{{ $page->url }}" placeholder="Add URL...">
                                     </div>
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-2">
                                         <label for="display_order">
                                             {{ __('Display Order') }}
                                         </label>
                                         <input type="number" class="form-control" id="display_order" name="display_order" value="{{ $page->display_order }}" placeholder="Add 2nd Button Title...">
+                                    </div>
+                                    <div class="form-group col-lg-2">
+                                        <div for="footer_item">
+                                            {{ __('Footer Item') }}
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="footer_item" name="footer_item" {{ $page->footer_item == '1' ? 'checked':'' }}>
+                                        </div>
                                     </div>
                                     <div class="form-group col-lg-1">
                                         <div for="is_active">

@@ -34,7 +34,7 @@ class PageController extends Controller
         $page->long_description = $validatedData['long_description'];
         $page->url = $validatedData['url'];
         $page->display_order = $validatedData['display_order'];
-        
+
         if($request->hasFile('image')){
             $uploadPath = 'frontend/images/pages';
             $file = $request->file('image');
@@ -50,6 +50,7 @@ class PageController extends Controller
         $page->meta_keyword = $validatedData['meta_keyword'];
         $page->meta_decription = $validatedData['meta_decription'];
 
+        $page->footer_item = $request->footer_item == true ? '1':'0';
         $page->is_active = $request->is_active == true ? '1':'0';
         $page->created_by = $validatedData['created_by'];
         $page->save();
@@ -95,6 +96,7 @@ class PageController extends Controller
         $page->meta_keyword = $validatedData['meta_keyword'];
         $page->meta_decription = $validatedData['meta_decription'];
 
+        $page->footer_item = $request->footer_item == true ? '1':'0';
         $page->is_active = $request->is_active == true ? '1':'0';
         $page->updated_by = $validatedData['updated_by'];
         $page->update();

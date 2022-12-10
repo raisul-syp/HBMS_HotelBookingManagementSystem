@@ -15,11 +15,11 @@
                             <div class="decor-1"></div>
                         </h4>
                         <ul>
-                            @foreach ($pageItems as $item)
+                            @foreach ($footerItems as $item)
                             <li>
                                 <i data-feather="chevron-right"></i>
                                 <a href="{{ $item->url }}">{{ $item->name }}</a>
-                            </li>                                
+                            </li>
                             @endforeach
                             {{-- <li>
                                 <i data-feather="chevron-right"></i>
