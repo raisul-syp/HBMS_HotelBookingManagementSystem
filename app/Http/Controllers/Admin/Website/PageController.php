@@ -32,7 +32,7 @@ class PageController extends Controller
         $page->sub_title = $validatedData['sub_title'];
         $page->short_description = $validatedData['short_description'];
         $page->long_description = $validatedData['long_description'];
-        $page->url = $validatedData['url'];
+        $page->slug = Str::slug($validatedData['slug']);
         $page->display_order = $validatedData['display_order'];
 
         if($request->hasFile('image')){
@@ -74,7 +74,7 @@ class PageController extends Controller
         $page->sub_title = $validatedData['sub_title'];
         $page->short_description = $validatedData['short_description'];
         $page->long_description = $validatedData['long_description'];
-        $page->url = $validatedData['url'];
+        $page->slug = Str::slug($validatedData['slug']);
         $page->display_order = $validatedData['display_order'];
 
         if($request->hasFile('image')){

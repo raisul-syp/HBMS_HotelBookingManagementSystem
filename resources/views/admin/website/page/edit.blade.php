@@ -85,10 +85,14 @@
                                         <input type="text" class="form-control" id="sub_title" name="sub_title" value="{{ $page->sub_title }}" placeholder="Add Sub Title...">
                                     </div>
                                     <div class="form-group col-lg-7">
-                                        <label for="url">
-                                            {{ __('URL') }}
+                                        <label for="slug">
+                                            {{ __('Slug') }}
+                                            <small class="text-danger">*</small>
                                         </label>
-                                        <input type="text" class="form-control" id="url" name="url" value="{{ $page->url }}" placeholder="Add URL...">
+                                        <input type="text" class="form-control" id="slug" name="slug" value="{{ $page->slug }}" placeholder="Add Slug...">
+                                        @error('name')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-lg-2">
                                         <label for="display_order">

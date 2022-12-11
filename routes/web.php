@@ -41,6 +41,10 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
+
+
+
+
 // Admin
 Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login')->middleware('guest:admin');
 Route::post('/admin/login/store', [AuthenticatedSessionController::class, 'store'])->name('admin.login.store');
@@ -159,6 +163,15 @@ Route::group(['middleware' => 'isAdmin'], function() {
             Route::post('/', 'store');
             Route::get('/edit/{page}', 'edit');
             Route::put('/edit/{page}', 'update');
+        });
+
+        // Page
+        Route::prefix('/addresses')->controller(App\Http\Controllers\Admin\Website\AddressController::class)->group(function (){
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/edit/{address}', 'edit');
+            Route::put('/edit/{address}', 'update');
         });
     });
 

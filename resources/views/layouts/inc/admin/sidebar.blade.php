@@ -114,6 +114,13 @@
                         <li><a href="{{ url('admin/website/facilities') }}">{{ __('All Facilities') }}</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Addresses') }}</a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{ url('admin/website/addresses/create') }}">{{ __('Add Address') }}</a></li>
+                        <li><a href="{{ url('admin/website/addresses') }}">{{ __('All Addresses') }}</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
     </ul>

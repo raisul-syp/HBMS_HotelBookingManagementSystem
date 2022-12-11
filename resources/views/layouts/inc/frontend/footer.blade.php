@@ -18,7 +18,7 @@
                             @foreach ($footerItems as $item)
                             <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="{{ $item->url }}">{{ $item->name }}</a>
+                                <a href="{{ $item->slug }}">{{ $item->name }}</a>
                             </li>
                             @endforeach
                             {{-- <li>

@@ -5,25 +5,27 @@ namespace App\Models\Website;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Address extends Model
 {
     use HasFactory;
 
-    protected $table = 'hb_webpages';
+    protected $table = 'hb_webaddresses';
 
     protected $fillable = [
-        'name',
         'title',
-        'sub_title',
-        'short_description',
-        'long_description',
         'slug',
         'display_order',
-        'image',
+        'phone',
+        'phone_sales',
+        'phone_reservation',
+        'email',
+        'email_sales',
+        'email_reservation',
+        'address',
+        'google_map',
         'meta_title',
         'meta_keyword',
         'meta_decription',
-        'footer_item',
         'is_active',
         'is_delete',
         'created_by',

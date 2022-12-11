@@ -1680,6 +1680,9 @@ Footer Section End
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0;
+    text-transform: initial;
+    margin: 0;
+    line-height: 24px;
 }
 
 .contact_section_frontend .contact-section-inner .contact-info .contact-info-inner .card:hover .contact-info-detail h5 {
@@ -1756,4 +1759,18 @@ Footer Section End
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
     border: none;
     border-radius: 0;
+}
+
+
+
+.contact-section-inner .custom-nav-btn {
+    background-color: transparent !important;
+    color: var(--siteColor1) !important;
+    border: 1px solid var(--siteColor1) !important;
+    border-radius: 0 !important;
+    margin: 0 5px;
+}
+.contact-section-inner .custom-nav-btn.active {
+    background-color: var(--siteColor1) !important;
+    color: var(--siteColor2) !important;
 }

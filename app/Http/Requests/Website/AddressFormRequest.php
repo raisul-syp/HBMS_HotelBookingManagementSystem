@@ -4,7 +4,7 @@ namespace App\Http\Requests\Website;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PageFormRequest extends FormRequest
+class AddressFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,33 +24,42 @@ class PageFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'required',
-                'string'
-            ],
             'title' => [
                 'required',
                 'string'
             ],
-            'sub_title' => [
-                'nullable',
-            ],
-            'short_description' => [
-                'nullable'
-            ],
-            'long_description' => [
-                'nullable'
-            ],
             'slug' => [
-                'required',
-                'string'
+                'nullable'
             ],
             'display_order' => [
                 'nullable'
             ],
-            'image' => [
-                'nullable',
-                'mimes:jpg,jpeg,png'
+            'phone' => [
+                'required',
+                'string'
+            ],
+            'phone_sales' => [
+                'nullable'
+            ],
+            'phone_reservation' => [
+                'nullable'
+            ],
+            'email' => [
+                'required',
+                'string'
+            ],
+            'email_sales' => [
+                'nullable'
+            ],
+            'email_reservation' => [
+                'nullable'
+            ],
+            'address' => [
+                'required',
+                'string'
+            ],
+            'google_map' => [
+                'nullable'
             ],
             'meta_title' => [
                 'required',

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2022 at 04:48 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Dec 11, 2022 at 01:00 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -610,6 +610,44 @@ INSERT INTO `hb_room_images` (`id`, `room_id`, `image`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hb_webaddresses`
+--
+
+CREATE TABLE `hb_webaddresses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_sales` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_reservation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_sales` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email_reservation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `google_map` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_webaddresses`
+--
+
+INSERT INTO `hb_webaddresses` (`id`, `title`, `slug`, `display_order`, `phone`, `phone_sales`, `phone_reservation`, `email`, `email_sales`, `email_reservation`, `address`, `google_map`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'The Zabeer Dhaka', 'the-zabeer-dhaka', '1', '(+88) 02224470771-73', NULL, '(+88) 01711 408 969', 'info@thezabeerdhaka.com', NULL, 'reservation@thezabeerdhaka.com', 'House-1, Road-2, Sector-1, Uttara Model Town, Dhaka-1230', '!1m18!1m12!1m3!1d3648.956907774987!2d90.4037768!3d23.855663900000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c72f9daef9c5%3A0xe3bc6c9dcb0ba750!2sThe%20Zabeer%20Dhaka!5e0!3m2!1sen!2sbd!4v1670046986535!5m2!1sen!2sbd', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 1, 1, '0', '0', '2022-12-11 02:27:52', '2022-12-11 04:06:17'),
+(2, 'The Zabeer Jashore', 'the-zabeer-jashore', '2', '(+88) 01885 000 555', NULL, NULL, 'sm@zabeerhotel.com', NULL, NULL, '1256, M M Ali Road, Jashore', '!1m14!1m8!1m3!1d14672.513200846855!2d89.2109886!3d23.165517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x67b464b45fab99ac!2sThe%20Zabeer%20Jashore!5e0!3m2!1sen!2sbd!4v1670742032127!5m2!1sen!2sbd', 'The Zabeer Jashore', 'The Zabeer Jashore', 'The Zabeer Jashore', 1, 1, '0', '0', '2022-12-11 02:38:36', '2022-12-11 04:05:38');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hb_webfacilities`
 --
 
@@ -694,7 +732,7 @@ CREATE TABLE `hb_webpages` (
   `sub_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `short_description` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `long_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -713,8 +751,9 @@ CREATE TABLE `hb_webpages` (
 -- Dumping data for table `hb_webpages`
 --
 
-INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_description`, `long_description`, `url`, `display_order`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `footer_item`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'About Us', '\"A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.\"', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen.', '<p><span style=\"color: rgb(33, 37, 41); font-family: &quot;Nunito Sans&quot;, sans-serif; text-align: justify;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span><br></p>', 'about-us', '1', 'about-us.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '0', '0', '2022-12-10 01:06:08', '2022-12-10 01:09:07');
+INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_description`, `long_description`, `slug`, `display_order`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `footer_item`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'About Us', '\"A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.\"', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen.', '<p><span style=\"color: rgb(33, 37, 41); font-family: &quot;Nunito Sans&quot;, sans-serif; text-align: justify;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span><br></p>', 'about-us', '1', 'about-us.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '0', '0', '2022-12-10 01:06:08', '2022-12-10 01:09:07'),
+(2, 'Contact Us', 'Contact Us', 'Contact Us', 'Contact Us', '<p>Contact Us<br></p>', 'contact-us', '2', NULL, 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, 1, '0', NULL, '2022-12-11 00:36:32', '2022-12-11 00:36:32');
 
 -- --------------------------------------------------------
 
@@ -872,7 +911,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2022_12_06_172630_create_hb_websliders_table', 14),
 (21, '2022_12_07_073142_create_hb_webtestimonials_table', 15),
 (22, '2022_12_07_115657_create_hb_webfacilities_table', 16),
-(23, '2022_12_08_060320_create_hb_webpages_table', 17);
+(23, '2022_12_08_060320_create_hb_webpages_table', 17),
+(24, '2022_12_11_072321_create_hb_webaddresses_table', 18);
 
 -- --------------------------------------------------------
 
@@ -1020,6 +1060,12 @@ ALTER TABLE `hb_room_images`
   ADD KEY `hb_room_images_room_id_foreign` (`room_id`);
 
 --
+-- Indexes for table `hb_webaddresses`
+--
+ALTER TABLE `hb_webaddresses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `hb_webfacilities`
 --
 ALTER TABLE `hb_webfacilities`
@@ -1147,6 +1193,12 @@ ALTER TABLE `hb_room_images`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `hb_webaddresses`
+--
+ALTER TABLE `hb_webaddresses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `hb_webfacilities`
 --
 ALTER TABLE `hb_webfacilities`
@@ -1162,7 +1214,7 @@ ALTER TABLE `hb_webnav`
 -- AUTO_INCREMENT for table `hb_webpages`
 --
 ALTER TABLE `hb_webpages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hb_websliders`
@@ -1186,7 +1238,7 @@ ALTER TABLE `hb_webtestimonials`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
