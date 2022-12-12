@@ -28,8 +28,11 @@
                                     </div>
                                     <div class="form_input col-12 mb-3">
                                         <select class="form-select" id="hotel_location" name="hotel_location">
-                                            <option value="Dhaka">Dhaka</option>
-                                            <option value="Jashore">Jashore</option>
+                                            @forelse ($hotels as $hotel)
+                                            <option value="{{ $hotel->id }}">{{ $hotel->hotel_location }}</option>
+                                            @empty
+                                            <option>No Data</option>
+                                            @endforelse
                                           </select>
                                     </div>
                                     <div class="form_input col-12 mb-3">
@@ -114,13 +117,13 @@
 
                                                         <div class="col-lg-4 mb-2">
                                                             <div class="room-location">
-                                                                <strong>Location: </strong>{{ $room->hotel_location }}
+                                                                <strong>Location: </strong>{{ $room->hotel_id }}
                                                             </div>
                                                         </div>
 
                                                         <div class="col-lg-6">
                                                             <div class="room-pricing">
-                                                                <h5>৳{{ $room->price }}</h5> <span>/ night</span>
+                                                                <h5>USD {{ $room->price }}++</h5> <span>/ night</span>
                                                             </div>
                                                         </div>
 

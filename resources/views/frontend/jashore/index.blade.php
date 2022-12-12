@@ -13,7 +13,8 @@
                         <div class="container">
                             <div class="header-content">
                                 <h3>{{ $slider->content_1 }}</h3>
-                                <h1>{{ $slider->content_2 }}</h1>
+                                {{-- <h1>{{ $slider->content_2 }}</h1> --}}
+                                <h1>The Zabeer Jashore</h1>
                                 <hr>
                                 <h4>{{ $slider->content_3 }}</h4>
                                 <a href="{{ $slider->button_1_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_1 }}</a>
@@ -36,7 +37,8 @@
                         <div class="container">
                             <div class="header-content">
                                 <h3>{{ $slider->content_1 }}</h3>
-                                <h1>{{ $slider->content_2 }}</h1>
+                                {{-- <h1>{{ $slider->content_2 }}</h1> --}}
+                                <h1>The Zabeer Jashore</h1>
                                 <hr>
                                 <h4>{{ $slider->content_3 }}</h4>
                                 <a href="{{ $slider->button_1_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_1 }}</a>
@@ -72,11 +74,8 @@
                         <div class="form_input col-12">
                             <label for="hotel_location" class="form-label text-white">Hotel Location:</label>
                             <select class="form-select" id="hotel_location" name="hotel_location">
-                                @forelse ($hotels as $hotel)
-                                <option value="{{ $hotel->id }}">{{ $hotel->hotel_location }}</option>
-                                @empty
-                                <option>No Data</option>
-                                @endforelse
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Jashore">Jashore</option>
                               </select>
                         </div>
                         <div class="form_input col-12">

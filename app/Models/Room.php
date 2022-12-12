@@ -16,7 +16,7 @@ class Room extends Model
 
     protected $fillable = [
         'name',
-        'hotel_location',
+        'hotel_id',
         'slug',
         'short_description',
         'long_description',
@@ -32,6 +32,11 @@ class Room extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function hotels()
+    {
+        return $this->belongsTo(Hotel::class, 'hotel_id');
+    }
 
     public function roomImages()
     {

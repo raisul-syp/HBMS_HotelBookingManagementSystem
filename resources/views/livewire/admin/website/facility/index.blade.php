@@ -21,7 +21,7 @@
                     <tr>
                         <td>{{ $facility->id }}</td>
                         <td style="width: 6%;">
-                            <div class="testimonial-list-img">
+                            <div class="facility-list-img">
                                 <img src="{{ asset('frontend/images/facilities/'.$facility->image) }}" alt="{{ $facility->name }}">
                             </div>
                         </td>

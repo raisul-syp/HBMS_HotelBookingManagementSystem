@@ -85,13 +85,13 @@
                                 <small class="text-danger">*</small>
                             </label>
                             <div class="col-sm-5">
-                                <input type="date" class="form-control checkin-date" id="checkin_date" name="checkin_date">
+                                <input type="date" class="form-control checkin-date" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
                                 @error('checkin_date')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-sm-5">
-                                <input type="time" class="form-control" id="checkin_time" name="checkin_time">
+                                <input type="time" class="form-control" id="checkin_time" name="checkin_time" value="14:00">
                                 @error('checkin_time')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -103,13 +103,13 @@
                                 <small class="text-danger">*</small>
                             </label>
                             <div class="col-sm-5">
-                                <input type="date" class="form-control checkout-date" id="checkout_date" name="checkout_date">
+                                <input type="date" class="form-control checkout-date" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
                                 @error('checkout_date')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-sm-5">
-                                <input type="time" class="form-control" id="checkout_time" name="checkout_time">
+                                <input type="time" class="form-control" id="checkout_time" name="checkout_time" value="12:00">
                                 @error('checkout_time')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror

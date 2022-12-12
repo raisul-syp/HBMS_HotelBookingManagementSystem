@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\DashboardController;
 // Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'index']);
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\HomeController::class)->group(function (){
     Route::get('/', 'index');
+    Route::get('/Jashore', 'jashoreIndex');
     Route::get('/available-rooms', 'checkAvailability');
     Route::get('/rooms/room-details/{room}', 'roomDetails');
 });
@@ -52,6 +53,15 @@ Route::post('/admin/login/store', [AuthenticatedSessionController::class, 'store
 Route::group(['middleware' => 'isAdmin'], function() {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
+
+    // Hotel
+    Route::prefix('/admin/hotels')->controller(App\Http\Controllers\Admin\HotelController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{hotel}', 'edit');
+        Route::put('/edit/{hotel}', 'update');
+    });
 
     // Room Type
     Route::prefix('/admin/roomtype')->controller(App\Http\Controllers\Admin\RoomtypeController::class)->group(function (){

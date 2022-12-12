@@ -25,11 +25,11 @@
                     <tr>
                         <td>{{ $room->id }}</td>
                         <td>{{ $room->name }}</td>
-                        <td>{{ $room->hotel_location }}</td>
+                        <td>{{ $room->hotels->name }}</td>
                         <td>{{ $room->slug }}</td>
                         <td>
                             @forelse ($room->roomViews as $roomView)
-                            <span class="badge badge-pill badge-primary">{{ $roomView->name }}</span>                                            
+                            <span class="badge badge-pill badge-primary">{{ $roomView->name }}</span>
                             @empty
                             <small class="text-danger">No Views Added!</small>
                             @endforelse
@@ -40,7 +40,7 @@
                             @if ($facility->image != null)
                             <img src="{{ asset('uploads/facilities/'.$facility->image) }}">
                             @endif
-                            </div>                                           
+                            </div>
                             @empty
                             <small class="text-danger">No Facilities Added!</small>
                             @endforelse

@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Room;
 use App\Models\User;
 use App\Models\Admin;
-use Illuminate\Support\Facades\DB;
+use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookingFormRequest;
-use App\Models\Booking;
 
 class BookingController extends Controller
 {
@@ -20,10 +21,12 @@ class BookingController extends Controller
 
     public function create()
     {
+        $todayDate = Carbon::today()->format('Y-m-d');
+        $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
         $guests = User::all()->where('is_active','1')->where('is_delete','1');
         $rooms = Room::all()->where('is_active','1')->where('is_delete','1');
         $staffs = Admin::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.booking.create', compact('guests','rooms','staffs'));
+        return view('admin.booking.create', compact('todayDate','tomorrowDate','guests','rooms','staffs'));
     }
 
     public function store(BookingFormRequest $request)
@@ -43,7 +46,7 @@ class BookingController extends Controller
         $booking->total_childs = $validatedData['total_childs'];
         $booking->booking_status = $validatedData['booking_status'];
         $booking->booking_comment = $validatedData['booking_comment'];
-        
+
         $booking->save();
 
         return redirect('admin/booking')->with('message','Congratulations! New Booking Has Been Created Successfully.');

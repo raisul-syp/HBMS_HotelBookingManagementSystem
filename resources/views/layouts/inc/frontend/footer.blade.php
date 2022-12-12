@@ -2,13 +2,13 @@
     <div class="footer_top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                     <div class="footer_logo">
                         <img src="{{ asset('frontend/images/logos/png/logo-dhaka.png') }}" alt="">
                     </div>
                 </div>
 
-                <div class="col-lg-5">
+                <div class="col-lg-7">
                     <div class="footer_links">
                         <h4>
                             <span>Useful Links</span>
@@ -21,38 +21,6 @@
                                 <a href="{{ $item->slug }}">{{ $item->name }}</a>
                             </li>
                             @endforeach
-                            {{-- <li>
-                                <i data-feather="chevron-right"></i>
-                                <a href="{{ url('/about-us') }}">About Us</a>
-                            </li>
-                            <li>
-                                <i data-feather="chevron-right"></i>
-                                <a href="{{ url('/contact-us') }}">Contact Us</a>
-                            </li>
-                            <li>
-                                <i data-feather="chevron-right"></i>
-                                <a href="{{ url('/offers') }}">Offers</a>
-                            </li>
-                            <li>
-                                <i data-feather="chevron-right"></i>
-                                <a href="{{ url('/news') }}">News</a>
-                            </li>
-                            <li>
-                                <i data-feather="chevron-right"></i>
-                                <a href="{{ url('/rooms') }}">Rooms</a>
-                            </li>
-                            <li>
-                                <i data-feather="chevron-right"></i>
-                                <a href="{{ url('/about-us') }}">Restaurant</a>
-                            </li>
-                            <li>
-                                <i data-feather="chevron-right"></i>
-                                <a href="{{ url('/meeting-rooms') }}">Meeting & Events</a>
-                            </li>
-                            <li>
-                                <i data-feather="chevron-right"></i>
-                                <a href="{{ url('/wellness') }}">Wellness</a>
-                            </li> --}}
                         </ul>
                     </div>
                 </div>
