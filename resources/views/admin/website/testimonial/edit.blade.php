@@ -6,7 +6,7 @@
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h2 class="page-header-title">{{ __('Edit Slider') }}</h2>
+                <h2 class="page-header-title">{{ __('Edit Testimonial') }}</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Website') }}</a></li>
@@ -90,19 +90,35 @@
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-lg-5">
-                                        <label for="url">
-                                            {{ __('URL') }}
+                                    <div class="form-group col-lg-4">
+                                        <label for="slug">
+                                            {{ __('Slug') }}
                                         </label>
-                                        <input type="url" class="form-control" id="url" name="url" value="{{ $testimonial->url }}" placeholder="Add URL...">
+                                        <input type="text" class="form-control" id="slug" name="slug" value="{{ $testimonial->slug }}" placeholder="Add Slug...">
                                     </div>
-                                    <div class="form-group col-lg-5">
+                                    <div class="form-group col-lg-4">
+                                        <label for="hotel_id">
+                                            {{ __('Hotel') }}
+                                            <small class="text-danger">*</small>
+                                        </label>
+                                        <select class="form-control js-basic-single" id="hotel_id" name="hotel_id" >
+                                            @forelse ($hotels as $hotel)
+                                            <option value="{{ $hotel->id }}" {{ old('hotel_id', $testimonial->hotel_id) == $hotel->id ? 'selected' : '' }}>{{ $hotel->name }}</option>
+                                            @empty
+                                            <option>No Data</option>
+                                            @endforelse
+                                        </select>
+                                        @error('hotel_id')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-lg-3">
                                         <label for="display_order">
                                             {{ __('Display Order') }}
                                         </label>
                                         <input type="number" class="form-control" id="display_order" name="display_order" value="{{ $testimonial->display_order }}" placeholder="Add 2nd Button Title...">
                                     </div>
-                                    <div class="form-group col-lg-2">
+                                    <div class="form-group col-lg-1">
                                         <div for="is_active">
                                             {{ __('Status') }}
                                         </div>

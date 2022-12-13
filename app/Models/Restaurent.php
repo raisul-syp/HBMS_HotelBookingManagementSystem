@@ -1,29 +1,25 @@
 <?php
 
-namespace App\Models\Website;
+namespace App\Models;
 
 use App\Models\Hotel;
+use App\Models\RestaurentImage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Address extends Model
+class Restaurent extends Model
 {
     use HasFactory;
 
-    protected $table = 'hb_webaddresses';
+    protected $table = 'hb_restaurents';
 
     protected $fillable = [
+        'name',
         'hotel_id',
         'slug',
-        'display_order',
-        'phone',
-        'phone_sales',
-        'phone_reservation',
-        'email',
-        'email_sales',
-        'email_reservation',
-        'address',
-        'google_map',
+        'short_description',
+        'long_description',
+        'logo',
         'meta_title',
         'meta_keyword',
         'meta_decription',
@@ -36,5 +32,10 @@ class Address extends Model
     public function hotels()
     {
         return $this->belongsTo(Hotel::class, 'hotel_id');
+    }
+
+    public function restaurentImages()
+    {
+        return $this->hasMany(RestaurentImage::class, 'restaurent_id', 'id');
     }
 }

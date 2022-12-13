@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Website;
 
+use App\Models\Hotel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Website\Address;
@@ -17,7 +18,8 @@ class AddressController extends Controller
 
     public function create()
     {
-        return view('admin.website.address.create');
+        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.website.address.create', compact('hotels'));
     }
 
     public function store(AddressFormRequest $request)
@@ -26,7 +28,7 @@ class AddressController extends Controller
 
         $address = new Address();
 
-        $address->title = $validatedData['title'];
+        $address->hotel_id = $validatedData['hotel_id'];
         $address->slug = Str::slug($validatedData['slug']);
         $address->display_order = $validatedData['display_order'];
         $address->phone = $validatedData['phone'];
@@ -51,7 +53,8 @@ class AddressController extends Controller
 
     public function edit(Address $address)
     {
-        return view('admin.website.address.edit', compact('address'));
+        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.website.address.edit', compact('address', 'hotels'));
     }
 
     public function update(AddressFormRequest $request, $address)
@@ -60,7 +63,7 @@ class AddressController extends Controller
 
         $address = Address::findOrFail($address);
 
-        $address->title = $validatedData['title'];
+        $address->hotel_id = $validatedData['hotel_id'];
         $address->slug = Str::slug($validatedData['slug']);
         $address->display_order = $validatedData['display_order'];
         $address->phone = $validatedData['phone'];

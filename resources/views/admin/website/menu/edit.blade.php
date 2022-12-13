@@ -92,16 +92,19 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="hotel_location">
-                                        {{ __('Hotel Location') }}
+                                    <label class="col-sm-2 col-form-label text-right" for="hotel_id">
+                                        {{ __('Hotel') }}
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="hotel_location" id="hotel_location">
-                                            <option value="Dhaka" {{ old('hotel_location', $menu->hotel_location) == 'Dhaka' ? 'selected' : '' }}>Dhaka</option>
-                                            <option value="Jashore" {{ old('hotel_location', $menu->hotel_location) == 'Jashore' ? 'selected' : '' }}>Jashore</option>
+                                        <select class="form-control js-basic-single" id="hotel_id" name="hotel_id" >
+                                            @forelse ($hotels as $hotel)
+                                            <option value="{{ $hotel->id }}" {{ old('hotel_id', $menu->hotel_id) == $hotel->id ? 'selected' : '' }}>{{ $hotel->name }}</option>
+                                            @empty
+                                            <option>No Data</option>
+                                            @endforelse
                                         </select>
-                                        @error('hotel_location')
+                                        @error('hotel_id')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>

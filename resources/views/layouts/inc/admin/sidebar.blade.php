@@ -49,6 +49,16 @@
         <li>
             <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                 <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Restaurents') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/restaurent/create') }}">{{ __('Add Restaurent') }}</a></li>
+                <li><a href="{{ url('admin/restaurent') }}">{{ __('All Restaurent') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
                 <span class="nav-text">{{ __('Bookings') }}</span>
             </a>
             <ul aria-expanded="false">

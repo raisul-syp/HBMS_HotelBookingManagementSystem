@@ -24,7 +24,7 @@ class AddressFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
+            'hotel_id' => [
                 'required',
                 'string'
             ],

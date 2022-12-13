@@ -16,7 +16,8 @@ class CreateHbWebslidersTable extends Migration
         Schema::create('hb_websliders', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('url')->nullable();
+            $table->string('slug')->nullable();
+            $table->unsignedBigInteger('hotel_id');
             $table->string('desktop_image')->nullable();
             $table->string('mobile_image')->nullable();
             $table->string('content_1');
@@ -24,10 +25,6 @@ class CreateHbWebslidersTable extends Migration
             $table->string('content_3')->nullable();
             $table->string('content_4')->nullable();
             $table->string('content_5')->nullable();
-            $table->string('button_1')->nullable();
-            $table->string('button_2')->nullable();
-            $table->string('button_1_url')->nullable();
-            $table->string('button_2_url')->nullable();
             $table->string('display_order')->nullable();
 
             $table->string('meta_title');
@@ -38,6 +35,8 @@ class CreateHbWebslidersTable extends Migration
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
+
+            $table->foreign('hotel_id')->references('id')->on('hb_hotels')->onDelete('cascade');
             $table->timestamps();
         });
     }

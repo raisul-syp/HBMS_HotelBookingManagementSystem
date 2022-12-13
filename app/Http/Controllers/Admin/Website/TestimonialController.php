@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Website;
 
+use App\Models\Hotel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Website\Testimonial;
@@ -18,7 +19,8 @@ class TestimonialController extends Controller
 
     public function create()
     {
-        return view('admin.website.testimonial.create');
+        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.website.testimonial.create', compact('hotels'));
     }
 
     public function store(TestimonialFormRequest $request)
@@ -31,20 +33,26 @@ class TestimonialController extends Controller
         $testimonial->designation = $validatedData['designation'];
         $testimonial->company = $validatedData['company'];
         $testimonial->message = $validatedData['message'];
+        $testimonial->slug = Str::slug($validatedData['slug']);
+        $testimonial->hotel_id = $validatedData['hotel_id'];
+        $testimonial->display_order = $validatedData['display_order'];
         
         if($request->hasFile('image')){
+            if($testimonial->hotel_id == '1'){
+                $location = 'dhaka';
+            }
+            if($testimonial->hotel_id == '2') {
+                $location = 'jashore';
+            }
             $uploadPath = 'frontend/images/testimonials';
             $file = $request->file('image');
 
             $extension = $file->getClientOriginalExtension();
-            $filename = Str::slug($testimonial->name).'.'.$extension;
+            $filename = Str::slug($testimonial->name).'-'.$location.'.'.$extension;
             $file->move($uploadPath,$filename);
 
             $testimonial->image = $filename;
         }
-
-        $testimonial->url = $validatedData['url'];
-        $testimonial->display_order = $validatedData['display_order'];
 
         $testimonial->meta_title = $validatedData['meta_title'];
         $testimonial->meta_keyword = $validatedData['meta_keyword'];
@@ -59,7 +67,8 @@ class TestimonialController extends Controller
 
     public function edit(Testimonial $testimonial)
     {
-        return view('admin.website.testimonial.edit', compact('testimonial'));
+        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.website.testimonial.edit', compact('testimonial', 'hotels'));
     }
 
     public function update(TestimonialFormRequest $request, $testimonial)
@@ -72,8 +81,17 @@ class TestimonialController extends Controller
         $testimonial->designation = $validatedData['designation'];
         $testimonial->company = $validatedData['company'];
         $testimonial->message = $validatedData['message'];
+        $testimonial->slug = Str::slug($validatedData['slug']);
+        $testimonial->hotel_id = $validatedData['hotel_id'];
+        $testimonial->display_order = $validatedData['display_order'];
 
         if($request->hasFile('image')){
+            if($testimonial->hotel_id == '1'){
+                $location = 'dhaka';
+            }
+            if($testimonial->hotel_id == '2') {
+                $location = 'jashore';
+            }
             $uploadPath = 'frontend/images/testimonials';
             $previousPath = 'frontend/images/testimonials/'.$testimonial->image;
             if(File::exists($previousPath)){
@@ -82,14 +100,11 @@ class TestimonialController extends Controller
             $file = $request->file('image');
 
             $extension = $file->getClientOriginalExtension();
-            $filename = Str::slug($testimonial->name).'.'.$extension;
+            $filename = Str::slug($testimonial->name).'-'.$location.'.'.$extension;
             $file->move($uploadPath,$filename);
 
             $testimonial->image = $filename;
         }
-
-        $testimonial->url = $validatedData['url'];
-        $testimonial->display_order = $validatedData['display_order'];
 
         $testimonial->meta_title = $validatedData['meta_title'];
         $testimonial->meta_keyword = $validatedData['meta_keyword'];

@@ -11,6 +11,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Slug</th>
+                        <th>Hotel</th>
                         <th>Display Order</th>
                         <th>Footer Item</th>
                         <th>Status</th>
@@ -23,6 +24,7 @@
                         <td>{{ $page->id }}</td>
                         <td>{{ $page->name }}</td>
                         <td>{{ $page->slug }}</td>
+                        <td>{{ $page->hotels->name }}</td>
                         <td>{{ $page->display_order }}</td>
                         <td>
                             @if ($page->footer_item == '1')

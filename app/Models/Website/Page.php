@@ -2,8 +2,9 @@
 
 namespace App\Models\Website;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Hotel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Page extends Model
 {
@@ -29,4 +30,9 @@ class Page extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function hotels()
+    {
+        return $this->belongsTo(Hotel::class, 'hotel_id');
+    }
 }

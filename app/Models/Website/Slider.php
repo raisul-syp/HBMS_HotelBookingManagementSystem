@@ -2,8 +2,9 @@
 
 namespace App\Models\Website;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Hotel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Slider extends Model
 {
@@ -13,7 +14,8 @@ class Slider extends Model
 
     protected $fillable = [
         'name',
-        'url',
+        'slug',
+        'hotel_id',
         'desktop_image',
         'mobile_image',
         'content_1',
@@ -21,10 +23,6 @@ class Slider extends Model
         'content_3',
         'content_4',
         'content_5',
-        'button_1',
-        'button_2',
-        'button_1_url',
-        'button_2_url',
         'display_order',
         'meta_title',
         'meta_keyword',
@@ -34,4 +32,9 @@ class Slider extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function hotels()
+    {
+        return $this->belongsTo(Hotel::class, 'hotel_id');
+    }
 }

@@ -11,6 +11,7 @@
                         <th>ID</th>
                         <th>Image</th>
                         <th>Name</th>
+                        <th>Hotel</th>
                         <th>Display Order</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -26,6 +27,7 @@
                             </div>
                         </td>
                         <td>{{ $slider->name }}</td>
+                        <td>{{ $slider->hotels->name }}</td>
                         <td>{{ $slider->display_order }}</td>
                         <td>
                             @if ($slider->is_active == '1')

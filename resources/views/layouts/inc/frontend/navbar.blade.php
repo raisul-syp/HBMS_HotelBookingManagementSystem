@@ -18,12 +18,12 @@
         <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
                 @foreach ($menuItems as $item)
-                @if (count($item->submenus) > 0)
+                @if ($item->name == 'Rooms')
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
-                        @foreach ($item->submenus as $submenuItem)
-                        <li><a class="dropdown-item" href="{{ $submenuItem->slug }}">{{ $submenuItem->name }}</a></li>
+                        @foreach ($rooms as $room)
+                        <li><a class="dropdown-item" href="{{ $room->id }}">{{ $room->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>

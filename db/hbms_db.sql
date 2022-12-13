@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2022 at 04:40 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Dec 13, 2022 at 01:26 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -458,6 +458,61 @@ INSERT INTO `hb_hotels` (`id`, `name`, `slug`, `hotel_location`, `display_order`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hb_restaurents`
+--
+
+CREATE TABLE `hb_restaurents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hotel_id` bigint(20) UNSIGNED NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `short_description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `long_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_restaurents`
+--
+
+INSERT INTO `hb_restaurents` (`id`, `name`, `hotel_id`, `slug`, `short_description`, `long_description`, `logo`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Cafe 24', 1, 'cafe-24', 'Cafe 24', '<p>Cafe 24<br></p>', NULL, 'Cafe 24', 'Cafe 24', 'Cafe 24', 1, 1, '0', NULL, '2022-12-13 06:22:24', '2022-12-13 06:22:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hb_restaurent_images`
+--
+
+CREATE TABLE `hb_restaurent_images` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `restaurent_id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_restaurent_images`
+--
+
+INSERT INTO `hb_restaurent_images` (`id`, `restaurent_id`, `image`, `created_at`, `updated_at`) VALUES
+(1, 1, 'uploads/restaurents/cafe-24-1670934144-1.jpg', '2022-12-13 06:22:24', '2022-12-13 06:22:24'),
+(2, 1, 'uploads/restaurents/cafe-24-1670934144-2.jpg', '2022-12-13 06:22:24', '2022-12-13 06:22:24'),
+(3, 1, 'uploads/restaurents/cafe-24-1670934144-3.jpg', '2022-12-13 06:22:24', '2022-12-13 06:22:24');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hb_rooms`
 --
 
@@ -595,7 +650,7 @@ INSERT INTO `hb_room_images` (`id`, `room_id`, `image`, `created_at`, `updated_a
 
 CREATE TABLE `hb_webaddresses` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hotel_id` bigint(20) UNSIGNED NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -621,9 +676,9 @@ CREATE TABLE `hb_webaddresses` (
 -- Dumping data for table `hb_webaddresses`
 --
 
-INSERT INTO `hb_webaddresses` (`id`, `title`, `slug`, `display_order`, `phone`, `phone_sales`, `phone_reservation`, `email`, `email_sales`, `email_reservation`, `address`, `google_map`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'The Zabeer Dhaka', 'the-zabeer-dhaka', '1', '(+88) 02224470771-73', NULL, '(+88) 01711 408 969', 'info@thezabeerdhaka.com', NULL, 'reservation@thezabeerdhaka.com', 'House-1, Road-2, Sector-1, Uttara Model Town, Dhaka-1230', '!1m18!1m12!1m3!1d3648.956907774987!2d90.4037768!3d23.855663900000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c72f9daef9c5%3A0xe3bc6c9dcb0ba750!2sThe%20Zabeer%20Dhaka!5e0!3m2!1sen!2sbd!4v1670046986535!5m2!1sen!2sbd', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 1, 1, '0', '0', '2022-12-11 02:27:52', '2022-12-11 04:06:17'),
-(2, 'The Zabeer Jashore', 'the-zabeer-jashore', '2', '(+88) 01885 000 555', NULL, NULL, 'sm@zabeerhotel.com', NULL, NULL, '1256, M M Ali Road, Jashore', '!1m14!1m8!1m3!1d14672.513200846855!2d89.2109886!3d23.165517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x67b464b45fab99ac!2sThe%20Zabeer%20Jashore!5e0!3m2!1sen!2sbd!4v1670742032127!5m2!1sen!2sbd', 'The Zabeer Jashore', 'The Zabeer Jashore', 'The Zabeer Jashore', 1, 1, '0', '0', '2022-12-11 02:38:36', '2022-12-11 04:05:38');
+INSERT INTO `hb_webaddresses` (`id`, `hotel_id`, `slug`, `display_order`, `phone`, `phone_sales`, `phone_reservation`, `email`, `email_sales`, `email_reservation`, `address`, `google_map`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 1, 'the-zabeer-dhaka', '1', '(+88) 02224470771-73', NULL, '(+88) 01711 408 969', 'info@thezabeerdhaka.com', NULL, 'reservation@thezabeerdhaka.com', 'House-1, Road-2, Sector-1, Uttara Model Town, Dhaka-1230', '!1m18!1m12!1m3!1d3648.956907774987!2d90.4037768!3d23.855663900000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c72f9daef9c5%3A0xe3bc6c9dcb0ba750!2sThe%20Zabeer%20Dhaka!5e0!3m2!1sen!2sbd!4v1670046986535!5m2!1sen!2sbd', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 1, 1, '0', NULL, '2022-12-13 02:35:03', '2022-12-13 02:35:03'),
+(2, 2, 'the-zabeer-jashore', '2', '(+88) 01885 000 555', NULL, NULL, 'sm@zabeerhotel.com', NULL, NULL, '1256, M M Ali Road, Jashore', '!1m14!1m8!1m3!1d14672.513200846855!2d89.2109886!3d23.165517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x67b464b45fab99ac!2sThe%20Zabeer%20Jashore!5e0!3m2!1sen!2sbd!4v1670742032127!5m2!1sen!2sbd', 'The Zabeer Jashore', 'The Zabeer Jashore', 'The Zabeer Jashore', 1, 1, '0', NULL, '2022-12-13 02:36:41', '2022-12-13 02:36:41');
 
 -- --------------------------------------------------------
 
@@ -634,7 +689,8 @@ INSERT INTO `hb_webaddresses` (`id`, `title`, `slug`, `display_order`, `phone`, 
 CREATE TABLE `hb_webfacilities` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hotel_id` bigint(20) UNSIGNED NOT NULL,
   `description` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -653,27 +709,20 @@ CREATE TABLE `hb_webfacilities` (
 -- Dumping data for table `hb_webfacilities`
 --
 
-INSERT INTO `hb_webfacilities` (`id`, `name`, `url`, `description`, `image`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Breakfast', NULL, 'Complimentary Breakfast', 'complimentary-breakfast.png', '1', 'Complimentary Breakfast placeholder= placeholder= placeholder=', 'Complimentary Breakfast placeholder= placeholder= placeholder=', 'Complimentary Breakfast', 1, 1, '0', '0', '2022-12-07 06:42:00', '2022-12-10 09:20:55'),
-(2, 'Bottle of Water', NULL, 'Complimentary Bottle of Water', 'complimentary-bottle-of-water.png', '2', 'Complimentary Bottle of Water placeholder=', 'Complimentary Bottle of Water placeholder=', 'Complimentary Bottle of Water', 1, 1, '0', '0', '2022-12-07 06:44:06', '2022-12-10 09:21:14'),
-(3, 'Free Wi-fi', NULL, 'Free Wi-fi Access', 'free-wi-fi-access.png', '3', 'Free Wi-fi Access placeholder=', 'Free Wi-fi Access placeholder=', 'Free Wi-fi Access', 1, 1, '0', '0', '2022-12-07 06:45:03', '2022-12-10 09:21:32'),
-(4, 'Laundry Service', NULL, 'Express Laundry Service', 'express-laundry-service.png', '4', 'Express Laundry Service placeholder=', 'Express Laundry Service placeholder=', 'Express Laundry Service', 1, 1, '0', '0', '2022-12-07 06:45:45', '2022-12-10 09:21:46'),
-(5, 'Access of Gym', NULL, 'Complimentary Access of Gym', 'complimentary-access-of-gym.png', '5', 'Complimentary Access of Gym placeholder=', 'Complimentary Access of Gym placeholder=', 'Complimentary Access of Gym', 1, 1, '0', '0', '2022-12-07 06:46:25', '2022-12-10 09:21:58'),
-(6, 'Free Parking', NULL, 'Free Parking', 'free-parking.png', '6', 'Free Parking', 'Free Parking', 'Free Parking', 1, 1, '0', NULL, '2022-12-07 06:46:50', '2022-12-07 06:46:50'),
-(7, 'Airport Pick-up & Drop', NULL, 'Airport Pick-up & Drop', 'airport-pick-up-drop.png', '7', 'Airport Pick-up & Drop', 'Airport Pick-up & Drop', 'Airport Pick-up & Drop', 1, 1, '0', NULL, '2022-12-07 06:47:25', '2022-12-07 06:47:25'),
-(8, 'Daily News Papers', NULL, 'Daily News Papers', 'daily-news-papers.png', '8', 'Daily News Papers', 'Daily News Papers', 'Daily News Papers', 1, 1, '0', NULL, '2022-12-07 06:47:53', '2022-12-07 06:47:53');
+INSERT INTO `hb_webfacilities` (`id`, `name`, `slug`, `hotel_id`, `description`, `image`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Breakfast', 'breakfast', 1, 'Complementary Breakfast', 'breakfast-dhaka.png', '1', 'Complementary Breakfast placeholder= placeholder=', 'Complementary Breakfast placeholder= placeholder=', 'Complementary Breakfast', 1, 1, '0', '0', '2022-12-13 01:41:42', '2022-12-13 01:43:50');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_webnav`
+-- Table structure for table `hb_webnavs`
 --
 
-CREATE TABLE `hb_webnav` (
+CREATE TABLE `hb_webnavs` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hotel_location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hotel_id` bigint(20) UNSIGNED NOT NULL,
   `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -687,17 +736,12 @@ CREATE TABLE `hb_webnav` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `hb_webnav`
+-- Dumping data for table `hb_webnavs`
 --
 
-INSERT INTO `hb_webnav` (`id`, `name`, `slug`, `hotel_location`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Home', '/', 'Dhaka', '1', 'Home', 'Home', 'Home', 1, 1, '0', '0', '2022-11-30 02:39:22', '2022-12-06 00:24:31'),
-(2, 'Rooms', 'rooms', 'Dhaka', '2', 'Rooms', 'Rooms', 'Rooms', 1, 1, '0', '0', '2022-11-30 02:50:30', '2022-12-05 02:53:00'),
-(3, 'Restaurents', 'restaurents', 'Dhaka', '3', 'Restaurents', 'Restaurents', 'Restaurents', 1, 1, '0', '0', '2022-12-01 04:18:13', '2022-12-05 03:49:34'),
-(4, 'Meeting & Events', 'meeting-events', 'Dhaka', '4', 'Meeting & Events', 'Meeting & Events', 'Meeting & Events', 1, 1, '0', '0', '2022-12-01 04:20:41', '2022-12-05 03:49:45'),
-(5, 'Wellness', 'wellness', 'Dhaka', '5', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', '0', '2022-12-01 04:21:33', '2022-12-05 03:50:18'),
-(6, 'About Us', 'about-us', 'Dhaka', '6', 'About Us', 'About Us', 'About Us', 1, 1, '0', '0', '2022-12-01 04:22:12', '2022-12-05 03:49:56'),
-(7, 'Contact Us', 'contact-us', 'Dhaka', '7', 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, '0', '0', '2022-12-01 04:22:31', '2022-12-06 00:28:08');
+INSERT INTO `hb_webnavs` (`id`, `name`, `slug`, `hotel_id`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Home', 'Home', 1, '1', 'Home', 'Home', 'Home', 1, 1, '0', NULL, '2022-12-12 23:24:20', '2022-12-12 23:24:20'),
+(2, 'Rooms', '/rooms', 1, '2', 'Rooms', 'Rooms', 'Rooms', 1, 1, '0', NULL, '2022-12-13 03:43:09', '2022-12-13 03:43:09');
 
 -- --------------------------------------------------------
 
@@ -713,6 +757,7 @@ CREATE TABLE `hb_webpages` (
   `short_description` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `long_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hotel_id` bigint(20) UNSIGNED NOT NULL,
   `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -731,19 +776,8 @@ CREATE TABLE `hb_webpages` (
 -- Dumping data for table `hb_webpages`
 --
 
-INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_description`, `long_description`, `slug`, `display_order`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `footer_item`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'About Us', '\"A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.\"', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen.', '<p><span style=\"color: rgb(33, 37, 41); font-family: &quot;Nunito Sans&quot;, sans-serif; text-align: justify;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span><br></p>', 'about-us', '1', 'about-us.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '0', '0', '2022-12-10 01:06:08', '2022-12-10 01:09:07'),
-(2, 'Contact Us', 'Contact Us', 'Contact Us', 'Contact Us', '<p>Contact Us<br></p>', 'contact-us', '2', NULL, 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, 1, '0', NULL, '2022-12-11 00:36:32', '2022-12-11 00:36:32'),
-(3, 'Offers', 'Offers', 'Offers', 'Offers', '<p>Offers<br></p>', 'offers', '3', NULL, 'Offers', 'Offers', 'Offers', 1, 1, 1, '0', NULL, '2022-12-11 09:51:42', '2022-12-11 09:51:42'),
-(4, 'News', 'News', 'News', 'News', '<p>News<br></p>', 'news', '4', NULL, 'News', 'News', 'News', 1, 1, 1, '0', '0', '2022-12-11 09:52:45', '2022-12-11 09:56:25'),
-(5, 'Rooms', 'Rooms', 'Rooms', 'Rooms', '<p>Rooms<br></p>', 'rooms', '5', NULL, 'Rooms', 'Rooms', 'Rooms', 1, 1, 1, '0', NULL, '2022-12-11 09:53:38', '2022-12-11 09:53:38'),
-(6, 'Restaurants', 'Restaurants', 'Restaurants', 'Restaurants', '<p>Restaurants<br></p>', 'restaurants', '6', NULL, 'Restaurants', 'Restaurants', 'Restaurants', 1, 1, 1, '0', NULL, '2022-12-11 09:54:31', '2022-12-11 09:54:31'),
-(7, 'Meeting & Events', 'Meeting & Events', 'Meeting & Events', 'Meeting & Events', '<p>Meeting &amp; Events<br></p>', 'meeting-events', '7', NULL, 'Meeting & Events', 'Meeting & Events', 'Meeting & Events', 1, 1, 1, '0', NULL, '2022-12-11 09:55:53', '2022-12-11 09:55:53'),
-(8, 'Wellness', 'Wellness', 'Wellness', 'Wellness', '<p>Wellness<br></p>', 'wellness', '8', NULL, 'Wellness', 'Wellness', 'Wellness', 1, 1, 1, '0', NULL, '2022-12-11 09:56:58', '2022-12-11 09:56:58'),
-(9, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', '<p>Certificates &amp; Awards<br></p>', 'certificates-awards', '9', NULL, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 1, 1, 1, '0', NULL, '2022-12-11 09:58:44', '2022-12-11 09:58:44'),
-(10, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', '<p>Booking Cancelation Policy<br></p>', 'booking-cancelation-policy', '10', NULL, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 1, 1, 1, '0', NULL, '2022-12-11 09:59:49', '2022-12-11 09:59:49'),
-(11, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', '<p>Privacy Policy<br></p>', 'privacy-policy', '11', NULL, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 1, 1, 1, '0', NULL, '2022-12-11 10:00:19', '2022-12-11 10:00:19'),
-(12, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '<p>Terms &amp; Conditions<br></p>', 'terms-conditions', '12', NULL, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 1, 1, 1, '0', '0', '2022-12-11 10:00:52', '2022-12-11 10:01:27');
+INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_description`, `long_description`, `slug`, `hotel_id`, `display_order`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `footer_item`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'About Us', 'A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates.', '<p style=\"text-align: justify; \"><font color=\"#212529\" face=\"Nunito Sans, sans-serif\"><span style=\"font-size: 16px;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span></font><br></p>', 'about-us', 1, '1', 'about-us-dhaka.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '0', '0', '2022-12-13 02:02:59', '2022-12-13 02:12:45');
 
 -- --------------------------------------------------------
 
@@ -754,7 +788,8 @@ INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_descriptio
 CREATE TABLE `hb_websliders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hotel_id` bigint(20) UNSIGNED NOT NULL,
   `desktop_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `content_1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -762,10 +797,6 @@ CREATE TABLE `hb_websliders` (
   `content_3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `content_4` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `content_5` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button_1_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `button_2_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -782,52 +813,9 @@ CREATE TABLE `hb_websliders` (
 -- Dumping data for table `hb_websliders`
 --
 
-INSERT INTO `hb_websliders` (`id`, `name`, `url`, `desktop_image`, `mobile_image`, `content_1`, `content_2`, `content_3`, `content_4`, `content_5`, `button_1`, `button_2`, `button_1_url`, `button_2_url`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Slider 1', NULL, 'desk-slider-1.png', 'mobl-slider-1.png', 'Welcome to', 'The Zabeer Dhaka', 'A place that sparks creativity, fuels the imagination andwelcomes reflection and relaxation.', NULL, NULL, 'The Zabeer Dhaka', 'The Zabeer Jashore', NULL, NULL, '1', 'Slider 1', 'Slider 1', 'Slider 1', 1, 1, '0', '0', '2022-12-06 11:32:58', '2022-12-07 02:32:46');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hb_websubnav`
---
-
-CREATE TABLE `hb_websubnav` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `parent_id` bigint(20) UNSIGNED NOT NULL,
-  `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
-  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
-  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `hb_websubnav`
---
-
-INSERT INTO `hb_websubnav` (`id`, `name`, `slug`, `parent_id`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Suite', 'rooms/room-details/1', 2, '1', 'Suite', 'Suite', 'Suite', 1, 1, '0', '0', '2022-12-01 14:25:11', '2022-12-06 02:00:04'),
-(2, 'Premium', 'rooms/room-details/2', 2, '2', 'Premium', 'Premium', 'Premium', 1, 1, '0', NULL, '2022-12-01 14:27:12', '2022-12-01 14:27:12'),
-(3, 'Premium Twin', 'rooms/room-details/3', 2, '3', 'Premium Twin', 'Premium Twin', 'Premium Twin', 1, 1, '0', NULL, '2022-12-01 14:27:40', '2022-12-01 14:27:40'),
-(4, 'Deluxe', 'rooms/room-details/4', 2, '4', 'Deluxe', 'Deluxe', 'Deluxe', 1, 1, '0', NULL, '2022-12-01 14:28:05', '2022-12-01 14:28:05'),
-(5, 'Deluxe Twin', 'rooms/room-details/5', 2, '5', 'Deluxe Twin', 'Deluxe Twin', 'Deluxe Twin', 1, 1, '0', NULL, '2022-12-01 14:28:32', '2022-12-01 14:28:32'),
-(6, 'Cafe 24', 'cafe-24', 3, '1', 'Cafe 24', 'Cafe 24', 'Cafe 24', 1, 1, '0', NULL, '2022-12-01 14:53:03', '2022-12-01 14:53:03'),
-(7, 'Taste Of Heaven', 'taste-of-heaven', 3, '2', 'Taste Of Heaven', 'Taste Of Heaven', 'Taste Of Heaven', 1, 1, '0', NULL, '2022-12-01 14:53:42', '2022-12-01 14:53:42'),
-(8, 'Sky Line', 'sky-line', 3, '3', 'Sky Line', 'Sky Line', 'Sky Line', 1, 1, '0', NULL, '2022-12-01 14:54:05', '2022-12-01 14:54:05'),
-(9, 'Board Room', 'board-room', 4, '1', 'Board Room', 'Board Room', 'Board Room', 1, 1, '0', NULL, '2022-12-01 14:54:49', '2022-12-01 14:54:49'),
-(10, 'Olive Hall', 'olive-hall', 4, '2', 'Olive Hall', 'Olive Hall', 'Olive Hall', 1, 1, '0', NULL, '2022-12-01 14:55:10', '2022-12-01 14:55:10'),
-(11, 'Tulip Hall', 'tulip-hall', 4, '3', 'Tulip Hall', 'Tulip Hall', 'Tulip Hall', 1, 1, '0', NULL, '2022-12-01 14:55:32', '2022-12-01 14:55:32'),
-(12, 'Spa', 'spa', 5, '1', 'Spa', 'Spa', 'Spa', 1, 1, '0', NULL, '2022-12-01 14:56:00', '2022-12-01 14:56:00'),
-(13, 'Swimming Pool', 'swimming-pool', 5, '2', 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 1, 1, '0', NULL, '2022-12-01 14:56:33', '2022-12-01 14:56:33'),
-(14, 'Gym', 'gym', 5, '3', 'Gym', 'Gym', 'Gym', 1, 1, '0', NULL, '2022-12-01 14:56:58', '2022-12-01 14:56:58'),
-(15, 'Saloon', 'saloon', 5, '4', 'Saloon', 'Saloon', 'Saloon', 1, 1, '0', NULL, '2022-12-01 14:57:16', '2022-12-06 02:02:10');
+INSERT INTO `hb_websliders` (`id`, `name`, `slug`, `hotel_id`, `desktop_image`, `mobile_image`, `content_1`, `content_2`, `content_3`, `content_4`, `content_5`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Slider 1', 'slider-1-dhaka', 1, 'desk-slider-1-dhaka.png', 'mobl-slider-1-dhaka.png', 'Welcome to', 'The Zabeer Dhaka', 'A place that sparks creativity, fuels the imagination andwelcomes reflection and relaxation.', NULL, NULL, '1', 'Slider 1', 'Slider 1', 'Slider 1', 1, 1, '0', NULL, '2022-12-13 00:43:28', '2022-12-13 00:43:28'),
+(2, 'Slider 1', 'slider-1-jashore', 2, 'desk-slider-1-jashore.png', 'mobl-slider-1-jashore.png', 'Welcome to', 'The Zabeer Jashore', 'A place that sparks creativity, fuels the imagination andwelcomes reflection and relaxation.', NULL, NULL, '1', 'Slider 1', 'Slider 1', 'Slider 1', 1, 1, '0', NULL, '2022-12-13 00:44:44', '2022-12-13 00:44:44');
 
 -- --------------------------------------------------------
 
@@ -842,7 +830,8 @@ CREATE TABLE `hb_webtestimonials` (
   `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `message` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hotel_id` bigint(20) UNSIGNED NOT NULL,
   `display_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -859,8 +848,9 @@ CREATE TABLE `hb_webtestimonials` (
 -- Dumping data for table `hb_webtestimonials`
 --
 
-INSERT INTO `hb_webtestimonials` (`id`, `name`, `designation`, `company`, `message`, `image`, `url`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Mr. Matiur Rahman', 'Owner', 'Sarothi Enterprise', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text', 'mr-matiur-rahman.jpg', NULL, '1', 'Mr. Matiur Rahman', 'Mr. Matiur Rahman', 'Mr. Matiur Rahman', 1, 1, '0', '0', '2022-12-07 04:34:39', '2022-12-07 05:17:00');
+INSERT INTO `hb_webtestimonials` (`id`, `name`, `designation`, `company`, `message`, `image`, `slug`, `hotel_id`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Mr. Matiur Rahman', 'Owner', 'Sarothi Enterprise', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text', 'mr-matiur-rahman-dhaka.jpg', '', 1, '1', 'Mr. Matiur Rahman', 'Mr. Matiur Rahman', 'Mr. Matiur Rahman', 1, 1, '0', NULL, '2022-12-13 01:07:27', '2022-12-13 01:07:27'),
+(2, 'Mr. Matiur Rahman', 'Owner', 'Sarothi Enterprise', 'sdsadsd sadsadsad sadsad asdsad asdsad asdsad asdsa asdsad sadsad asdsadsad asdsad asdsad.', 'mr-matiur-rahman-jashore.jpg', '', 2, '1', 'Mr. Matiur Rahman', 'Mr. Matiur Rahman', 'Mr. Matiur Rahman', 1, 1, '0', NULL, '2022-12-13 01:08:34', '2022-12-13 01:08:34');
 
 -- --------------------------------------------------------
 
@@ -907,7 +897,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (26, '2022_12_12_104328_create_hb_rooms_table', 20),
 (27, '2022_12_12_105015_create_hb_room_facilities_table', 20),
 (28, '2022_12_12_105124_create_hb_roomtype_view_table', 20),
-(29, '2022_12_12_105230_create_hb_room_images_table', 20);
+(29, '2022_12_12_105230_create_hb_room_images_table', 20),
+(30, '2022_12_13_051525_create_hb_webnavs_table', 21),
+(31, '2022_12_13_054447_create_hb_websliders_table', 22),
+(32, '2022_12_13_065343_create_hb_webtestimonials_table', 23),
+(33, '2022_12_13_071449_create_hb_webfacilities_table', 24),
+(34, '2022_12_13_075253_create_hb_webpages_table', 25),
+(35, '2022_12_13_082128_create_hb_webaddresses_table', 26),
+(36, '2022_12_13_095218_create_hb_restaurents_table', 27),
+(37, '2022_12_13_095623_create_hb_restaurent_images_table', 27);
 
 -- --------------------------------------------------------
 
@@ -1026,6 +1024,20 @@ ALTER TABLE `hb_hotels`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hb_restaurents`
+--
+ALTER TABLE `hb_restaurents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hb_restaurents_hotel_id_foreign` (`hotel_id`);
+
+--
+-- Indexes for table `hb_restaurent_images`
+--
+ALTER TABLE `hb_restaurent_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hb_restaurent_images_restaurent_id_foreign` (`restaurent_id`);
+
+--
 -- Indexes for table `hb_rooms`
 --
 ALTER TABLE `hb_rooms`
@@ -1065,43 +1077,43 @@ ALTER TABLE `hb_room_images`
 -- Indexes for table `hb_webaddresses`
 --
 ALTER TABLE `hb_webaddresses`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hb_webaddresses_hotel_id_foreign` (`hotel_id`);
 
 --
 -- Indexes for table `hb_webfacilities`
 --
 ALTER TABLE `hb_webfacilities`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hb_webfacilities_hotel_id_foreign` (`hotel_id`);
 
 --
--- Indexes for table `hb_webnav`
+-- Indexes for table `hb_webnavs`
 --
-ALTER TABLE `hb_webnav`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `hb_webnavs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hb_webnavs_hotel_id_foreign` (`hotel_id`);
 
 --
 -- Indexes for table `hb_webpages`
 --
 ALTER TABLE `hb_webpages`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hb_webpages_hotel_id_foreign` (`hotel_id`);
 
 --
 -- Indexes for table `hb_websliders`
 --
 ALTER TABLE `hb_websliders`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `hb_websubnav`
---
-ALTER TABLE `hb_websubnav`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hb_websliders_hotel_id_foreign` (`hotel_id`);
 
 --
 -- Indexes for table `hb_webtestimonials`
 --
 ALTER TABLE `hb_webtestimonials`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `hb_webtestimonials_hotel_id_foreign` (`hotel_id`);
 
 --
 -- Indexes for table `migrations`
@@ -1171,6 +1183,18 @@ ALTER TABLE `hb_hotels`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `hb_restaurents`
+--
+ALTER TABLE `hb_restaurents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `hb_restaurent_images`
+--
+ALTER TABLE `hb_restaurent_images`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `hb_rooms`
 --
 ALTER TABLE `hb_rooms`
@@ -1210,43 +1234,37 @@ ALTER TABLE `hb_webaddresses`
 -- AUTO_INCREMENT for table `hb_webfacilities`
 --
 ALTER TABLE `hb_webfacilities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `hb_webnav`
+-- AUTO_INCREMENT for table `hb_webnavs`
 --
-ALTER TABLE `hb_webnav`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `hb_webnavs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hb_webpages`
 --
 ALTER TABLE `hb_webpages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hb_websliders`
 --
 ALTER TABLE `hb_websliders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `hb_websubnav`
---
-ALTER TABLE `hb_websubnav`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `hb_webtestimonials`
 --
 ALTER TABLE `hb_webtestimonials`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1273,6 +1291,18 @@ ALTER TABLE `hb_bookings`
   ADD CONSTRAINT `hb_bookings_staff_id_foreign` FOREIGN KEY (`staff_id`) REFERENCES `admins` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `hb_restaurents`
+--
+ALTER TABLE `hb_restaurents`
+  ADD CONSTRAINT `hb_restaurents_hotel_id_foreign` FOREIGN KEY (`hotel_id`) REFERENCES `hb_hotels` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `hb_restaurent_images`
+--
+ALTER TABLE `hb_restaurent_images`
+  ADD CONSTRAINT `hb_restaurent_images_restaurent_id_foreign` FOREIGN KEY (`restaurent_id`) REFERENCES `hb_restaurents` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `hb_rooms`
 --
 ALTER TABLE `hb_rooms`
@@ -1297,6 +1327,42 @@ ALTER TABLE `hb_room_facilities`
 --
 ALTER TABLE `hb_room_images`
   ADD CONSTRAINT `hb_room_images_room_id_foreign` FOREIGN KEY (`room_id`) REFERENCES `hb_rooms` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `hb_webaddresses`
+--
+ALTER TABLE `hb_webaddresses`
+  ADD CONSTRAINT `hb_webaddresses_hotel_id_foreign` FOREIGN KEY (`hotel_id`) REFERENCES `hb_hotels` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `hb_webfacilities`
+--
+ALTER TABLE `hb_webfacilities`
+  ADD CONSTRAINT `hb_webfacilities_hotel_id_foreign` FOREIGN KEY (`hotel_id`) REFERENCES `hb_hotels` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `hb_webnavs`
+--
+ALTER TABLE `hb_webnavs`
+  ADD CONSTRAINT `hb_webnavs_hotel_id_foreign` FOREIGN KEY (`hotel_id`) REFERENCES `hb_hotels` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `hb_webpages`
+--
+ALTER TABLE `hb_webpages`
+  ADD CONSTRAINT `hb_webpages_hotel_id_foreign` FOREIGN KEY (`hotel_id`) REFERENCES `hb_hotels` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `hb_websliders`
+--
+ALTER TABLE `hb_websliders`
+  ADD CONSTRAINT `hb_websliders_hotel_id_foreign` FOREIGN KEY (`hotel_id`) REFERENCES `hb_hotels` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `hb_webtestimonials`
+--
+ALTER TABLE `hb_webtestimonials`
+  ADD CONSTRAINT `hb_webtestimonials_hotel_id_foreign` FOREIGN KEY (`hotel_id`) REFERENCES `hb_hotels` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

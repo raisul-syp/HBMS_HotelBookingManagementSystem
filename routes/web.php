@@ -90,6 +90,15 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::put('/edit/{room}', 'update');
     });
 
+    // Restaurent
+    Route::prefix('/admin/restaurent')->controller(App\Http\Controllers\Admin\RestaurentController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{restaurent}', 'edit');
+        Route::put('/edit/{restaurent}', 'update');
+    });
+
     // Guest
     Route::prefix('/admin/guest')->controller(App\Http\Controllers\Admin\GuestController::class)->group(function (){
         Route::get('/', 'index');

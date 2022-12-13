@@ -22,6 +22,16 @@
 
     <div class="row">
         <div class="col-lg-12">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    @include('alertMessage.admin.error')
+                @endforeach
+            @endif
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
             <form action="{{ url('admin/website/pages/edit/'.$page->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -84,13 +94,29 @@
                                         </label>
                                         <input type="text" class="form-control" id="sub_title" name="sub_title" value="{{ $page->sub_title }}" placeholder="Add Sub Title...">
                                     </div>
-                                    <div class="form-group col-lg-7">
+                                    <div class="form-group col-lg-4">
                                         <label for="slug">
                                             {{ __('Slug') }}
                                             <small class="text-danger">*</small>
                                         </label>
                                         <input type="text" class="form-control" id="slug" name="slug" value="{{ $page->slug }}" placeholder="Add Slug...">
                                         @error('name')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-lg-3">
+                                        <label for="hotel_id">
+                                            {{ __('Hotel') }}
+                                            <small class="text-danger">*</small>
+                                        </label>
+                                        <select class="form-control js-basic-single" id="hotel_id" name="hotel_id" >
+                                            @forelse ($hotels as $hotel)
+                                            <option value="{{ $hotel->id }}" {{ old('hotel_id', $page->hotel_id) == $hotel->id ? 'selected' : '' }}>{{ $hotel->name }}</option>
+                                            @empty
+                                            <option>No Data</option>
+                                            @endforelse
+                                        </select>
+                                        @error('hotel_id')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>

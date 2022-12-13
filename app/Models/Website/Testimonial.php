@@ -2,8 +2,9 @@
 
 namespace App\Models\Website;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Hotel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Testimonial extends Model
 {
@@ -17,7 +18,8 @@ class Testimonial extends Model
         'company',
         'message',
         'image',
-        'url',
+        'slug',
+        'hotel_id',
         'display_order',
         'meta_title',
         'meta_keyword',
@@ -27,4 +29,9 @@ class Testimonial extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function hotels()
+    {
+        return $this->belongsTo(Hotel::class, 'hotel_id');
+    }
 }

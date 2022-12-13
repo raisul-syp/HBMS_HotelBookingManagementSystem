@@ -24,7 +24,7 @@
                         <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
                             @foreach ($addresses as $address)
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link custom-nav-btn {{ $address->id == 1 ? 'active' : '' }}" type="button" data-bs-toggle="pill" data-bs-target="#{{ $address->slug }}">{{ $address->title }}</button>
+                              <button class="nav-link custom-nav-btn {{ $address->id == 1 ? 'active' : '' }}" type="button" data-bs-toggle="pill" data-bs-target="#{{ $address->slug }}">{{ $address->hotels->name }}</button>
                             </li>                                 
                             @endforeach
                         </ul>

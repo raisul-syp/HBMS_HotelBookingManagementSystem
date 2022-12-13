@@ -58,12 +58,18 @@
                             <div class="tab-pane fade active show" id="address_info" role="tabpanel">
                                 <div class="row">
                                     <div class="form-group col-lg-4">
-                                        <label for="title">
-                                            {{ __('Title') }}
+                                        <label for="hotel_id">
+                                            {{ __('Hotel') }}
                                             <small class="text-danger">*</small>
                                         </label>
-                                        <input type="text" class="form-control" id="title" name="title" placeholder="Add Title...">
-                                        @error('title')
+                                        <select class="form-control js-basic-single" id="hotel_id" name="hotel_id" >
+                                            @forelse ($hotels as $hotel)
+                                            <option value="{{ $hotel->id }}">{{ $hotel->name }}</option>
+                                            @empty
+                                            <option>No Data</option>
+                                            @endforelse
+                                        </select>
+                                        @error('hotel_id')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>

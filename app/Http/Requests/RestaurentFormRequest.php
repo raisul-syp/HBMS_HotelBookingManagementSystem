@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Website;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NavmenuFormRequest extends FormRequest
+class RestaurentFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,16 +28,26 @@ class NavmenuFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'slug' => [
-                'required',
-                'string'
-            ],
             'hotel_id' => [
                 'required',
                 'string'
             ],
-            'display_order' => [
+            'slug' => [
+                'required',
+                'string'
+            ],
+            'short_description' => [
+                'required',
+                'string'
+            ],
+            'long_description' => [
                 'nullable'
+            ],
+            'logo' => [
+                'nullable',
+            ],
+            'image' => [
+                'nullable',
             ],
             'is_active' => [
                 'nullable'

@@ -42,8 +42,12 @@ class TestimonialFormRequest extends FormRequest
                 'nullable',
                 'mimes:jpg,jpeg,png'
             ],
-            'url' => [
+            'slug' => [
                 'nullable',
+            ],
+            'hotel_id' => [
+                'required',
+                'string'
             ],
             'display_order' => [
                 'nullable'

@@ -58,7 +58,7 @@
                         <div class="tab-content tabcontent-border">
                             <div class="tab-pane fade active show" id="facility_info" role="tabpanel">
                                 <div class="row">
-                                    <div class="form-group col-lg-4">
+                                    <div class="form-group col-lg-6">
                                         <label for="name">
                                             {{ __('Name') }}
                                             <small class="text-danger">*</small>
@@ -68,13 +68,29 @@
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-lg-4">
-                                        <label for="url">
-                                            {{ __('URL') }}
+                                    <div class="form-group col-lg-6">
+                                        <label for="slug">
+                                            {{ __('Slug') }}
                                         </label>
-                                        <input type="url" class="form-control" id="url" name="url" value="{{ $facility->url }}" placeholder="Add URL...">
+                                        <input type="text" class="form-control" id="slug" name="slug" value="{{ $facility->slug }}" placeholder="Add Slug...">
                                     </div>
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-6">
+                                        <label for="hotel_id">
+                                            {{ __('Hotel') }}
+                                            <small class="text-danger">*</small>
+                                        </label>
+                                        <select class="form-control js-basic-single" id="hotel_id" name="hotel_id" >
+                                            @forelse ($hotels as $hotel)
+                                            <option value="{{ $hotel->id }}" {{ old('hotel_id', $facility->hotel_id) == $hotel->id ? 'selected' : '' }}>{{ $hotel->name }}</option>
+                                            @empty
+                                            <option>No Data</option>
+                                            @endforelse
+                                        </select>
+                                        @error('hotel_id')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-lg-5">
                                         <label for="display_order">
                                             {{ __('Display Order') }}
                                         </label>

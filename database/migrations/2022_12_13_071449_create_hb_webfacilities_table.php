@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHbWebaddressesTable extends Migration
+class CreateHbWebfacilitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,15 @@ class CreateHbWebaddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hb_webaddresses', function (Blueprint $table) {
+        Schema::create('hb_webfacilities', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
             $table->string('slug')->nullable();
+            $table->unsignedBigInteger('hotel_id');
+            $table->mediumText('description')->nullable();
+            $table->string('image')->nullable();
             $table->string('display_order')->nullable();
-            $table->string('phone');
-            $table->string('phone_sales')->nullable();
-            $table->string('phone_reservation')->nullable();
-            $table->string('email');
-            $table->string('email_sales')->nullable();
-            $table->string('email_reservation')->nullable();
-            $table->string('address');
-            $table->string('google_map')->nullable();
-
+            
             $table->string('meta_title');
             $table->string('meta_keyword');
             $table->mediumText('meta_decription')->nullable();
@@ -35,6 +30,8 @@ class CreateHbWebaddressesTable extends Migration
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
+
+            $table->foreign('hotel_id')->references('id')->on('hb_hotels')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -46,6 +43,6 @@ class CreateHbWebaddressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hb_webaddresses');
+        Schema::dropIfExists('hb_webfacilities');
     }
 }

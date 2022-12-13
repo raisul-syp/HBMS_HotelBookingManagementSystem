@@ -13,6 +13,7 @@
                         <th>Name</th>
                         <th>Designation</th>
                         <th>Company</th>
+                        <th>Hotel</th>
                         <th>Display Order</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -30,6 +31,7 @@
                         <td>{{ $testimonial->name }}</td>
                         <td>{{ $testimonial->designation }}</td>
                         <td>{{ $testimonial->company }}</td>
+                        <td>{{ $testimonial->hotels->name }}</td>
                         <td>{{ $testimonial->display_order }}</td>
                         <td>
                             @if ($testimonial->is_active == '1')

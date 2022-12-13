@@ -10,7 +10,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Location</th>
+                        <th>Hotel</th>
                         <th>Slug</th>
                         <th>Room View</th>
                         <th>Facilities</th>

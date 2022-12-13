@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHbWebsubnavTable extends Migration
+class CreateHbRestaurentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateHbWebsubnavTable extends Migration
      */
     public function up()
     {
-        Schema::create('hb_websubnav', function (Blueprint $table) {
+        Schema::create('hb_restaurents', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('hotel_id');
             $table->string('slug');
-            $table->unsignedBigInteger('parent_id');
-            $table->string('display_order')->nullable();
+            $table->mediumText('short_description');
+            $table->longText('long_description')->nullable();
+            $table->string('logo')->nullable();
 
             $table->string('meta_title');
             $table->string('meta_keyword');
@@ -28,6 +30,8 @@ class CreateHbWebsubnavTable extends Migration
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
+
+            $table->foreign('hotel_id')->references('id')->on('hb_hotels')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -39,6 +43,6 @@ class CreateHbWebsubnavTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hb_websubnav');
+        Schema::dropIfExists('hb_restaurents');
     }
 }

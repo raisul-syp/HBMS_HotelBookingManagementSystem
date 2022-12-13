@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Website;
 
+use App\Models\Hotel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Website\NavigationMenu;
@@ -16,7 +17,8 @@ class MenuController extends Controller
 
     public function create()
     {
-        return view('admin.website.menu.create');
+        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.website.menu.create', compact('hotels'));
     }
 
     public function store(NavmenuFormRequest $request)
@@ -27,7 +29,7 @@ class MenuController extends Controller
 
         $menu->name = $validatedData['name'];
         $menu->slug = $validatedData['slug'];
-        $menu->hotel_location = $validatedData['hotel_location'];
+        $menu->hotel_id = $validatedData['hotel_id'];
         $menu->display_order = $validatedData['display_order'];
 
         $menu->meta_title = $validatedData['meta_title'];
@@ -43,7 +45,8 @@ class MenuController extends Controller
 
     public function edit(NavigationMenu $menu)
     {
-        return view('admin.website.menu.edit', compact('menu'));
+        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.website.menu.edit', compact('menu', 'hotels'));
     }
 
     public function update(NavmenuFormRequest $request, $menu)
@@ -54,7 +57,7 @@ class MenuController extends Controller
 
         $menu->name = $validatedData['name'];
         $menu->slug = $validatedData['slug'];
-        $menu->hotel_location = $validatedData['hotel_location'];
+        $menu->hotel_id = $validatedData['hotel_id'];
         $menu->display_order = $validatedData['display_order'];
 
         $menu->meta_title = $validatedData['meta_title'];

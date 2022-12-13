@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Room;
 use App\Models\Website\NavigationMenu;
 use App\Models\Website\Page;
 use Illuminate\Support\ServiceProvider;
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $menuItems = NavigationMenu::where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->get();
         $footerItems = Page::where('footer_item','1')->where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->get();
-        view()->share(compact('menuItems', 'footerItems'));
+        $rooms = Room::where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->get();
+        view()->share(compact('menuItems', 'footerItems', 'rooms'));
     }
 }

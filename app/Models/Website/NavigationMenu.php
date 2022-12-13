@@ -9,12 +9,12 @@ class NavigationMenu extends Model
 {
     use HasFactory;
 
-    protected $table = 'hb_webnav';
+    protected $table = 'hb_webnavs';
 
     protected $fillable = [
         'name',
         'slug',
-        'hotel_location',
+        'hotel_id',
         'display_order',
         'meta_title',
         'meta_keyword',
@@ -24,9 +24,4 @@ class NavigationMenu extends Model
         'created_by',
         'updated_by',
     ];
-
-    public function submenus()
-    {
-        return $this->hasMany(NavigationSubmenu::class, 'parent_id')->where('is_active','1')->where('is_delete','1')->orderBy('display_order','ASC');
-    }
 }

@@ -58,7 +58,7 @@
                         <div class="tab-content tabcontent-border">
                             <div class="tab-pane fade active show" id="slider_info" role="tabpanel">
                                 <div class="row">
-                                    <div class="form-group col-lg-6">
+                                    <div class="form-group col-lg-4">
                                         <label for="name">
                                             {{ __('Name') }}
                                             <small class="text-danger">*</small>
@@ -68,11 +68,27 @@
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-lg-6">
-                                        <label for="url">
-                                            {{ __('URL') }}
+                                    <div class="form-group col-lg-4">
+                                        <label for="slug">
+                                            {{ __('Slug') }}
                                         </label>
-                                        <input type="url" class="form-control" id="url" name="url" value="{{ $slider->url }}" placeholder="Add URL...">
+                                        <input type="text" class="form-control" id="slug" name="slug" value="{{ $slider->slug }}" placeholder="Add Slug...">
+                                    </div>
+                                    <div class="form-group col-lg-4">
+                                        <label for="hotel_id">
+                                            {{ __('Hotel') }}
+                                            <small class="text-danger">*</small>
+                                        </label>
+                                        <select class="form-control js-basic-single" id="hotel_id" name="hotel_id" >
+                                            @forelse ($hotels as $hotel)
+                                            <option value="{{ $hotel->id }}" {{ old('hotel_id', $slider->hotel_id) == $hotel->id ? 'selected' : '' }}>{{ $hotel->name }}</option>
+                                            @empty
+                                            <option>No Data</option>
+                                            @endforelse
+                                        </select>
+                                        @error('hotel_id')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="desktop_image">
@@ -123,30 +139,6 @@
                                             {{ __('Content 5') }}
                                         </label>
                                         <input type="text" class="form-control" id="content_5" name="content_5" value="{{ $slider->content_5 }}" placeholder="Add 3rd Content...">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <label for="button_1">
-                                            {{ __('Button 1') }}
-                                        </label>
-                                        <input type="text" class="form-control" id="button_1" name="button_1" value="{{ $slider->button_1 }}" placeholder="Add 1st Button Title...">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <label for="button_2">
-                                            {{ __('Button 2') }}
-                                        </label>
-                                        <input type="text" class="form-control" id="button_2" name="button_2" value="{{ $slider->button_2 }}" placeholder="Add 2nd Button Title...">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <label for="button_1_url">
-                                            {{ __('Button 1 URL') }}
-                                        </label>
-                                        <input type="url" class="form-control" id="button_1_url" name="button_1_url" value="{{ $slider->button_1_url }}" placeholder="Add 1st Button Title...">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <label for="button_2_url">
-                                            {{ __('Button 2 URL') }}
-                                        </label>
-                                        <input type="url" class="form-control" id="button_2_url" name="button_2_url" value="{{ $slider->button_2_url }}" placeholder="Add 2nd Button Title...">
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label for="display_order">

@@ -28,8 +28,12 @@ class SliderFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'url' => [
+            'slug' => [
                 'nullable'
+            ],
+            'hotel_id' => [
+                'required',
+                'string'
             ],
             'desktop_image' => [
                 'nullable',
@@ -54,18 +58,6 @@ class SliderFormRequest extends FormRequest
                 'nullable'
             ],
             'content_5' => [
-                'nullable'
-            ],
-            'button_1' => [
-                'nullable'
-            ],
-            'button_2' => [
-                'nullable'
-            ],
-            'button_1_url' => [
-                'nullable'
-            ],
-            'button_2_url' => [
                 'nullable'
             ],
             'display_order' => [

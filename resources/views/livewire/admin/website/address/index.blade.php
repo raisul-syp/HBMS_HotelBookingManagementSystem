@@ -5,11 +5,11 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-responsive-sm">
+            <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
                         <th>ID</th>
-                        <th>Title</th>
+                        <th>Hotel</th>
                         <th>Phone</th>
                         <th>Email</th>
                         <th>Address</th>
@@ -22,7 +22,7 @@
                     @forelse ($addresses as $address)
                     <tr>
                         <td>{{ $address->id }}</td>
-                        <td>{{ $address->title }}</td>
+                        <td>{{ $address->hotels->name }}</td>
                         <td>{{ $address->phone }}</td>
                         <td>{{ $address->email }}</td>
                         <td>{{ $address->address }}</td>
