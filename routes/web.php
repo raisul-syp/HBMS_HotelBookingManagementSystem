@@ -99,6 +99,24 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::put('/edit/{restaurent}', 'update');
     });
 
+    // Hall
+    Route::prefix('/admin/hall')->controller(App\Http\Controllers\Admin\HallController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{hall}', 'edit');
+        Route::put('/edit/{hall}', 'update');
+    });
+
+    // Wellness
+    Route::prefix('/admin/wellness')->controller(App\Http\Controllers\Admin\WellnessController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{wellness}', 'edit');
+        Route::put('/edit/{wellness}', 'update');
+    });
+
     // Guest
     Route::prefix('/admin/guest')->controller(App\Http\Controllers\Admin\GuestController::class)->group(function (){
         Route::get('/', 'index');

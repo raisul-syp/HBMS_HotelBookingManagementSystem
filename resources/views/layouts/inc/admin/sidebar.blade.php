@@ -59,6 +59,26 @@
         <li>
             <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                 <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Halls') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/hall/create') }}">{{ __('Add Hall') }}</a></li>
+                <li><a href="{{ url('admin/hall') }}">{{ __('All Hall') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Wellness') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/wellness/create') }}">{{ __('Add Wellness') }}</a></li>
+                <li><a href="{{ url('admin/wellness') }}">{{ __('All Wellness') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
                 <span class="nav-text">{{ __('Bookings') }}</span>
             </a>
             <ul aria-expanded="false">

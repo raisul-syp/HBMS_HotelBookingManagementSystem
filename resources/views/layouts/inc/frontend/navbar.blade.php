@@ -23,7 +23,34 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($rooms as $room)
-                        <li><a class="dropdown-item" href="{{ $room->id }}">{{ $room->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'rooms/room-details/'.$room->id }}">{{ $room->name }}</a></li>
+                        @endforeach
+                      </ul>
+                </li>
+                @elseif ($item->name == 'Restaurents')
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
+                      <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
+                        @foreach ($restaurents as $restaurent)
+                        <li><a class="dropdown-item" href="{{ 'restaurents/restaurent-details/'.$restaurent->id }}">{{ $restaurent->name }}</a></li>
+                        @endforeach
+                      </ul>
+                </li>
+                @elseif ($item->name == 'Halls')
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
+                      <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
+                        @foreach ($halls as $hall)
+                        <li><a class="dropdown-item" href="{{ 'halls/hall-details/'.$hall->id }}">{{ $hall->name }}</a></li>
+                        @endforeach
+                      </ul>
+                </li>
+                @elseif ($item->name == 'Wellness')
+                <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
+                      <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
+                        @foreach ($wellnesses as $wellness)
+                        <li><a class="dropdown-item" href="{{ 'wellness/wellness-details/'.$wellness->id }}">{{ $wellness->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>

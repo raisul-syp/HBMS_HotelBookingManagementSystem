@@ -1,22 +1,21 @@
 @extends('layouts.admin')
-@section('title', 'Menu List')
+@section('title', 'Wellness List')
 
 @section('content')
 <div class="container-fluid">
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h2 class="page-header-title">{{ __('Menu List') }}</h2>
+                <h2 class="page-header-title">{{ __('Wellness List') }}</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Website') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Menu') }}</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Menu List') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Wellness') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Wellness List') }}</a></li>
                 </ol>
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-            <a href="{{ url('admin/website/menu/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Menu') }}</a>
+            <a href="{{ url('admin/wellness/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Wellness') }}</a>
         </div>
     </div>
 
@@ -30,7 +29,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <livewire:admin.website.menu.index />
+            <livewire:admin.wellness.index />
         </div>
     </div>
 </div>

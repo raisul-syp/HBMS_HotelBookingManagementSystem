@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        <h4 class="card-title">Restaurent Table</h4>
+        <h4 class="card-title">Wellness Table</h4>
     </div>
 
     <div class="card-body">
@@ -18,17 +18,17 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @forelse ($restaurents as $restaurent)
+                    @forelse ($wellnesses as $wellness)
                     <tr>
-                        <td>{{ $restaurent->id }}</td>
+                        <td>{{ $wellness->id }}</td>
                         <td>
-                            <img src="{{ asset('uploads/restaurents/logo/'.$restaurent->logo_image) }}" alt="" class="list-image">
+                            <img src="{{ asset('uploads/wellness/logo/'.$wellness->logo_image) }}" alt="" class="list-image">
                         </td>
-                        <td>{{ $restaurent->name }}</td>
-                        <td>{{ $restaurent->hotels->name }}</td>
-                        <td>{{ $restaurent->slug }}</td>
+                        <td>{{ $wellness->name }}</td>
+                        <td>{{ $wellness->hotels->name }}</td>
+                        <td>{{ $wellness->slug }}</td>
                         <td>
-                            @if ($restaurent->is_active == '1')
+                            @if ($wellness->is_active == '1')
                                 <span class="badge badge-success text-white">Active</span>
                             @else
                                 <span class="badge badge-danger">Deactive</span>
@@ -36,10 +36,10 @@
                         </td>
                         <td>
                             <span data-toggle="tooltip" data-placement="top" title="Edit">
-                                <a href="{{ url('admin/restaurent/edit/'.$restaurent->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
+                                <a href="{{ url('admin/wellness/edit/'.$wellness->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
                             <span data-toggle="tooltip" data-placement="top" title="Delete">
-                                <a href="#" wire:click="deleteRecord({{ $restaurent->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
+                                <a href="#" wire:click="deleteRecord({{ $wellness->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
                             @include('modal.admin.delete')
                         </td>
@@ -56,7 +56,7 @@
         </div>
 
         <div class="pagination-section">
-            {{ $restaurents->links() }}
+            {{ $wellnesses->links() }}
         </div>
     </div>
 </div>

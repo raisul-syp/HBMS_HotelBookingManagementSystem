@@ -162,4 +162,11 @@ body {
     padding: 8px;
 }
 
+img.list-image {
+    width: 90px;
+    height: auto;
+    background: #342f4a;
+    padding: 10px;
+}
+
 

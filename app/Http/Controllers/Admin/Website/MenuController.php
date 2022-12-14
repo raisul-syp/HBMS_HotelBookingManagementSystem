@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Website;
 
 use App\Models\Hotel;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Website\NavigationMenu;
@@ -28,7 +29,7 @@ class MenuController extends Controller
         $menu = new NavigationMenu();
 
         $menu->name = $validatedData['name'];
-        $menu->slug = $validatedData['slug'];
+        $menu->slug = Str::slug($validatedData['slug']);
         $menu->hotel_id = $validatedData['hotel_id'];
         $menu->display_order = $validatedData['display_order'];
 
@@ -56,7 +57,7 @@ class MenuController extends Controller
         $menu = NavigationMenu::findOrFail($menu);
 
         $menu->name = $validatedData['name'];
-        $menu->slug = $validatedData['slug'];
+        $menu->slug = Str::slug($validatedData['slug']);
         $menu->hotel_id = $validatedData['hotel_id'];
         $menu->display_order = $validatedData['display_order'];
 

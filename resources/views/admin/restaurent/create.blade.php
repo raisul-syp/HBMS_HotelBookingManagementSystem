@@ -148,9 +148,9 @@
 
                             <div class="tab-pane fade" id="restaurent_image" role="tabpanel">
                                 <div class="form-group row">
-                                    <div class="col-sm-2 col-form-label text-right" for="logo">{{ __('Logo') }}</div>
+                                    <div class="col-sm-2 col-form-label text-right" for="logo_image">{{ __('Logo') }}</div>
                                     <div class="col-sm-10">                                      
-                                        <input type="file" class="dropify" id="logo" name="logo" />
+                                        <input type="file" class="dropify" id="logo_image" name="logo_image" />
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0">

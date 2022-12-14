@@ -20,7 +20,7 @@ class CreateHbRestaurentsTable extends Migration
             $table->string('slug');
             $table->mediumText('short_description');
             $table->longText('long_description')->nullable();
-            $table->string('logo')->nullable();
+            $table->string('logo_image')->nullable();
 
             $table->string('meta_title');
             $table->string('meta_keyword');

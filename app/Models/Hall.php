@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use App\Models\Hotel;
-use App\Models\RestaurentImage;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Restaurent extends Model
+class Hall extends Model
 {
     use HasFactory;
 
-    protected $table = 'hb_restaurents';
+    protected $table = 'hb_halls';
 
     protected $fillable = [
         'name',
@@ -34,8 +32,8 @@ class Restaurent extends Model
         return $this->belongsTo(Hotel::class, 'hotel_id');
     }
 
-    public function restaurentImages()
+    public function hallImages()
     {
-        return $this->hasMany(RestaurentImage::class, 'restaurent_id', 'id');
+        return $this->hasMany(HallImage::class, 'hall_id', 'id');
     }
 }
