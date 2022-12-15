@@ -7,7 +7,11 @@
     <title>@yield('title') - {{ config('app.name') }}</title>
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('frontend/images/favicon.ico') }}">
+    @foreach ($settings as $item)
+    @if ($item->hotel_id == '1')
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('uploads/site/'.$item->icon) }}">
+    @endif
+    @endforeach
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -163,5 +163,11 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="{{ url('admin/settings') }}">
+                <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Settings') }}</span>
+            </a>
+        </li>
     </ul>
 </div>

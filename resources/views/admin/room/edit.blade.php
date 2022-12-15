@@ -160,7 +160,7 @@
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text bg-primary">
-                                                    <img src="{{ asset('admin/images/taka.png') }}" alt="">
+                                                    <i class="fa fa-usd"></i>
                                                 </span>
                                             </div>
                                             <input type="number" class="form-control" id="price" name="price" value="{{ $room->price }}" placeholder="Add Price...">

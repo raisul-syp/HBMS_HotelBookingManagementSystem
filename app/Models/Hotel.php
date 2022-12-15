@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use App\Models\Website\Address;
-use App\Models\Website\Facility;
+use App\Models\Settings;
 use App\Models\Website\Page;
 use App\Models\Website\Slider;
+use App\Models\Website\Address;
+use App\Models\Website\Facility;
 use App\Models\Website\Testimonial;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Hotel extends Model
 {
@@ -30,6 +31,11 @@ class Hotel extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function settings()
+    {
+        return $this->hasMany(Settings::class, 'hotel_id', 'id');
+    }
 
     public function rooms()
     {

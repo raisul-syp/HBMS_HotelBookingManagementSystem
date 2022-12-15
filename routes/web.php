@@ -202,7 +202,7 @@ Route::group(['middleware' => 'isAdmin'], function() {
             Route::put('/edit/{page}', 'update');
         });
 
-        // Page
+        // Address
         Route::prefix('/addresses')->controller(App\Http\Controllers\Admin\Website\AddressController::class)->group(function (){
             Route::get('/', 'index');
             Route::get('/create', 'create');
@@ -210,6 +210,15 @@ Route::group(['middleware' => 'isAdmin'], function() {
             Route::get('/edit/{address}', 'edit');
             Route::put('/edit/{address}', 'update');
         });
+    });
+
+    // Settings
+    Route::prefix('/admin/settings')->controller(App\Http\Controllers\Admin\SettingsController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{settings}', 'edit');
+        Route::put('/edit/{settings}', 'update');
     });
 
 });

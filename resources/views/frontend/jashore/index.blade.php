@@ -1,4 +1,4 @@
-@extends('layouts.guest')
+@extends('layouts.guestJashore')
 @section('title', 'Home')
 
 @section('content')
@@ -6,6 +6,7 @@
     <div class="heroSlider_section_inner desktop-view">
         <div class="owl-carousel owl-theme home-slider">
             @foreach ($sliders as $slider)
+            @if ($slider->hotel_id == '2')
             <div class="item">
                 <img src="{{ asset('frontend/images/sliders/'.$slider->desktop_image) }}" alt="" width="100%" height="603px">
                 <div class="cover">
@@ -13,23 +14,24 @@
                         <div class="container">
                             <div class="header-content">
                                 <h3>{{ $slider->content_1 }}</h3>
-                                {{-- <h1>{{ $slider->content_2 }}</h1> --}}
-                                <h1>The Zabeer Jashore</h1>
+                                <h1>{{ $slider->content_2 }}</h1>
                                 <hr>
                                 <h4>{{ $slider->content_3 }}</h4>
-                                <a href="{{ $slider->button_1_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_1 }}</a>
-                                <a href="{{ $slider->button_2_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_2 }}</a>
+                                <a href="/" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
+                                <a href="/Jashore" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>                
+            @endif
             @endforeach
         </div>
     </div>
     <div class="heroSlider_section_inner mobile-view">
         <div class="owl-carousel owl-theme home-slider">
             @foreach ($sliders as $slider)
+            @if ($slider->hotel_id == '1')
             <div class="item">
                 <img src="{{ asset('frontend/images/sliders/'.$slider->mobile_image) }}" alt="" width="1320px" height="1000px">
                 <div class="cover">
@@ -37,8 +39,7 @@
                         <div class="container">
                             <div class="header-content">
                                 <h3>{{ $slider->content_1 }}</h3>
-                                {{-- <h1>{{ $slider->content_2 }}</h1> --}}
-                                <h1>The Zabeer Jashore</h1>
+                                <h1>{{ $slider->content_2 }}</h1>
                                 <hr>
                                 <h4>{{ $slider->content_3 }}</h4>
                                 <a href="{{ $slider->button_1_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_1 }}</a>
@@ -47,7 +48,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>          
+            @endif
             @endforeach
         </div>
     </div>
@@ -74,8 +76,11 @@
                         <div class="form_input col-12">
                             <label for="hotel_location" class="form-label text-white">Hotel Location:</label>
                             <select class="form-select" id="hotel_location" name="hotel_location">
-                                <option value="Dhaka">Dhaka</option>
-                                <option value="Jashore">Jashore</option>
+                                @forelse ($hotels as $hotel)
+                                <option value="{{ $hotel->id }}">{{ $hotel->hotel_location }}</option>
+                                @empty
+                                <option>No Data</option>
+                                @endforelse
                               </select>
                         </div>
                         <div class="form_input col-12">
@@ -120,6 +125,7 @@
     <div class="about_section_inner">
         <div class="container">
             @foreach ($aboutUs as $about)
+            @if ($about->hotel_id == '1')
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <div class="image_box">
@@ -149,7 +155,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>      
+            @endif
             @endforeach
         </div>
     </div>
@@ -168,8 +175,8 @@
             </div>
 
             <div class="row mt-4">
-                @foreach ($rooms as $room)
-                <div class="col-lg-6 col-mob-6 mb-4">
+                @foreach ($rooms->slice(0, 3) as $room)
+                <div class="col-lg-4 col-mob-6 mb-4">
                     <div class="rooms_sec">
                         <div class="card">
                             <div class="card-image">

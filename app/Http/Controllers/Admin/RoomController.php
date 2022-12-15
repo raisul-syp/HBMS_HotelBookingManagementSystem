@@ -34,7 +34,15 @@ class RoomController extends Controller
 
         $room->name = $validatedData['name'];
         $room->hotel_id = $validatedData['hotel_id'];
-        $room->slug = Str::slug($validatedData['slug']);
+        
+        if($room->hotel_id == '1'){
+            $location = 'dhaka';
+        }
+        if($room->hotel_id == '2') {
+            $location = 'jashore';
+        }
+
+        $room->slug = Str::slug($validatedData['slug']).'-'.$location;
         $room->short_description = $validatedData['short_description'];
         $room->long_description = $validatedData['long_description'];
         $room->max_adults = $validatedData['max_adults'];
@@ -96,7 +104,15 @@ class RoomController extends Controller
 
         $room->name = $validatedData['name'];
         $room->hotel_id = $validatedData['hotel_id'];
-        $room->slug = Str::slug($validatedData['slug']);
+        
+        if($room->hotel_id == '1'){
+            $location = 'dhaka';
+        }
+        if($room->hotel_id == '2') {
+            $location = 'jashore';
+        }
+
+        $room->slug = Str::slug($validatedData['slug']).'-'.$location;
         $room->short_description = $validatedData['short_description'];
         $room->long_description = $validatedData['long_description'];
         $room->max_adults = $validatedData['max_adults'];

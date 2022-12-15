@@ -65,7 +65,7 @@
                                         </label>
                                         <select class="form-control js-basic-single" id="hotel_id" name="hotel_id" >
                                             @forelse ($hotels as $hotel)
-                                            <option value="{{ $hotel->id }}" {{ old('hotel_id', $facility->hotel_id) == $hotel->id ? 'selected' : '' }}>{{ $hotel->name }}</option>
+                                            <option value="{{ $hotel->id }}" {{ old('hotel_id', $address->hotel_id) == $hotel->id ? 'selected' : '' }}>{{ $hotel->name }}</option>
                                             @empty
                                             <option>No Data</option>
                                             @endforelse

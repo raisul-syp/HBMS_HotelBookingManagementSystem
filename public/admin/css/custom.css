@@ -169,4 +169,8 @@ img.list-image {
     padding: 10px;
 }
 
+.input-group-text i {
+    font-size: 16px !important;
+}
+
 

@@ -7,9 +7,13 @@
             <span class="icon-bar middle"></span>
             <span class="icon-bar"></span>
         </button>
+        @foreach ($settings as $item)
+        @if ($item->hotel_id == '1')
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('frontend/images/logos/png/logo-dhaka.png') }}" alt="Zabeer Hotel International">
-        </a>
+            <img src="{{ asset('uploads/site/'.$item->logo) }}" alt="{{ $item->name }}">
+        </a>                         
+        @endif
+        @endforeach
         <button class="search-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse"
             data-bs-target="#searchSupportedContent" aria-controls="searchSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
