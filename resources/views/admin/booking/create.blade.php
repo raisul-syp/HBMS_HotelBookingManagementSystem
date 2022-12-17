@@ -161,12 +161,6 @@
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control js-basic-single room-list" id="room_id" name="room_id">
-                                    {{-- <option selected disabled>--Select Room--</option>
-                                    @forelse ($rooms as $room)
-                                    <option value="{{ $room->id }}">{{ $room->name }}</option>
-                                    @empty
-                                    <option>No Data</option>
-                                    @endforelse --}}
                                 </select>
                                 @error('room_id')
                                     <small class="text-danger">{{ $message }}</small>
@@ -218,7 +212,6 @@
     $(document).ready(function(){
         $(".checkin-date").on('blur',function(){
             var _checkindate = $(this).val();
-            // console.log(_checkindate);
 
             // Ajax
             $.ajax({
@@ -231,7 +224,13 @@
                 success: function(res){
                     var _html = '';
                     $.each(res.data,function(index,row){
-                        _html+='<option value="'+row.id+'">'+row.name+' - '+row.hotel_location+'</option>';
+                        if(row.hotel_id == '1'){
+                            var _location = 'Dhaka';
+                        }
+                        if(row.hotel_id == '2'){
+                            var _location = 'Jashore';
+                        }
+                        _html+='<option value="'+row.id+'">'+row.name+' ('+_location+')</option>';
                     });
                     $(".room-list").html(_html);
                 }

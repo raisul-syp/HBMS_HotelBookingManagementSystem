@@ -31,7 +31,7 @@
                         @endif
                     </div>
                     <div class="room-loaction">
-                        {{ $room->hotel_location }}
+                        {{ $room->hotels->hotel_location }}
                     </div>
                     <div class="card-body">
                         <div class="room-header">
@@ -39,7 +39,7 @@
                                 {{ $room->name }}
                             </div>
                             <div class="room-price">
-                                ৳{{ $room->price }}<span>/ night</span>
+                                ${{ $room->price }}++<span>/ night</span>
                             </div>
                         </div>
                         <div class="room-body">

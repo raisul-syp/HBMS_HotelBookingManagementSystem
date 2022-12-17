@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 12:54 PM
+-- Generation Time: Dec 17, 2022 at 01:28 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -102,6 +102,16 @@ CREATE TABLE `hb_bookings` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_bookings`
+--
+
+INSERT INTO `hb_bookings` (`id`, `guest_id`, `room_id`, `staff_id`, `checkin_date`, `checkout_date`, `checkin_time`, `checkout_time`, `total_adults`, `total_childs`, `booking_status`, `is_delete`, `booking_comment`, `created_at`, `updated_at`) VALUES
+(5, 1, 2, 2, '2022-12-19', '2022-12-20', '14:00', '12:00', '2', '1', 1, 1, 'Admin Booking', '2022-12-17 02:32:07', '2022-12-17 02:32:07'),
+(6, 1, 2, 2, '2022-12-20', '2022-12-21', '14:00', '12:00', '1', '0', 1, 1, 'Admin', '2022-12-17 02:36:07', '2022-12-17 02:36:07'),
+(7, 1, 1, 2, '2022-12-18', '2022-12-19', '14:00', '12:00', '2', '1', 1, 1, 'asdasd', '2022-12-17 02:37:24', '2022-12-17 02:37:24'),
+(8, 1, 2, 2, '2022-12-22', '2022-12-23', '14:00', '12:00', '1', '0', 1, 1, 'Admin', '2022-12-17 02:49:15', '2022-12-17 02:49:15');
 
 -- --------------------------------------------------------
 
@@ -852,7 +862,14 @@ CREATE TABLE `hb_webfacilities` (
 --
 
 INSERT INTO `hb_webfacilities` (`id`, `name`, `slug`, `hotel_id`, `description`, `image`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Breakfast', 'breakfast', 1, 'Complementary Breakfast', 'breakfast-dhaka.png', '1', 'Complementary Breakfast', 'Complementary Breakfast', 'Complementary Breakfast', 1, 1, '0', '0', '2022-12-13 01:41:42', '2022-12-13 01:43:50');
+(1, 'Breakfast', 'breakfast', 1, 'Complementary Breakfast', 'breakfast-dhaka.png', '1', 'Complementary Breakfast', 'Complementary Breakfast', 'Complementary Breakfast', 1, 1, '0', '0', '2022-12-13 01:41:42', '2022-12-13 01:43:50'),
+(2, 'Bottle of Water', 'bottle-of-water', 1, 'Complimentary Bottle of Water', 'bottle-of-water-dhaka.png', '2', 'Complimentary Bottle of Water', 'Complimentary Bottle of Water', 'Complimentary Bottle of Water', 1, 1, '0', '0', NULL, NULL),
+(3, 'Free Wi-fi', 'free-wi-fi', 1, 'Free Wi-fi Access', 'free-wi-fi-dhaka.png', '3', 'Free Wi-fi Access', 'Free Wi-fi Access', 'Free Wi-fi Access', 1, 1, '0', '0', NULL, NULL),
+(4, 'Laundry Service', 'laundry-service', 1, 'Express Laundry Service', 'laundry-service-dhaka.png', '4', 'Express Laundry Service', 'Express Laundry Service', 'Express Laundry Service', 1, 1, '0', '0', NULL, NULL),
+(5, 'Access of Gym', 'access-of-gym', 1, 'Complimentary Access of Gym', 'access-of-gym-dhaka.png', '5', 'Complimentary Access of Gym', 'Complimentary Access of Gym', 'Complimentary Access of Gym', 1, 1, '0', '0', NULL, NULL),
+(6, 'Free Parking', 'free-parking', 1, 'Free Parking', 'free-parking-dhaka.png', '6', 'Free Parking', 'Free Parking', 'Free Parking', 1, 1, '0', NULL, NULL, NULL),
+(7, 'Airport Pick-up & Drop', 'airport-pick-up-drop', 1, 'Airport Pick-up & Drop', 'airport-pick-up-drop-dhaka.png', '7', 'Airport Pick-up & Drop', 'Airport Pick-up & Drop', 'Airport Pick-up & Drop', 1, 1, '0', NULL, NULL, NULL),
+(8, 'Daily News Papers', 'daily-news-papers', 1, 'Daily News Papers', 'daily-news-papers-dhaka.png', '8', 'Daily News Papers', 'Daily News Papers', 'Daily News Papers', 1, 1, '0', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -882,7 +899,7 @@ CREATE TABLE `hb_webnavs` (
 --
 
 INSERT INTO `hb_webnavs` (`id`, `name`, `slug`, `hotel_id`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Home', 'home', 1, '1', 'Home', 'Home', 'Home', 1, 1, '0', '0', '2022-12-12 23:24:20', '2022-12-14 05:02:41'),
+(1, 'Home', '', 1, '1', 'Home', 'Home', 'Home', 1, 1, '0', '0', '2022-12-12 23:24:20', '2022-12-17 00:25:51'),
 (2, 'Rooms', 'rooms', 1, '2', 'Rooms', 'Rooms', 'Rooms', 1, 1, '0', '0', '2022-12-13 03:43:09', '2022-12-14 05:02:28'),
 (3, 'Restaurents', 'restaurents', 1, '3', 'Restaurent', 'Restaurent', 'Restaurent', 1, 1, '0', NULL, '2022-12-14 01:07:41', '2022-12-14 01:07:41'),
 (4, 'Halls', 'halls', 1, '4', 'Halls', 'Halls', 'Halls', 1, 1, '0', '0', '2022-12-14 05:03:01', '2022-12-14 05:04:11'),
@@ -924,7 +941,18 @@ CREATE TABLE `hb_webpages` (
 --
 
 INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_description`, `long_description`, `slug`, `hotel_id`, `display_order`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `footer_item`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'About Us', 'A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates.', '<p style=\"text-align: justify; \"><font color=\"#212529\" face=\"Nunito Sans, sans-serif\"><span style=\"font-size: 16px;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span></font><br></p>', 'about-us', 1, '1', 'about-us-dhaka.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '0', '0', '2022-12-13 02:02:59', '2022-12-13 02:12:45');
+(1, 'About Us', 'A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates.', '<p style=\"text-align: justify; \"><font color=\"#212529\" face=\"Nunito Sans, sans-serif\"><span style=\"font-size: 16px;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span></font><br></p>', 'about-us', 1, '1', 'about-us-dhaka.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '0', '0', '2022-12-13 02:02:59', '2022-12-13 02:12:45'),
+(2, 'Contact Us', 'Contact Us', 'Contact Us', 'Contact Us', '<p>Contact Us<br></p>', 'contact-us', 1, '2', NULL, 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:39:02'),
+(3, 'Offers', 'Offers', 'Offers', 'Offers', '<p>Offers<br></p>', 'offers', 1, '3', NULL, 'Offers', 'Offers', 'Offers', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:39:55'),
+(4, 'News', 'News', 'News', 'News', '<p>News<br></p>', 'news', 1, '4', NULL, 'News', 'News', 'News', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:40:53'),
+(5, 'Rooms', 'Rooms', 'Rooms', 'Rooms', '<p>Rooms<br></p>', 'rooms', 1, '5', NULL, 'Rooms', 'Rooms', 'Rooms', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:41:12'),
+(6, 'Restaurants', 'Restaurants', 'Restaurants', 'Restaurants', '<p>Restaurants<br></p>', 'restaurants', 1, '6', NULL, 'Restaurants', 'Restaurants', 'Restaurants', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:41:27'),
+(7, 'Halls', 'Halls', 'Halls', 'Meeting & Events', '<p>Meeting &amp; Events<br></p>', 'halls', 1, '7', NULL, 'Halls', 'Halls', 'Halls', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:42:22'),
+(8, 'Wellness', 'Wellness', 'Wellness', 'Wellness', '<p>Wellness<br></p>', 'wellness', 1, '8', NULL, 'Wellness', 'Wellness', 'Wellness', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:42:39'),
+(9, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', '<p>Certificates &amp; Awards<br></p>', 'certificates-awards', 1, '9', NULL, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:42:54'),
+(10, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', '<p>Booking Cancelation Policy<br></p>', 'booking-cancelation-policy', 1, '10', NULL, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:43:20'),
+(11, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', '<p>Privacy Policy<br></p>', '/HotelBooking/privacy-policy', 1, '11', NULL, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 1, 1, 1, '0', NULL, NULL, NULL),
+(12, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '<p>Terms &amp; Conditions<br></p>', '/HotelBooking/terms-conditions', 1, '12', NULL, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 1, 1, 1, '0', '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1418,7 +1446,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hb_bookings`
 --
 ALTER TABLE `hb_bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `hb_country`
@@ -1508,7 +1536,7 @@ ALTER TABLE `hb_webaddresses`
 -- AUTO_INCREMENT for table `hb_webfacilities`
 --
 ALTER TABLE `hb_webfacilities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `hb_webnavs`
@@ -1520,7 +1548,7 @@ ALTER TABLE `hb_webnavs`
 -- AUTO_INCREMENT for table `hb_webpages`
 --
 ALTER TABLE `hb_webpages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `hb_websliders`

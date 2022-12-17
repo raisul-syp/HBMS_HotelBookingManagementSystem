@@ -3,8 +3,11 @@
 namespace App\Http\Livewire\Admin\Room;
 
 use App\Models\Room;
+use App\Models\Booking;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class Index extends Component
 {
@@ -21,21 +24,20 @@ class Index extends Component
     public function destroyRecord()
     {
         $room =  Room::find($this->room_id);
-        // $path = 'uploads/facilities/'.$facility->image;
-        // if(File::exists($path)){
-        //     File::delete($path);
-        // }
-        // $facility->delete();
+        
         $room->is_delete = '0';
         $room->update();
-        // session()->flash('message','Facility Has Been Deleted Successfully.');
+
         return redirect('admin/room')->with('message','Room Has Been Deleted Successfully.');
         $this->dispatchBrowserEvent('close-modal');
     }
     
     public function render()
     {
+        $todayDate = Carbon::today()->format('Y-m-d');
         $rooms = Room::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.room.index',['rooms' => $rooms]);
+        $bookedRooms = Booking::where('room_id')->count();
+        
+        return view('livewire.admin.room.index', compact('todayDate', 'rooms', 'bookedRooms'));
     }
 }

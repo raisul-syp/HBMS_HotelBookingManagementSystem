@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Room;
+use App\Models\Hotel;
+use App\Models\Booking;
 use App\Models\Facility;
 use App\Models\Roomtype;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoomFormRequest;
-use App\Models\Hotel;
 
 class RoomController extends Controller
 {

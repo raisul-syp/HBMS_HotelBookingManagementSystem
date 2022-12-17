@@ -15,6 +15,8 @@
                         <th>Room View</th>
                         <th>Facilities</th>
                         <th>Quantity</th>
+                        <th>Booked</th>
+                        <th>Available</th>
                         <th>Price</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -44,6 +46,17 @@
                             @empty
                             <small class="text-danger">No Facilities Added!</small>
                             @endforelse
+                        </td>
+                        <td>{{ $room->quantity }}</td>
+                        <td>
+                            @forelse ($room->bookings as $bookedRoom)                            
+                            {{ $bookedRoom->where('room_id', $room->id)->count() }}
+                            @break   
+                            @empty
+                            <div class="text-danger">0</div>
+                            @endforelse
+                            <br>
+                            {{ $bookedRooms }}
                         </td>
                         <td>{{ $room->quantity }}</td>
                         <td>{{ $room->price }}</td>
