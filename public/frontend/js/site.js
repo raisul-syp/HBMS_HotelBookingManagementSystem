@@ -80,13 +80,15 @@ $(document).ready(function () {
 
 
     $("#checkin_date").datepicker({
-        dateFormat: 'yy-mm-dd'
-        // dateFormat: 'd M yy'
+        dateFormat: 'yy-mm-dd',
+        minDate: new Date(),
+        maxDate: 30,
     });
 
     $("#checkout_date").datepicker({
-        dateFormat: 'yy-mm-dd'
-        // dateFormat: 'd M yy'
+        dateFormat: 'yy-mm-dd',
+        minDate: new Date(),
+        maxDate: 30,
     });
 
 

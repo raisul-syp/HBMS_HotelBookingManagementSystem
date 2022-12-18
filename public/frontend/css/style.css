@@ -618,7 +618,7 @@ Rooms Section Start
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 10px;
 }
@@ -627,13 +627,21 @@ Rooms Section Start
     font-weight: 700;
     font-size: 24px;
     margin-bottom: 0;
+    line-height: 18px;
 }
-.rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner h6 {
+.rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner .room-proce {
+    line-height: 18px;
+    text-align: right;
+}
+.rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner p {
     color: var(--siteColor1);
     margin-bottom: 0;
     font-size: 16px;
     font-weight: 600;
     font-style: initial;
+}
+.rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner p strong {
+    font-size: 22px;
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .btn-view {
     position: relative;
@@ -1279,6 +1287,7 @@ Footer Section End
 .availableRoom-div .card .availableRoom-card .room-info .room-pricing {
     display: flex;
     align-items: center;
+    justify-content: end;
     gap: 5px;
 }
 
@@ -1293,9 +1302,9 @@ Footer Section End
     font-size: 14px;
 }
 
-.availableRoom-div .card .availableRoom-card .room-info .booking-btn {
+/* .availableRoom-div .card .availableRoom-card .room-info .booking-btn {
     text-align: right;
-}
+} */
 
 .availableRoom-div .card .availableRoom-card .room-info .booking-btn button,
 .availableRoom-div .card .availableRoom-card .room-info .booking-btn a {
@@ -1304,7 +1313,7 @@ Footer Section End
     color: var(--siteColor1);
     font-size: 12px;
     font-weight: 700;
-    width: 70%;
+    width: 100%;
     border-radius: 0;
     transition: all 0.3s ease;
 }
@@ -1777,4 +1786,26 @@ Footer Section End
 .contact-section-inner .custom-nav-btn.active {
     background-color: var(--siteColor1) !important;
     color: var(--siteColor2) !important;
+}
+
+.availableRoom-div .availableRoom-card .room-info .room-availability-count {
+    text-align: left;
+}
+
+.availableRoom-div .availableRoom-card .room-info .room-availability-count .available-badge {
+    font-size: 12px;
+}
+
+.availableRoom-div .availableRoom-card .room-loaction {
+    background: var(--siteColor1);
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    width: fit-content;
+    padding: 8px 50px 8px 30px;
+    color: var(--siteColor2);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 12px;
+    position: absolute;
+    top: 21px;
+    left: 16px;
 }

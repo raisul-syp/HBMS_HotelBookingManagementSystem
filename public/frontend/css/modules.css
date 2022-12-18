@@ -6383,7 +6383,8 @@ body #ui-datepicker-div.ui-widget-content table td a:hover {
 }
 
 body #ui-datepicker-div.ui-widget-content table .ui-state-disabled span {
-    color: #1e1e1e;
+    /* color: #1e1e1e; */
+    color: #838383;
     background: 0 0;
     opacity: 1
 }

@@ -34,10 +34,7 @@ class Index extends Component
     
     public function render()
     {
-        $todayDate = Carbon::today()->format('Y-m-d');
-        $rooms = Room::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        $bookedRooms = Booking::where('room_id')->count();
-        
-        return view('livewire.admin.room.index', compact('todayDate', 'rooms', 'bookedRooms'));
+        $rooms = Room::where('is_delete','1')->orderBy('id','ASC')->paginate(10);        
+        return view('livewire.admin.room.index', compact('rooms'));
     }
 }

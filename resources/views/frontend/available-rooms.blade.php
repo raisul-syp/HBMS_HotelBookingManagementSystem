@@ -16,13 +16,13 @@
                                 <div class="row">
                                     <div class="form_input col-12 mb-3">
                                         <div class="date-box">
-                                            <input type="text" class="form-control check-in-out" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
+                                            <input type="date" class="form-control check-in-out" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
                                             <span class="lnr lnr-calendar-full icon"></span>
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
                                         <div class="date-box">
-                                            <input type="text" class="form-control check-in-out" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
+                                            <input type="date" class="form-control check-in-out" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
                                             <span class="lnr lnr-calendar-full icon"></span>
                                         </div>
                                     </div>
@@ -80,13 +80,19 @@
                                 <div class="card-body">
                                     <div class="availableRoom-card">
                                         <div class="row">
-                                            <div class="col-lg-5">
+                                            <div class="col-lg-4">
                                                 <div class="room-img">
-                                                    <img src="{{ asset('uploads/rooms/Suite-1669023019-1.jpg') }}" alt="">
+                                                    @foreach ($room->roomImages as $roomImage)
+                                                    <img src="{{ asset($roomImage->image) }}" alt="">
+                                                    @break
+                                                    @endforeach
+                                                </div>
+                                                <div class="room-loaction">
+                                                    {{ $room->hotels->hotel_location }}
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-7">
+                                            <div class="col-lg-8">
                                                 <div class="room-info">
                                                     <div class="row">
                                                         <div class="col-lg-12">
@@ -115,19 +121,20 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-lg-4 mb-2">
-                                                            <div class="room-location">
-                                                                <strong>Location: </strong>{{ $room->hotel_id }}
+                                                        <div class="col-lg-6 mb-2">
+                                                            <div class="room-availability-count">
+                                                                <span class="badge rounded-pill bg-success available-badge">{{ $room->quantity - $room->bookings->where('room_id', $room->id)->count() }} rooms are available out of {{ $room->quantity }}</span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-lg-6">
                                                             <div class="room-pricing">
-                                                                <h5>USD {{ $room->price }}++</h5> <span>/ night</span>
+                                                                <h5>${{ $room->price }}++<span>/night</span></h5><br>
+                                                                <p class="mb-0">Rack Rate</p>
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-12">
                                                             @if (Auth::user())
                                                             <div class="booking-btn">
                                                                 <button type="submit" class="btn btn-primary">Book Now</button>

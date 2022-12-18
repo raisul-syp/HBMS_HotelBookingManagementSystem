@@ -62,14 +62,14 @@
                         <div class="form_input col-12">
                             <label for="checkin_date" class="form-label text-white">Check-In:</label>
                             <div class="date-box">
-                                <input type="text" class="form-control" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
+                                <input type="date" class="form-control" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
                                 <span class="lnr lnr-calendar-full icon"></span>
                             </div>
                         </div>
                         <div class="form_input col-12">
                             <label for="checkout_date" class="form-label text-white">Check-Out:</label>
                             <div class="date-box">
-                                <input type="text" class="form-control" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
+                                <input type="date" class="form-control" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
                                 <span class="lnr lnr-calendar-full icon"></span>
                             </div>
                         </div>
@@ -180,7 +180,6 @@
                     <div class="rooms_sec">
                         <div class="card">
                             <div class="card-image">
-                                {{-- <img src="{{ asset('frontend/images/rooms/suite-room.jpg') }}" alt=""> --}}
                                 @if (count($room->roomImages) > 0)
                                 @foreach ($room->roomImages as $roomImage)
                                 <img src="{{ asset($roomImage->image) }}" alt="">
@@ -192,9 +191,15 @@
                                 <div class="content">
                                     <div class="content_inner">
                                         <h4>{{ $room->name }}</h4>
-                                        <h6>৳ <strong>{{ $room->price }}</strong> / Night</h6>
+                                        <div class="room-proce">
+                                            <p><strong>${{ $room->price }}++</strong>/night</p>
+                                            <small>Rack Rate</small>
+                                        </div>
                                     </div>
-                                    <a href="{{ url('rooms/room-details/'.$room->id) }}" class="btn-view">View more</a>
+                                    <a href="{{ url('rooms/room-details/'.$room->id) }}" class="btn-view">
+                                        <span>View details</span>
+                                        <i class="fas fa-long-arrow-alt-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>

@@ -55,10 +55,8 @@
                             @empty
                             <div class="text-danger">0</div>
                             @endforelse
-                            <br>
-                            {{ $bookedRooms }}
                         </td>
-                        <td>{{ $room->quantity }}</td>
+                        <td>{{ $room->quantity - $room->bookings->where('room_id', $room->id)->count() }}</td>
                         <td>{{ $room->price }}</td>
                         <td>
                             @if ($room->is_active == '1')

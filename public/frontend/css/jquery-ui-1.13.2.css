@@ -1046,7 +1046,8 @@ a.ui-button:active,
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
 .ui-widget-header .ui-state-disabled {
-	opacity: .35;
+	/* opacity: .35; */
+	opacity: 1;
 	-ms-filter: "alpha(opacity=35)"; /* support: IE8 */
 	background-image: none;
 }
