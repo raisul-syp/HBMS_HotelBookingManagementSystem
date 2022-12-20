@@ -60,6 +60,12 @@ class BookingFormRequest extends FormRequest
             'booking_comment' => [
                 'nullable',
             ],
+            'created_by' => [
+                'nullable',
+            ],
+            'updated_by' => [
+                'nullable',
+            ],
         ];
     }
 }

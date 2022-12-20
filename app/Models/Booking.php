@@ -24,6 +24,8 @@ class Booking extends Model
         'booking_status',
         'is_delete',
         'booking_comment',
+        'created_by',
+        'updated_by',
     ];
 
     public function guests()

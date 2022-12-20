@@ -22,7 +22,7 @@
                             @foreach ($footerItems as $item)
                             <li>
                                 <i data-feather="chevron-right"></i>
-                                <a href="{{ $item->slug }}">{{ $item->name }}</a>
+                                <a href="{{ 'http://localhost:8000/Jashore/'.$item->slug }}">{{ $item->name }}</a>
                             </li>
                             @endforeach
                         </ul>

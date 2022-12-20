@@ -27,16 +27,16 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($rooms as $room)
-                        <li><a class="dropdown-item" href="{{ 'rooms/room-details/'.$room->id }}">{{ $room->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/rooms/room-details/'.$room->id }}">{{ $room->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>
-                @elseif ($item->name == 'Restaurents')
+                @elseif ($item->name == 'Restaurants')
                 <li class="nav-item">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($restaurents as $restaurent)
-                        <li><a class="dropdown-item" href="{{ 'restaurents/restaurent-details/'.$restaurent->id }}">{{ $restaurent->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/restaurents/restaurent-details/'.$restaurent->id }}">{{ $restaurent->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>
@@ -45,7 +45,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($halls as $hall)
-                        <li><a class="dropdown-item" href="{{ 'halls/hall-details/'.$hall->id }}">{{ $hall->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/halls/hall-details/'.$hall->id }}">{{ $hall->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>
@@ -54,13 +54,13 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($wellnesses as $wellness)
-                        <li><a class="dropdown-item" href="{{ 'wellness/wellness-details/'.$wellness->id }}">{{ $wellness->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/wellness/wellness-details/'.$wellness->id }}">{{ $wellness->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>
                 @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ $item->slug }}"><span>{{ $item->name }}</span></a>
+                    <a class="nav-link" href="{{ 'http://localhost:8000/'.$item->slug }}"><span>{{ $item->name }}</span></a>
                 </li>
                 @endif
                 @endforeach
@@ -81,6 +81,21 @@
                     </a>
                 </li>
                 @endif
+
+                @if (Auth::user())
+                <li class="nav-item ms-2">
+                    <a class="nav-link btn btn-primary btn-golden" href="{{ url('/booking') }}">
+                        {{ _('Booking') }}
+                    </a>
+                </li>
+                @else
+                <li class="nav-item ms-2">
+                    <a class="nav-link btn btn-primary btn-golden" href="{{ route('login') }}">
+                        {{ _('Booking') }}
+                    </a>
+                </li>
+                @endif
+
             </ul>
         </div>
         <div class="collapse search-collapse" id="searchSupportedContent">

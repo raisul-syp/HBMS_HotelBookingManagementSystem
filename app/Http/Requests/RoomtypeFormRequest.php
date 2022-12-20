@@ -34,7 +34,10 @@ class RoomtypeFormRequest extends FormRequest
             ],
             'description' => [
                 'nullable',
-                'string'
+            ],
+            'image' => [
+                'nullable',
+                'mimes:jpg,jpeg,png'
             ],
             'meta_title' => [
                 'required',

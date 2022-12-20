@@ -9,6 +9,7 @@
                 <thead class="text-center bg-primary text-white">
                     <tr>
                         <th>ID</th>
+                        <th>Image</th>
                         <th>Name</th>
                         <th>Slug</th>
                         <th>Status</th>
@@ -19,6 +20,13 @@
                     @forelse ($roomtypes as $roomtype)
                     <tr>
                         <td>{{ $roomtype->id }}</td>
+                        <td>
+                            @if ($roomtype->image != null)
+                            <img src="{{ asset('uploads/roomviews/'.$roomtype->image) }}" class="data-table-image">
+                            @else
+                            <img src="{{ asset('admin/images/no-photo.png') }}" class="data-table-image">
+                            @endif
+                        </td>
                         <td>{{ $roomtype->name }}</td>
                         <td>{{ $roomtype->slug }}</td>
                         <td>

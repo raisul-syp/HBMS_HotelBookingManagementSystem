@@ -85,7 +85,7 @@ class WellnessController extends Controller
     public function edit(Wellness $wellness)
     {
         $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.hall.edit', compact('wellness','hotels'));
+        return view('admin.wellness.edit', compact('wellness','hotels'));
     }
 
     public function update(WellnessFormRequest $request, int $wellness_id)

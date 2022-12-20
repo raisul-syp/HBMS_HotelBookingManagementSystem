@@ -191,6 +191,8 @@
                                 <textarea class="form-control" id="booking_comment" name="booking_comment" rows="5" placeholder="Add booking comment..."></textarea>
                             </div>
                         </div>
+
+                        <input type="text" hidden id="created_by" name="created_by" value="{{ Auth::guard('admin')->user()->role_as }}">
                     </div>
                     <div class="card-footer">
                         <div class="text-right">
@@ -230,7 +232,7 @@
                         if(row.hotel_id == '2'){
                             var _location = 'Jashore';
                         }
-                        _html+='<option value="'+row.id+'">'+row.name+' ('+_location+')</option>';
+                        _html +='<option value="'+row.id+'">'+row.name+" (" +_location +") - "+row.quantity+" rooms are available</option>";
                     });
                     $(".room-list").html(_html);
                 }
@@ -241,7 +243,3 @@
 @endsection
 
 @endsection
-
-
-{{-- checkout-date
-checkin-date --}}

@@ -51,6 +51,16 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#room_type_image">
+                                    <span>
+                                        <strong>
+                                            <i class="ti-image"></i>
+                                            <span class="ml-2">{{ __('Image') }}</span>
+                                        </strong>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#room_type_seo">
                                     <span>
                                         <strong>
@@ -103,6 +113,14 @@
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="is_active" name="is_active" checked>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="room_type_image" role="tabpanel">
+                                <div class="form-group row mb-0">
+                                    <div class="col-sm-2 col-form-label text-right" for="image">{{ __('Image') }}</div>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="dropify" id="image" name="image" />
                                     </div>
                                 </div>
                             </div>

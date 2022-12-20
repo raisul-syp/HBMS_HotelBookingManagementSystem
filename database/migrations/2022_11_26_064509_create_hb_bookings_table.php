@@ -28,6 +28,9 @@ class CreateHbBookingsTable extends Migration
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->mediumText('booking_comment')->nullable();
 
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
+
             $table->foreign('guest_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('room_id')->references('id')->on('hb_rooms')->onDelete('cascade');
             $table->foreign('staff_id')->references('id')->on('admins')->onDelete('cascade');

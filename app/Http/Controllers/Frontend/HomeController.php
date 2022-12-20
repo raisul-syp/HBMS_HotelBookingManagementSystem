@@ -96,6 +96,7 @@ class HomeController extends Controller
             ->whereBetween('checkin_date', [$checkin_date, $checkout_date])
             ->orWhereBetween('checkout_date', [$checkin_date, $checkout_date]);
         })
+        ->where('quantity', '<=', 10)
         ->where('hotel_id', $hotel_location)
         ->where('max_adults', '>=', (int) $total_adults)
         ->where('max_childs', '>=', (int) $total_childs)

@@ -6,6 +6,7 @@ use App\Models\Roomtype;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\RoomtypeFormRequest;
 
 class RoomtypeController extends Controller
@@ -29,6 +30,17 @@ class RoomtypeController extends Controller
         $roomtype->name = $validatedData['name'];
         $roomtype->slug = Str::slug($validatedData['slug']) ;
         $roomtype->description = $validatedData['description'];
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+
+            $extension = $file->getClientOriginalExtension();
+            $filename = $roomtype->slug.'.'.$extension;
+            $file->move('uploads/roomviews/',$filename);
+
+            $roomtype->image = $filename;
+        }
+
         $roomtype->meta_title = $validatedData['meta_title'];
         $roomtype->meta_keyword = $validatedData['meta_keyword'];
         $roomtype->meta_decription = $validatedData['meta_decription'];
@@ -53,6 +65,21 @@ class RoomtypeController extends Controller
         $roomtype->name = $validatedData['name'];
         $roomtype->slug = Str::slug($validatedData['slug']);
         $roomtype->description = $validatedData['description'];
+
+        if($request->hasFile('image')){
+            $path = 'uploads/roomviews/'.$roomtype->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('image');
+
+            $extension = $file->getClientOriginalExtension();
+            $filename = $roomtype->slug.'.'.$extension;
+            $file->move('uploads/roomviews/',$filename);
+
+            $roomtype->image = $filename;
+        }
+        
         $roomtype->meta_title = $validatedData['meta_title'];
         $roomtype->meta_keyword = $validatedData['meta_keyword'];
         $roomtype->meta_decription = $validatedData['meta_decription'];

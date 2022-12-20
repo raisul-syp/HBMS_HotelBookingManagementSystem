@@ -18,6 +18,7 @@ class CreateHbRoomtypeTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->mediumText('description')->nullable();
+            $table->string('image')->nullable();
             
             $table->string('meta_title');
             $table->string('meta_keyword');

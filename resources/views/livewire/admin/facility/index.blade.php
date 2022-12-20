@@ -21,7 +21,9 @@
                         <td>{{ $facility->id }}</td>
                         <td>
                             @if ($facility->image != null)
-                                <img src="{{ asset('uploads/facilities/'.$facility->image) }}" class="data-table-image">
+                            <img src="{{ asset('uploads/facilities/'.$facility->image) }}" class="data-table-image">
+                            @else
+                            <img src="{{ asset('admin/images/no-photo.png') }}" class="data-table-image">
                             @endif
                         </td>
                         <td>{{ $facility->name }}</td>

@@ -62,15 +62,15 @@
                         <div class="form_input col-12">
                             <label for="checkin_date" class="form-label text-white">Check-In:</label>
                             <div class="date-box">
-                                <input type="date" class="form-control" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
-                                <span class="lnr lnr-calendar-full icon"></span>
+                                <input type="date" class="form-control" id="checkinDate" name="checkin_date" value="{{ $todayDate }}">
+                                {{-- <span class="lnr lnr-calendar-full icon"></span> --}}
                             </div>
                         </div>
                         <div class="form_input col-12">
                             <label for="checkout_date" class="form-label text-white">Check-Out:</label>
                             <div class="date-box">
-                                <input type="date" class="form-control" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
-                                <span class="lnr lnr-calendar-full icon"></span>
+                                <input type="date" class="form-control" id="checkoutDate" name="checkout_date" value="{{ $tomorrowDate }}">
+                                {{-- <span class="lnr lnr-calendar-full icon"></span> --}}
                             </div>
                         </div>
                         <div class="form_input col-12">
@@ -145,7 +145,7 @@
                                 <div class="content">
                                     <h2>{{ $about->title }}</h2>
                                     <h4><span class="decor-1"></span> {{ $about->sub_title }}</h4>
-                                    <p>{!! html_entity_decode($about->long_description) !!}</p>
+                                    {!! html_entity_decode($about->long_description) !!}
                                     <a href="{{ $about->url }}" class="btn btn-primary btn-read">
                                         <span>Read more</span>
                                         <i class="fas fa-long-arrow-alt-right"></i>

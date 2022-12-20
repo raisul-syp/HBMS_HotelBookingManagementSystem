@@ -2,7 +2,7 @@
 @section('title', 'Room Details')
 
 @section('content')
-<section id="rooms_details_section_frontend" class="rooms_details_section_frontend content_section">
+<section id="page_details_section_frontend" class="page_details_section_frontend content_section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -21,9 +21,9 @@
 
         <div class="row mt-4">
             <div class="col-lg-9">
-                <div class="room-details-inner">
+                <div class="page-details-inner">
                     <div class="card">
-                        <div class="owl-carousel owl-theme room-details-carousel">
+                        <div class="owl-carousel owl-theme page-details-carousel">
                             @if (count($roomDetail->roomImages) > 0)
                             @foreach ($roomDetail->roomImages as $roomImage)
                             <div class="item">
@@ -34,37 +34,37 @@
                         </div>
 
                         <div class="card-body">
-                            <div class="room-header">
-                                <div class="room-title">
+                            <div class="page-header">
+                                <div class="page-title">
                                     {{ $roomDetail->name }}
                                 </div>
                                 <div class="room-price">
-                                    ৳{{ $roomDetail->price }}<span>/ night</span>
+                                    ${{ $roomDetail->price }}++<span>/ night</span>
                                 </div>
                             </div>
 
                             <hr>
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <div class="room-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Adult">
+                                    <div class="page-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Adult">
                                         <i class="fas fa-user"></i>
                                         {{ $roomDetail->max_adults }}
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
-                                    <div class="room-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Child">
+                                    <div class="page-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Child">
                                         <i class="fas fa-baby"></i>
                                         {{ $roomDetail->max_childs }}
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
-                                    <div class="room-location" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Location">
+                                    <div class="page-location" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Location">
                                         <i class="fas fa-map-marked-alt"></i>
                                         {{ $roomDetail->hotel_location }}
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
-                                    <div class="room-availability">
+                                    <div class="page-availability">
                                         @if (count($roomDetail->bookings) > 0)
                                         <span class="badge bg-danger">Occupied</span>
                                         @else
@@ -75,7 +75,7 @@
                             </div>
                             <hr>
 
-                            <div class="room-description">
+                            <div class="page-description">
                                 <div class="short-descrp">
                                     {{ $roomDetail->short_description }}
                                 </div>
@@ -86,41 +86,56 @@
                         </div>
                     </div>
 
-                    <div class="card mt-5">
-                        <div class="card-body">
-                            <div class="room-facilities-sec">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <h4>Facilities</h4>
-                                    </div>
-                                    @forelse ($roomDetail->facilities as $roomFacility)
-                                    <div class="col-lg-4">
-                                        <div class="room-facilities mb-3">
-                                            <img src="{{ asset('uploads/facilities/'.$roomFacility->image) }}">
-                                            <span>{{ $roomFacility->name }}</span>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card mt-4">
+                                <div class="card-body">
+                                    <div class="page-facilities-sec">
+                                        <div class="row">
+                                            <div class="col-lg-12 mb-2">
+                                                <h4>Facilities</h4>
+                                                <hr>
+                                            </div>
+                                            @forelse ($roomDetail->facilities as $roomFacility)
+                                            <div class="col-lg-6">
+                                                <div class="page-facilities mb-3">
+                                                    <img src="{{ asset('uploads/facilities/'.$roomFacility->image) }}">
+                                                    <span>{{ $roomFacility->name }}</span>
+                                                </div>
+                                            </div>
+                                            @empty
+                                            <div class="col-lg-12">
+                                                <small class="text-danger">No Facilities Available!</small>
+                                            </div>
+                                            @endforelse
                                         </div>
                                     </div>
-                                    @empty
-                                    <div class="col-lg-12">
-                                        <small class="text-danger">No Facilities Added!</small>
-                                    </div>
-                                    @endforelse
                                 </div>
-                                <div class="row mt-4">
-                                    <div class="col-lg-12">
-                                        <h4>Room View</h4>
-                                    </div>
-                                    @forelse ($roomDetail->roomViews as $roomView)
-                                    <div class="col-lg-3">
-                                        <div class="room-views" data-toggle="tooltip" data-placement="top" title="{{ $roomView->name }}">
-                                            <span>{{ $roomView->name }}</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card mt-4">
+                                <div class="card-body">
+                                    <div class="page-facilities-sec">
+                                        <div class="row">
+                                            <div class="col-lg-12 mb-2">
+                                                <h4>Room View</h4>
+                                                <hr>
+                                            </div>
+                                            @forelse ($roomDetail->roomViews as $roomView)
+                                            <div class="col-lg-6">
+                                                <div class="page-views mb-3">
+                                                    <img src="{{ asset('uploads/roomviews/'.$roomView->image) }}">
+                                                    <span>{{ $roomView->name }}</span>
+                                                </div>
+                                            </div>
+                                            @empty
+                                            <div class="col-lg-12">
+                                                <small class="text-danger">No Views Available!</small>
+                                            </div>
+                                            @endforelse
                                         </div>
                                     </div>
-                                    @empty
-                                    <div class="col-lg-12">
-                                        <small class="text-danger">No Views Added!</small>
-                                    </div>
-                                    @endforelse
                                 </div>
                             </div>
                         </div>

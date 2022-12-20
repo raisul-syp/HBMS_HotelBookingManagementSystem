@@ -16,14 +16,14 @@
                                 <div class="row">
                                     <div class="form_input col-12 mb-3">
                                         <div class="date-box">
-                                            <input type="date" class="form-control check-in-out" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
-                                            <span class="lnr lnr-calendar-full icon"></span>
+                                            <input type="date" class="form-control check-in-out" id="checkin_date" name="checkinDate" value="{{ $todayDate }}">
+                                            {{-- <span class="lnr lnr-calendar-full icon"></span> --}}
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
                                         <div class="date-box">
-                                            <input type="date" class="form-control check-in-out" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
-                                            <span class="lnr lnr-calendar-full icon"></span>
+                                            <input type="date" class="form-control check-in-out" id="checkout_date" name="checkoutDate" value="{{ $tomorrowDate }}">
+                                            {{-- <span class="lnr lnr-calendar-full icon"></span> --}}
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
@@ -109,28 +109,20 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-lg-4 mb-2">
+                                                        <div class="col-lg-6">
                                                             <div class="room-capacity">
-                                                                <strong>Max. Adults: </strong>{{ $room->max_adults }}
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-4 mb-2">
-                                                            <div class="room-capacity">
+                                                                <strong>Max. Adults: </strong>{{ $room->max_adults }} <br>
                                                                 <strong>Max. Childs: </strong>{{ $room->max_childs }}
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-lg-6 mb-2">
-                                                            <div class="room-availability-count">
+                                                        <div class="col-lg-6">
+                                                            <div class="room-availability-count text-end">
                                                                 <span class="badge rounded-pill bg-success available-badge">{{ $room->quantity - $room->bookings->where('room_id', $room->id)->count() }} rooms are available out of {{ $room->quantity }}</span>
                                                             </div>
-                                                        </div>
-
-                                                        <div class="col-lg-6">
                                                             <div class="room-pricing">
-                                                                <h5>${{ $room->price }}++<span>/night</span></h5><br>
-                                                                <p class="mb-0">Rack Rate</p>
+                                                                <h5>${{ $room->price }}++<span>/night</span></h5>
+                                                                <small class="text-danger">Rack Rate</small>
                                                             </div>
                                                         </div>
 

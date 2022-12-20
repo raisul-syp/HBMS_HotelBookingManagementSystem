@@ -31,7 +31,7 @@
     <div class="heroSlider_section_inner mobile-view">
         <div class="owl-carousel owl-theme home-slider">
             @foreach ($sliders as $slider)
-            @if ($slider->hotel_id == '1')
+            @if ($slider->hotel_id == '2')
             <div class="item">
                 <img src="{{ asset('frontend/images/sliders/'.$slider->mobile_image) }}" alt="" width="1320px" height="1000px">
                 <div class="cover">
@@ -62,14 +62,14 @@
                         <div class="form_input col-12">
                             <label for="checkin_date" class="form-label text-white">Check-In:</label>
                             <div class="date-box">
-                                <input type="text" class="form-control" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
+                                <input type="date" class="form-control" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
                                 <span class="lnr lnr-calendar-full icon"></span>
                             </div>
                         </div>
                         <div class="form_input col-12">
                             <label for="checkout_date" class="form-label text-white">Check-Out:</label>
                             <div class="date-box">
-                                <input type="text" class="form-control" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
+                                <input type="date" class="form-control" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
                                 <span class="lnr lnr-calendar-full icon"></span>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
     <div class="about_section_inner">
         <div class="container">
             @foreach ($aboutUs as $about)
-            @if ($about->hotel_id == '1')
+            @if ($about->hotel_id == '2')
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <div class="image_box">
@@ -145,7 +145,7 @@
                                 <div class="content">
                                     <h2>{{ $about->title }}</h2>
                                     <h4><span class="decor-1"></span> {{ $about->sub_title }}</h4>
-                                    <p>{!! html_entity_decode($about->long_description) !!}</p>
+                                    {!! html_entity_decode($about->long_description) !!}
                                     <a href="{{ $about->url }}" class="btn btn-primary btn-read">
                                         <span>Read more</span>
                                         <i class="fas fa-long-arrow-alt-right"></i>
@@ -180,7 +180,6 @@
                     <div class="rooms_sec">
                         <div class="card">
                             <div class="card-image">
-                                {{-- <img src="{{ asset('frontend/images/rooms/suite-room.jpg') }}" alt=""> --}}
                                 @if (count($room->roomImages) > 0)
                                 @foreach ($room->roomImages as $roomImage)
                                 <img src="{{ asset($roomImage->image) }}" alt="">
@@ -192,9 +191,15 @@
                                 <div class="content">
                                     <div class="content_inner">
                                         <h4>{{ $room->name }}</h4>
-                                        <h6>৳ <strong>{{ $room->price }}</strong> / Night</h6>
+                                        <div class="room-proce">
+                                            <p><strong>${{ $room->price }}++</strong>/night</p>
+                                            <small>Rack Rate</small>
+                                        </div>
                                     </div>
-                                    <a href="{{ url('rooms/room-details/'.$room->id) }}" class="btn-view">View more</a>
+                                    <a href="{{ url('rooms/room-details/'.$room->id) }}" class="btn-view">
+                                        <span>View details</span>
+                                        <i class="fas fa-long-arrow-alt-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>

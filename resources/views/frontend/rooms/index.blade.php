@@ -2,7 +2,7 @@
 @section('title', 'Rooms')
 
 @section('content')
-<section id="rooms_section_frontend" class="rooms_section_frontend content_section">
+<section id="pages_section_frontend" class="pages_section_frontend content_section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -22,7 +22,7 @@
             @foreach ($roomList as $room)
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <div class="room-image">
+                    <div class="page-image">
                         @if (count($room->roomImages) > 0)
                         @foreach ($room->roomImages as $roomImage)
                         <img src="{{ asset($roomImage->image) }}" alt="">
@@ -30,24 +30,24 @@
                         @endforeach
                         @endif
                     </div>
-                    <div class="room-loaction">
+                    <div class="page-loaction">
                         {{ $room->hotels->hotel_location }}
                     </div>
                     <div class="card-body">
-                        <div class="room-header">
-                            <div class="room-title">
+                        <div class="page-header">
+                            <div class="page-title">
                                 {{ $room->name }}
                             </div>
-                            <div class="room-price">
+                            <div class="page-price">
                                 ${{ $room->price }}++<span>/ night</span>
                             </div>
                         </div>
-                        <div class="room-body">
-                            <div class="room-dscrp">
+                        <div class="page-body">
+                            <div class="page-dscrp">
                                 {{ $room->short_description }}
                             </div>
-                            <div class="room-detail">
-                                <div class="room-capacity">
+                            <div class="page-detail">
+                                <div class="page-capacity">
                                     <span>
                                         <strong>Max. Guest:</strong>
                                     </span>
@@ -60,7 +60,7 @@
                                         {{ $room->max_childs }}
                                     </span>
                                 </div>
-                                <div class="room-availability">
+                                <div class="page-availability">
                                     @if (count($room->bookings) > 0)
                                     <span class="badge bg-danger">Occupied</span>
                                     @else
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="room-details-btn">
+                    <div class="page-details-btn">
                         <a href="{{ url('rooms/room-details/'.$room->id) }}" class="btn btn-primary">View Details</a>
                     </div>
                 </div>

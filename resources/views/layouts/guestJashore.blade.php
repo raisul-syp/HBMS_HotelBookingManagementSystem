@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/modules.css') }}">
 
     <!-- Vendor Stylesheet -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui-1.13.2.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui-1.13.2.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/vendors/animate_css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/bootstrap-5.0.2/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/select2/css/select2.min.css') }}">
@@ -69,7 +69,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('frontend/js/jquery-3.6.1.js') }}"></script>
-    <script src="{{ asset('frontend/js/jquery-ui-1.13.2.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/js/jquery-ui-1.13.2.js') }}"></script> --}}
     <script src="{{ asset('frontend/js/site.js') }}"></script>
     <script src="{{ asset('frontend/js/default.js') }}"></script>
     <script src="{{ asset('frontend/js/popper.js') }}"></script>
