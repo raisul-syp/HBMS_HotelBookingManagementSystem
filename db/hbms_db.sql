@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2022 at 01:28 PM
+-- Generation Time: Dec 20, 2022 at 01:42 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -99,6 +99,8 @@ CREATE TABLE `hb_bookings` (
   `booking_status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=Pending, 1=Booked, 2=Cancel',
   `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
   `booking_comment` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -107,11 +109,14 @@ CREATE TABLE `hb_bookings` (
 -- Dumping data for table `hb_bookings`
 --
 
-INSERT INTO `hb_bookings` (`id`, `guest_id`, `room_id`, `staff_id`, `checkin_date`, `checkout_date`, `checkin_time`, `checkout_time`, `total_adults`, `total_childs`, `booking_status`, `is_delete`, `booking_comment`, `created_at`, `updated_at`) VALUES
-(5, 1, 2, 2, '2022-12-19', '2022-12-20', '14:00', '12:00', '2', '1', 1, 1, 'Admin Booking', '2022-12-17 02:32:07', '2022-12-17 02:32:07'),
-(6, 1, 2, 2, '2022-12-20', '2022-12-21', '14:00', '12:00', '1', '0', 1, 1, 'Admin', '2022-12-17 02:36:07', '2022-12-17 02:36:07'),
-(7, 1, 1, 2, '2022-12-18', '2022-12-19', '14:00', '12:00', '2', '1', 1, 1, 'asdasd', '2022-12-17 02:37:24', '2022-12-17 02:37:24'),
-(8, 1, 2, 2, '2022-12-22', '2022-12-23', '14:00', '12:00', '1', '0', 1, 1, 'Admin', '2022-12-17 02:49:15', '2022-12-17 02:49:15');
+INSERT INTO `hb_bookings` (`id`, `guest_id`, `room_id`, `staff_id`, `checkin_date`, `checkout_date`, `checkin_time`, `checkout_time`, `total_adults`, `total_childs`, `booking_status`, `is_delete`, `booking_comment`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(5, 1, 2, 2, '2022-12-19', '2022-12-20', '14:00', '12:00', '2', '1', 1, 1, 'Admin Booking', NULL, NULL, '2022-12-17 02:32:07', '2022-12-17 02:32:07'),
+(6, 1, 2, 2, '2022-12-20', '2022-12-21', '14:00', '12:00', '1', '0', 1, 1, 'Admin', NULL, NULL, '2022-12-17 02:36:07', '2022-12-17 02:36:07'),
+(7, 1, 1, 2, '2022-12-18', '2022-12-19', '14:00', '12:00', '2', '1', 1, 1, 'asdasd', NULL, NULL, '2022-12-17 02:37:24', '2022-12-17 02:37:24'),
+(8, 1, 2, 2, '2022-12-22', '2022-12-23', '14:00', '12:00', '1', '0', 1, 1, 'Admin', NULL, NULL, '2022-12-17 02:49:15', '2022-12-17 02:49:15'),
+(9, 1, 3, 2, '2022-12-18', '2022-12-19', '14:00', '12:00', '1', '0', 0, 1, 'Admin', '0', NULL, '2022-12-19 01:31:11', '2022-12-19 01:31:11'),
+(10, 1, 4, 1, '2022-12-20', '2022-12-21', '14:00', '12:00', '2', '3', 0, 1, 'Booking created by Guest', '5', NULL, '2022-12-20 06:16:42', '2022-12-20 06:16:42'),
+(11, 1, 4, 1, '2022-12-29', '2022-12-30', '14:00', '12:00', '4', '3', 0, 1, 'Booking created by Guest', '5', NULL, '2022-12-20 06:17:55', '2022-12-20 06:17:55');
 
 -- --------------------------------------------------------
 
@@ -456,9 +461,9 @@ CREATE TABLE `hb_halls` (
 --
 
 INSERT INTO `hb_halls` (`id`, `name`, `hotel_id`, `slug`, `short_description`, `long_description`, `logo_image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Board Room', 1, 'board-room-dhaka-dhaka-dhaka', 'Board Room', '<p style=\"text-align: right; \">Board Room<br></p>', 'board-room-dhaka.png', 'Board Room', 'Board Room', 'Board Room', 1, 1, '0', '0', '2022-12-14 02:54:56', '2022-12-14 04:56:59'),
-(2, 'Olive Hall', 1, 'olive-hall-dhaka', 'Olive Hall', '<p>Olive Hall<br></p>', 'olive-hall-dhaka.png', 'Olive Hall', 'Olive Hall', 'Olive Hall', 1, 1, '0', NULL, '2022-12-14 04:58:33', '2022-12-14 04:58:33'),
-(3, 'Tulip Hall', 1, 'tulip-hall-dhaka', 'Tulip Hall', '<p>Tulip Hall<br></p>', 'tulip-hall-dhaka.png', 'Tulip Hall', 'Tulip Hall', 'Tulip Hall', 1, 1, '0', NULL, '2022-12-14 04:59:14', '2022-12-14 04:59:14');
+(1, 'Board Room', 1, 'board-room-dhaka-dhaka-dhaka-dhaka', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p style=\"text-align: left;\">The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Board Room', 'Board Room', 'Board Room', 1, 1, '0', '0', '2022-12-14 02:54:56', '2022-12-20 01:23:32'),
+(2, 'Olive Hall', 1, 'olive-hall-dhaka-dhaka', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Olive Hall', 'Olive Hall', 'Olive Hall', 1, 1, '0', '0', '2022-12-14 04:58:33', '2022-12-20 01:24:08'),
+(3, 'Tulip Hall', 1, 'tulip-hall-dhaka-dhaka', 'The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Tulip Hall', 'Tulip Hall', 'Tulip Hall', 1, 1, '0', '0', '2022-12-14 04:59:14', '2022-12-20 01:24:43');
 
 -- --------------------------------------------------------
 
@@ -479,12 +484,9 @@ CREATE TABLE `hb_hall_images` (
 --
 
 INSERT INTO `hb_hall_images` (`id`, `hall_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, 'uploads/halls/board-room-dhaka-1671008096-1.jpg', '2022-12-14 02:54:56', '2022-12-14 02:54:56'),
-(2, 1, 'uploads/halls/board-room-dhaka-1671008096-2.jpg', '2022-12-14 02:54:56', '2022-12-14 02:54:56'),
-(3, 2, 'uploads/halls/olive-hall-dhaka-1671015513-1.png', '2022-12-14 04:58:33', '2022-12-14 04:58:33'),
-(4, 2, 'uploads/halls/olive-hall-dhaka-1671015513-2.png', '2022-12-14 04:58:33', '2022-12-14 04:58:33'),
-(5, 3, 'uploads/halls/tulip-hall-dhaka-1671015554-1.png', '2022-12-14 04:59:14', '2022-12-14 04:59:14'),
-(6, 3, 'uploads/halls/tulip-hall-dhaka-1671015554-2.png', '2022-12-14 04:59:14', '2022-12-14 04:59:14');
+(1, 1, 'uploads/halls/board-room-dhaka-dhaka-dhaka-dhaka-1671521012-1.jpg', '2022-12-20 01:23:32', '2022-12-20 01:23:32'),
+(2, 2, 'uploads/halls/olive-hall-dhaka-dhaka-1671521048-1.jpg', '2022-12-20 01:24:08', '2022-12-20 01:24:08'),
+(3, 3, 'uploads/halls/tulip-hall-dhaka-dhaka-1671521083-1.jpg', '2022-12-20 01:24:43', '2022-12-20 01:24:43');
 
 -- --------------------------------------------------------
 
@@ -548,10 +550,10 @@ CREATE TABLE `hb_restaurents` (
 --
 
 INSERT INTO `hb_restaurents` (`id`, `name`, `hotel_id`, `slug`, `short_description`, `long_description`, `logo_image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Cafe 24', 1, 'cafe-24-dhaka-dhaka-dhaka-dhaka', 'Cafe 24', '<p>Cafe 24<br></p>', 'cafe-24-dhaka.png', 'Cafe 24', 'Cafe 24', 'Cafe 24', 1, 1, '0', '0', '2022-12-14 01:03:04', '2022-12-14 01:41:52'),
-(2, 'Taste Of Heaven', 1, 'taste-of-heaven-dhaka-dhaka', 'Taste Of Heaven', '<p>Taste Of Heaven<br></p>', 'taste-of-heaven-dhaka.png', 'Taste Of Heaven', 'Taste Of Heaven', 'Taste Of Heaven', 1, 1, '0', '0', '2022-12-14 01:04:00', '2022-12-14 01:41:29'),
-(3, 'Sky Line', 1, 'sky-line-dhaka-dhaka', 'Sky Line', '<p>Sky Line<br></p>', 'sky-line-dhaka.png', 'Sky Line', 'Sky Line', 'Sky Line', 1, 1, '0', '0', '2022-12-14 01:05:01', '2022-12-14 01:43:33'),
-(4, 'Noxx Bar', 1, 'noxx-bar-dhaka', 'Noxx Bar', '<p>Noxx Bar<br></p>', 'noxx-bar-dhaka.png', 'Noxx Bar', 'Noxx Bar', 'Noxx Bar', 1, 1, '0', NULL, '2022-12-14 01:05:28', '2022-12-14 01:05:28');
+(1, 'Cafe 24', 1, 'cafe-24-dhaka-dhaka-dhaka-dhaka', 'Located on the ground level, it is a modern delight. Enjoy lively chit chat in a Comfortable gathering place.', '<p>Located on the ground level, it is a modern delight .Enjoy lively chit chat in a Comfortable gathering place .A wide selection of premium coffees, teas and freshly squeezed juices is served throughout the day and our varieties of smoothie is a healthy way to Satisfy your sweet tooth.</p><h3 style=\"text-align: center; \"><b>Opening hours: 24 hrs open</b></h3>', 'cafe-24-dhaka.png', 'Cafe 24', 'Cafe 24', 'Cafe 24', 1, 1, '0', '0', '2022-12-14 01:03:04', '2022-12-20 01:05:15'),
+(2, 'Taste Of Heaven', 1, 'taste-of-heaven-dhaka-dhaka-dhaka', 'Taste of Heaven is a contemporary all day dining restaurant where modern design innovative cuisine. Round the clock dining destination showcases an array of international delights.', '<p>Taste of Heaven is a contemporary all day dining restaurant where modern design innovative cuisine. Round the clock dining destination showcases an array of international delights.</p><h3 style=\"text-align: center; \"><b>Opening hours: 06.30 hrs to 22.30 hrs</b></h3>', 'taste-of-heaven-dhaka.png', 'Taste Of Heaven', 'Taste Of Heaven', 'Taste Of Heaven', 1, 1, '0', '0', '2022-12-14 01:04:00', '2022-12-20 01:09:43'),
+(3, 'Sky Line', 1, 'sky-line-dhaka-dhaka-dhaka', 'A Casual dining 60 seater barbeque and gril specialty dining at the pool side overlooking amazing natural green view of Dhaka.', '<p>A Casual dining 60 seater barbeque and gril specialty dining at the pool side overlooking amazing natural green view of Dhaka.</p><h3 style=\"text-align: center; \"><b>OPENING HOURS: 17.00 hrs to 23.00 hrs</b></h3>', 'sky-line-dhaka.png', 'Sky Line', 'Sky Line', 'Sky Line', 1, 1, '0', '0', '2022-12-14 01:05:01', '2022-12-20 01:11:39'),
+(4, 'Noxx Bar', 1, 'noxx-bar-dhaka-dhaka-dhaka', 'Noxx Bar', '<p>Noxx Bar<br></p>', 'noxx-bar-dhaka.png', 'Noxx Bar', 'Noxx Bar', 'Noxx Bar', 1, 1, '0', '0', '2022-12-14 01:05:28', '2022-12-20 01:52:47');
 
 -- --------------------------------------------------------
 
@@ -572,13 +574,18 @@ CREATE TABLE `hb_restaurent_images` (
 --
 
 INSERT INTO `hb_restaurent_images` (`id`, `restaurent_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, 'uploads/restaurents/cafe-24-dhaka-1671001384-1.png', '2022-12-14 01:03:04', '2022-12-14 01:03:04'),
-(2, 1, 'uploads/restaurents/cafe-24-dhaka-1671001384-2.png', '2022-12-14 01:03:04', '2022-12-14 01:03:04'),
-(3, 2, 'uploads/restaurents/taste-of-heaven-dhaka-1671001440-1.png', '2022-12-14 01:04:00', '2022-12-14 01:04:00'),
-(4, 2, 'uploads/restaurents/taste-of-heaven-dhaka-1671001440-2.png', '2022-12-14 01:04:00', '2022-12-14 01:04:00'),
-(5, 3, 'uploads/restaurents/sky-line-dhaka-1671001501-1.png', '2022-12-14 01:05:01', '2022-12-14 01:05:01'),
-(6, 3, 'uploads/restaurents/sky-line-dhaka-1671001501-2.png', '2022-12-14 01:05:01', '2022-12-14 01:05:01'),
-(7, 1, 'uploads/restaurents/cafe-24-dhaka-dhaka-1671003415-1.png', '2022-12-14 01:36:55', '2022-12-14 01:36:55');
+(1, 1, 'uploads/restaurents/cafe-24-dhaka-dhaka-dhaka-1671519868-1.jpg', '2022-12-20 01:04:28', '2022-12-20 01:04:28'),
+(2, 1, 'uploads/restaurents/cafe-24-dhaka-dhaka-dhaka-dhaka-1671519915-1.jpg', '2022-12-20 01:05:15', '2022-12-20 01:05:15'),
+(3, 1, 'uploads/restaurents/cafe-24-dhaka-dhaka-dhaka-dhaka-1671519915-2.jpg', '2022-12-20 01:05:15', '2022-12-20 01:05:15'),
+(4, 1, 'uploads/restaurents/cafe-24-dhaka-dhaka-dhaka-dhaka-1671519915-3.JPG', '2022-12-20 01:05:15', '2022-12-20 01:05:15'),
+(5, 2, 'uploads/restaurents/taste-of-heaven-dhaka-dhaka-1671520059-1.JPG', '2022-12-20 01:07:39', '2022-12-20 01:07:39'),
+(6, 2, 'uploads/restaurents/taste-of-heaven-dhaka-dhaka-dhaka-1671520183-1.jpg', '2022-12-20 01:09:43', '2022-12-20 01:09:43'),
+(7, 2, 'uploads/restaurents/taste-of-heaven-dhaka-dhaka-dhaka-1671520183-2.jpg', '2022-12-20 01:09:43', '2022-12-20 01:09:43'),
+(8, 3, 'uploads/restaurents/sky-line-dhaka-dhaka-1671520273-1.jpg', '2022-12-20 01:11:13', '2022-12-20 01:11:13'),
+(9, 3, 'uploads/restaurents/sky-line-dhaka-dhaka-dhaka-1671520299-1.jpg', '2022-12-20 01:11:39', '2022-12-20 01:11:39'),
+(10, 4, 'uploads/restaurents/noxx-bar-dhaka-dhaka-1671520371-1.jpg', '2022-12-20 01:12:51', '2022-12-20 01:12:51'),
+(11, 4, 'uploads/restaurents/noxx-bar-dhaka-dhaka-dhaka-1671522767-1.JPG', '2022-12-20 01:52:47', '2022-12-20 01:52:47'),
+(12, 4, 'uploads/restaurents/noxx-bar-dhaka-dhaka-dhaka-1671522767-2.JPG', '2022-12-20 01:52:47', '2022-12-20 01:52:47');
 
 -- --------------------------------------------------------
 
@@ -614,7 +621,7 @@ CREATE TABLE `hb_rooms` (
 
 INSERT INTO `hb_rooms` (`id`, `name`, `hotel_id`, `slug`, `short_description`, `long_description`, `max_adults`, `max_childs`, `quantity`, `price`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'Deluxe', 1, 'deluxe-dhaka', 'Deluxe', '<p>Deluxe<br></p>', 2, 1, 10, 220, 'Deluxe', 'Deluxe', 'Deluxe', 1, 1, '0', NULL, '2022-12-15 00:44:42', '2022-12-15 00:44:42'),
-(2, 'Super Deluxe King', 1, 'super-deluxe-king-dhaka', 'Super Deluxe King', '<p>Super Deluxe King<br></p>', 3, 2, 10, 260, 'Super Deluxe King', 'Super Deluxe King', 'Super Deluxe King', 1, 1, '0', NULL, '2022-12-15 00:45:59', '2022-12-15 00:45:59'),
+(2, 'Super Deluxe King', 1, 'super-deluxe-king-dhaka-dhaka', 'Super Deluxe King', '<p>Super Deluxe King<br></p>', 3, 2, 8, 260, 'Super Deluxe King', 'Super Deluxe King', 'Super Deluxe King', 1, 1, '0', '0', '2022-12-15 00:45:59', '2022-12-18 04:12:04'),
 (3, 'Premium Delux', 1, 'premium-delux-dhaka', 'Premium Delux', '<p>Premium Delux<br></p>', 3, 3, 10, 280, 'Premium Delux', 'Premium Delux', 'Premium Delux', 1, 1, '0', NULL, '2022-12-15 00:47:55', '2022-12-15 00:47:55'),
 (4, 'Premium Delux Twin', 1, 'premium-delux-twin-dhaka', 'Premium Delux Twin', '<p>Premium Delux Twin<br></p>', 4, 2, 10, 280, 'Premium Delux Twin', 'Premium Delux Twin', 'Premium Delux Twin', 1, 1, '0', NULL, '2022-12-15 00:49:23', '2022-12-15 00:49:23');
 
@@ -629,6 +636,7 @@ CREATE TABLE `hb_roomtype` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -644,9 +652,10 @@ CREATE TABLE `hb_roomtype` (
 -- Dumping data for table `hb_roomtype`
 --
 
-INSERT INTO `hb_roomtype` (`id`, `name`, `slug`, `description`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'City View', 'city-view', 'City View', 'City View', 'City View', 'City View', 1, 1, '0', NULL, '2022-11-21 03:16:45', '2022-11-21 03:16:45'),
-(2, 'Balcony', 'balcony', 'Balcony', 'Balcony', 'Balcony', 'Balcony', 1, 1, '0', NULL, '2022-11-21 03:25:24', '2022-11-21 03:25:24');
+INSERT INTO `hb_roomtype` (`id`, `name`, `slug`, `description`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'City View', 'city-view', 'City View', 'city-view.png', 'City View', 'City View', NULL, 1, 1, '0', '0', '2022-11-21 03:16:45', '2022-12-19 23:56:07'),
+(2, 'Balcony', 'balcony', 'Balcony', 'balcony.png', 'Balcony', 'Balcony', NULL, 1, 1, '0', '0', '2022-11-21 03:25:24', '2022-12-19 23:56:26'),
+(3, 'Sea View', 'sea-view', 'Sea View', 'sea-view.png', 'Sea View', 'Sea View', 'Sea View', 1, 1, '0', NULL, '2022-12-19 23:58:02', '2022-12-19 23:58:02');
 
 -- --------------------------------------------------------
 
@@ -901,9 +910,9 @@ CREATE TABLE `hb_webnavs` (
 INSERT INTO `hb_webnavs` (`id`, `name`, `slug`, `hotel_id`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'Home', '', 1, '1', 'Home', 'Home', 'Home', 1, 1, '0', '0', '2022-12-12 23:24:20', '2022-12-17 00:25:51'),
 (2, 'Rooms', 'rooms', 1, '2', 'Rooms', 'Rooms', 'Rooms', 1, 1, '0', '0', '2022-12-13 03:43:09', '2022-12-14 05:02:28'),
-(3, 'Restaurents', 'restaurents', 1, '3', 'Restaurent', 'Restaurent', 'Restaurent', 1, 1, '0', NULL, '2022-12-14 01:07:41', '2022-12-14 01:07:41'),
+(3, 'Restaurants', 'restaurants', 1, '3', 'Restaurants', 'Restaurants', 'Restaurants', 1, 1, '0', '0', '2022-12-14 01:07:41', '2022-12-20 00:25:02'),
 (4, 'Halls', 'halls', 1, '4', 'Halls', 'Halls', 'Halls', 1, 1, '0', '0', '2022-12-14 05:03:01', '2022-12-14 05:04:11'),
-(5, 'Wellness', 'wellness', 1, '5', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', NULL, '2022-12-14 05:42:36', '2022-12-14 05:42:36'),
+(5, 'Wellness', 'wellnesses', 1, '5', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', '0', '2022-12-14 05:42:36', '2022-12-20 01:41:32'),
 (6, 'About Us', 'about-us', 1, '6', 'About Us', 'About Us', 'About Us', 1, 1, '0', NULL, '2022-12-14 05:42:56', '2022-12-14 05:42:56'),
 (7, 'Contact Us', 'contact-us', 1, '7', 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, '0', NULL, '2022-12-14 05:43:18', '2022-12-14 05:43:18');
 
@@ -948,11 +957,11 @@ INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_descriptio
 (5, 'Rooms', 'Rooms', 'Rooms', 'Rooms', '<p>Rooms<br></p>', 'rooms', 1, '5', NULL, 'Rooms', 'Rooms', 'Rooms', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:41:12'),
 (6, 'Restaurants', 'Restaurants', 'Restaurants', 'Restaurants', '<p>Restaurants<br></p>', 'restaurants', 1, '6', NULL, 'Restaurants', 'Restaurants', 'Restaurants', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:41:27'),
 (7, 'Halls', 'Halls', 'Halls', 'Meeting & Events', '<p>Meeting &amp; Events<br></p>', 'halls', 1, '7', NULL, 'Halls', 'Halls', 'Halls', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:42:22'),
-(8, 'Wellness', 'Wellness', 'Wellness', 'Wellness', '<p>Wellness<br></p>', 'wellness', 1, '8', NULL, 'Wellness', 'Wellness', 'Wellness', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:42:39'),
+(8, 'Wellness', 'Wellness', 'Wellness', 'Wellness', '<p>Wellness<br></p>', 'wellnesses', 1, '8', NULL, 'Wellness', 'Wellness', 'Wellness', 1, 1, 1, '0', '0', NULL, '2022-12-20 01:42:33'),
 (9, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', '<p>Certificates &amp; Awards<br></p>', 'certificates-awards', 1, '9', NULL, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:42:54'),
 (10, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', '<p>Booking Cancelation Policy<br></p>', 'booking-cancelation-policy', 1, '10', NULL, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 1, 1, 1, '0', '0', NULL, '2022-12-17 00:43:20'),
-(11, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', '<p>Privacy Policy<br></p>', '/HotelBooking/privacy-policy', 1, '11', NULL, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 1, 1, 1, '0', NULL, NULL, NULL),
-(12, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '<p>Terms &amp; Conditions<br></p>', '/HotelBooking/terms-conditions', 1, '12', NULL, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 1, 1, 1, '0', '0', NULL, NULL);
+(11, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', '<p>Privacy Policy<br></p>', 'privacy-policy', 1, '11', NULL, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 1, 1, 1, '0', NULL, NULL, NULL),
+(12, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '<p>Terms &amp; Conditions<br></p>', 'terms-conditions', 1, '12', NULL, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 1, 1, 1, '0', '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1058,9 +1067,9 @@ CREATE TABLE `hb_wellness` (
 
 INSERT INTO `hb_wellness` (`id`, `name`, `hotel_id`, `slug`, `short_description`, `long_description`, `logo_image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'Spa', 1, 'spa-dhaka', 'Spa', '<p>Spa<br></p>', 'spa-dhaka.png', 'Spa', 'Spa', 'Spa', 1, 1, '0', NULL, '2022-12-14 05:35:12', '2022-12-14 05:35:12'),
-(2, 'Gym', 1, 'gym-dhaka', 'Gym', '<p>Gym<br></p>', NULL, 'Gym', 'Gym', 'Gym', 1, 1, '0', NULL, '2022-12-14 05:35:51', '2022-12-14 05:35:51'),
-(3, 'Saloon', 1, 'saloon-dhaka', 'Saloon', '<p>Saloon<br></p>', NULL, 'Saloon', 'Saloon', 'Saloon', 1, 1, '0', NULL, '2022-12-14 05:36:38', '2022-12-14 05:36:38'),
-(4, 'Swimming Pool', 1, 'swimming-pool-dhaka', 'Swimming Pool', '<p>Swimming Pool<br></p>', NULL, 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 1, 1, '0', '0', '2022-12-14 05:37:31', '2022-12-14 05:40:26');
+(2, 'Gym', 1, 'gym-dhaka-dhaka', 'Gym', '<p>Gym<br></p>', NULL, 'Gym', 'Gym', 'Gym', 1, 1, '0', '0', '2022-12-14 05:35:51', '2022-12-20 02:05:19'),
+(3, 'Saloon', 1, 'saloon-dhaka-dhaka', 'Saloon', '<p>Saloon<br></p>', NULL, 'Saloon', 'Saloon', 'Saloon', 1, 1, '0', '0', '2022-12-14 05:36:38', '2022-12-20 02:07:59'),
+(4, 'Swimming Pool', 1, 'swimming-pool-dhaka-dhaka', 'Swimming Pool', '<p>Swimming Pool<br></p>', NULL, 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 1, 1, '0', '0', '2022-12-14 05:37:31', '2022-12-20 02:06:53');
 
 -- --------------------------------------------------------
 
@@ -1081,14 +1090,10 @@ CREATE TABLE `hb_wellness_images` (
 --
 
 INSERT INTO `hb_wellness_images` (`id`, `wellness_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, 'uploads/wellness/spa-dhaka-1671017712-1.png', '2022-12-14 05:35:12', '2022-12-14 05:35:12'),
-(2, 1, 'uploads/wellness/spa-dhaka-1671017712-2.png', '2022-12-14 05:35:12', '2022-12-14 05:35:12'),
-(3, 2, 'uploads/wellness/gym-dhaka-1671017751-1.png', '2022-12-14 05:35:51', '2022-12-14 05:35:51'),
-(4, 2, 'uploads/wellness/gym-dhaka-1671017751-2.png', '2022-12-14 05:35:51', '2022-12-14 05:35:51'),
-(5, 3, 'uploads/wellness/saloon-dhaka-1671017798-1.png', '2022-12-14 05:36:38', '2022-12-14 05:36:38'),
-(6, 3, 'uploads/wellness/saloon-dhaka-1671017798-2.png', '2022-12-14 05:36:38', '2022-12-14 05:36:38'),
-(7, 4, 'uploads/wellness/swimming-pool-dhaka-1671017851-1.png', '2022-12-14 05:37:31', '2022-12-14 05:37:31'),
-(8, 4, 'uploads/wellness/swimming-pool-dhaka-1671017851-2.png', '2022-12-14 05:37:31', '2022-12-14 05:37:31');
+(1, 2, 'uploads/wellness/gym-dhaka-dhaka-1671523519-1.jpg', '2022-12-20 02:05:19', '2022-12-20 02:05:19'),
+(2, 2, 'uploads/wellness/gym-dhaka-dhaka-1671523519-2.JPG', '2022-12-20 02:05:19', '2022-12-20 02:05:19'),
+(3, 4, 'uploads/wellness/swimming-pool-dhaka-dhaka-1671523613-1.JPG', '2022-12-20 02:06:53', '2022-12-20 02:06:53'),
+(4, 3, 'uploads/wellness/saloon-dhaka-dhaka-1671523679-1.jpg', '2022-12-20 02:07:59', '2022-12-20 02:07:59');
 
 -- --------------------------------------------------------
 
@@ -1446,7 +1451,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hb_bookings`
 --
 ALTER TABLE `hb_bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `hb_country`
@@ -1470,7 +1475,7 @@ ALTER TABLE `hb_halls`
 -- AUTO_INCREMENT for table `hb_hall_images`
 --
 ALTER TABLE `hb_hall_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `hb_hotels`
@@ -1488,7 +1493,7 @@ ALTER TABLE `hb_restaurents`
 -- AUTO_INCREMENT for table `hb_restaurent_images`
 --
 ALTER TABLE `hb_restaurent_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `hb_rooms`
@@ -1500,7 +1505,7 @@ ALTER TABLE `hb_rooms`
 -- AUTO_INCREMENT for table `hb_roomtype`
 --
 ALTER TABLE `hb_roomtype`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `hb_roomtype_view`
@@ -1572,7 +1577,7 @@ ALTER TABLE `hb_wellness`
 -- AUTO_INCREMENT for table `hb_wellness_images`
 --
 ALTER TABLE `hb_wellness_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`
