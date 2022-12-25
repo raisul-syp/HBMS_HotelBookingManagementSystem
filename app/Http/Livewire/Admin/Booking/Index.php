@@ -10,10 +10,10 @@ class Index extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    
+
     public function render()
     {
         $bookings = Booking::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.booking.index',['bookings' => $bookings]);
+        return view('livewire.admin.booking.index', compact('bookings'));
     }
 }

@@ -45,10 +45,6 @@ class TestimonialFormRequest extends FormRequest
             'slug' => [
                 'nullable',
             ],
-            'hotel_id' => [
-                'required',
-                'string'
-            ],
             'display_order' => [
                 'nullable'
             ],

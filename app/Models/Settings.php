@@ -13,7 +13,6 @@ class Settings extends Model
 
     protected $fillable = [
         'name',
-        'hotel_id',
         'phone',
         'email',
         'address',
@@ -28,18 +27,13 @@ class Settings extends Model
         'social_tw',
         'social_insta',
         'social_yt',
-        'display_order',     
+        'display_order',
         'meta_title',
         'meta_keyword',
-        'meta_decription',   
+        'meta_decription',
         'is_active',
         'is_delete',
         'created_by',
         'updated_by',
     ];
-
-    public function hotels()
-    {
-        return $this->belongsTo(Hotel::class, 'hotel_id');
-    }
 }

@@ -23,14 +23,8 @@ class Index extends Component
     public function destroyRecord()
     {
         $users =  Admin::find($this->user_id);
-        // $path = 'uploads/facilities/'.$facility->image;
-        // if(File::exists($path)){
-        //     File::delete($path);
-        // }
-        // $facility->delete();
         $users->is_delete = '0';
         $users->update();
-        // session()->flash('message','Facility Has Been Deleted Successfully.');
         return redirect('admin/user')->with('message','User Has Been Deleted Successfully.');
         $this->dispatchBrowserEvent('close-modal');
     }
@@ -38,6 +32,6 @@ class Index extends Component
     public function render()
     {
         $users = Admin::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.user.index',['users' => $users]);
+        return view('livewire.admin.user.index', compact('users'));
     }
 }

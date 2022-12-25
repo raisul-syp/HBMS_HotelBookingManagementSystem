@@ -31,10 +31,6 @@ class SliderFormRequest extends FormRequest
             'slug' => [
                 'nullable'
             ],
-            'hotel_id' => [
-                'required',
-                'string'
-            ],
             'desktop_image' => [
                 'nullable',
                 'mimes:jpg,jpeg,png'

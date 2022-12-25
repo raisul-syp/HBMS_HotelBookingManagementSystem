@@ -27,10 +27,10 @@ class Index extends Component
         return redirect('admin/website/facilities')->with('message','Facility Has Been Deleted Successfully.');
         $this->dispatchBrowserEvent('close-modal');
     }
-    
+
     public function render()
     {
         $facilities = Facility::where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.website.facility.index', ['facilities' => $facilities]);
+        return view('livewire.admin.website.facility.index', compact('facilities'));
     }
 }

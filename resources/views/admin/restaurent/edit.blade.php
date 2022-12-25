@@ -79,24 +79,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="hotel_id">
-                                        {{ __('Hotel') }}
-                                        <small class="text-danger">*</small>
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control js-basic-single" id="hotel_id" name="hotel_id" >
-                                            @forelse ($hotels as $hotel)
-                                            <option value="{{ $hotel->id }}" {{ old('hotel_id', $restaurent->hotel_id) == $hotel->id ? 'selected' : '' }}>{{ $hotel->name }}</option>
-                                            @empty
-                                            <option>No Data</option>
-                                            @endforelse
-                                        </select>
-                                        @error('hotel_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="slug">
                                         {{ __('Slug') }}
                                         <small class="text-danger">*</small>
@@ -140,7 +122,7 @@
                             <div class="tab-pane fade" id="restaurent_image" role="tabpanel">
                                 <div class="form-group row">
                                     <div class="col-sm-2 col-form-label text-right" for="logo_image">{{ __('Logo') }}</div>
-                                    <div class="col-sm-10">                                      
+                                    <div class="col-sm-10">
                                         <input type="file" class="dropify" id="logo_image" name="logo_image" data-default-file="{{ asset('uploads/restaurents/logo/'.$restaurent->logo_image) }}" />
                                     </div>
                                 </div>

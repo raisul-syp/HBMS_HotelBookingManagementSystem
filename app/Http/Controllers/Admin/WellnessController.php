@@ -19,8 +19,7 @@ class WellnessController extends Controller
 
     public function create()
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.wellness.create', compact('hotels'));
+        return view('admin.wellness.create');
     }
 
     public function store(WellnessFormRequest $request)
@@ -30,25 +29,16 @@ class WellnessController extends Controller
         $wellness = new Wellness();
 
         $wellness->name = $validatedData['name'];
-        $wellness->hotel_id = $validatedData['hotel_id'];
-        
-        if($wellness->hotel_id == '1'){
-            $location = 'dhaka';
-        }
-        if($wellness->hotel_id == '2') {
-            $location = 'jashore';
-        }
-
-        $wellness->slug = Str::slug($validatedData['slug']).'-'.$location;
+        $wellness->slug = Str::slug($validatedData['slug']);
         $wellness->short_description = $validatedData['short_description'];
         $wellness->long_description = $validatedData['long_description'];
-        
+
         if($request->hasFile('logo_image')){
             $logoUploadPath = 'uploads/wellness/logo';
             $logoFile = $request->file('logo_image');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = Str::slug($wellness->name).'-'.$location.'.'.$logoExtension;
+            $logoFilename = Str::slug($wellness->name).'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $wellness->logo_image = $logoFilename;
@@ -60,7 +50,7 @@ class WellnessController extends Controller
 
         $wellness->is_active = $request->is_active == true ? '1':'0';
         $wellness->created_by = $validatedData['created_by'];
-        $wellness->save();        
+        $wellness->save();
 
         if($request->hasFile('image')){
             $uploadPath = 'uploads/wellness/';
@@ -84,8 +74,7 @@ class WellnessController extends Controller
 
     public function edit(Wellness $wellness)
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.wellness.edit', compact('wellness','hotels'));
+        return view('admin.wellness.edit', compact('wellness'));
     }
 
     public function update(WellnessFormRequest $request, int $wellness_id)
@@ -95,19 +84,10 @@ class WellnessController extends Controller
         $wellness = Wellness::findOrFail($wellness_id);
 
         $wellness->name = $validatedData['name'];
-        $wellness->hotel_id = $validatedData['hotel_id'];
-        
-        if($wellness->hotel_id == '1'){
-            $location = 'dhaka';
-        }
-        if($wellness->hotel_id == '2') {
-            $location = 'jashore';
-        }
-
-        $wellness->slug = Str::slug($validatedData['slug']).'-'.$location;
+        $wellness->slug = Str::slug($validatedData['slug']);
         $wellness->short_description = $validatedData['short_description'];
         $wellness->long_description = $validatedData['long_description'];
-        
+
         if($request->hasFile('logo_image')){
             $logoUploadPath = 'uploads/wellness/logo';
             $logoPreviousPath = 'uploads/wellness/logo/'.$wellness->logo_image;
@@ -117,7 +97,7 @@ class WellnessController extends Controller
             $logoFile = $request->file('logo_image');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = Str::slug($wellness->name).'-'.$location.'.'.$logoExtension;
+            $logoFilename = Str::slug($wellness->name).'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $wellness->logo_image = $logoFilename;

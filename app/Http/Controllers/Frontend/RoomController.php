@@ -29,7 +29,16 @@ class RoomController extends Controller
         $total_adults = $request->adults;
         $total_childs = $request->children;
 
-        $available_rooms = DB::select("SELECT * FROM hb_rooms WHERE id NOT IN (SELECT room_id FROM hb_bookings WHERE '$checkin_date' AND '$checkout_date' BETWEEN checkin_date AND checkout_date) AND hotel_location = '$hotel_location' AND max_adults >= '$total_adults' AND max_childs >= '$total_childs'");
+        $available_rooms = Room::whereNotIn('id', function($query) use ($checkin_date, $checkout_date) {
+            $query->select('room_id')->from('hb_bookings')
+            ->whereBetween('checkin_date', [$checkin_date, $checkout_date])
+            ->orWhereBetween('checkout_date', [$checkin_date, $checkout_date]);
+        })
+        ->where('hotel_id', $hotel_location)
+        ->where('max_adults', '>=', (int) $total_adults)
+        ->where('max_childs', '>=', (int) $total_childs)
+        ->where('is_active', 1)
+        ->get();
 
         return view('frontend.available-rooms', compact('available_rooms'));
     }

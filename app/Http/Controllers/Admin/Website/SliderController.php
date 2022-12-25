@@ -19,8 +19,7 @@ class SliderController extends Controller
 
     public function create()
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.website.slider.create', compact('hotels'));
+        return view('admin.website.slider.create');
     }
 
     public function store(SliderFormRequest $request)
@@ -31,37 +30,24 @@ class SliderController extends Controller
 
         $slider->name = $validatedData['name'];
         $slider->slug = Str::slug($validatedData['slug']);
-        $slider->hotel_id = $validatedData['hotel_id'];
-        
+
         if($request->hasFile('desktop_image')){
-            if($slider->hotel_id == '1'){
-                $location = 'dhaka';
-            }
-            if($slider->hotel_id == '2') {
-                $location = 'jashore';
-            }
             $desktopUploadPath = 'frontend/images/sliders';
             $desktopFile = $request->file('desktop_image');
 
             $desktopExtension = $desktopFile->getClientOriginalExtension();
-            $desktopFilename = 'desk-'.Str::slug($slider->name).'-'.$location.'.'.$desktopExtension;
+            $desktopFilename = 'desk-'.Str::slug($slider->name).'.'.$desktopExtension;
             $desktopFile->move($desktopUploadPath,$desktopFilename);
 
             $slider->desktop_image = $desktopFilename;
         }
 
         if($request->hasFile('mobile_image')){
-            if($slider->hotel_id == '1'){
-                $location = 'dhaka';
-            }
-            if($slider->hotel_id == '2') {
-                $location = 'jashore';
-            }
             $mobileUploadPath = 'frontend/images/sliders';
             $mobileFile = $request->file('mobile_image');
 
             $mobileExtension = $mobileFile->getClientOriginalExtension();
-            $mobileFilename = 'mobl-'.Str::slug($slider->name).'-'.$location.'.'.$mobileExtension;
+            $mobileFilename = 'mobl-'.Str::slug($slider->name).'.'.$mobileExtension;
             $mobileFile->move($mobileUploadPath,$mobileFilename);
 
             $slider->mobile_image = $mobileFilename;
@@ -87,8 +73,7 @@ class SliderController extends Controller
 
     public function edit(Slider $slider)
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.website.slider.edit', compact('slider', 'hotels'));
+        return view('admin.website.slider.edit', compact('slider'));
     }
 
     public function update(SliderFormRequest $request, $slider)
@@ -99,15 +84,8 @@ class SliderController extends Controller
 
         $slider->name = $validatedData['name'];
         $slider->slug = Str::slug($validatedData['slug']);
-        $slider->hotel_id = $validatedData['hotel_id'];
 
         if($request->hasFile('desktop_image')){
-            if($slider->hotel_id == '1'){
-                $location = 'dhaka';
-            }
-            else {
-                $location = 'jashore';
-            }
             $desktopUploadPath = 'frontend/images/sliders';
             $desktopPreviousPath = 'frontend/images/sliders/'.$slider->desktop_image;
             if(File::exists($desktopPreviousPath)){
@@ -116,19 +94,13 @@ class SliderController extends Controller
             $desktopFile = $request->file('desktop_image');
 
             $desktopExtension = $desktopFile->getClientOriginalExtension();
-            $desktopFilename = 'desk-'.Str::slug($slider->name).'-'.$location.'.'.$desktopExtension;
+            $desktopFilename = 'desk-'.Str::slug($slider->name).'.'.$desktopExtension;
             $desktopFile->move($desktopUploadPath,$desktopFilename);
 
             $slider->desktop_image = $desktopFilename;
         }
 
         if($request->hasFile('mobile_image')){
-            if($slider->hotel_id == '1'){
-                $location = 'dhaka';
-            }
-            else {
-                $location = 'jashore';
-            }
             $mobileUploadPath = 'frontend/images/sliders';
             $mobilePreviousPath = 'frontend/images/sliders/'.$slider->mobile_image;
             if(File::exists($mobilePreviousPath)){
@@ -137,7 +109,7 @@ class SliderController extends Controller
             $mobileFile = $request->file('mobile_image');
 
             $mobileExtension = $mobileFile->getClientOriginalExtension();
-            $mobileFilename = 'mobl-'.Str::slug($slider->name).'-'.$location.'.'.$mobileExtension;
+            $mobileFilename = 'mobl-'.Str::slug($slider->name).'.'.$mobileExtension;
             $mobileFile->move($mobileUploadPath,$mobileFilename);
 
             $slider->mobile_image = $mobileFilename;

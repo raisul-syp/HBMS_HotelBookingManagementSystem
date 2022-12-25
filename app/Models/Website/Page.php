@@ -30,9 +30,4 @@ class Page extends Model
         'created_by',
         'updated_by',
     ];
-
-    public function hotels()
-    {
-        return $this->belongsTo(Hotel::class, 'hotel_id');
-    }
 }

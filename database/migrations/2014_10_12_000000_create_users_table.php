@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('postal_code')->nullable();
             $table->string('country')->nullable();
             $table->mediumText('admin_comment')->nullable();
-            
+
             $table->string('profile_photo')->nullable();
             $table->string('cover_photo')->nullable();
 

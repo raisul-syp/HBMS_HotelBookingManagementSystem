@@ -31,6 +31,6 @@ class Index extends Component
     public function render()
     {
         $sliders = Slider::where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.website.slider.index', ['sliders' => $sliders]);
+        return view('livewire.admin.website.slider.index', compact('sliders'));
     }
 }

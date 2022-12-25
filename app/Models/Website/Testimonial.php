@@ -19,7 +19,6 @@ class Testimonial extends Model
         'message',
         'image',
         'slug',
-        'hotel_id',
         'display_order',
         'meta_title',
         'meta_keyword',
@@ -29,9 +28,4 @@ class Testimonial extends Model
         'created_by',
         'updated_by',
     ];
-
-    public function hotels()
-    {
-        return $this->belongsTo(Hotel::class, 'hotel_id');
-    }
 }

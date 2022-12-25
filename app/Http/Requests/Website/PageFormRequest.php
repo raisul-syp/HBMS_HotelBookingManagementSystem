@@ -45,10 +45,6 @@ class PageFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'hotel_id' => [
-                'required',
-                'string'
-            ],
             'display_order' => [
                 'nullable'
             ],

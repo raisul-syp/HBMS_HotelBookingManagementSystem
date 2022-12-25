@@ -15,10 +15,6 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('frontend.index');
-// });
-
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\HomeController::class)->group(function (){
     Route::get('/', 'index');
     Route::get('/available-rooms', 'checkAvailability');
@@ -62,53 +58,11 @@ Route::prefix('/booking')->controller(App\Http\Controllers\Frontend\BookingContr
 });
 
 
-// Jashore
-Route::prefix('/Jashore')->controller(App\Http\Controllers\Frontend\HomeController::class)->group(function (){
-    Route::get('/', 'jashoreIndex');
-    Route::get('/available-rooms', 'jashoreCheckAvailability');
-    Route::get('/rooms/room-details/{room}', 'jashoreRoomDetails');
-});
-
-Route::prefix('/Jashore')->controller(App\Http\Controllers\Frontend\PagesController::class)->group(function (){
-    Route::get('/about-us', 'aboutUs');
-    Route::get('/contact-us', 'contactUs');
-    Route::get('/news', 'news');
-    Route::get('/offers', 'offers');
-    Route::get('/certificates-awards', 'certificatesAwards');
-    Route::get('/booking-cancelation-policy', 'bookingCancelPolicy');
-    Route::get('/privacy-policy', 'privacyPolicy');
-    Route::get('/terms-conditions', 'termsConditions');
-});
-
-Route::prefix('/Jashore')->controller(App\Http\Controllers\Frontend\RoomController::class)->group(function (){
-    Route::get('/rooms', 'index');
-    Route::get('/rooms/room-details/{room}', 'roomDetails');
-});
-
-Route::prefix('/Jashore')->controller(App\Http\Controllers\Frontend\RestaurentController::class)->group(function (){
-    Route::get('/restaurants', 'index');
-    Route::get('/restaurants/restaurant-details/{restaurant}', 'restaurantDetails');
-});
-
-Route::prefix('/Jashore')->controller(App\Http\Controllers\Frontend\HallController::class)->group(function (){
-    Route::get('/halls', 'index');
-    Route::get('/halls/hall-details/{hall}', 'hallDetails');
-});
-
-Route::prefix('/Jashore')->controller(App\Http\Controllers\Frontend\WellnessController::class)->group(function (){
-    Route::get('/wellnesses', 'index');
-    Route::get('/wellnesses/wellness-details/{wellness}', 'wellnessDetails');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-
-
-
-
 
 
 // Admin

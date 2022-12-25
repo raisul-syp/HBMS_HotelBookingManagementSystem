@@ -28,10 +28,6 @@ class SettingsFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'hotel_id' => [
-                'required',
-                'string'
-            ],
             'phone' => [
                 'required',
                 'string'

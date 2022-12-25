@@ -17,7 +17,6 @@ class CreateHbWebslidersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->nullable();
-            $table->unsignedBigInteger('hotel_id');
             $table->string('desktop_image')->nullable();
             $table->string('mobile_image')->nullable();
             $table->string('content_1');
@@ -35,8 +34,6 @@ class CreateHbWebslidersTable extends Migration
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-
-            $table->foreign('hotel_id')->references('id')->on('hb_hotels')->onDelete('cascade');
             $table->timestamps();
         });
     }

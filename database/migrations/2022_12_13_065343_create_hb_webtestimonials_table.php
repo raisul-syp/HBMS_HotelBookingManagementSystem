@@ -21,7 +21,6 @@ class CreateHbWebtestimonialsTable extends Migration
             $table->mediumText('message');
             $table->string('image')->nullable();
             $table->string('slug')->nullable();
-            $table->unsignedBigInteger('hotel_id');
             $table->string('display_order')->nullable();
 
             $table->string('meta_title');
@@ -32,8 +31,6 @@ class CreateHbWebtestimonialsTable extends Migration
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-
-            $table->foreign('hotel_id')->references('id')->on('hb_hotels')->onDelete('cascade');
             $table->timestamps();
         });
     }

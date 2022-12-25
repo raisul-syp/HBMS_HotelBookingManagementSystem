@@ -19,8 +19,7 @@ class RestaurentController extends Controller
 
     public function create()
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.restaurent.create', compact('hotels'));
+        return view('admin.restaurent.create');
     }
 
     public function store(RestaurentFormRequest $request)
@@ -30,25 +29,16 @@ class RestaurentController extends Controller
         $restaurent = new Restaurent();
 
         $restaurent->name = $validatedData['name'];
-        $restaurent->hotel_id = $validatedData['hotel_id'];
-        
-        if($restaurent->hotel_id == '1'){
-            $location = 'dhaka';
-        }
-        if($restaurent->hotel_id == '2') {
-            $location = 'jashore';
-        }
-
-        $restaurent->slug = Str::slug($validatedData['slug']).'-'.$location;
+        $restaurent->slug = Str::slug($validatedData['slug']);
         $restaurent->short_description = $validatedData['short_description'];
         $restaurent->long_description = $validatedData['long_description'];
-        
+
         if($request->hasFile('logo_image')){
             $logoUploadPath = 'uploads/restaurents/logo';
             $logoFile = $request->file('logo_image');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = Str::slug($restaurent->name).'-'.$location.'.'.$logoExtension;
+            $logoFilename = Str::slug($restaurent->name).'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $restaurent->logo_image = $logoFilename;
@@ -60,7 +50,7 @@ class RestaurentController extends Controller
 
         $restaurent->is_active = $request->is_active == true ? '1':'0';
         $restaurent->created_by = $validatedData['created_by'];
-        $restaurent->save();        
+        $restaurent->save();
 
         if($request->hasFile('image')){
             $uploadPath = 'uploads/restaurents/';
@@ -84,8 +74,7 @@ class RestaurentController extends Controller
 
     public function edit(Restaurent $restaurent)
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.restaurent.edit', compact('restaurent','hotels'));
+        return view('admin.restaurent.edit', compact('restaurent'));
     }
 
     public function update(RestaurentFormRequest $request, int $restaurent_id)
@@ -95,19 +84,10 @@ class RestaurentController extends Controller
         $restaurent = Restaurent::findOrFail($restaurent_id);
 
         $restaurent->name = $validatedData['name'];
-        $restaurent->hotel_id = $validatedData['hotel_id'];
-        
-        if($restaurent->hotel_id == '1'){
-            $location = 'dhaka';
-        }
-        if($restaurent->hotel_id == '2') {
-            $location = 'jashore';
-        }
-
-        $restaurent->slug = Str::slug($validatedData['slug']).'-'.$location;
+        $restaurent->slug = Str::slug($validatedData['slug']);
         $restaurent->short_description = $validatedData['short_description'];
         $restaurent->long_description = $validatedData['long_description'];
-        
+
         if($request->hasFile('logo_image')){
             $logoUploadPath = 'uploads/restaurents/logo';
             $logoPreviousPath = 'uploads/restaurents/logo/'.$restaurent->logo_image;
@@ -117,7 +97,7 @@ class RestaurentController extends Controller
             $logoFile = $request->file('logo_image');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = Str::slug($restaurent->name).'-'.$location.'.'.$logoExtension;
+            $logoFilename = Str::slug($restaurent->name).'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $restaurent->logo_image = $logoFilename;

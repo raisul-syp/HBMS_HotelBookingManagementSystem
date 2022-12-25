@@ -27,15 +27,6 @@
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
-                                        <select class="form-select" id="hotel_location" name="hotel_location">
-                                            @forelse ($hotels as $hotel)
-                                            <option value="{{ $hotel->id }}">{{ $hotel->hotel_location }}</option>
-                                            @empty
-                                            <option>No Data</option>
-                                            @endforelse
-                                          </select>
-                                    </div>
-                                    <div class="form_input col-12 mb-3">
                                         <select class="form-select" id="adults" name="adults">
                                             <option value="0">0</option>
                                             <option value="1">1</option>

@@ -19,8 +19,7 @@ class HallController extends Controller
 
     public function create()
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.hall.create', compact('hotels'));
+        return view('admin.hall.create');
     }
 
     public function store(HallFormRequest $request)
@@ -30,25 +29,16 @@ class HallController extends Controller
         $hall = new Hall();
 
         $hall->name = $validatedData['name'];
-        $hall->hotel_id = $validatedData['hotel_id'];
-        
-        if($hall->hotel_id == '1'){
-            $location = 'dhaka';
-        }
-        if($hall->hotel_id == '2') {
-            $location = 'jashore';
-        }
-
-        $hall->slug = Str::slug($validatedData['slug']).'-'.$location;
+        $hall->slug = Str::slug($validatedData['slug']);
         $hall->short_description = $validatedData['short_description'];
         $hall->long_description = $validatedData['long_description'];
-        
+
         if($request->hasFile('logo_image')){
             $logoUploadPath = 'uploads/halls/logo';
             $logoFile = $request->file('logo_image');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = Str::slug($hall->name).'-'.$location.'.'.$logoExtension;
+            $logoFilename = Str::slug($hall->name).'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $hall->logo_image = $logoFilename;
@@ -60,7 +50,7 @@ class HallController extends Controller
 
         $hall->is_active = $request->is_active == true ? '1':'0';
         $hall->created_by = $validatedData['created_by'];
-        $hall->save();        
+        $hall->save();
 
         if($request->hasFile('image')){
             $uploadPath = 'uploads/halls/';
@@ -84,8 +74,7 @@ class HallController extends Controller
 
     public function edit(Hall $hall)
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.hall.edit', compact('hall','hotels'));
+        return view('admin.hall.edit', compact('hall'));
     }
 
     public function update(HallFormRequest $request, int $hall_id)
@@ -95,19 +84,11 @@ class HallController extends Controller
         $hall = Hall::findOrFail($hall_id);
 
         $hall->name = $validatedData['name'];
-        $hall->hotel_id = $validatedData['hotel_id'];
-        
-        if($hall->hotel_id == '1'){
-            $location = 'dhaka';
-        }
-        if($hall->hotel_id == '2') {
-            $location = 'jashore';
-        }
 
-        $hall->slug = Str::slug($validatedData['slug']).'-'.$location;
+        $hall->slug = Str::slug($validatedData['slug']);
         $hall->short_description = $validatedData['short_description'];
         $hall->long_description = $validatedData['long_description'];
-        
+
         if($request->hasFile('logo_image')){
             $logoUploadPath = 'uploads/halls/logo';
             $logoPreviousPath = 'uploads/halls/logo/'.$hall->logo_image;
@@ -117,7 +98,7 @@ class HallController extends Controller
             $logoFile = $request->file('logo_image');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = Str::slug($hall->name).'-'.$location.'.'.$logoExtension;
+            $logoFilename = Str::slug($hall->name).'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $hall->logo_image = $logoFilename;

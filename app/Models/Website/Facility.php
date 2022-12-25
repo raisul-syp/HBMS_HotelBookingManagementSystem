@@ -15,7 +15,6 @@ class Facility extends Model
     protected $fillable = [
         'name',
         'slug',
-        'hotel_id',
         'description',
         'image',
         'display_order',
@@ -27,9 +26,4 @@ class Facility extends Model
         'created_by',
         'updated_by',
     ];
-
-    public function hotels()
-    {
-        return $this->belongsTo(Hotel::class, 'hotel_id');
-    }
 }

@@ -23,14 +23,14 @@ class Index extends Component
         $menus =  NavigationMenu::find($this->menu_id);
         $menus->is_delete = '0';
         $menus->update();
-        
+
         return redirect('admin/website/menu')->with('message','Menu Has Been Deleted Successfully.');
         $this->dispatchBrowserEvent('close-modal');
     }
-    
+
     public function render()
     {
         $menus = NavigationMenu::where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.website.menu.index', ['menus' => $menus]);
+        return view('livewire.admin.website.menu.index', compact('menus'));
     }
 }

@@ -18,8 +18,7 @@ class MenuController extends Controller
 
     public function create()
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.website.menu.create', compact('hotels'));
+        return view('admin.website.menu.create');
     }
 
     public function store(NavmenuFormRequest $request)
@@ -30,7 +29,6 @@ class MenuController extends Controller
 
         $menu->name = $validatedData['name'];
         $menu->slug = Str::slug($validatedData['slug']);
-        $menu->hotel_id = $validatedData['hotel_id'];
         $menu->display_order = $validatedData['display_order'];
 
         $menu->meta_title = $validatedData['meta_title'];
@@ -46,19 +44,17 @@ class MenuController extends Controller
 
     public function edit(NavigationMenu $menu)
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.website.menu.edit', compact('menu', 'hotels'));
+        return view('admin.website.menu.edit', compact('menu'));
     }
 
     public function update(NavmenuFormRequest $request, $menu)
     {
         $validatedData = $request->validated();
-        
+
         $menu = NavigationMenu::findOrFail($menu);
 
         $menu->name = $validatedData['name'];
         $menu->slug = Str::slug($validatedData['slug']);
-        $menu->hotel_id = $validatedData['hotel_id'];
         $menu->display_order = $validatedData['display_order'];
 
         $menu->meta_title = $validatedData['meta_title'];

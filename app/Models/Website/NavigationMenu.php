@@ -14,7 +14,6 @@ class NavigationMenu extends Model
     protected $fillable = [
         'name',
         'slug',
-        'hotel_id',
         'display_order',
         'meta_title',
         'meta_keyword',

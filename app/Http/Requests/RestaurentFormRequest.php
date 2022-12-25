@@ -28,10 +28,6 @@ class RestaurentFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'hotel_id' => [
-                'required',
-                'string'
-            ],
             'slug' => [
                 'required',
                 'string'

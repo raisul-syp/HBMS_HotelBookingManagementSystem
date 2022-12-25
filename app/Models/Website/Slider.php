@@ -15,7 +15,6 @@ class Slider extends Model
     protected $fillable = [
         'name',
         'slug',
-        'hotel_id',
         'desktop_image',
         'mobile_image',
         'content_1',
@@ -32,9 +31,4 @@ class Slider extends Model
         'created_by',
         'updated_by',
     ];
-
-    public function hotels()
-    {
-        return $this->belongsTo(Hotel::class, 'hotel_id');
-    }
 }

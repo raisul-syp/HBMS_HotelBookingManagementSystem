@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Website;
 
-use App\Models\Hotel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Website\Facility;
@@ -19,8 +18,7 @@ class FacilityController extends Controller
 
     public function create()
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.website.facility.create', compact('hotels'));
+        return view('admin.website.facility.create');
     }
 
     public function store(FacilityFormRequest $request)
@@ -31,22 +29,15 @@ class FacilityController extends Controller
 
         $facility->name = $validatedData['name'];
         $facility->slug = Str::slug($validatedData['slug']);
-        $facility->hotel_id = $validatedData['hotel_id'];
         $facility->description = $validatedData['description'];
         $facility->display_order = $validatedData['display_order'];
-        
+
         if($request->hasFile('image')){
-            if($facility->hotel_id == '1'){
-                $location = 'dhaka';
-            }
-            if($facility->hotel_id == '2') {
-                $location = 'jashore';
-            }
             $uploadPath = 'frontend/images/facilities';
             $file = $request->file('image');
 
             $extension = $file->getClientOriginalExtension();
-            $filename = Str::slug($facility->name).'-'.$location.'.'.$extension;
+            $filename = Str::slug($facility->name).'.'.$extension;
             $file->move($uploadPath,$filename);
 
             $facility->image = $filename;
@@ -65,8 +56,7 @@ class FacilityController extends Controller
 
     public function edit(Facility $facility)
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.website.facility.edit', compact('facility', 'hotels'));
+        return view('admin.website.facility.edit', compact('facility'));
     }
 
     public function update(FacilityFormRequest $request, $facility)
@@ -77,17 +67,10 @@ class FacilityController extends Controller
 
         $facility->name = $validatedData['name'];
         $facility->slug = Str::slug($validatedData['slug']);
-        $facility->hotel_id = $validatedData['hotel_id'];
         $facility->description = $validatedData['description'];
         $facility->display_order = $validatedData['display_order'];
 
         if($request->hasFile('image')){
-            if($facility->hotel_id == '1'){
-                $location = 'dhaka';
-            }
-            if($facility->hotel_id == '2') {
-                $location = 'jashore';
-            }
             $uploadPath = 'frontend/images/facilities';
             $previousPath = 'frontend/images/facilities/'.$facility->image;
             if(File::exists($previousPath)){
@@ -96,7 +79,7 @@ class FacilityController extends Controller
             $file = $request->file('image');
 
             $extension = $file->getClientOriginalExtension();
-            $filename = Str::slug($facility->name).'-'.$location.'.'.$extension;
+            $filename = Str::slug($facility->name).'.'.$extension;
             $file->move($uploadPath,$filename);
 
             $facility->image = $filename;

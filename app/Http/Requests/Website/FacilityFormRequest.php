@@ -31,10 +31,6 @@ class FacilityFormRequest extends FormRequest
             'slug' => [
                 'nullable',
             ],
-            'hotel_id' => [
-                'required',
-                'string'
-            ],
             'description' => [
                 'nullable'
             ],

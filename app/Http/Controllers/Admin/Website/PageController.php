@@ -19,8 +19,7 @@ class PageController extends Controller
 
     public function create()
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.website.page.create', compact('hotels'));
+        return view('admin.website.page.create');
     }
 
     public function store(PageFormRequest $request)
@@ -35,21 +34,14 @@ class PageController extends Controller
         $page->short_description = $validatedData['short_description'];
         $page->long_description = $validatedData['long_description'];
         $page->slug = Str::slug($validatedData['slug']);
-        $page->hotel_id = $validatedData['hotel_id'];
         $page->display_order = $validatedData['display_order'];
 
         if($request->hasFile('image')){
-            if($page->hotel_id == '1'){
-                $location = 'dhaka';
-            }
-            if($page->hotel_id == '2') {
-                $location = 'jashore';
-            }
             $uploadPath = 'frontend/images/pages';
             $file = $request->file('image');
 
             $extension = $file->getClientOriginalExtension();
-            $filename = Str::slug($page->name).'-'.$location.'.'.$extension;
+            $filename = Str::slug($page->name).'.'.$extension;
             $file->move($uploadPath,$filename);
 
             $page->image = $filename;
@@ -69,8 +61,7 @@ class PageController extends Controller
 
     public function edit(Page $page)
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.website.page.edit', compact('page', 'hotels'));
+        return view('admin.website.page.edit', compact('page'));
     }
 
     public function update(PageFormRequest $request, $page)
@@ -85,16 +76,9 @@ class PageController extends Controller
         $page->short_description = $validatedData['short_description'];
         $page->long_description = $validatedData['long_description'];
         $page->slug = Str::slug($validatedData['slug']);
-        $page->hotel_id = $validatedData['hotel_id'];
         $page->display_order = $validatedData['display_order'];
 
         if($request->hasFile('image')){
-            if($page->hotel_id == '1'){
-                $location = 'dhaka';
-            }
-            if($page->hotel_id == '2') {
-                $location = 'jashore';
-            }
             $uploadPath = 'frontend/images/pages';
             $previousPath = 'frontend/images/pages/'.$page->image;
             if(File::exists($previousPath)){
@@ -103,7 +87,7 @@ class PageController extends Controller
             $file = $request->file('image');
 
             $extension = $file->getClientOriginalExtension();
-            $filename = Str::slug($page->name).'-'.$location.'.'.$extension;
+            $filename = Str::slug($page->name).'.'.$extension;
             $file->move($uploadPath,$filename);
 
             $page->image = $filename;

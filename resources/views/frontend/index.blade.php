@@ -6,7 +6,6 @@
     <div class="heroSlider_section_inner desktop-view">
         <div class="owl-carousel owl-theme home-slider">
             @foreach ($sliders as $slider)
-            @if ($slider->hotel_id == '1')
             <div class="item">
                 <img src="{{ asset('frontend/images/sliders/'.$slider->desktop_image) }}" alt="" width="100%" height="603px">
                 <div class="cover">
@@ -23,15 +22,13 @@
                         </div>
                     </div>
                 </div>
-            </div>                
-            @endif
+            </div>
             @endforeach
         </div>
     </div>
     <div class="heroSlider_section_inner mobile-view">
         <div class="owl-carousel owl-theme home-slider">
             @foreach ($sliders as $slider)
-            @if ($slider->hotel_id == '1')
             <div class="item">
                 <img src="{{ asset('frontend/images/sliders/'.$slider->mobile_image) }}" alt="" width="1320px" height="1000px">
                 <div class="cover">
@@ -48,8 +45,7 @@
                         </div>
                     </div>
                 </div>
-            </div>          
-            @endif
+            </div>
             @endforeach
         </div>
     </div>
@@ -73,7 +69,7 @@
                                 {{-- <span class="lnr lnr-calendar-full icon"></span> --}}
                             </div>
                         </div>
-                        <div class="form_input col-12">
+                        {{-- <div class="form_input col-12">
                             <label for="hotel_location" class="form-label text-white">Hotel Location:</label>
                             <select class="form-select" id="hotel_location" name="hotel_location">
                                 @forelse ($hotels as $hotel)
@@ -82,7 +78,7 @@
                                 <option>No Data</option>
                                 @endforelse
                               </select>
-                        </div>
+                        </div> --}}
                         <div class="form_input col-12">
                             <label for="adults" class="form-label text-white">Adults:</label>
                             <select class="form-select" id="adults" name="adults">
@@ -125,7 +121,6 @@
     <div class="about_section_inner">
         <div class="container">
             @foreach ($aboutUs as $about)
-            @if ($about->hotel_id == '1')
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <div class="image_box">
@@ -155,8 +150,7 @@
                         </div>
                     </div>
                 </div>
-            </div>      
-            @endif
+            </div>
             @endforeach
         </div>
     </div>

@@ -19,8 +19,7 @@ class SettingsController extends Controller
 
     public function create()
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.settings.create', compact('hotels'));
+        return view('admin.settings.create');
     }
 
     public function store(SettingsFormRequest $request)
@@ -30,7 +29,6 @@ class SettingsController extends Controller
         $settings = new Settings();
 
         $settings->name = $validatedData['name'];
-        $settings->hotel_id = $validatedData['hotel_id'];
         $settings->phone = $validatedData['phone'];
         $settings->email = $validatedData['email'];
         $settings->address = $validatedData['address'];
@@ -40,31 +38,24 @@ class SettingsController extends Controller
         $settings->phone_reservation = $validatedData['phone_reservation'];
         $settings->email_sales = $validatedData['email_sales'];
         $settings->email_reservation = $validatedData['email_reservation'];
-        
-        if($settings->hotel_id == '1'){
-            $location = 'dhaka';
-        }
-        if($settings->hotel_id == '2') {
-            $location = 'jashore';
-        }
-        
+
         if($request->hasFile('logo')){
             $logoUploadPath = 'uploads/site';
             $logoFile = $request->file('logo');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = 'logo-'.$location.'.'.$logoExtension;
+            $logoFilename = 'logo-'.'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $settings->logo = $logoFilename;
         }
-        
+
         if($request->hasFile('icon')){
             $iconUploadPath = 'uploads/site';
             $iconFile = $request->file('icon');
 
             $iconExtension = $iconFile->getClientOriginalExtension();
-            $iconFilename = 'icon-'.$location.'.'.$iconExtension;
+            $iconFilename = 'icon-'.'.'.$iconExtension;
             $iconFile->move($iconUploadPath,$iconFilename);
 
             $settings->icon = $iconFilename;
@@ -88,8 +79,7 @@ class SettingsController extends Controller
 
     public function edit(Settings $settings)
     {
-        $hotels = Hotel::all()->where('is_active','1')->where('is_delete','1');
-        return view('admin.settings.edit', compact('settings','hotels'));
+        return view('admin.settings.edit', compact('settings'));
     }
 
     public function update(SettingsFormRequest $request, int $settings_id)
@@ -99,7 +89,6 @@ class SettingsController extends Controller
         $settings = Settings::findOrFail($settings_id);
 
         $settings->name = $validatedData['name'];
-        $settings->hotel_id = $validatedData['hotel_id'];
         $settings->phone = $validatedData['phone'];
         $settings->email = $validatedData['email'];
         $settings->address = $validatedData['address'];
@@ -109,14 +98,7 @@ class SettingsController extends Controller
         $settings->phone_reservation = $validatedData['phone_reservation'];
         $settings->email_sales = $validatedData['email_sales'];
         $settings->email_reservation = $validatedData['email_reservation'];
-        
-        if($settings->hotel_id == '1'){
-            $location = 'dhaka';
-        }
-        if($settings->hotel_id == '2') {
-            $location = 'jashore';
-        }
-        
+
         if($request->hasFile('logo')){
             $logoUploadPath = 'uploads/site';
             $logoPreviousPath = 'uploads/site/'.$settings->logo;
@@ -126,12 +108,12 @@ class SettingsController extends Controller
             $logoFile = $request->file('logo');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = 'logo-'.$location.'.'.$logoExtension;
+            $logoFilename = 'logo-'.'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $settings->logo = $logoFilename;
         }
-        
+
         if($request->hasFile('icon')){
             $iconUploadPath = 'uploads/site';
             $iconPreviousPath = 'uploads/site/'.$settings->icon;
@@ -141,7 +123,7 @@ class SettingsController extends Controller
             $iconFile = $request->file('icon');
 
             $iconExtension = $iconFile->getClientOriginalExtension();
-            $iconFilename = 'icon-'.$location.'.'.$iconExtension;
+            $iconFilename = 'icon-'.'.'.$iconExtension;
             $iconFile->move($iconUploadPath,$iconFilename);
 
             $settings->icon = $iconFilename;

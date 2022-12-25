@@ -99,24 +99,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="hotel_id">
-                                        {{ __('Hotel') }}
-                                        <small class="text-danger">*</small>
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control js-basic-single" id="hotel_id" name="hotel_id" >
-                                            @forelse ($hotels as $hotel)
-                                            <option value="{{ $hotel->id }}" {{ old('hotel_id', $settings->hotel_id) == $hotel->id ? 'selected' : '' }}>{{ $hotel->name }}</option>
-                                            @empty
-                                            <option>No Data</option>
-                                            @endforelse
-                                        </select>
-                                        @error('hotel_id')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="phone">
                                         {{ __('Phone') }}
                                         <small class="text-danger">*</small>
@@ -198,7 +180,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="tab-pane fade" id="settings_additional" role="tabpanel">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="phone_sales">
@@ -262,16 +244,16 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="settings_image" role="tabpanel">                                    
+                            <div class="tab-pane fade" id="settings_image" role="tabpanel">
                                 <div class="form-group row">
                                     <div class="col-sm-2 col-form-label text-right" for="logo">{{ __('Logo') }}</div>
-                                    <div class="col-sm-10">                                      
+                                    <div class="col-sm-10">
                                         <input type="file" class="dropify" id="logo" name="logo" data-default-file="{{ asset('uploads/site/'.$settings->logo) }}" />
                                     </div>
-                                </div>                                  
+                                </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="icon">{{ __('Icon') }}</div>
-                                    <div class="col-sm-10">                                      
+                                    <div class="col-sm-10">
                                         <input type="file" class="dropify" id="icon" name="icon" data-default-file="{{ asset('uploads/site/'.$settings->icon) }}" />
                                     </div>
                                 </div>
