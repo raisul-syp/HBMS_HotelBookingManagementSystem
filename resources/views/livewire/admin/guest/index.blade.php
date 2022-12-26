@@ -8,7 +8,7 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th colspan="2">Name</th>
                         <th>Date of Birth</th>
                         <th>Email</th>
@@ -20,7 +20,7 @@
                 <tbody class="text-center">
                     @forelse ($guests as $guest)
                     <tr>
-                        <td>{{ $guest->id }}</td>
+                        <td>{{ $serialNo++ }}</td>
                         <td>
                             @if ($guest->profile_photo != null)
                             <img src="{{ asset('uploads/guests/profile_photo/'.$guest->profile_photo) }}" class="user-data-table-image">

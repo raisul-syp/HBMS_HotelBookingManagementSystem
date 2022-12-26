@@ -7,7 +7,7 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Guest Name</th>
                         <th>Room</th>
                         <th>Booked By</th>
@@ -21,7 +21,7 @@
                 <tbody class="text-center">
                     @forelse ($bookings as $booking)
                     <tr>
-                        <td>{{ $booking->id }}</td>
+                        <td>{{ $serialNo }}</td>
                         <td>{{ $booking->guests->first_name.' '.$booking->guests->last_name }}</td>
                         <td>{{ $booking->rooms->name }}</td>
                         <td>{{ $booking->staffs->first_name.' '.$booking->staffs->last_name }}</td>

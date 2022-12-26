@@ -31,6 +31,7 @@ class Index extends Component
     public function render()
     {
         $pages = Page::where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.website.page.index', compact('pages'));
+        $serialNo = ($pages->perPage() * ($pages->currentPage() - 1)) + 1;
+        return view('livewire.admin.website.page.index', compact('pages', 'serialNo'));
     }
 }

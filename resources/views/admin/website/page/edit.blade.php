@@ -104,7 +104,7 @@
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-lg-2">
+                                    <div class="form-group col-lg-4">
                                         <label for="display_order">
                                             {{ __('Display Order') }}
                                         </label>
@@ -118,7 +118,7 @@
                                             <input type="checkbox" class="form-check-input" id="footer_item" name="footer_item" {{ $page->footer_item == '1' ? 'checked':'' }}>
                                         </div>
                                     </div>
-                                    <div class="form-group col-lg-1">
+                                    <div class="form-group col-lg-2">
                                         <div for="is_active">
                                             {{ __('Status') }}
                                         </div>

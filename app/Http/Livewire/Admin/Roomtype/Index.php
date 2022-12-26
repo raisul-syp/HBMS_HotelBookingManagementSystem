@@ -30,6 +30,7 @@ class Index extends Component
     public function render()
     {
         $roomtypes = Roomtype::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.roomtype.index', compact('roomtypes'));
+        $serialNo = ($roomtypes->perPage() * ($roomtypes->currentPage() - 1)) + 1;
+        return view('livewire.admin.roomtype.index', compact('roomtypes', 'serialNo'));
     }
 }

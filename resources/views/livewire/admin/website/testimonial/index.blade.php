@@ -8,12 +8,11 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Image</th>
                         <th>Name</th>
                         <th>Designation</th>
                         <th>Company</th>
-                        <th>Hotel</th>
                         <th>Display Order</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -22,7 +21,7 @@
                 <tbody class="text-center">
                     @forelse ($testimonials as $testimonial)
                     <tr>
-                        <td>{{ $testimonial->id }}</td>
+                        <td>{{ $serialNo++  }}</td>
                         <td style="width: 10%;">
                             <div class="testimonial-list-img">
                                 <img src="{{ asset('frontend/images/testimonials/'.$testimonial->image) }}" alt="{{ $testimonial->name }}">
@@ -31,7 +30,6 @@
                         <td>{{ $testimonial->name }}</td>
                         <td>{{ $testimonial->designation }}</td>
                         <td>{{ $testimonial->company }}</td>
-                        <td>{{ $testimonial->hotels->name }}</td>
                         <td>{{ $testimonial->display_order }}</td>
                         <td>
                             @if ($testimonial->is_active == '1')
@@ -52,7 +50,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="8">
+                        <td colspan="7">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>

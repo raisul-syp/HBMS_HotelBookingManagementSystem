@@ -24,16 +24,16 @@
                 <div class="col-lg-12">
                     <div class="contact-section-inner">
                         <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
-                            @foreach ($settings as $setting)
+                            @foreach ($contacts as $contact)
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link custom-nav-btn {{ $setting->id == 1 ? 'active' : '' }}" type="button" data-bs-toggle="pill" data-bs-target="#{{ Str::slug($setting->name) }}">{{ $setting->hotels->name }}</button>
+                              <button class="nav-link custom-nav-btn {{ $contact->id == 1 ? 'active' : '' }}" type="button" data-bs-toggle="pill" data-bs-target="#{{ Str::slug($contact->hotel_name) }}">{{ $contact->hotel_name }}</button>
                             </li>                                 
                             @endforeach
                         </ul>
 
                         <div class="tab-content" id="pills-tabContent">      
-                            @foreach ($settings as $setting)
-                            <div class="tab-pane fade show {{ $setting->id == 1 ? 'active' : '' }}" id="{{ Str::slug($setting->name) }}">
+                            @foreach ($contacts as $contact)
+                            <div class="tab-pane fade show {{ $contact->id == 1 ? 'active' : '' }}" id="{{ Str::slug($contact->hotel_name) }}">
                                 <div class="contact-info">
                                     <div class="row">
                                         <div class="col-lg-4">
@@ -44,16 +44,16 @@
                                                             <i class="fas fa-envelope-open"></i>
                                                         </div>
                                                         <div class="contact-info-detail">
-                                                            <h5>{{ $setting->email }}</h5>
-                                                            @if ($setting->email_sales != NULL)
-                                                            <h5>{{ $setting->email_sales }}</h5>  
+                                                            <h5>{{ $contact->email }}</h5>
+                                                            @if ($contact->email_sales != NULL)
+                                                            <h5>{{ $contact->email_sales }}</h5>  
                                                             @else
-                                                            <h5 class="d-none">{{ $setting->email_sales }}</h5>                                                              
+                                                            <h5 class="d-none">{{ $contact->email_sales }}</h5>                                                              
                                                             @endif
-                                                            @if ($setting->email_reservation != NULL)
-                                                            <h5>{{ $setting->email_reservation }}</h5>  
+                                                            @if ($contact->email_reservation != NULL)
+                                                            <h5>{{ $contact->email_reservation }}</h5>  
                                                             @else
-                                                            <h5 class="d-none">{{ $setting->email_reservation }}</h5>                                                              
+                                                            <h5 class="d-none">{{ $contact->email_reservation }}</h5>                                                              
                                                             @endif
                                                         </div>
                                                     </div>
@@ -68,16 +68,16 @@
                                                             <i class="fas fa-phone-alt"></i>
                                                         </div>
                                                         <div class="contact-info-detail">
-                                                            <h5><strong>Tel: </strong>{{ $setting->phone }}</h5>
-                                                            @if ($setting->phone_sales != NULL)
-                                                            <h5><strong>Sales: </strong>{{ $setting->phone_sales }}</h5>
+                                                            <h5><strong>Tel: </strong>{{ $contact->phone }}</h5>
+                                                            @if ($contact->phone_sales != NULL)
+                                                            <h5><strong>Sales: </strong>{{ $contact->phone_sales }}</h5>
                                                             @else
-                                                            <h5 class="d-none"><strong>Sales: </strong>{{ $setting->phone_sales }}</h5>                                                            
+                                                            <h5 class="d-none"><strong>Sales: </strong>{{ $contact->phone_sales }}</h5>                                                            
                                                             @endif
-                                                            @if ($setting->phone_reservation != NULL)
-                                                            <h5><strong>Reservation: </strong>{{ $setting->phone_reservation }}</h5>
+                                                            @if ($contact->phone_reservation != NULL)
+                                                            <h5><strong>Reservation: </strong>{{ $contact->phone_reservation }}</h5>
                                                             @else
-                                                            <h5 class="d-none"><strong>Reservation: </strong>{{ $setting->phone_reservation }}</h5>                                                           
+                                                            <h5 class="d-none"><strong>Reservation: </strong>{{ $contact->phone_reservation }}</h5>                                                           
                                                             @endif
                                                         </div>
                                                     </div>
@@ -92,7 +92,7 @@
                                                             <i class="fas fa-map-marked-alt"></i>
                                                         </div>
                                                         <div class="contact-info-detail">
-                                                            <h5>{{ $setting->address }}</h5>
+                                                            <h5>{{ $contact->address }}</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -136,7 +136,7 @@
                                         <div class="col-lg-6">
                                             <div class="contact-map">
                                                 <div class="card">
-                                                    <iframe src="https://www.google.com/maps/embed?pb={{ $setting->google_map }}" width="100%" height="566" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                                    <iframe src="https://www.google.com/maps/embed?pb={{ $contact->google_map }}" width="100%" height="566" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                                 </div>
                                             </div>
                                         </div>

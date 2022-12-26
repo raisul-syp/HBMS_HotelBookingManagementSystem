@@ -47,7 +47,7 @@ Route::prefix('/halls')->controller(App\Http\Controllers\Frontend\HallController
     Route::get('/hall-details/{hall}', 'hallDetails');
 });
 
-Route::prefix('/wellnesses')->controller(App\Http\Controllers\Frontend\WellnessController::class)->group(function (){
+Route::prefix('/wellness')->controller(App\Http\Controllers\Frontend\WellnessController::class)->group(function (){
     Route::get('/', 'index');
     Route::get('/wellness-details/{wellness}', 'wellnessDetails');
 });
@@ -136,6 +136,15 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::put('/edit/{wellness}', 'update');
     });
 
+    // Offer
+    Route::prefix('/admin/offers')->controller(App\Http\Controllers\Admin\OfferController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{offer}', 'edit');
+        Route::put('/edit/{offer}', 'update');
+    });
+
     // Guest
     Route::prefix('/admin/guest')->controller(App\Http\Controllers\Admin\GuestController::class)->group(function (){
         Route::get('/', 'index');
@@ -176,15 +185,6 @@ Route::group(['middleware' => 'isAdmin'], function() {
             Route::put('/edit/{menu}', 'update');
         });
 
-        // Submenu
-        Route::prefix('/submenu')->controller(App\Http\Controllers\Admin\Website\SubmenuController::class)->group(function (){
-            Route::get('/', 'index');
-            Route::get('/create', 'create');
-            Route::post('/', 'store');
-            Route::get('/edit/{submenu}', 'edit');
-            Route::put('/edit/{submenu}', 'update');
-        });
-
         // Slider
         Route::prefix('/sliders')->controller(App\Http\Controllers\Admin\Website\SliderController::class)->group(function (){
             Route::get('/', 'index');
@@ -222,12 +222,12 @@ Route::group(['middleware' => 'isAdmin'], function() {
         });
 
         // Address
-        Route::prefix('/addresses')->controller(App\Http\Controllers\Admin\Website\AddressController::class)->group(function (){
+        Route::prefix('/contactinfo')->controller(App\Http\Controllers\Admin\Website\ContactInfoController::class)->group(function (){
             Route::get('/', 'index');
             Route::get('/create', 'create');
             Route::post('/', 'store');
-            Route::get('/edit/{address}', 'edit');
-            Route::put('/edit/{address}', 'update');
+            Route::get('/edit/{contacts}', 'edit');
+            Route::put('/edit/{contacts}', 'update');
         });
     });
 

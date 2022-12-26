@@ -7,7 +7,7 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Image</th>
                         <th>Name</th>
                         <th>Slug</th>
@@ -18,7 +18,7 @@
                 <tbody class="text-center">
                     @forelse ($facilities as $facility)
                     <tr>
-                        <td>{{ $facility->id }}</td>
+                        <td>{{ $serialNo++ }}</td>
                         <td>
                             @if ($facility->image != null)
                             <img src="{{ asset('uploads/facilities/'.$facility->image) }}" class="data-table-image">

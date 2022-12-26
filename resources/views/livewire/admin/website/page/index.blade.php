@@ -8,10 +8,9 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Slug</th>
-                        <th>Hotel</th>
                         <th>Display Order</th>
                         <th>Footer Item</th>
                         <th>Status</th>
@@ -21,10 +20,9 @@
                 <tbody class="text-center">
                     @forelse ($pages as $page)
                     <tr>
-                        <td>{{ $page->id }}</td>
+                        <td>{{ $serialNo++  }}</td>
                         <td>{{ $page->name }}</td>
                         <td>{{ $page->slug }}</td>
-                        <td>{{ $page->hotels->name }}</td>
                         <td>{{ $page->display_order }}</td>
                         <td>
                             @if ($page->footer_item == '1')
@@ -52,7 +50,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="8">
+                        <td colspan="7">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>

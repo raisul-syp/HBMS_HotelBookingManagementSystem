@@ -89,19 +89,19 @@
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
-                                    <div class="form-group col-lg-4">
+                                    <div class="form-group col-lg-5">
                                         <label for="slug">
                                             {{ __('Slug') }}
                                         </label>
                                         <input type="text" class="form-control" id="slug" name="slug" placeholder="Add Slug...">
                                     </div>
-                                    <div class="form-group col-lg-3">
+                                    <div class="form-group col-lg-5">
                                         <label for="display_order">
                                             {{ __('Display Order') }}
                                         </label>
                                         <input type="number" class="form-control" id="display_order" name="display_order" value="0" placeholder="Add 2nd Button Title...">
                                     </div>
-                                    <div class="form-group col-lg-1">
+                                    <div class="form-group col-lg-2">
                                         <div for="is_active">
                                             {{ __('Status') }}
                                         </div>

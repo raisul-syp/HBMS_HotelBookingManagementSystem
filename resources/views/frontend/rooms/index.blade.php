@@ -30,9 +30,6 @@
                         @endforeach
                         @endif
                     </div>
-                    <div class="page-loaction">
-                        {{ $room->hotels->hotel_location }}
-                    </div>
                     <div class="card-body">
                         <div class="page-header">
                             <div class="page-title">

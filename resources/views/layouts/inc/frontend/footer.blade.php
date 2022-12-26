@@ -4,11 +4,9 @@
             <div class="row">
                 <div class="col-lg-2">
                     @foreach ($settings as $item)
-                    @if ($item->hotel_id == '1')
                     <div class="footer_logo">
                         <img src="{{ asset('uploads/site/'.$item->logo) }}" alt="{{ $item->name }}">
-                    </div>                     
-                    @endif
+                    </div>    
                     @endforeach
                 </div>
 
@@ -36,7 +34,6 @@
                             <div class="decor-1"></div>
                         </h4>
                         @foreach ($settings as $item)
-                        @if ($item->hotel_id == '1')
                         <ul class="contact">
                             <li>
                                 <i data-feather="map-pin"></i>
@@ -50,12 +47,10 @@
                                 <i data-feather="mail"></i>
                                 <a href="#">{{ $item->email }}</a>
                             </li>
-                        </ul>             
-                        @endif
+                        </ul>    
                         @endforeach
 
                         @foreach ($settings as $item)
-                        @if ($item->hotel_id == '1')
                         <ul class="social">
                             <li>
                                 <a href="{{ $item->social_fb }}">
@@ -78,7 +73,6 @@
                                 </a>
                             </li>
                         </ul>     
-                        @endif
                         @endforeach
                     </div>
                 </div>

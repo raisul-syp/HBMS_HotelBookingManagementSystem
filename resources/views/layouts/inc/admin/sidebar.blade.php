@@ -79,6 +79,16 @@
         <li>
             <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                 <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Offers') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/offers/create') }}">{{ __('Add Offer') }}</a></li>
+                <li><a href="{{ url('admin/offers') }}">{{ __('All Offer') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
                 <span class="nav-text">{{ __('Bookings') }}</span>
             </a>
             <ul aria-expanded="false">
@@ -148,10 +158,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Addresses') }}</a>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('Contact Infos') }}</a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ url('admin/website/addresses/create') }}">{{ __('Add Address') }}</a></li>
-                        <li><a href="{{ url('admin/website/addresses') }}">{{ __('All Addresses') }}</a></li>
+                        <li><a href="{{ url('admin/website/contactinfo/create') }}">{{ __('Add Contact Info') }}</a></li>
+                        <li><a href="{{ url('admin/website/contactinfo') }}">{{ __('All Contact Infos') }}</a></li>
                     </ul>
                 </li>
             </ul>

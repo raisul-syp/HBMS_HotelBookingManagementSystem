@@ -8,9 +8,8 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Name</th>
-                        <th>Hotel Location</th>
                         <th>Phone</th>
                         <th>Email</th>
                         <th>Address</th>
@@ -22,9 +21,8 @@
                 <tbody class="text-center">
                     @forelse ($settings as $setting)
                     <tr>
-                        <td>{{ $setting->id }}</td>
+                        <td>{{ $serialNo }}</td>
                         <td>{{ $setting->name }}</td>
-                        <td>{{ $setting->hotels->hotel_location }}</td>
                         <td>{{ $setting->phone }}</td>
                         <td>{{ $setting->email }}</td>
                         <td>{{ $setting->address }}</td>
@@ -48,7 +46,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="9">
+                        <td colspan="8">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>

@@ -8,10 +8,9 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Logo</th>
                         <th>Name</th>
-                        <th>Hotel</th>
                         <th>Slug</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -20,12 +19,11 @@
                 <tbody class="text-center">
                     @forelse ($halls as $hall)
                     <tr>
-                        <td>{{ $hall->id }}</td>
+                        <td>{{ $serialNo++ }}</td>
                         <td>
                             <img src="{{ asset('uploads/halls/logo/'.$hall->logo_image) }}" alt="" class="list-image">
                         </td>
                         <td>{{ $hall->name }}</td>
-                        <td>{{ $hall->hotels->name }}</td>
                         <td>{{ $hall->slug }}</td>
                         <td>
                             @if ($hall->is_active == '1')
@@ -46,7 +44,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7">
+                        <td colspan="6">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>

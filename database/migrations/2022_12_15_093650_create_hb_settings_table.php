@@ -19,11 +19,6 @@ class CreateHbSettingsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('address');
-            $table->string('google_map')->nullable();
-            $table->string('phone_sales')->nullable();
-            $table->string('phone_reservation')->nullable();
-            $table->string('email_sales')->nullable();
-            $table->string('email_reservation')->nullable();
             $table->string('logo')->nullable();
             $table->string('icon')->nullable();
             $table->string('social_fb')->nullable();

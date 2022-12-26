@@ -32,6 +32,7 @@ class Index extends Component
     public function render()
     {
         $users = Admin::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.user.index', compact('users'));
+        $serialNo = ($users->perPage() * ($users->currentPage() - 1)) + 1;
+        return view('livewire.admin.user.index', compact('users', 'serialNo'));
     }
 }

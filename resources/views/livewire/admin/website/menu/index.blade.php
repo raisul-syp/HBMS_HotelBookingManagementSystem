@@ -8,7 +8,7 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Slug</th>
                         <th>Display Order</th>
@@ -19,7 +19,7 @@
                 <tbody class="text-center">
                     @forelse ($menus as $menu)
                     <tr>
-                        <td>{{ $menu->id }}</td>
+                        <td>{{ $serialNo++  }}</td>
                         <td>{{ $menu->name }}</td>
                         <td>{{ $menu->slug }}</td>
                         <td>{{ $menu->display_order }}</td>

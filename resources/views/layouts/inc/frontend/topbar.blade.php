@@ -3,7 +3,6 @@
         <div class="col-lg-8">
             <div class="header_top_left">
                 @foreach ($settings as $item)
-                @if ($item->hotel_id == '1')
                 <ul>
                     <li>
                         <i data-feather="map-pin"></i>
@@ -17,8 +16,7 @@
                         <i data-feather="phone"></i>
                         <span>{{ $item->phone }}</span>
                     </li>
-                </ul>                     
-                @endif
+                </ul>   
                 @endforeach
             </div>
         </div>
@@ -26,7 +24,6 @@
         <div class="col-lg-4">
             <div class="header_top_right">
                 @foreach ($settings as $item)
-                @if ($item->hotel_id == '1')
                 <ul>
                     <li class="facebook" data-bs-toggle="tooltip" data-bs-placement="bottom"
                         title="Facebook">
@@ -52,8 +49,7 @@
                             <i data-feather="youtube"></i>
                         </a>
                     </li>
-                </ul>                                   
-                @endif
+                </ul>    
                 @endforeach
             </div>
         </div>

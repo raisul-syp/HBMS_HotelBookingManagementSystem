@@ -30,6 +30,7 @@ class Index extends Component
     public function render()
     {
         $halls = Hall::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.hall.index', compact('halls'));
+        $serialNo = ($halls->perPage() * ($halls->currentPage() - 1)) + 1;
+        return view('livewire.admin.hall.index', compact('halls', 'serialNo'));
     }
 }

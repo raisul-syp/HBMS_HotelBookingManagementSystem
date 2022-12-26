@@ -8,10 +8,9 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Image</th>
                         <th>Name</th>
-                        <th>Hotel</th>
                         <th>Display Order</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -20,14 +19,13 @@
                 <tbody class="text-center">
                     @forelse ($sliders as $slider)
                     <tr>
-                        <td>{{ $slider->id }}</td>
+                        <td>{{ $serialNo++  }}</td>
                         <td style="width: 15%;">
                             <div class="slider-list-img">
                                 <img src="{{ asset('frontend/images/sliders/'.$slider->desktop_image) }}" alt="{{ $slider->name }}">
                             </div>
                         </td>
                         <td>{{ $slider->name }}</td>
-                        <td>{{ $slider->hotels->name }}</td>
                         <td>{{ $slider->display_order }}</td>
                         <td>
                             @if ($slider->is_active == '1')
@@ -48,7 +46,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7">
+                        <td colspan="6">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>

@@ -40,22 +40,7 @@ class SettingsFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'google_map' => [
-                'nullable'
-            ],
             'display_order' => [
-                'nullable'
-            ],
-            'phone_sales' => [
-                'nullable'
-            ],
-            'phone_reservation' => [
-                'nullable'
-            ],
-            'email_sales' => [
-                'nullable'
-            ],
-            'email_reservation' => [
                 'nullable'
             ],
             'logo' => [

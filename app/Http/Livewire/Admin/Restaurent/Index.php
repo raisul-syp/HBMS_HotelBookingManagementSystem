@@ -30,6 +30,7 @@ class Index extends Component
     public function render()
     {
         $restaurents = Restaurent::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.restaurent.index', compact('restaurents'));
+        $serialNo = ($restaurents->perPage() * ($restaurents->currentPage() - 1)) + 1;
+        return view('livewire.admin.restaurent.index', compact('restaurents', 'serialNo'));
     }
 }

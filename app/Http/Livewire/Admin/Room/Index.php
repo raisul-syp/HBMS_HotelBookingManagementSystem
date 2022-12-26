@@ -34,7 +34,8 @@ class Index extends Component
     
     public function render()
     {
-        $rooms = Room::where('is_delete','1')->orderBy('id','ASC')->paginate(10);        
-        return view('livewire.admin.room.index', compact('rooms'));
+        $rooms = Room::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
+        $serialNo = ($rooms->perPage() * ($rooms->currentPage() - 1)) + 1;
+        return view('livewire.admin.room.index', compact('rooms', 'serialNo'));
     }
 }

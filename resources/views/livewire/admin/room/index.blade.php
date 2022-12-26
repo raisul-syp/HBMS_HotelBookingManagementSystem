@@ -8,9 +8,8 @@
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Name</th>
-                        <th>Hotel</th>
                         <th>Slug</th>
                         <th>Room View</th>
                         <th>Facilities</th>
@@ -25,15 +24,18 @@
                 <tbody class="text-center">
                     @forelse ($rooms as $room)
                     <tr>
-                        <td>{{ $room->id }}</td>
+                        <td>{{ $serialNo++ }}</td>
                         <td>{{ $room->name }}</td>
-                        <td>{{ $room->hotels->name }}</td>
                         <td>{{ $room->slug }}</td>
                         <td>
                             @forelse ($room->roomViews as $roomView)
-                            <span class="badge badge-pill badge-primary">{{ $roomView->name }}</span>
+                            <div class="room-facilities m-1" data-toggle="tooltip" data-placement="top" title="{{ $roomView->name }}">
+                            @if ($roomView->image != null)
+                            <img src="{{ asset('uploads/roomviews/'.$roomView->image) }}">
+                            @endif
+                            </div>
                             @empty
-                            <small class="text-danger">No Views Added!</small>
+                            <small class="text-danger">No Facilities Added!</small>
                             @endforelse
                         </td>
                         <td>
@@ -77,7 +79,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="10">
+                        <td colspan="9">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>

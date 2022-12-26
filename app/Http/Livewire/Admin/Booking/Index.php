@@ -14,6 +14,7 @@ class Index extends Component
     public function render()
     {
         $bookings = Booking::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.booking.index', compact('bookings'));
+        $serialNo = ($bookings->perPage() * ($bookings->currentPage() - 1)) + 1;
+        return view('livewire.admin.booking.index', compact('bookings', 'serialNo'));
     }
 }

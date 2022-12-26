@@ -8,11 +8,9 @@
             <span class="icon-bar"></span>
         </button>
         @foreach ($settings as $item)
-        @if ($item->hotel_id == '1')
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('uploads/site/'.$item->logo) }}" alt="{{ $item->name }}">
-        </a>                         
-        @endif
+        </a>
         @endforeach
         <button class="search-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse"
             data-bs-target="#searchSupportedContent" aria-controls="searchSupportedContent"

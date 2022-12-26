@@ -30,6 +30,7 @@ class Index extends Component
     public function render()
     {
         $wellnesses = wellness::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.wellness.index', compact('wellnesses'));
+        $serialNo = ($wellnesses->perPage() * ($wellnesses->currentPage() - 1)) + 1;
+        return view('livewire.admin.wellness.index', compact('wellnesses', 'serialNo'));
     }
 }

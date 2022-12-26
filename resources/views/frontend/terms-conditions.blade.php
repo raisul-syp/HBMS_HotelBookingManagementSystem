@@ -6,7 +6,7 @@
     <div class="about_section_inner">
         <div class="container">
             @foreach ($pages as $page)
-            @if ($page->name == 'Terms & Conditions' && $page->hotel_id == '1')
+            @if ($page->name == 'Terms & Conditions')
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title">

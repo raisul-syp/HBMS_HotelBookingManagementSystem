@@ -41,16 +41,6 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#settings_additional">
-                                    <span>
-                                        <strong>
-                                            <i class="ti-info-alt"></i>
-                                            <span class="ml-2">{{ __('Additional Info') }}</span>
-                                        </strong>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#settings_image">
                                     <span>
                                         <strong>
@@ -155,14 +145,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="google_map">
-                                        {{ __('Google Map Key') }}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" name="google_map" id="google_map" rows="3" placeholder="Add Google Map Key..."></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="display_order">
                                         {{ __('Display Order') }}
                                     </label>
@@ -176,69 +158,6 @@
                                     </label>
                                     <div class="col-sm-10">
                                         <input type="checkbox" class="form-check-input" id="is_active" name="is_active" checked>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="settings_additional" role="tabpanel">
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="phone_sales">
-                                        {{ __('Phone (Sales)') }}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text bg-primary">
-                                                    <i class="fa fa-phone"></i>
-                                                </span>
-                                            </div>
-                                            <input type="tel" class="form-control" id="phone_sales" name="phone_sales" placeholder="Add Phone (Sales)...">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="phone_reservation">
-                                        {{ __('Phone (Reservation)') }}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text bg-primary">
-                                                    <i class="fa fa-phone"></i>
-                                                </span>
-                                            </div>
-                                            <input type="tel" class="form-control" id="phone_reservation" name="phone_reservation" placeholder="Add Phone (Reservation)...">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="email_sales">
-                                        {{ __('Email (Sales)') }}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text bg-primary">
-                                                    <i class="fa fa-envelope"></i>
-                                                </span>
-                                            </div>
-                                            <input type="email" class="form-control" id="email_sales" name="email_sales" placeholder="Add Email (Sales)...">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-0">
-                                    <label class="col-sm-2 col-form-label text-right" for="email_reservation">
-                                        {{ __('Email (Reservation)') }}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text bg-primary">
-                                                    <i class="fa fa-envelope"></i>
-                                                </span>
-                                            </div>
-                                            <input type="email" class="form-control" id="email_reservation" name="email_reservation" placeholder="Add Email (Reservation)...">
-                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -30,6 +30,7 @@ class Index extends Component
     public function render()
     {
         $settings = Settings::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
-        return view('livewire.admin.settings.index', compact('settings'));
+        $serialNo = ($settings->perPage() * ($settings->currentPage() - 1)) + 1;
+        return view('livewire.admin.settings.index', compact('settings', 'serialNo'));
     }
 }

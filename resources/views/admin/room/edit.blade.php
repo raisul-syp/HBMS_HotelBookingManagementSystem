@@ -212,10 +212,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="image">{{ __('Image') }}</div>
                                     <div class="col-sm-10">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="image" name="image[]" multiple>
-                                            <label class="custom-file-label">Choose file</label>
-                                        </div>
+                                        <input type="file" class="dropify" id="image" name="image[]" multiple />
 
                                         <div class="image-preview">
                                             @if ($room->roomImages)
