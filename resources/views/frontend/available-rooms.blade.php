@@ -15,42 +15,48 @@
                             <form action="{{ url('available-rooms') }}" method="GET">
                                 <div class="row">
                                     <div class="form_input col-12 mb-3">
-                                        <div class="date-box">
-                                            <input type="date" class="form-control check-in-out" id="checkin_date" name="checkinDate" value="{{ $todayDate }}">
-                                            {{-- <span class="lnr lnr-calendar-full icon"></span> --}}
+                                        <div class="input-wrapper">
+                                            <input type="date" class="form-control check-in-out" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
+                                            <span class="lnr lnr-calendar-full icon"></span>
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
-                                        <div class="date-box">
-                                            <input type="date" class="form-control check-in-out" id="checkout_date" name="checkoutDate" value="{{ $tomorrowDate }}">
-                                            {{-- <span class="lnr lnr-calendar-full icon"></span> --}}
+                                        <div class="input-wrapper">
+                                            <input type="date" class="form-control check-in-out" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
+                                            <span class="lnr lnr-calendar-full icon"></span>
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
-                                        <select class="form-select" id="adults" name="adults">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                          </select>
+                                        <div class="input-wrapper">
+                                            <select class="form-select" id="adults" name="adults">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                            </select>
+                                            <span class="lnr lnr-chevron-down icon"></span>
+                                        </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
-                                        <select class="form-select" id="children" name="children">
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                        </select>
+                                        <div class="input-wrapper">
+                                            <select class="form-select" id="children" name="children">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                            </select>
+                                            <span class="lnr lnr-chevron-down icon"></span>
+                                        </div>
                                     </div>
                                     <div class="form_input submit_btn col-12">
                                         <button type="submit" class="btn btn-primary btn-block">Check Availability</button>
@@ -77,9 +83,6 @@
                                                     <img src="{{ asset($roomImage->image) }}" alt="">
                                                     @break
                                                     @endforeach
-                                                </div>
-                                                <div class="room-loaction">
-                                                    {{ $room->hotels->hotel_location }}
                                                 </div>
                                             </div>
 

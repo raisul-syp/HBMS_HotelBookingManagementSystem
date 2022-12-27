@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Room;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use App\Models\Hotel;
-use App\Models\Website\Slider;
-use App\Models\Website\Testimonial;
-use App\Models\Website\Facility;
+use App\Models\Offer;
 use App\Models\Website\Page;
+use Illuminate\Http\Request;
+use App\Models\Website\Slider;
+use Illuminate\Support\Carbon;
+use App\Models\Website\Facility;
+use Illuminate\Support\Facades\DB;
+use App\Models\Website\Testimonial;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -21,7 +22,6 @@ class HomeController extends Controller
         $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
         $checkin_date = $request->checkin_date;
         $checkout_date = $request->checkout_date;
-        $hotel_location = $request->hotel_location;
         $total_adults = $request->adults;
         $total_childs = $request->children;
 
@@ -30,6 +30,7 @@ class HomeController extends Controller
         $rooms = Room::all()->where('is_active','1')->where('is_delete','1');
         $testimonials = Testimonial::all()->where('is_active','1')->where('is_delete','1');
         $facilities = Facility::all()->where('is_active','1')->where('is_delete','1');
+        $offers = Offer::all()->where('start_date', '>', $todayDate)->where('is_active', '1')->where('is_delete', '1');
 
         $available_rooms = Room::whereNotIn('id', function($query) use ($checkin_date, $checkout_date) {
             $query->select('room_id')->from('hb_bookings')
@@ -41,7 +42,7 @@ class HomeController extends Controller
         ->where('is_active', 1)
         ->get();
 
-        return view('frontend.index', compact('sliders','aboutUs','rooms','testimonials','facilities','todayDate','tomorrowDate','available_rooms'));
+        return view('frontend.index', compact('sliders','aboutUs','rooms','testimonials','facilities','offers','todayDate','tomorrowDate','available_rooms'));
     }
 
     public function checkAvailability(Request $request)
@@ -50,7 +51,6 @@ class HomeController extends Controller
         $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
         $checkin_date = $request->checkin_date;
         $checkout_date = $request->checkout_date;
-        $hotel_location = $request->hotel_location;
         $total_adults = $request->adults;
         $total_childs = $request->children;
 

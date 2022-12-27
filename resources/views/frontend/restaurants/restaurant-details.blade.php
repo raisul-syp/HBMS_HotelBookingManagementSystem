@@ -53,9 +53,6 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <div class="booking-btn mb-3">
-                    <a href="#" class="btn btn-primary">Book Now</a>
-                </div>
                 <div class="roomAvailability-form">
                     <div class="card">
                         <div class="card-header">
@@ -65,51 +62,48 @@
                             <form action="{{ url('available-rooms') }}" method="GET">
                                 <div class="row">
                                     <div class="form_input col-12 mb-3">
-                                        <div class="date-box">
-                                            <input type="text" class="form-control check-in-out" id="checkin_date" name="checkin_date" placeholder="Check-In">
+                                        <div class="input-wrapper">
+                                            <input type="date" class="form-control check-in-out" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
                                             <span class="lnr lnr-calendar-full icon"></span>
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
-                                        <div class="date-box">
-                                            <input type="text" class="form-control check-in-out" id="checkout_date" name="checkout_date" placeholder="Check-Out">
+                                        <div class="input-wrapper">
+                                            <input type="date" class="form-control check-in-out" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
                                             <span class="lnr lnr-calendar-full icon"></span>
                                         </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
-                                        <select class="form-select" id="hotel_location" name="hotel_location">
-                                            <option selected disabled>Select Hotel Location</option>
-                                            <option value="Dhaka">Dhaka</option>
-                                            <option value="Jashore">Jashore</option>
-                                          </select>
+                                        <div class="input-wrapper">
+                                            <select class="form-select" id="adults" name="adults">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                            </select>
+                                            <span class="lnr lnr-chevron-down icon"></span>
+                                        </div>
                                     </div>
                                     <div class="form_input col-12 mb-3">
-                                        <select class="form-select" id="adults" name="adults">
-                                            <option selected disabled>Select Adults</option>
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                          </select>
-                                    </div>
-                                    <div class="form_input col-12 mb-3">
-                                        <select class="form-select" id="children" name="children">
-                                            <option selected disabled>Select Childs</option>
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                        </select>
+                                        <div class="input-wrapper">
+                                            <select class="form-select" id="children" name="children">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                            </select>
+                                            <span class="lnr lnr-chevron-down icon"></span>
+                                        </div>
                                     </div>
                                     <div class="form_input submit_btn col-12">
                                         <button type="submit" class="btn btn-primary btn-block">Check Availability</button>

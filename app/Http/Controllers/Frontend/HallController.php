@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Hall;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -18,8 +19,10 @@ class HallController extends Controller
 
     public function hallDetails(int $hall_id)
     {
+        $todayDate = Carbon::today()->format('Y-m-d');
+        $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
         $hallDetail = Hall::findOrFail($hall_id);
-        return view('frontend.halls.hall-details', compact('hallDetail'));
+        return view('frontend.halls.hall-details', compact('todayDate','tomorrowDate','hallDetail'));
     }
 
     public function checkAvailability(Request $request)

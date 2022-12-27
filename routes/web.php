@@ -30,6 +30,7 @@ Route::prefix('/')->controller(App\Http\Controllers\Frontend\PagesController::cl
     Route::get('/booking-cancelation-policy', 'bookingCancelPolicy');
     Route::get('/privacy-policy', 'privacyPolicy');
     Route::get('/terms-conditions', 'termsConditions');
+    Route::get('/offers/offer-details/{offer}', 'offerDetails');
 });
 
 Route::prefix('/rooms')->controller(App\Http\Controllers\Frontend\RoomController::class)->group(function (){

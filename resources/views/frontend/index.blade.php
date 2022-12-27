@@ -55,59 +55,55 @@
             <div class="availability_sec_inner">
                 <form action="{{ url('available-rooms') }}" method="GET">
                     <div class="availability_form">
-                        <div class="form_input col-12">
+                        <div class="form_input">
                             <label for="checkin_date" class="form-label text-white">Check-In:</label>
-                            <div class="date-box">
-                                <input type="date" class="form-control" id="checkinDate" name="checkin_date" value="{{ $todayDate }}">
-                                {{-- <span class="lnr lnr-calendar-full icon"></span> --}}
+                            <div class="input-wrapper">
+                                <input type="date" class="form-control" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
+                                <span class="lnr lnr-calendar-full icon"></span>
                             </div>
                         </div>
-                        <div class="form_input col-12">
+                        <div class="form_input">
                             <label for="checkout_date" class="form-label text-white">Check-Out:</label>
-                            <div class="date-box">
-                                <input type="date" class="form-control" id="checkoutDate" name="checkout_date" value="{{ $tomorrowDate }}">
-                                {{-- <span class="lnr lnr-calendar-full icon"></span> --}}
+                            <div class="input-wrapper">
+                                <input type="date" class="form-control" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
+                                <span class="lnr lnr-calendar-full icon"></span>
                             </div>
                         </div>
-                        {{-- <div class="form_input col-12">
-                            <label for="hotel_location" class="form-label text-white">Hotel Location:</label>
-                            <select class="form-select" id="hotel_location" name="hotel_location">
-                                @forelse ($hotels as $hotel)
-                                <option value="{{ $hotel->id }}">{{ $hotel->hotel_location }}</option>
-                                @empty
-                                <option>No Data</option>
-                                @endforelse
-                              </select>
-                        </div> --}}
-                        <div class="form_input col-12">
+                        <div class="form_input">
                             <label for="adults" class="form-label text-white">Adults:</label>
-                            <select class="form-select" id="adults" name="adults">
-                                <option selected>0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                              </select>
+                            <div class="input-wrapper">
+                                <select class="form-select" id="adults" name="adults">
+                                    <option selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                                <span class="lnr lnr-chevron-down icon"></span>
+                            </div>
                         </div>
-                        <div class="form_input col-12">
+                        <div class="form_input">
                             <label for="children" class="form-label text-white">Children:</label>
-                            <select class="form-select" id="children" name="children">
-                                <option selected>0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
+                            <div class="input-wrapper">
+                                <select class="form-select" id="children" name="children">
+                                    <option selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                                <span class="lnr lnr-chevron-down icon"></span>
+                            </div>
                         </div>
-                        <div class="form_input col-12 submit_btn">
+                        <div class="form_input submit_btn">
                             <button type="submit" class="btn btn-primary">Check Availability</button>
                         </div>
                     </div>
@@ -116,6 +112,42 @@
         </div>
     </div>
 </section>
+
+@if (count($offers) > 0)
+<section id="offer_section" class="offer_section">
+    <div class="offer_section_inner">
+        <div class="container">
+            <div class="row">
+                @foreach ($offers->slice(0, 2) as $offer)
+                <div class="col-lg-6">
+                    <div class="offer_sec">
+                        <a href="{{ url('offers/offer-details/'.$offer->id) }}">
+                            <div class="card d-flex flex-row">
+                                <div class="card-image">
+                                    <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <div class="content">
+                                        <div class="content_inner">
+                                            <h5>{{ $offer->name }}</h5>
+                                            <p>{{ $offer->short_description }}</p>
+                                            <p class="datetime"><strong>Start Date: </strong> <span>{{ date('d F Y, h:i A', strtotime($offer->start_date)) }}</span></p>
+                                            <p class="datetime"><strong>End Date: </strong> <span>{{ date('d F Y, h:i A', strtotime($offer->end_date)) }}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+@else
+<section id="offer_section" class="offer_section d-none"></section>
+@endif
 
 <section id="about_section" class="about_section">
     <div class="about_section_inner">
@@ -252,17 +284,17 @@
     </div>
 </section>
 
-<section id="offer_section" class="offer_section">
-    <div class="offer_section_inner">
+<section id="breadcrumb_section" class="breadcrumb_section">
+    <div class="breadcrumb_section_inner">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="offer_sec">
+                    <div class="breadcrumb_sec">
                         <div class="content">
                             <h5>Need a vacation? We offered you the</h5>
                             <h4>Best Holiday Offer</h4>
                         </div>
-                        <div class="offer_btn">
+                        <div class="breadcrumb_btn">
                             <a href="#" class="btn btn-book">Book Now</a>
                         </div>
                     </div>

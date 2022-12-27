@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -17,8 +18,10 @@ class RoomController extends Controller
 
     public function roomDetails(int $room_id)
     {
+        $todayDate = Carbon::today()->format('Y-m-d');
+        $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
         $roomDetail = Room::findOrFail($room_id);
-        return view('frontend.rooms.room-details', compact('roomDetail'));
+        return view('frontend.rooms.room-details', compact('todayDate','tomorrowDate','roomDetail'));
     }
 
     public function checkAvailability(Request $request)

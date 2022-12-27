@@ -79,17 +79,17 @@ $(document).ready(function () {
 
 
 
-    // $("#checkin_date").datepicker({
-    //     // dateFormat: 'yy-mm-dd',
-    //     minDate: new Date(),
-    //     maxDate: 30,
-    // });
+    $("#checkin_date").datepicker({
+        dateFormat: 'yy-mm-dd',
+        minDate: new Date(),
+        maxDate: 30,
+    });
 
-    // $("#checkout_date").datepicker({
-    //     // dateFormat: 'yy-mm-dd',
-    //     minDate: new Date(),
-    //     maxDate: 30,
-    // });
+    $("#checkout_date").datepicker({
+        dateFormat: 'yy-mm-dd',
+        minDate: new Date(),
+        maxDate: 30,
+    });
 
 
 
@@ -103,21 +103,6 @@ $(document).ready(function () {
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
     })
-});
-
-$(function(){
-    var dtToday = new Date(); 
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if(month < 10)
-        month = '0' + month.toString();
-    if(day < 10)
-     day = '0' + day.toString();
-    var maxDate = year + '-' + month + '-' + day;
-
-    $("#checkinDate").attr('min', maxDate);
-    $("#checkoutDate").attr('min', maxDate);
 });
 
 

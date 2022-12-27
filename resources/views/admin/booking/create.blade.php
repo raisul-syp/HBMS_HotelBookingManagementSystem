@@ -226,13 +226,7 @@
                 success: function(res){
                     var _html = '';
                     $.each(res.data,function(index,row){
-                        if(row.hotel_id == '1'){
-                            var _location = 'Dhaka';
-                        }
-                        if(row.hotel_id == '2'){
-                            var _location = 'Jashore';
-                        }
-                        _html +='<option value="'+row.id+'">'+row.name+" (" +_location +") - "+row.quantity+" rooms are available</option>";
+                        _html +='<option value="'+row.id+'">'+row.name+" - "+row.quantity+" rooms are available</option>";
                     });
                     $(".room-list").html(_html);
                 }

@@ -34,7 +34,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($restaurents as $restaurent)
-                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/restaurents/restaurent-details/'.$restaurent->id }}">{{ $restaurent->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/restaurants/restaurant-details/'.$restaurent->id }}">{{ $restaurent->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>

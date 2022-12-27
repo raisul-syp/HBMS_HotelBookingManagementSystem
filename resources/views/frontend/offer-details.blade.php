@@ -1,5 +1,5 @@
 @extends('layouts.guest')
-@section('title', 'Wellness Details')
+@section('title', 'Offer Details')
 
 @section('content')
 <section id="page_details_section_frontend" class="page_details_section_frontend content_section">
@@ -7,13 +7,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section_title">
-                    <h4>Wellness Details</h4>
+                    <h4>Offer Details</h4>
                 </div>
                 <div class="section_breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('wellnesses') }}">{{ __('Wellness') }}</a></li>
-                        <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Wellness Details') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('offers') }}">{{ __('Offers') }}</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Offers Details') }}</a></li>
                     </ol>
                 </div>
             </div>
@@ -24,28 +24,34 @@
                 <div class="page-details-inner">
                     <div class="card">
                         <div class="owl-carousel owl-theme page-details-carousel">
-                            @if (count($wellnessDetail->wellnessImages) > 0)
-                            @foreach ($wellnessDetail->wellnessImages as $wellnessImage)
                             <div class="item">
-                                <img src="{{ asset($wellnessImage->image) }}" alt="">
+                                <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
                             </div>
-                            @endforeach
-                            @endif
                         </div>
 
                         <div class="card-body">
+                            <hr>
+                            <div class="page-terminal d-flex align-items-center justify-content-between">
+                                <div class="datetime">
+                                    <i class="fa fa-calendar me-1"></i>
+                                    <span>{{ date('d M Y', strtotime($offer->start_date)).' - '.date('d M Y', strtotime($offer->end_date)) }}</span>
+                                </div>
+                                <div class="datetime">
+                                    <i class="fa fa-clock me-1"></i>
+                                    <span>{{ date('g:i A', strtotime($offer->start_date)).' - '.date('g:i A', strtotime($offer->end_date)) }}</span>
+                                </div>
+                            </div>
+                            <hr>
+
                             <div class="page-header">
                                 <div class="page-title">
-                                    {{ $wellnessDetail->name }}
+                                    {{ $offer->name }}
                                 </div>
                             </div>
 
                             <div class="page-description">
-                                <div class="short-descrp">
-                                    {{ $wellnessDetail->short_description }}
-                                </div>
                                 <div class="long-descrp">
-                                    {!! html_entity_decode($wellnessDetail->long_description) !!}
+                                    {!! html_entity_decode($offer->long_description) !!}
                                 </div>
                             </div>
                         </div>
@@ -53,6 +59,9 @@
                 </div>
             </div>
             <div class="col-lg-3">
+                <div class="booking-btn mb-3">
+                    <a href="#" class="btn btn-primary">Book Now</a>
+                </div>
                 <div class="roomAvailability-form">
                     <div class="card">
                         <div class="card-header">

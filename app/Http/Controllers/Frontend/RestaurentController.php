@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Room;
 use App\Models\Restaurent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -18,8 +19,10 @@ class RestaurentController extends Controller
 
     public function restaurantDetails(int $restaurant_id)
     {
+        $todayDate = Carbon::today()->format('Y-m-d');
+        $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
         $restaurantDetail = Restaurent::findOrFail($restaurant_id);
-        return view('frontend.restaurants.restaurant-details', compact('restaurantDetail'));
+        return view('frontend.restaurants.restaurant-details', compact('todayDate','tomorrowDate','restaurantDetail'));
     }
 
     public function checkAvailability(Request $request)

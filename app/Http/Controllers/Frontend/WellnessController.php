@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Room;
 use App\Models\Wellness;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -18,8 +19,10 @@ class WellnessController extends Controller
 
     public function wellnessDetails(int $wellness_id)
     {
+        $todayDate = Carbon::today()->format('Y-m-d');
+        $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
         $wellnessDetail = Wellness::findOrFail($wellness_id);
-        return view('frontend.wellnesses.wellness-details', compact('wellnessDetail'));
+        return view('frontend.wellnesses.wellness-details', compact('todayDate','tomorrowDate','wellnessDetail'));
     }
 
     public function checkAvailability(Request $request)
