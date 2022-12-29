@@ -18,39 +18,18 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\HomeController::class)->group(function (){
     Route::get('/', 'index');
     Route::get('/available-rooms', 'checkAvailability');
-    Route::get('/rooms/room-details/{room}', 'roomDetails');
+    Route::get('/rooms/room-details/{slug}', 'roomDetails');
 });
 
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\PagesController::class)->group(function (){
     Route::get('/about-us', 'aboutUs');
     Route::get('/contact-us', 'contactUs');
-    Route::get('/news', 'news');
-    Route::get('/offers', 'offers');
-    Route::get('/certificates-awards', 'certificatesAwards');
-    Route::get('/booking-cancelation-policy', 'bookingCancelPolicy');
-    Route::get('/privacy-policy', 'privacyPolicy');
-    Route::get('/terms-conditions', 'termsConditions');
-    Route::get('/offers/offer-details/{offer}', 'offerDetails');
-});
-
-Route::prefix('/rooms')->controller(App\Http\Controllers\Frontend\RoomController::class)->group(function (){
-    Route::get('/', 'index');
-    Route::get('/room-details/{room}', 'roomDetails');
-});
-
-Route::prefix('/restaurants')->controller(App\Http\Controllers\Frontend\RestaurentController::class)->group(function (){
-    Route::get('/', 'index');
-    Route::get('/restaurant-details/{restaurant}', 'restaurantDetails');
-});
-
-Route::prefix('/halls')->controller(App\Http\Controllers\Frontend\HallController::class)->group(function (){
-    Route::get('/', 'index');
-    Route::get('/hall-details/{hall}', 'hallDetails');
-});
-
-Route::prefix('/wellness')->controller(App\Http\Controllers\Frontend\WellnessController::class)->group(function (){
-    Route::get('/', 'index');
-    Route::get('/wellness-details/{wellness}', 'wellnessDetails');
+    Route::get('/{slug}', 'pages');
+    Route::get('/offers/offer-details/{slug}', 'offerDetails');
+    Route::get('/rooms/room-details/{slug}', 'roomDetails');
+    Route::get('/restaurants/restaurant-details/{slug}', 'restaurantDetails');
+    Route::get('/halls/hall-details/{slug}', 'hallDetails');
+    Route::get('/wellness/wellness-details/{slug}', 'wellnessDetails');
 });
 
 Route::prefix('/booking')->controller(App\Http\Controllers\Frontend\BookingController::class)->group(function (){

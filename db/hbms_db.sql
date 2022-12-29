@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2022 at 09:53 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Dec 29, 2022 at 05:10 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -197,9 +197,9 @@ CREATE TABLE `hb_halls` (
 --
 
 INSERT INTO `hb_halls` (`id`, `name`, `slug`, `short_description`, `long_description`, `logo_image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Board Room', 'board-room-dhaka', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p style=\"text-align: left;\">The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Board Room', 'Board Room', 'Board Room', 1, 1, '0', '0', '2022-12-13 20:54:56', '2022-12-20 23:37:55'),
-(2, 'Olive Hall', 'olive-hall-dhaka', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Olive Hall', 'Olive Hall', 'Olive Hall', 1, 1, '0', '0', '2022-12-13 22:58:33', '2022-12-20 23:38:16'),
-(3, 'Tulip Hall', 'tulip-hall-dhaka', 'The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Tulip Hall', 'Tulip Hall', 'Tulip Hall', 1, 1, '0', '0', '2022-12-13 22:59:14', '2022-12-20 23:38:28');
+(1, 'Board Room', 'board-room', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p style=\"text-align: left;\">The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Board Room', 'Board Room', 'Board Room', 1, 1, '0', '1', '2022-12-13 20:54:56', '2022-12-29 10:07:26'),
+(2, 'Olive Hall', 'olive-hall', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Olive Hall', 'Olive Hall', 'Olive Hall', 1, 1, '0', '1', '2022-12-13 22:58:33', '2022-12-29 10:07:39'),
+(3, 'Tulip Hall', 'tulip-hall', 'The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Tulip Hall', 'Tulip Hall', 'Tulip Hall', 1, 1, '0', '1', '2022-12-13 22:59:14', '2022-12-29 10:07:53');
 
 -- --------------------------------------------------------
 
@@ -278,10 +278,10 @@ CREATE TABLE `hb_restaurents` (
 --
 
 INSERT INTO `hb_restaurents` (`id`, `name`, `slug`, `short_description`, `long_description`, `logo_image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Cafe 24', 'cafe-24-dhaka', 'Located on the ground level, it is a modern delight. Enjoy lively chit chat in a Comfortable gathering place.', '<p>Located on the ground level, it is a modern delight .Enjoy lively chit chat in a Comfortable gathering place .A wide selection of premium coffees, teas and freshly squeezed juices is served throughout the day and our varieties of smoothie is a healthy way to Satisfy your sweet tooth.</p><h3 style=\"text-align: center; \"><b>Opening hours: 24 hrs open</b></h3>', 'cafe-24-dhaka.png', 'Cafe 24', 'Cafe 24', 'Cafe 24', 1, 1, '0', '0', '2022-12-13 19:03:04', '2022-12-20 23:29:23'),
-(2, 'Taste Of Heaven', 'taste-of-heaven-dhaka', 'Taste of Heaven is a contemporary all day dining restaurant where modern design innovative cuisine. Round the clock dining destination showcases an array of international delights.', '<p>Taste of Heaven is a contemporary all day dining restaurant where modern design innovative cuisine. Round the clock dining destination showcases an array of international delights.</p><h3 style=\"text-align: center; \"><b>Opening hours: 06.30 hrs to 22.30 hrs</b></h3>', 'taste-of-heaven-dhaka.png', 'Taste Of Heaven', 'Taste Of Heaven', 'Taste Of Heaven', 1, 1, '0', '0', '2022-12-13 19:04:00', '2022-12-20 23:29:10'),
-(3, 'Sky Line', 'sky-line-dhaka', 'A Casual dining 60 seater barbeque and gril specialty dining at the pool side overlooking amazing natural green view of Dhaka.', '<p>A Casual dining 60 seater barbeque and gril specialty dining at the pool side overlooking amazing natural green view of Dhaka.</p><h3 style=\"text-align: center; \"><b>OPENING HOURS: 17.00 hrs to 23.00 hrs</b></h3>', 'sky-line-dhaka.png', 'Sky Line', 'Sky Line', 'Sky Line', 1, 1, '0', '0', '2022-12-13 19:05:01', '2022-12-20 23:29:40'),
-(4, 'Noxx Bar', 'noxx-bar-dhaka', 'Noxx Bar', '<p>Noxx Bar<br></p>', 'noxx-bar-dhaka.png', 'Noxx Bar', 'Noxx Bar', 'Noxx Bar', 1, 1, '0', '0', '2022-12-13 19:05:28', '2022-12-20 23:29:53');
+(1, 'Cafe 24', 'cafe-24', 'Located on the ground level, it is a modern delight. Enjoy lively chit chat in a Comfortable gathering place.', '<p>Located on the ground level, it is a modern delight .Enjoy lively chit chat in a Comfortable gathering place .A wide selection of premium coffees, teas and freshly squeezed juices is served throughout the day and our varieties of smoothie is a healthy way to Satisfy your sweet tooth.</p><h3 style=\"text-align: center; \"><b>Opening hours: 24 hrs open</b></h3>', 'cafe-24.png', 'Cafe 24', 'Cafe 24', 'Cafe 24', 1, 1, '0', '1', '2022-12-13 19:03:04', '2022-12-29 09:48:34'),
+(2, 'Taste Of Heaven', 'taste-of-heaven', 'Taste of Heaven is a contemporary all day dining restaurant where modern design innovative cuisine. Round the clock dining destination showcases an array of international delights.', '<p>Taste of Heaven is a contemporary all day dining restaurant where modern design innovative cuisine. Round the clock dining destination showcases an array of international delights.</p><h3 style=\"text-align: center; \"><b>Opening hours: 06.30 hrs to 22.30 hrs</b></h3>', 'taste-of-heaven.png', 'Taste Of Heaven', 'Taste Of Heaven', 'Taste Of Heaven', 1, 1, '0', '1', '2022-12-13 19:04:00', '2022-12-29 09:49:10'),
+(3, 'Sky Line', 'sky-line', 'A Casual dining 60 seater barbeque and gril specialty dining at the pool side overlooking amazing natural green view of Dhaka.', '<p>A Casual dining 60 seater barbeque and gril specialty dining at the pool side overlooking amazing natural green view of Dhaka.</p><h3 style=\"text-align: center; \"><b>OPENING HOURS: 17.00 hrs to 23.00 hrs</b></h3>', 'sky-line.png', 'Sky Line', 'Sky Line', 'Sky Line', 1, 1, '0', '1', '2022-12-13 19:05:01', '2022-12-29 09:49:43'),
+(4, 'Noxx Bar', 'noxx-bar', 'Noxx Bar', '<p>Noxx Bar<br></p>', 'noxx-bar.png', 'Noxx Bar', 'Noxx Bar', 'Noxx Bar', 1, 1, '0', '1', '2022-12-13 19:05:28', '2022-12-29 09:50:02');
 
 -- --------------------------------------------------------
 
@@ -760,10 +760,10 @@ CREATE TABLE `hb_wellness` (
 --
 
 INSERT INTO `hb_wellness` (`id`, `name`, `slug`, `short_description`, `long_description`, `logo_image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Spa', 'spa-dhaka', 'Spa', '<p>Spa<br></p>', 'spa-dhaka.png', 'Spa', 'Spa', 'Spa', 1, 1, '0', '0', '2022-12-13 23:35:12', '2022-12-20 23:40:25'),
-(2, 'Gym', 'gym-dhaka', 'Gym', '<p>Gym<br></p>', NULL, 'Gym', 'Gym', 'Gym', 1, 1, '0', '0', '2022-12-13 23:35:51', '2022-12-20 23:40:38'),
-(3, 'Saloon', 'saloon-dhaka', 'Saloon', '<p>Saloon<br></p>', NULL, 'Saloon', 'Saloon', 'Saloon', 1, 1, '0', '0', '2022-12-13 23:36:38', '2022-12-20 23:40:49'),
-(4, 'Swimming Pool', 'swimming-pool-dhaka', 'Swimming Pool', '<p>Swimming Pool<br></p>', NULL, 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 1, 1, '0', '0', '2022-12-13 23:37:31', '2022-12-20 23:41:08');
+(1, 'Spa', 'spa', 'Spa', '<p>Spa<br></p>', 'spa.png', 'Spa', 'Spa', 'Spa', 1, 1, '0', '1', '2022-12-13 23:35:12', '2022-12-29 10:06:32'),
+(2, 'Gym', 'gym', 'Gym', '<p>Gym<br></p>', NULL, 'Gym', 'Gym', 'Gym', 1, 1, '0', '1', '2022-12-13 23:35:51', '2022-12-29 10:06:42'),
+(3, 'Saloon', 'saloon', 'Saloon', '<p>Saloon<br></p>', NULL, 'Saloon', 'Saloon', 'Saloon', 1, 1, '0', '1', '2022-12-13 23:36:38', '2022-12-29 10:06:53'),
+(4, 'Swimming Pool', 'swimming-pool', 'Swimming Pool', '<p>Swimming Pool<br></p>', NULL, 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 1, 1, '0', '1', '2022-12-13 23:37:31', '2022-12-29 10:07:05');
 
 -- --------------------------------------------------------
 

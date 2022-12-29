@@ -25,7 +25,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($rooms as $room)
-                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/rooms/room-details/'.$room->id }}">{{ $room->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/rooms/room-details/'.$room->slug }}">{{ $room->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>
@@ -34,7 +34,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($restaurents as $restaurent)
-                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/restaurants/restaurant-details/'.$restaurent->id }}">{{ $restaurent->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/restaurants/restaurant-details/'.$restaurent->slug }}">{{ $restaurent->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>
@@ -43,7 +43,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($halls as $hall)
-                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/halls/hall-details/'.$hall->id }}">{{ $hall->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/halls/hall-details/'.$hall->slug }}">{{ $hall->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>
@@ -52,7 +52,7 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $item->name }}</a>
                       <ul class="dropdown-menu fade-down" aria-labelledby="navbarDropdown">
                         @foreach ($wellnesses as $wellness)
-                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/wellness/wellness-details/'.$wellness->id }}">{{ $wellness->name }}</a></li>
+                        <li><a class="dropdown-item" href="{{ 'http://localhost:8000/wellness/wellness-details/'.$wellness->slug }}">{{ $wellness->name }}</a></li>
                         @endforeach
                       </ul>
                 </li>

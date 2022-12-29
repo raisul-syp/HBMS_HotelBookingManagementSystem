@@ -362,10 +362,14 @@ Hero Slider Section Start
     background: var(--siteColor1);
     padding: 20px 20px 40px;
 }
+.availability_sec_inner form {
+    display: flex;
+}
 .availability_form {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 80%;
 }
 
 .availability_form form {
@@ -421,11 +425,13 @@ Hero Slider Section Start
     color: var(--siteColor2);
 }
 
-.availability_form .form_input.submit_btn {
+.availability_sec_inner .submit_btn {
+    padding: 5px;
     margin-top: 24px;
+    width: calc(100% - 80%);
 }
 
-.availability_form .form_input.submit_btn button {
+.availability_sec_inner .submit_btn button {
     height: 42px;
     width: 100%;
     background: var(--goldenBG2);
@@ -435,7 +441,7 @@ Hero Slider Section Start
     font-size: 12px;
     font-weight: 700;
     border-radius: 0;
-
+    padding: 5px;
 }
 
 /*==================================
@@ -506,18 +512,13 @@ About Us Section Start
 .about_section .about_section_inner .content_box .card .card-body .content h4 span.decor-1 {
     position: absolute;
     top: 50%;
-    left: 48%;
+    left: 52%;
     display: block;
     width: 75px;
     height: 2px;
     margin: 0;
     background: var(--goldenBG2);
 }
-/* .about_section .about_section_inner .content_box .card .card-body .content hr {
-    background: var(--goldenBG2);
-    height: 2px;
-    opacity: 1;
-} */
 .about_section .about_section_inner .content_box .card .card-body .content p {
     font-size: 16px;
     line-height: 30px;
@@ -576,7 +577,7 @@ Rooms Section Start
 ==================================*/
 .rooms_section {}
 .rooms_section .rooms_section_inner {
-    padding: 80px 0;
+    padding: 80px 0 40px;
 }
 .rooms_section .rooms_section_inner .section_title {
     position: relative;
@@ -622,34 +623,44 @@ Rooms Section Start
     align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 10px;
+    gap: 14px;
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner h4 {
     color: var(--siteColor1);
     font-weight: 700;
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: 0;
     line-height: 18px;
+    text-align: start;
 }
-.rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner .room-proce {
-    line-height: 18px;
+.rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner .room-price {
+    line-height: 14px;
     text-align: right;
+}
+.rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner .room-price small {
+    font-size: 12px;
+    color: var(--siteColor1);
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner p {
     color: var(--siteColor1);
     margin-bottom: 0;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 600;
     font-style: initial;
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner p strong {
-    font-size: 22px;
+    font-size: 18px;
+    line-height: 18px;
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .btn-view {
     position: relative;
-    color: var(--siteFont2);
+    color: var(--siteColor1);
     text-decoration: none;
     text-transform: capitalize;
-    font-weight: 600;
+    font-weight: 800;
+    font-size: 12px;
+    border: 1px solid var(--siteColor1);
+    padding: 5px 15px;
     transition: all .3s;
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .btn-view:hover {
@@ -683,10 +694,16 @@ Facilities Section Start
 ==================================*/
 .facility_section {}
 .facility_section .facility_section_inner {
-    padding: 60px 0 0 0;
+    padding: 30px 0 0 0;
 }
 .facility_section .facility_section_inner .row {
     background: #FBF9F9;
+}
+.facility_section .facility_section_inner .row:nth-child(odd) {
+    flex-direction: row;
+}
+.facility_section .facility_section_inner .row:nth-child(even) {
+    flex-direction: row-reverse;
 }
 .facility_section .facility_section_inner .facility_image {}
 .facility_section .facility_section_inner .facility_image img {
@@ -694,7 +711,7 @@ Facilities Section Start
 }
 
 .facility_section .facility_section_inner .facility_content {
-    padding: 15% 35% 19% 18%;
+    padding: 16% 16%;
 }
 .facility_section .facility_section_inner .facility_content h4 {
     position: relative;
@@ -809,11 +826,15 @@ Offer Section Start
 }
 .offer_section .offer_section_inner .offer_sec a {
     text-decoration: none;
+    transition: all 0.3s ease-in;
 }
-.offer_section .offer_section_inner .offer_sec .card {
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+.offer_section .offer_section_inner .offer_sec a:hover .card {
     border: none;
     border-radius: 0;
+    transition: all 0.3s ease-in;
+}
+.offer_section .offer_section_inner .offer_sec a .card {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
 .offer_section .offer_section_inner .offer_sec .card-image {
     width: 50%;
@@ -822,10 +843,15 @@ Offer Section Start
     width: 100%;
     height: 160px;
 }
+.offer_section .offer_section_inner .offer_sec .card-body {
+    border: 1px solid var(--siteColor1);
+    border-left: 0;
+}
 .offer_section .offer_section_inner .offer_sec .content h5 {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     margin-bottom: 6px;
+    letter-spacing: 0;
 }
 .offer_section .offer_section_inner .offer_sec .content p {
     color: #212529;
@@ -1229,17 +1255,21 @@ Footer Section End
     padding: 40px 0;
 }
 .roomAvailability-form {}
-.roomAvailability-form .card {
-    background: var(--siteColor1);
+.roomAvailability-form .accordion {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-    border: none;
+}
+.roomAvailability-form .accordion .accordion-item {
     border-radius: 0;
+    border: none;
 }
-.roomAvailability-form .card .card-header {
+.roomAvailability-form .accordion .accordion-item .accordion-header {
     background: var(--goldenBG2);
-    padding: 0.8rem 1rem;
 }
-.roomAvailability-form .card .card-header h4 {
+.roomAvailability-form .accordion .accordion-item .accordion-header .accordion-button {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    padding: 0.8rem 1rem;
     color: var(--siteColor1);
     font-size: 14px;
     text-align: center;
@@ -1247,8 +1277,11 @@ Footer Section End
     text-transform: uppercase;
     line-height: 25px;
     margin-bottom: 0;
+    display: block;
 }
-.roomAvailability-form .card .card-body {}
+.roomAvailability-form .accordion .accordion-item .accordion-body {
+    background: var(--siteColor1);
+}
 .roomAvailability-form .form_input .input-wrapper {
     position: relative;
 }
@@ -1402,7 +1435,7 @@ Footer Section End
 
 
 .pages_section_frontend {
-    padding: 40px;
+    padding: 30px 0;
 }
 .content_section .section_title {}
 .content_section .section_title h4 {
@@ -1433,10 +1466,10 @@ Footer Section End
 }
 .pages_section_frontend .card.restaurant,
 .pages_section_frontend .card.hall,
-.pages_section_frontend .card.wellness {    
+.pages_section_frontend .card.wellness {
     background: var(--siteColor1);
 }
-.pages_section_frontend .card .card-body {
+.pages_section_frontend .image_box .card .card-body {
     background: var(--siteColor1);
     color: var(--siteFont3);
 }
@@ -1450,7 +1483,9 @@ Footer Section End
     align-items: center;
     margin: 0 auto;
 }
-.pages_section_frontend .page-image img {}
+.pages_section_frontend .page-image img {
+    width: 100%;
+}
 .pages_section_frontend .card.restaurant .page-image.logo img,
 .pages_section_frontend .card.hall .page-image.logo img,
 .pages_section_frontend .card.wellness .page-image.logo img {
@@ -1525,6 +1560,10 @@ Footer Section End
     color: var(--siteColor1);
     font-weight: 700;
     border: 1px solid transparent;
+}
+.pages_section_frontend .card .card-body {
+    background: var(--siteColor1);
+    color: var(--siteFont3);
 }
 
 
@@ -1894,7 +1933,7 @@ Footer Section End
 }
 .booking-form-inner .card .card-header {
     background: var(--goldenBG2);
-    padding: 20px 30px;    
+    padding: 20px 30px;
     border-radius: 0;
 }
 .booking-form-inner .card .card-header .form-title h4 {

@@ -6377,9 +6377,10 @@ body #ui-datepicker-div.ui-widget-content table td span {
 body #ui-datepicker-div.ui-widget-content table td a.ui-state-active,
 body #ui-datepicker-div.ui-widget-content table td a:focus,
 body #ui-datepicker-div.ui-widget-content table td a:hover {
-    color: #fff;
+    color: var(--siteColor1);
     border-color: transparent;
     background: var(--goldenBG2);
+    font-weight: 800;
 }
 
 body #ui-datepicker-div.ui-widget-content table .ui-state-disabled span {

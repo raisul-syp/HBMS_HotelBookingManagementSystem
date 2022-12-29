@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Hall;
+use App\Models\Room;
 use App\Models\Offer;
 use App\Models\Settings;
+use App\Models\Wellness;
+use App\Models\Restaurent;
 use App\Models\Website\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -25,49 +29,77 @@ class PagesController extends Controller
         return view('frontend.contact-us', compact('pages', 'contacts'));
     }
 
-    public function news()
+    public function pages($page_slug)
     {
-        $pages = Page::all()->where('is_active', '1')->where('is_delete', '1');
-        return view('frontend.news', compact('pages'));
-    }
-
-    public function offers()
-    {
+        $page = Page::where('slug', $page_slug)->first();
         $offerDateTime = Carbon::now();
-        $pages = Page::all()->where('is_active', '1')->where('is_delete', '1');
         $offers = Offer::all()->where('start_date', '>', $offerDateTime)->where('is_active', '1')->where('is_delete', '1');
-        return view('frontend.offers', compact('offerDateTime', 'pages', 'offers'));
+        $rooms = Room::all()->where('is_active','1')->where('is_delete','1');
+        $restaurants = Restaurent::all()->where('is_active','1')->where('is_delete','1');
+        $halls = Hall::all()->where('is_active','1')->where('is_delete','1');
+        $wellnesses = Wellness::all()->where('is_active','1')->where('is_delete','1');
+        return view('frontend.page', compact('page','offerDateTime','offers','rooms','restaurants','halls','wellnesses'));
     }
 
-    public function offerDetails(int $offer_id)
+    public function offerDetails($pageDetail_slug)
     {
         $todayDate = Carbon::today()->format('Y-m-d');
         $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
-        $offer = Offer::findOrFail($offer_id);
-        return view('frontend.offer-details', compact('todayDate','tomorrowDate','offer'));
+        $offer = Offer::where('slug', $pageDetail_slug)->first();
+        return view('frontend.details.offer', compact('todayDate','tomorrowDate','offer'));
     }
 
-    public function certificatesAwards()
+    public function roomDetails($pageDetail_slug)
     {
-        $pages = Page::all()->where('is_active', '1')->where('is_delete', '1');
-        return view('frontend.certificates-awards', compact('pages'));
+        $todayDate = Carbon::today()->format('Y-m-d');
+        $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
+        $room = Room::where('slug', $pageDetail_slug)->first();
+        return view('frontend.details.room', compact('todayDate','tomorrowDate','room'));
     }
 
-    public function bookingCancelPolicy()
+    public function restaurantDetails($pageDetail_slug)
     {
-        $pages = Page::all()->where('is_active', '1')->where('is_delete', '1');
-        return view('frontend.booking-cancelation-policy', compact('pages'));
+        $todayDate = Carbon::today()->format('Y-m-d');
+        $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
+        $restaurant = Restaurent::where('slug', $pageDetail_slug)->first();
+        return view('frontend.details.restaurant', compact('todayDate','tomorrowDate','restaurant'));
     }
 
-    public function privacyPolicy()
+    public function hallDetails($pageDetail_slug)
     {
-        $pages = Page::all()->where('is_active', '1')->where('is_delete', '1');
-        return view('frontend.privacy-policy', compact('pages'));
+        $todayDate = Carbon::today()->format('Y-m-d');
+        $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
+        $hall = Hall::where('slug', $pageDetail_slug)->first();
+        return view('frontend.details.hall', compact('todayDate','tomorrowDate','hall'));
     }
 
-    public function termsConditions()
+    public function wellnessDetails($pageDetail_slug)
     {
-        $pages = Page::all()->where('is_active', '1')->where('is_delete', '1');
-        return view('frontend.terms-conditions', compact('pages'));
+        $todayDate = Carbon::today()->format('Y-m-d');
+        $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
+        $wellness = Wellness::where('slug', $pageDetail_slug)->first();
+        return view('frontend.details.wellness', compact('todayDate','tomorrowDate','wellness'));
+    }
+
+    public function checkAvailability(Request $request)
+    {
+        $checkin_date = $request->checkin_date;
+        $checkout_date = $request->checkout_date;
+        $hotel_location = $request->hotel_location;
+        $total_adults = $request->adults;
+        $total_childs = $request->children;
+
+        $available_rooms = Room::whereNotIn('id', function($query) use ($checkin_date, $checkout_date) {
+            $query->select('room_id')->from('hb_bookings')
+            ->whereBetween('checkin_date', [$checkin_date, $checkout_date])
+            ->orWhereBetween('checkout_date', [$checkin_date, $checkout_date]);
+        })
+        ->where('hotel_id', $hotel_location)
+        ->where('max_adults', '>=', (int) $total_adults)
+        ->where('max_childs', '>=', (int) $total_childs)
+        ->where('is_active', 1)
+        ->get();
+
+        return view('frontend.available-rooms', compact('available_rooms'));
     }
 }

@@ -16,8 +16,8 @@
                                 <h1>{{ $slider->content_2 }}</h1>
                                 <hr>
                                 <h4>{{ $slider->content_3 }}</h4>
-                                <a href="/" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
-                                <a href="/Jashore" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
+                                <a href="https://thezabeerdhaka.com/" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
+                                <a href="https://thezabeerjashore.com/" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
                             </div>
                         </div>
                     </div>
@@ -39,8 +39,8 @@
                                 <h1>{{ $slider->content_2 }}</h1>
                                 <hr>
                                 <h4>{{ $slider->content_3 }}</h4>
-                                <a href="{{ $slider->button_1_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_1 }}</a>
-                                <a href="{{ $slider->button_2_url }}" class="btn btn-primary btn-read-more">{{ $slider->button_2 }}</a>
+                                <a href="https://thezabeerdhaka.com/" class="btn btn-primary btn-read-more">The Zabeer Dhaka</a>
+                                <a href="https://thezabeerjashore.com/" class="btn btn-primary btn-read-more">The Zabeer Jashore</a>
                             </div>
                         </div>
                     </div>
@@ -103,9 +103,9 @@
                                 <span class="lnr lnr-chevron-down icon"></span>
                             </div>
                         </div>
-                        <div class="form_input submit_btn">
-                            <button type="submit" class="btn btn-primary">Check Availability</button>
-                        </div>
+                    </div>
+                    <div class="submit_btn">
+                        <button type="submit" class="btn btn-primary">Check Availability</button>
                     </div>
                 </form>
             </div>
@@ -119,10 +119,10 @@
         <div class="container">
             <div class="row">
                 @foreach ($offers->slice(0, 2) as $offer)
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-mob-6">
                     <div class="offer_sec">
-                        <a href="{{ url('offers/offer-details/'.$offer->id) }}">
-                            <div class="card d-flex flex-row">
+                        <a href="{{ url('offers/offer-details/'.$offer->slug) }}">
+                            <div class="card flex-row">
                                 <div class="card-image">
                                     <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
                                 </div>
@@ -170,10 +170,10 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="content">
-                                    <h2>{{ $about->title }}</h2>
+                                    <h2>{{ '"'.$about->title.'"' }}</h2>
                                     <h4><span class="decor-1"></span> {{ $about->sub_title }}</h4>
                                     {!! html_entity_decode($about->long_description) !!}
-                                    <a href="{{ $about->url }}" class="btn btn-primary btn-read">
+                                    <a href="{{ $about->slug }}" class="btn btn-primary btn-read">
                                         <span>Read more</span>
                                         <i class="fas fa-long-arrow-alt-right"></i>
                                     </a>
@@ -201,8 +201,8 @@
             </div>
 
             <div class="row mt-4">
-                @foreach ($rooms->slice(0, 3) as $room)
-                <div class="col-lg-4 col-mob-6 mb-4">
+                @foreach ($rooms->slice(0, 4) as $room)
+                <div class="col-lg-3 col-mob-6 mb-4 mb-lg-0">
                     <div class="rooms_sec">
                         <div class="card">
                             <div class="card-image">
@@ -217,12 +217,12 @@
                                 <div class="content">
                                     <div class="content_inner">
                                         <h4>{{ $room->name }}</h4>
-                                        <div class="room-proce">
+                                        <div class="room-price">
                                             <p><strong>${{ $room->price }}++</strong>/night</p>
                                             <small>Rack Rate</small>
                                         </div>
                                     </div>
-                                    <a href="{{ url('rooms/room-details/'.$room->id) }}" class="btn-view">
+                                    <a href="{{ url('rooms/room-details/'.$room->slug) }}" class="btn-view">
                                         <span>View details</span>
                                         <i class="fas fa-long-arrow-alt-right"></i>
                                     </a>
@@ -247,23 +247,9 @@
             </div>
             <div class="col-lg-6 p-0">
                 <div class="facility_content">
-                    <h4>Restaurent <span class="decor-1"></span></h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type and scrambled. It to make a type specimen book.</p>
-                    <a href="#" class="btn btn-primary btn-book">Book now</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 p-0">
-                <div class="facility_content">
-                    <h4>Wellness <span class="decor-1"></span></h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type and scrambled. It to make a type specimen book.</p>
-                    <a href="#" class="btn btn-primary btn-book">Book now</a>
-                </div>
-            </div>
-            <div class="col-lg-6 p-0">
-                <div class="facility_image">
-                    <img src="{{ asset('frontend/images/wellness/wellness.png') }}" alt="">
+                    <h4>Restaurants</h4>
+                    <p>The hotel has 3 dedicated restaurants for any kind of function and has the capacity for 200+ guests. Each restaurant has very well decoration and world-class service.</p>
+                    <a class="btn btn-primary btn-book" href="{{ url('/restaurants') }}">{{ _('View more') }}</a>
                 </div>
             </div>
         </div>
@@ -275,9 +261,23 @@
             </div>
             <div class="col-lg-6 p-0">
                 <div class="facility_content">
-                    <h4>Meeting & Events <span class="decor-1"></span></h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been the industry's standard dummy text ever since the when an unknown printer took a galley of type and scrambled. It to make a type specimen book.</p>
-                    <a href="#" class="btn btn-primary btn-book">Book now</a>
+                    <h4>Halls</h4>
+                    <p>The hotel has 3 dedicated halls for conferences and the event has the capacity for 200 delegates. Each hall with the very latest audio-visual and lighting technology.</p>
+                    <a class="btn btn-primary btn-book" href="{{ url('/halls') }}">{{ _('View more') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="facility_image">
+                    <img src="{{ asset('frontend/images/wellness/wellness.png') }}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 p-0">
+                <div class="facility_content">
+                    <h4>Wellness</h4>
+                    <p>The hotel has 3 dedicated wellness zones for our all guests where they can relax and spends some leisure time. Each wellness zone has very well decoration and satisfactory customer service.</p>
+                    <a class="btn btn-primary btn-book" href="{{ url('/wellness') }}">{{ _('View more') }}</a>
                 </div>
             </div>
         </div>
@@ -295,7 +295,7 @@
                             <h4>Best Holiday Offer</h4>
                         </div>
                         <div class="breadcrumb_btn">
-                            <a href="#" class="btn btn-book">Book Now</a>
+                            <a href="{{ url('/rooms') }}" class="btn btn-book">Book Now</a>
                         </div>
                     </div>
                 </div>

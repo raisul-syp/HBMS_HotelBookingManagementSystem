@@ -24,8 +24,8 @@
                 <div class="page-details-inner">
                     <div class="card">
                         <div class="owl-carousel owl-theme page-details-carousel">
-                            @if (count($roomDetail->roomImages) > 0)
-                            @foreach ($roomDetail->roomImages as $roomImage)
+                            @if (count($room->roomImages) > 0)
+                            @foreach ($room->roomImages as $roomImage)
                             <div class="item">
                                 <img src="{{ asset($roomImage->image) }}" alt="">
                             </div>
@@ -36,10 +36,10 @@
                         <div class="card-body">
                             <div class="page-header">
                                 <div class="page-title">
-                                    {{ $roomDetail->name }}
+                                    {{ $room->name }}
                                 </div>
                                 <div class="room-price">
-                                    ${{ $roomDetail->price }}++<span>/ night</span>
+                                    ${{ $room->price }}++<span>/ night</span>
                                 </div>
                             </div>
 
@@ -48,24 +48,24 @@
                                 <div class="col-lg-3">
                                     <div class="page-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Adult">
                                         <i class="fas fa-user"></i>
-                                        {{ $roomDetail->max_adults }}
+                                        {{ $room->max_adults }}
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="page-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Child">
                                         <i class="fas fa-baby"></i>
-                                        {{ $roomDetail->max_childs }}
+                                        {{ $room->max_childs }}
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="page-location" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Location">
                                         <i class="fas fa-map-marked-alt"></i>
-                                        {{ $roomDetail->hotel_location }}
+                                        {{ $room->hotel_location }}
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="page-availability">
-                                        @if (count($roomDetail->bookings) > 0)
+                                        @if (count($room->bookings) > 0)
                                         <span class="badge bg-danger">Occupied</span>
                                         @else
                                         <span class="badge bg-success">Available</span>
@@ -77,10 +77,10 @@
 
                             <div class="page-description">
                                 <div class="short-descrp">
-                                    {{ $roomDetail->short_description }}
+                                    {{ $room->short_description }}
                                 </div>
                                 <div class="long-descrp">
-                                    {!! html_entity_decode($roomDetail->long_description) !!}
+                                    {!! html_entity_decode($room->long_description) !!}
                                 </div>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                                                 <h4>Facilities</h4>
                                                 <hr>
                                             </div>
-                                            @forelse ($roomDetail->facilities as $roomFacility)
+                                            @forelse ($room->facilities as $roomFacility)
                                             <div class="col-lg-6">
                                                 <div class="page-facilities mb-3">
                                                     <img src="{{ asset('uploads/facilities/'.$roomFacility->image) }}">
@@ -122,7 +122,7 @@
                                                 <h4>Room View</h4>
                                                 <hr>
                                             </div>
-                                            @forelse ($roomDetail->roomViews as $roomView)
+                                            @forelse ($room->roomViews as $roomView)
                                             <div class="col-lg-6">
                                                 <div class="page-views mb-3">
                                                     <img src="{{ asset('uploads/roomviews/'.$roomView->image) }}">
@@ -142,67 +142,79 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-3">
                 <div class="booking-btn mb-3">
                     <a href="#" class="btn btn-primary">Book Now</a>
                 </div>
-                <div class="roomAvailability-form">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Check Room Availability</h4>
-                        </div>
-                        <div class="card-body">
-                            <form action="{{ url('available-rooms') }}" method="GET">
-                                <div class="row">
-                                    <div class="form_input col-12 mb-3">
-                                        <div class="input-wrapper">
-                                            <input type="date" class="form-control check-in-out" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
-                                            <span class="lnr lnr-calendar-full icon"></span>
+                <div class="roomAvailability-form mb-4 mb-lg-0">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true">Check Room Availability</button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <form action="{{ url('available-rooms') }}" method="GET">
+                                        <div class="row">
+                                            <div class="form_input col-12 mb-3">
+                                                <div class="input-wrapper">
+                                                    <input type="date" class="form-control check-in-out"
+                                                        id="checkin_date" name="checkin_date"
+                                                        value="{{ $todayDate }}">
+                                                    <span class="lnr lnr-calendar-full icon"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form_input col-12 mb-3">
+                                                <div class="input-wrapper">
+                                                    <input type="date" class="form-control check-in-out"
+                                                        id="checkout_date" name="checkout_date"
+                                                        value="{{ $tomorrowDate }}">
+                                                    <span class="lnr lnr-calendar-full icon"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form_input col-12 mb-3">
+                                                <div class="input-wrapper">
+                                                    <select class="form-select" id="adults" name="adults">
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                    </select>
+                                                    <span class="lnr lnr-chevron-down icon"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form_input col-12 mb-3">
+                                                <div class="input-wrapper">
+                                                    <select class="form-select" id="children" name="children">
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                    </select>
+                                                    <span class="lnr lnr-chevron-down icon"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form_input submit_btn col-12">
+                                                <button type="submit" class="btn btn-primary btn-block">Check
+                                                    Availability</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form_input col-12 mb-3">
-                                        <div class="input-wrapper">
-                                            <input type="date" class="form-control check-in-out" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
-                                            <span class="lnr lnr-calendar-full icon"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form_input col-12 mb-3">
-                                        <div class="input-wrapper">
-                                            <select class="form-select" id="adults" name="adults">
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                            </select>
-                                            <span class="lnr lnr-chevron-down icon"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form_input col-12 mb-3">
-                                        <div class="input-wrapper">
-                                            <select class="form-select" id="children" name="children">
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                            </select>
-                                            <span class="lnr lnr-chevron-down icon"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form_input submit_btn col-12">
-                                        <button type="submit" class="btn btn-primary btn-block">Check Availability</button>
-                                    </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

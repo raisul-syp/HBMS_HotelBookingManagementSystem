@@ -69,9 +69,9 @@ class HomeController extends Controller
         return view('frontend.available-rooms', compact('available_rooms', 'todayDate', 'tomorrowDate'));
     }
 
-    public function roomDetails(int $room_id)
+    public function roomDetails($pageDetail_slug)
     {
-        $roomDetail = Room::findOrFail($room_id);
-        return view('frontend.rooms.room-details', compact('roomDetail'));
+        $room = Room::where('slug', $pageDetail_slug)->first();
+        return view('frontend.room-details', compact('room'));
     }
 }
