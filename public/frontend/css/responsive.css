@@ -31,36 +31,64 @@
     }
     .navbar-toggler .icon-bar {
         display: block;
-        width: 18px;
+        width: 25px;
         height: 2px;
         border-radius: 1px;
         background: var(--goldenBG2);
+        background-size: 400% 200%;
+    }
+    .navbar-toggler .icon-bar.middle {
+        display: block;
+        width: 20px;
+        height: 2px;
+        border-radius: 1px;
+        background: var(--goldenBG2);
+        background-size: 400% 200%;
     }
     .navbar-toggler .icon-bar + .icon-bar {
-        margin-top: 4px;
+        margin-top: 5px;
     }
     .header_section .header_section_inner .header_bottom nav .navbar-brand {
         width: 30%;
         margin: 0 auto;
     }
-    .search-toggler {
+    .mobile-login {
         background: transparent;
         color: var(--siteColor2);
         border: none;
         padding: 0;
+        border: 1px solid var(--siteColor2);
+        width: 25px;
+        height: 25px;
+        transition: all 0.3s;
     }
-    .search-toggler:focus {
+    .mobile-login {
+        width: 28px;
+        height: 28px;
+    }
+    .mobile-login:hover {
+        background: var(--siteColor2);
+        width: 28px;
+        height: 28px;
+    }
+    .mobile-login:focus {
         box-shadow: none;
         outline: 0;
     }
-    .search-toggler svg {
-        width: 18px;
-        height: 18px;
+    .mobile-login svg {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 3px;
+        transition: all 0.3s;
+    }
+    .mobile-login:hover svg {
+        color: var(--siteColor1);
     }
     .navbar-light .navbar-nav .nav-item {
         text-align: center;
         padding: 0;
-        border-bottom: 1px solid var(--siteColor2);
+        /* border-bottom: 1px solid var(--siteColor2); */
         padding: 3px;
     }
     .navbar-light .navbar-nav .nav-item:nth-last-child(2) {
@@ -68,9 +96,11 @@
     }
     .navbar-light .navbar-nav .nav-item.active {
         background: var(--goldenBG2);
+        background-size: 400% 200%;
     }
     .navbar-light .navbar-nav .nav-item:hover {
         background: var(--goldenBG2);
+        background-size: 400% 200%;
     }
     .navbar-light .navbar-nav .nav-item.active .nav-link {
         color: var(--siteFont2) !important;
@@ -609,6 +639,45 @@
     /*==================================
     Footer Section End
     ==================================*/
+
+
+
+    .about_section.content_section {
+        margin-top: 0;
+        padding: 20px 0 !important;
+    }
+    .page_details_section_frontend {
+        padding: 20px 0;
+    }
+    .page-details-carousel .owl-dots {
+        top: 90% !important;
+        padding: 0 !important;
+    }
+    .owl-theme .owl-dots .owl-dot {
+        display: inline-flex !important;
+        align-items: center !important;
+    }
+    .page-details-carousel .owl-nav button {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .page-details-carousel .owl-nav button span {
+        font-size: 50px !important;
+        bottom: 20px !important;
+    }
+    .page_details_section_frontend .page-details-inner .page-header .page-title {
+        font-size: 20px;
+    }
+    .page_details_section_frontend .page-details-inner .page-header .room-price {
+        font-size: 20px;
+        font-weight: 800;
+    }
+    .page_details_section_frontend .page-details-inner .page-header .room-price span {
+        font-size: 12px;
+    }
+    .content_section .section_title h4 {
+        font-size: 20px;
+    }
 }
 
 
@@ -654,6 +723,7 @@
     }
     .navbar .nav-item:hover .dropdown-menu li .dropdown-item:hover {
         background: var(--goldenBG2);
+        background-size: 400% 200%;
         color: var(--siteColor1);
     }
 }
@@ -699,8 +769,8 @@
         height: auto;
     }
     .about_section .about_section_inner .content_box .card .card-body .content h2 {
-        line-height: 35px;
-        font-size: 30px;
+        line-height: 30px;
+        font-size: 25px;
     }
     .about_section .about_section_inner .content_box .card .card-body .content h4 {
         line-height: 20px;

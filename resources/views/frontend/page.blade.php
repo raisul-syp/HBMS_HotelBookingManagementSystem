@@ -1,4 +1,5 @@
 @extends('layouts.guest')
+@if ($page)
 @section('title', $page->name)
 
 @section('content')
@@ -291,3 +292,5 @@
     </div>
 </section>
 @endsection
+
+@endif

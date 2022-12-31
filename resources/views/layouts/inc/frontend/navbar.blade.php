@@ -12,13 +12,22 @@
             <img src="{{ asset('uploads/site/'.$item->logo) }}" alt="{{ $item->name }}">
         </a>
         @endforeach
-        <button class="search-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse"
-            data-bs-target="#searchSupportedContent" aria-controls="searchSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <i data-feather="search"></i>
-        </button>
+
+        @if (Auth::user())
+        <form method="POST" action="{{ route('logout') }}">
+        @csrf
+            <a class="mobile-login d-block d-lg-none" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                <i data-feather="power"></i>
+            </a>
+        </form>
+        @else
+        <a class="mobile-login d-block d-lg-none " href="{{ route('login') }}">
+            <i data-feather="log-in"></i>
+        </a>
+        @endif
+
         <div id="navbarSupportedContent" class="collapse navbar-collapse justify-content-end">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav m-auto">
                 @foreach ($menuItems as $item)
                 @if ($item->name == 'Rooms')
                 <li class="nav-item">
@@ -62,38 +71,53 @@
                 </li>
                 @endif
                 @endforeach
+                
+                @if (Auth::user())
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link" href="{{ url('/booking') }}">
+                        {{ _('Booking') }}
+                    </a>
+                </li>
+                @else
+                <li class="nav-item d-none d-lg-none">
+                    <a class="nav-link" href="{{ url('/booking') }}">
+                        {{ _('Booking') }}
+                    </a>
+                </li>
+                @endif
+            </ul>
 
+            <ul class="navbar-nav d-none d-lg-block">
                 @if (Auth::user())
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <a class="nav-link btn btn-primary btn-golden" href="{{ route('logout') }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Logout" onclick="event.preventDefault(); this.closest('form').submit();">
-                            <i data-feather="power"></i>
+                        <a class="nav-link btn btn-primary btn-golden" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                            <i data-feather="power"></i> {{ _('Logout') }}
                         </a>
                     </form>
                 </li>
                 @else
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary btn-golden" href="{{ route('login') }}" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Login">
-                        <i data-feather="log-in"></i>
+                    <a class="nav-link btn btn-primary btn-golden" href="{{ route('login') }}">
+                        <i data-feather="log-in"></i> {{ _('Login') }}
                     </a>
                 </li>
                 @endif
 
                 @if (Auth::user())
-                <li class="nav-item ms-2">
+                <li class="nav-item booking-link">
                     <a class="nav-link btn btn-primary btn-golden" href="{{ url('/booking') }}">
                         {{ _('Booking') }}
                     </a>
                 </li>
                 @else
-                <li class="nav-item ms-2">
+                <li class="nav-item booking-link">
                     <a class="nav-link btn btn-primary btn-golden" href="{{ route('login') }}">
                         {{ _('Booking') }}
                     </a>
                 </li>
                 @endif
-
             </ul>
         </div>
         <div class="collapse search-collapse" id="searchSupportedContent">

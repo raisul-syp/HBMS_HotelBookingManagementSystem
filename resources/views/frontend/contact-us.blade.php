@@ -27,16 +27,16 @@
                             @foreach ($contacts as $contact)
                             <li class="nav-item" role="presentation">
                               <button class="nav-link custom-nav-btn {{ $contact->id == 1 ? 'active' : '' }}" type="button" data-bs-toggle="pill" data-bs-target="#{{ Str::slug($contact->hotel_name) }}">{{ $contact->hotel_name }}</button>
-                            </li>                                 
+                            </li>
                             @endforeach
                         </ul>
 
-                        <div class="tab-content" id="pills-tabContent">      
+                        <div class="tab-content" id="pills-tabContent">
                             @foreach ($contacts as $contact)
                             <div class="tab-pane fade show {{ $contact->id == 1 ? 'active' : '' }}" id="{{ Str::slug($contact->hotel_name) }}">
                                 <div class="contact-info">
                                     <div class="row">
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 mb-4 mb-lg-0">
                                             <div class="contact-info-inner">
                                                 <div class="card">
                                                     <div class="card-body">
@@ -46,21 +46,21 @@
                                                         <div class="contact-info-detail">
                                                             <h5>{{ $contact->email }}</h5>
                                                             @if ($contact->email_sales != NULL)
-                                                            <h5>{{ $contact->email_sales }}</h5>  
+                                                            <h5>{{ $contact->email_sales }}</h5>
                                                             @else
-                                                            <h5 class="d-none">{{ $contact->email_sales }}</h5>                                                              
+                                                            <h5 class="d-none">{{ $contact->email_sales }}</h5>
                                                             @endif
                                                             @if ($contact->email_reservation != NULL)
-                                                            <h5>{{ $contact->email_reservation }}</h5>  
+                                                            <h5>{{ $contact->email_reservation }}</h5>
                                                             @else
-                                                            <h5 class="d-none">{{ $contact->email_reservation }}</h5>                                                              
+                                                            <h5 class="d-none">{{ $contact->email_reservation }}</h5>
                                                             @endif
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-4 mb-4 mb-lg-0">
                                             <div class="contact-info-inner">
                                                 <div class="card">
                                                     <div class="card-body">
@@ -72,12 +72,12 @@
                                                             @if ($contact->phone_sales != NULL)
                                                             <h5><strong>Sales: </strong>{{ $contact->phone_sales }}</h5>
                                                             @else
-                                                            <h5 class="d-none"><strong>Sales: </strong>{{ $contact->phone_sales }}</h5>                                                            
+                                                            <h5 class="d-none"><strong>Sales: </strong>{{ $contact->phone_sales }}</h5>
                                                             @endif
                                                             @if ($contact->phone_reservation != NULL)
                                                             <h5><strong>Reservation: </strong>{{ $contact->phone_reservation }}</h5>
                                                             @else
-                                                            <h5 class="d-none"><strong>Reservation: </strong>{{ $contact->phone_reservation }}</h5>                                                           
+                                                            <h5 class="d-none"><strong>Reservation: </strong>{{ $contact->phone_reservation }}</h5>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="contact-form-map mt-5">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-6 mb-4 mb-lg-0">
                                             <div class="contact-form">
                                                 <div class="card">
                                                     <div class="card-body">
@@ -132,7 +132,7 @@
                                                 </div>
                                             </div>
                                         </div>
-        
+
                                         <div class="col-lg-6">
                                             <div class="contact-map">
                                                 <div class="card">

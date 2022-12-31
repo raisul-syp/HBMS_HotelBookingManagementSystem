@@ -12,7 +12,7 @@
                 <div class="section_breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('wellnesses') }}">{{ __('Wellness') }}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('wellness') }}">{{ __('Wellness') }}</a></li>
                         <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Wellness Details') }}</a></li>
                     </ol>
                 </div>

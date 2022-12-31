@@ -102,7 +102,14 @@ $(document).ready(function () {
         autoplay: true,
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
-    })
+    });
+
+
+
+    $(function () {
+        thisyear = new Date().getFullYear();
+        $('.copyright-year').text(thisyear);
+    });
 });
 
 

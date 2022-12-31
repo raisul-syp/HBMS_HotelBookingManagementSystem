@@ -45,25 +45,25 @@
 
                             <hr>
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-mob-3">
                                     <div class="page-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Adult">
                                         <i class="fas fa-user"></i>
                                         {{ $room->max_adults }}
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-mob-3">
                                     <div class="page-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Child">
                                         <i class="fas fa-baby"></i>
                                         {{ $room->max_childs }}
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-mob-3">
                                     <div class="page-location" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Location">
                                         <i class="fas fa-map-marked-alt"></i>
                                         {{ $room->hotel_location }}
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-mob-3">
                                     <div class="page-availability">
                                         @if (count($room->bookings) > 0)
                                         <span class="badge bg-danger">Occupied</span>
@@ -97,7 +97,7 @@
                                                 <hr>
                                             </div>
                                             @forelse ($room->facilities as $roomFacility)
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 col-mob-6">
                                                 <div class="page-facilities mb-3">
                                                     <img src="{{ asset('uploads/facilities/'.$roomFacility->image) }}">
                                                     <span>{{ $roomFacility->name }}</span>
@@ -123,7 +123,7 @@
                                                 <hr>
                                             </div>
                                             @forelse ($room->roomViews as $roomView)
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 col-mob-6">
                                                 <div class="page-views mb-3">
                                                     <img src="{{ asset('uploads/roomviews/'.$roomView->image) }}">
                                                     <span>{{ $roomView->name }}</span>

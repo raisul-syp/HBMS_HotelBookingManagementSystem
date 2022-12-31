@@ -4,7 +4,7 @@
     Name                 : Efron
     Author               : Quixkit
     Author Portfolio     : https://themeforest.net/user/quixkit/portfolio
-    
+
 
 
     Table of Sass Contents
@@ -16,7 +16,7 @@
         _mixin
         _variable
 
-    2. bootstrap 
+    2. bootstrap
         -Here goes all official bootstrap scss files
 
     3. Global/Base
@@ -231,6 +231,9 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --danger: #FF1616;
   --light: #f8f9fa;
   --dark: #454545;
+  --siteColor1: #2c2c2c;
+  --siteColor2: #D1962B;
+  --goldenBG2: radial-gradient(circle, #FFD99E, #EFBC59, #B07E2B, #D1962B, #9F6D2A);
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;

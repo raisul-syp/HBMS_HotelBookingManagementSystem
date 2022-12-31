@@ -5,6 +5,7 @@ Header Section Start
 .header_section .header_section_inner {}
 .header_section .header_section_inner .header_top {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 .header_section .header_section_inner .header_top .header_top_left {}
 .header_section .header_section_inner .header_top .header_top_left ul {
@@ -142,6 +143,7 @@ Header Section Start
 .nav-icon .cart-list span {
     border: 1px solid transparent;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     font-size: 12px;
     color: var(--siteColor1);
     position: absolute;
@@ -178,6 +180,7 @@ Header Section Start
     line-height: 23px;
     border-radius: 0;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     border: 1px solid transparent;
     color: var(--siteColor1);
     width: 35px;
@@ -273,6 +276,7 @@ Hero Slider Section Start
     width: 30%;
     margin: 20px auto;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     height: 3px;
 }
 
@@ -288,6 +292,7 @@ Hero Slider Section Start
 .heroSlider_section .owl-item a.btn-read-more,
 .heroSlider_section .owl-item button.btn-read-more {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     border: 2px solid transparent;
     font-size: 18px;
     font-weight: 600;
@@ -422,7 +427,12 @@ Hero Slider Section Start
     position: absolute;
     top: 13px;
     right: 10px;
-    color: var(--siteColor2);
+    background: var(--siteColor2);
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
 }
 
 .availability_sec_inner .submit_btn {
@@ -435,13 +445,36 @@ Hero Slider Section Start
     height: 42px;
     width: 100%;
     background: var(--goldenBG2);
-    border: 1px solid transparent;
+    background-size: 400% 200%;
     color: var(--siteColor1);
     text-transform: uppercase;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 900;
     border-radius: 0;
     padding: 5px;
+    border: none;
+    overflow: hidden;
+    position: relative;
+    transition: 0.3s;
+}
+.availability_sec_inner .submit_btn button::before {
+    top: 0;
+    left: -100%;
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, .25);
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+.availability_sec_inner .submit_btn button:hover {
+    opacity: 0.8;
+}
+.availability_sec_inner .submit_btn button:hover::before {
+    left: 0;
+}
+.availability_sec_inner .submit_btn button:focus {
+    box-shadow: 0 0 0 0.25rem rgb(209 150 43 / 50%) !important;
 }
 
 /*==================================
@@ -462,9 +495,8 @@ About Us Section Start
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
     border: 6px solid var(--siteColor1);
     border-radius: 0;
-    /* background: var(--goldenBG2); */
-    background-image: linear-gradient(to left bottom, #ffd700, #f8c01f, #edab2e, #de9738, #cd853f);
-    height: 570px;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 .about_section .about_section_inner .image_box .card .card-body {}
 .about_section .about_section_inner .image_box .card .card-body .image {
@@ -480,15 +512,14 @@ About Us Section Start
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
     border: none;
     border-radius: 0;
-    height: 570px;
 }
 .about_section .about_section_inner .content_box .card .card-body {
     padding: 30px;
 }
 .about_section .about_section_inner .content_box .card .card-body .content {}
 .about_section .about_section_inner .content_box .card .card-body .content h2 {
-    line-height: 50px;
-    font-size: 45px;
+    line-height: 35px;
+    font-size: 30px;
     color: var(--siteColor1);
     font-weight: 800;
     text-transform: initial;
@@ -512,12 +543,13 @@ About Us Section Start
 .about_section .about_section_inner .content_box .card .card-body .content h4 span.decor-1 {
     position: absolute;
     top: 50%;
-    left: 52%;
+    left: 58%;
     display: block;
     width: 75px;
     height: 2px;
     margin: 0;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 .about_section .about_section_inner .content_box .card .card-body .content p {
     font-size: 16px;
@@ -542,6 +574,7 @@ About Us Section Start
 .about_section .about_section_inner .content_box .card .card-body .content .btn-read span {
     background: var(--siteFont2);
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
@@ -606,6 +639,8 @@ Rooms Section Start
     border: none;
     border-radius: 0;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
+
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-image {}
 .rooms_section .rooms_section_inner .rooms_sec .card .card-image img {
@@ -737,6 +772,7 @@ Facilities Section Start
 .facility_section .facility_section_inner .facility_content .btn-book {
     height: 50px;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     border: 1px solid transparent;
     color: var(--siteFont2);
     text-transform: uppercase;
@@ -765,6 +801,7 @@ Breadcrumb Section Start
 ==================================*/
 .breadcrumb_section {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 .breadcrumb_section .breadcrumb_section_inner {
     padding: 80px 0;
@@ -1166,6 +1203,7 @@ Footer Section Start
 }
 .footer_section .footer_section_inner .footer_top .footer_contact ul.social li:hover {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     border: 1px solid transparent;
 }
 .footer_section .footer_section_inner .footer_top .footer_contact ul.social li:hover a svg {
@@ -1179,6 +1217,7 @@ Footer Section Start
 
 .footer_section .footer_section_inner .footer_bottom {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 .footer_section .footer_section_inner .footer_bottom .footer_bottom_inner {}
 .footer_section .footer_section_inner .footer_bottom .footer_bottom_inner p {
@@ -1264,6 +1303,7 @@ Footer Section End
 }
 .roomAvailability-form .accordion .accordion-item .accordion-header {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 .roomAvailability-form .accordion .accordion-item .accordion-header .accordion-button {
     border: none;
@@ -1308,6 +1348,7 @@ Footer Section End
 }
 .roomAvailability-form .submit_btn button {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     border: 1px solid transparent;
     color: var(--siteColor1);
     font-size: 12px;
@@ -1391,6 +1432,7 @@ Footer Section End
 .availableRoom-div .card .availableRoom-card .room-info .booking-btn button,
 .availableRoom-div .card .availableRoom-card .room-info .booking-btn a {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     border: 1px solid transparent;
     color: var(--siteColor1);
     font-size: 12px;
@@ -1411,16 +1453,56 @@ Footer Section End
 .navbar-light .navbar-nav {
     align-items: center;
 }
+.navbar-light .navbar-nav .nav-item.booking-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.navbar-light .navbar-nav .nav-item.booking-link .nav-link.btn-golden {
+    padding: 35px 15px !important;
+    font-size: 12px;
+    color: var(--siteColor1) !important;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
 .navbar-light .navbar-nav .nav-item .nav-link.btn-golden {
-    padding: 5px 5px !important;
-    border-radius: 0 !IMPORTANT;
+    padding: 8px 10px !important;
+    border-radius: 0 !important;
     background: var(--goldenBG2);
-    border-color: transparent;
+    background-size: 400% 200%;
+    border: none;
+    color: var(--siteColor1) !important;
+    font-weight: 900;
+    font-size: 12px;
+    overflow: hidden;
+    position: relative;
+    letter-spacing: 0;
+    transition: 0.3s;
+}
+.navbar-light .navbar-nav .nav-item .nav-link.btn-golden:focus {
+    box-shadow: 0 0 0 0.25rem rgb(209 150 43 / 50%) !important;
+    /* box-shadow: 0 0 0 0.25rem rgb(44 44 44 / 50%) !important; */
 }
 .navbar-light .navbar-nav .nav-item .nav-link.btn-golden svg {
     width: 16px;
     height: 16px;
     color: var(--siteColor1);
+}
+.navbar-light .navbar-nav .nav-item .nav-link.btn-golden::before {
+    top: 0;
+    left: -100%;
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, .25);
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+.navbar-light .navbar-nav .nav-item .nav-link.btn-golden:hover {
+    opacity: 0.8;
+}
+.navbar-light .navbar-nav .nav-item .nav-link.btn-golden:hover::before {
+    left: 0;
 }
 
 
@@ -1493,6 +1575,7 @@ Footer Section End
 }
 .pages_section_frontend .page-loaction {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
     width: fit-content;
     padding: 10px 60px 10px 40px;
@@ -1557,9 +1640,29 @@ Footer Section End
     width: 100%;
     border-radius: 0;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     color: var(--siteColor1);
     font-weight: 700;
     border: 1px solid transparent;
+    overflow: hidden;
+    position: relative;
+    transition: 0.3s;
+}
+.pages_section_frontend .page-details-btn a::before {
+    top: 0;
+    left: -100%;
+    content: "";
+    position: absolute;
+    background: rgba(0, 0, 0, .25);
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+.pages_section_frontend .page-details-btn a:hover {
+    opacity: 0.8;
+}
+.pages_section_frontend .page-details-btn a:hover:before {
+    left: 0;
 }
 .pages_section_frontend .card .card-body {
     background: var(--siteColor1);
@@ -1597,6 +1700,7 @@ Footer Section End
 
 .page_details_section_frontend .booking-btn a:hover {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     color: var(--siteColor1);
 }
 
@@ -1717,7 +1821,7 @@ Footer Section End
 .page-details-carousel .owl-nav button {
     width: 60px;
     height: 60px;
-    background: #0b01397a  !important;
+    background: #2c2c2cb3 !important;
     margin: 0 !important;
     border-radius: 0 !important;
     transition: all 0.3s ease;
@@ -1739,7 +1843,7 @@ Footer Section End
     position: absolute;
     width: 100%;
     top: 92%;
-    background-color: #0b01397a !important;
+    background-color: #2c2c2cb3 !important;
     padding: 5px 0px;
 }
 
@@ -1870,6 +1974,7 @@ Footer Section End
 .contact_section_frontend .contact-section-inner .contact-form .card form button {
     width: 100%;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     border: 1px solid transparent;
     border-radius: 0;
     height: 35px;
@@ -1933,6 +2038,7 @@ Footer Section End
 }
 .booking-form-inner .card .card-header {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     padding: 20px 30px;
     border-radius: 0;
 }
@@ -1959,10 +2065,10 @@ Footer Section End
     border: 1px solid var(--siteColor2);
     border-radius: 0;
 }
-.booking-form-inner .card .card-body .form-group .date-box {
+.booking-form-inner .card .card-body .form-group .input-wrapper {
     position: relative;
 }
-.booking-form-inner .card .card-body .form-group .date-box span {
+.booking-form-inner .card .card-body .form-group .input-wrapper span {
     position: absolute;
     top: 8px;
     right: 13px;
@@ -1971,11 +2077,13 @@ Footer Section End
 }
 .booking-form-inner .card .card-footer {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     padding: 20px 30px;
     border-radius: 0;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
     display: none;
 }
 

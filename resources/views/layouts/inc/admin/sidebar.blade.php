@@ -2,19 +2,9 @@
     <ul class="metismenu" id="menu">
         <li>
             <a href="{{ url('admin/dashboard') }}">
-                <i class="icon icon-single-04"></i>
+                <i class="icon icon-home"></i>
                 <span class="nav-text">{{ __('Dashboard') }}</span>
             </a>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                <i class="icon icon-single-04"></i>
-                <span class="nav-text">{{ __('Hotel') }}</span>
-            </a>
-            <ul aria-expanded="false">
-                <li><a href="{{ url('admin/hotels/create') }}">{{ __('Add Hotel') }}</a></li>
-                <li><a href="{{ url('admin/hotels') }}">{{ __('All Hotels') }}</a></li>
-            </ul>
         </li>
         <li>
             <a class="has-arrow" href="javascript:void()" aria-expanded="false">

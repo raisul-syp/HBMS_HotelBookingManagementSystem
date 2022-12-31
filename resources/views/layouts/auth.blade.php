@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') - {{ config('app.name') }}</title>
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/favicon.png') }}">
@@ -26,7 +26,7 @@
                             <div class="col-xl-12">
 
                                 @yield('content')
-                                
+
                             </div>
                         </div>
                     </div>

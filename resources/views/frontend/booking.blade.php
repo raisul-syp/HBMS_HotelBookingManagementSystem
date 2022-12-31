@@ -35,7 +35,7 @@
                 <div class="col-lg-12">
                     <form action="{{ url('/booking') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-        
+
                         <div class="booking-form-inner">
                             <div class="card">
                                 <div class="card-header d-flex align-items-center justify-content-between">
@@ -49,12 +49,16 @@
                                             {{ __('Checkin Date & Time') }}
                                         </label>
                                         <div class="col-sm-5">
-                                            <div class="date-box">
-                                                <input type="date" class="form-control checkin-date" id="checkinDate" name="checkin_date" value="{{ $todayDate }}">
+                                            <div class="input-wrapper">
+                                                <input type="date" class="form-control checkin-date" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
+                                                <span class="lnr lnr-calendar-full icon"></span>
                                             </div>
                                         </div>
                                         <div class="col-sm-5">
-                                            <input type="time" class="form-control" id="checkin_time" name="checkin_time" value="14:00">
+                                            <div class="input-wrapper">
+                                                <input type="time" class="form-control" id="checkin_time" name="checkin_time" value="14:00">
+                                                <span class="lnr lnr-clock icon"></span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
@@ -62,12 +66,16 @@
                                             {{ __('Checkout Date & Time') }}
                                         </label>
                                         <div class="col-sm-5">
-                                            <div class="date-box">
-                                                <input type="date" class="form-control checkout-date" id="checkoutDate" name="checkout_date" value="{{ $tomorrowDate }}">
+                                            <div class="input-wrapper">
+                                                <input type="date" class="form-control checkout-date" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
+                                                <span class="lnr lnr-calendar-full icon"></span>
                                             </div>
                                         </div>
                                         <div class="col-sm-5">
-                                            <input type="time" class="form-control" id="checkout_time" name="checkout_time" value="12:00">
+                                            <div class="input-wrapper">
+                                                <input type="time" class="form-control" id="checkout_time" name="checkout_time" value="12:00">
+                                                <span class="lnr lnr-clock icon"></span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
@@ -126,7 +134,7 @@
                                 </div>
                             </div>
                         </div>
-        
+
                     </form>
                 </div>
             </div>
@@ -152,13 +160,7 @@
                 success: function(res){
                     var _html = '';
                     $.each(res.data,function(index,row){
-                        if(row.hotel_id == '1'){
-                            var _location = 'Dhaka';
-                        }
-                        if(row.hotel_id == '2'){
-                            var _location = 'Jashore';
-                        }
-                        _html +='<option value="'+row.id+'">'+row.name+" (" +_location +") - "+row.quantity+" rooms are available</option>";
+                        _html +='<option value="'+row.id+'">'+row.name+" ("+row.quantity+" rooms are available)</option>";
                     });
                     $(".room-list").html(_html);
                 }

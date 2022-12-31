@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +13,17 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
+require __DIR__.'/auth.php';
+
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\HomeController::class)->group(function (){
     Route::get('/', 'index');
     Route::get('/available-rooms', 'checkAvailability');
     Route::get('/rooms/room-details/{slug}', 'roomDetails');
+});
+
+Route::prefix('/booking')->controller(App\Http\Controllers\Frontend\BookingController::class)->group(function (){
+    Route::get('/', 'index');
+    Route::post('/', 'store');
 });
 
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\PagesController::class)->group(function (){
@@ -32,35 +37,13 @@ Route::prefix('/')->controller(App\Http\Controllers\Frontend\PagesController::cl
     Route::get('/wellness/wellness-details/{slug}', 'wellnessDetails');
 });
 
-Route::prefix('/booking')->controller(App\Http\Controllers\Frontend\BookingController::class)->group(function (){
-    Route::get('/', 'index');
-    Route::post('/', 'store');
-});
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
-
-
 // Admin
-Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])->name('admin.login')->middleware('guest:admin');
-Route::post('/admin/login/store', [AuthenticatedSessionController::class, 'store'])->name('admin.login.store');
+Route::get('/admin/login', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'create'])->name('admin.login')->middleware('guest:admin');
+Route::post('/admin/login/store', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'store'])->name('admin.login.store');
 
 Route::group(['middleware' => 'isAdmin'], function() {
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-    Route::post('/admin/logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
-
-    // Hotel
-    Route::prefix('/admin/hotels')->controller(App\Http\Controllers\Admin\HotelController::class)->group(function (){
-        Route::get('/', 'index');
-        Route::get('/create', 'create');
-        Route::post('/', 'store');
-        Route::get('/edit/{hotel}', 'edit');
-        Route::put('/edit/{hotel}', 'update');
-    });
+    Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::post('/admin/logout', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
 
     // Room Type
     Route::prefix('/admin/roomtype')->controller(App\Http\Controllers\Admin\RoomtypeController::class)->group(function (){

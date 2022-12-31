@@ -6,7 +6,7 @@
                     @foreach ($settings as $item)
                     <div class="footer_logo">
                         <img src="{{ asset('uploads/site/'.$item->logo) }}" alt="{{ $item->name }}">
-                    </div>    
+                    </div>
                     @endforeach
                 </div>
 
@@ -47,7 +47,7 @@
                                 <i data-feather="mail"></i>
                                 <a href="#">{{ $item->email }}</a>
                             </li>
-                        </ul>    
+                        </ul>
                         @endforeach
 
                         @foreach ($settings as $item)
@@ -72,7 +72,7 @@
                                     <i data-feather="youtube"></i>
                                 </a>
                             </li>
-                        </ul>     
+                        </ul>
                         @endforeach
                     </div>
                 </div>
@@ -85,7 +85,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="footer_bottom_inner">
-                        <p>Zabeer Hotel International © 2022 | Developed By <a href="https://sypsolutions.com.bd/">SYP Solutions Ltd.</a></p>
+                        @foreach ($settings as $item)
+                        <p>{{ $item->name }} © <span class="copyright-year"></span> | Developed By <a href="https://sypsolutions.com.bd/">SYP Solutions Ltd.</a></p>
+                        @endforeach
                     </div>
                 </div>
             </div>

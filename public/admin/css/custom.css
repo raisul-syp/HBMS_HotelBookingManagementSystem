@@ -23,8 +23,8 @@
     width: 40px;
     height: 40px;
     padding: 6px;
-    background: #343957;
-    border: 1px solid #343957;
+    background: var(--siteColor1);
+    border: 1px solid var(--siteColor1);
     border-radius: 3px;
 }
 
@@ -81,8 +81,8 @@ body {
     height: 30px;
     line-height: 20px;
     padding: 5px;
-    background: #343957;
-    border: 1px solid #343957;
+    background: var(--siteColor1);
+    border: 1px solid var(--siteColor1);
     border-radius: 3px;
 }
 
@@ -171,6 +171,90 @@ img.list-image {
 
 .input-group-text i {
     font-size: 16px !important;
+}
+
+.nav-header {
+    background-color: var(--siteColor1) !important;
+}
+
+.nav-header .brand-logo {
+    padding-left: 0 !important;
+    justify-content: center !important;
+}
+
+.nav-header .logo-abbr {
+    max-width: 110px !important;
+}
+
+.quixnav {
+    background-color: var(--siteColor1) !important;
+}
+
+.quixnav .metismenu ul {
+    background-color: var(--siteColor1) !important;
+}
+
+.quixnav .metismenu > li:hover > a,
+.quixnav .metismenu > li:focus > a,
+.quixnav .metismenu > li.mm-active > a {
+    background: var(--goldenBG2) !important;
+    background-size: 400% 200% !important;
+    color: #fff !important;
+}
+
+.hamburger .line {
+    background-color: var(--siteColor2) !important;
+}
+
+.menu-toggle .nav-header .nav-control .hamburger.is-active .line {
+    background-color: var(--siteColor2) !important;
+}
+
+.pulse-css {
+    background: var(--siteColor2) !important;
+}
+
+.pulse-css:after, .pulse-css:before {
+    background-color: var(--siteColor2) !important;
+}
+
+.btn-primary {
+    background: var(--goldenBG2) !important;
+    background-size: 400% 200% !important;
+    border-color: var(--siteColor2) !important;
+}
+
+.btn-primary:hover {
+    background-size: 400% 400% !important;
+}
+
+.bg-primary {
+    background: var(--goldenBG2) !important;
+    background-size: 400% 300% !important;
+}
+
+.card-header {
+    border-bottom: 1px solid var(--siteColor2) !important;
+}
+
+.page-titles h4 {
+    color: var(--siteColor2) !important;
+}
+
+.sk-three-bounce .sk-child {
+    background: var(--goldenBG2) !important;
+    background-size: 400% 300% !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    background: var(--goldenBG2) !important;
+    background-size: 400% 300% !important;
+    color: #ffffff !important;
+}
+
+.page-header-title {
+    color: var(--siteColor2) !important;
 }
 
 

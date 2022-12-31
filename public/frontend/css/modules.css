@@ -3698,7 +3698,8 @@ table.variations td.value .select2-container {
     width: 32px;
     height: 32px;
     margin: -16px 0 0 -16px;
-    background: var(--goldenBG2);;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
     border-radius: 16px;
     -webkit-animation: scaleout 1s infinite ease-in-out;
     animation: scaleout 1s infinite ease-in-out
@@ -3740,7 +3741,8 @@ table.variations td.value .select2-container {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: var(--goldenBG2);;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
     opacity: .6;
     position: absolute;
     top: 0;
@@ -3784,7 +3786,8 @@ table.variations td.value .select2-container {
     width: 60px;
     height: 60px;
     margin: -30px 0 0 -30px;
-    background: var(--goldenBG2);;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
     -webkit-animation: rotateplane 1.2s infinite ease-in-out;
     animation: rotateplane 1.2s infinite ease-in-out
 }
@@ -3829,7 +3832,8 @@ table.variations td.value .select2-container {
 
 .mkdf-st-loader .rotating_cubes .cube1,
 .mkdf-st-loader .rotating_cubes .cube2 {
-    background: var(--goldenBG2);;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
     width: 10px;
     height: 10px;
     position: absolute;
@@ -3898,7 +3902,8 @@ table.variations td.value .select2-container {
 }
 
 .mkdf-st-loader .stripes>div {
-    background: var(--goldenBG2);;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
     height: 100%;
     width: 6px;
     display: inline-block;
@@ -3964,7 +3969,8 @@ table.variations td.value .select2-container {
 .mkdf-st-loader .wave>div {
     width: 18px;
     height: 18px;
-    background: var(--goldenBG2);;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
     margin: 0 3px 0 0;
     border-radius: 100%;
     display: inline-block;
@@ -4029,7 +4035,8 @@ table.variations td.value .select2-container {
     display: inline-block;
     position: absolute;
     top: 0;
-    background: var(--goldenBG2);;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
     border-radius: 100%;
     -webkit-animation: bounce 2s infinite ease-in-out;
     animation: bounce 2s infinite ease-in-out
@@ -4067,7 +4074,8 @@ table.variations td.value .select2-container {
 .mkdf-st-loader .five_rotating_circles .container3>div {
     width: 12px;
     height: 12px;
-    background: var(--goldenBG2);;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
     border-radius: 100%;
     position: absolute;
     -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
@@ -4840,7 +4848,8 @@ table.variations td.value .select2-container {
     position: absolute;
     width: 60px;
     height: 4px;
-    background: var(--goldenBG2);;
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
     -webkit-animation: lines_spin 1.5s infinite linear;
     -webkit-animation-timing-function: ease
 }
@@ -5606,6 +5615,7 @@ p.form-submit {
 .post-password-form input[type=submit]:hover {
     color: #fff;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .wpcf7-form .mkdf-form-has-icon {
@@ -5660,6 +5670,7 @@ input.wpcf7-form-control.wpcf7-submit {
 input.wpcf7-form-control.wpcf7-submit:hover {
     color: #fff;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .wpcf7-form p {
@@ -5972,6 +5983,7 @@ input.wpcf7-form-control.wpcf7-submit:hover {
 
 .mkdf-404-page .mkdf-page-not-found.mkdf-404-skin-white .mkdf-404-title:after {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-404-page .mkdf-page-not-found.mkdf-404-skin-white .mkdf-404-text {
@@ -6135,6 +6147,7 @@ input.wpcf7-form-control.wpcf7-submit:hover {
 
 .mkdf-404-page .mkdf-page-not-found .mkdf-404-search-widget button:hover {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-404-page .mkdf-page-not-found .mkdf-404-search-widget button span {
@@ -6186,6 +6199,7 @@ input.wpcf7-form-control.wpcf7-submit:hover {
     text-align: center;
     color: #fff;
     background: var(--goldenBG2);;
+    background-size: 400% 200%;
     border: 1px solid #c59d5f;
     overflow: hidden;
     -webkit-transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out;
@@ -6299,7 +6313,20 @@ body #ui-datepicker-div.ui-widget-content .ui-widget-header a {
     text-decoration: none;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
-    transform: translateY(-50%)
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid var(--siteColor2);
+    border-radius: 0;
+}
+
+body #ui-datepicker-div.ui-widget-content .ui-widget-header a:hover {
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
+}
+
+body #ui-datepicker-div.ui-widget-content .ui-widget-header a:hover::after {
+    color: var(--siteColor1);
+    font-weight: 700;
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-datepicker-next,
@@ -6312,6 +6339,9 @@ body #ui-datepicker-div.ui-widget-content .ui-datepicker-prev:after {
     font-family: Linearicons-Free;
     font-size: 12px;
     color: var(--siteColor2);
+    position: relative;
+    top: 1px;
+    right: -8px;
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-datepicker-next span,
@@ -6320,7 +6350,7 @@ body #ui-datepicker-div.ui-widget-content .ui-datepicker-prev span {
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-datepicker-prev {
-    left: 16px
+    left: 10px
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-datepicker-prev:after {
@@ -6328,7 +6358,7 @@ body #ui-datepicker-div.ui-widget-content .ui-datepicker-prev:after {
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-datepicker-next {
-    right: 5px
+    right: 10px
 }
 
 body #ui-datepicker-div.ui-widget-content .ui-datepicker-next:after {
@@ -6380,6 +6410,7 @@ body #ui-datepicker-div.ui-widget-content table td a:hover {
     color: var(--siteColor1);
     border-color: transparent;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
     font-weight: 800;
 }
 
@@ -12046,6 +12077,7 @@ body .pp_overlay {
 .mkdf-blog-holder article.format-audio .mkdf-blog-audio-holder .mejs-container .mejs-controls>.mejs-time-rail .mejs-time-total .mejs-time-current {
     height: 5px;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-blog-holder article.format-audio .mkdf-blog-audio-holder .mejs-container .mejs-controls>.mejs-time-rail .mejs-time-total .mejs-time-float {
@@ -12079,6 +12111,7 @@ body .pp_overlay {
 
 .mkdf-blog-holder article.format-audio .mkdf-blog-audio-holder .mejs-container .mejs-controls>a.mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-blog-holder article.format-video .mkdf-self-hosted-video {
@@ -12472,6 +12505,7 @@ body .pp_overlay {
 .mkdf-blog-holder article.format-audio .mkdf-blog-audio-holder .mejs-container .mejs-controls>.mejs-time-rail .mejs-time-total .mejs-time-current {
     height: 5px;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-blog-holder article.format-audio .mkdf-blog-audio-holder .mejs-container .mejs-controls>.mejs-time-rail .mejs-time-total .mejs-time-float {
@@ -12505,6 +12539,7 @@ body .pp_overlay {
 
 .mkdf-blog-holder article.format-audio .mkdf-blog-audio-holder .mejs-container .mejs-controls>a.mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-blog-holder article.format-video .mkdf-self-hosted-video {
@@ -18319,6 +18354,7 @@ nav.mkdf-fullscreen-menu>ul>li.mkdf-active-item>a {
 .mkdf-accordion-holder.mkdf-ac-boxed .mkdf-accordion-title.ui-state-hover {
     color: #fff;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-accordion-holder.mkdf-ac-boxed .mkdf-accordion-content {
@@ -18440,6 +18476,7 @@ nav.mkdf-fullscreen-menu>ul>li.mkdf-active-item>a {
 
 .mkdf-banner-holder .mkdf-btn.mkdf-btn-solid {
     background: var(--goldenBG2);;
+    background-size: 400% 200%;
     margin: 21px 0 0;
     z-index: 2;
     -webkit-transform: translateZ(0);
@@ -19943,6 +19980,7 @@ html.fp-enabled {
     line-height: 2em;
     text-align: center;
     background: var(--goldenBG2);;
+    background-size: 400% 200%;
     -webkit-transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
     -o-transition: background-color .15s ease-in-out, border-color .15s ease-in-out;
     transition: background-color .15s ease-in-out, border-color .15s ease-in-out
@@ -20872,6 +20910,7 @@ html.fp-enabled {
     max-width: 100%;
     overflow: hidden;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-section-title-holder {
@@ -21438,6 +21477,7 @@ html.fp-enabled {
 .mkdf-tabs.mkdf-tabs-standard .mkdf-tabs-nav li.ui-state-hover a {
     color: #fff;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-tabs.mkdf-tabs-standard .mkdf-tab-container {
@@ -21466,6 +21506,7 @@ html.fp-enabled {
 .mkdf-tabs.mkdf-tabs-boxed .mkdf-tabs-nav li.ui-state-hover a {
     color: #fff;
     background: var(--goldenBG2);
+    background-size: 400% 200%;
 }
 
 .mkdf-tabs.mkdf-tabs-boxed .mkdf-tab-container {
