@@ -4,7 +4,7 @@ window.addEventListener('close-modal', event => {
 
 $(document).ready(function() {
     feather.replace();
-    
+
     $('.js-basic-single').select2();
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -15,7 +15,7 @@ $(document).ready(function() {
         placeholder: 'Add Long Description...',
     });
 
-    $('#date_of_birth').datepicker({ 
+    $('#date_of_birth').datepicker({
         dateFormat: 'yyyy-mm-dd',
     });
 

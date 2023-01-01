@@ -12,6 +12,7 @@
                         <th>Thumb</th>
                         <th>Name</th>
                         <th>Slug</th>
+                        <th>Offer Duration</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -25,6 +26,10 @@
                         </td>
                         <td>{{ $offer->name }}</td>
                         <td>{{ $offer->slug }}</td>
+                        <td>
+                            <strong>Start:</strong> {{ date('d M Y', strtotime($offer->start_date)) }} <br>
+                            <strong>End:</strong> {{ date('d M Y', strtotime($offer->end_date)) }}
+                        </td>
                         <td>
                             @if ($offer->is_active == '1')
                                 <span class="badge badge-success text-white">Active</span>

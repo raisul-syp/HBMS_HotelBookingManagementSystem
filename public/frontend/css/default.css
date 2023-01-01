@@ -26,7 +26,8 @@ body {
     --youtube: #bd081c;
 
     --goldenBG: linear-gradient(to right, #814d01, #996101, #b07701, #c88d01, #dea500, #dea500, #dea500, #dea500, #c88d01, #b07701, #996101, #814d01);
-    --goldenBG2: radial-gradient(circle, #FFD99E, #EFBC59, #B07E2B, #D1962B, #9F6D2A);
+    /* --goldenBG2: radial-gradient(circle, #FFD99E, #EFBC59, #B07E2B, #D1962B, #9F6D2A); */
+    --goldenBG2: radial-gradient(circle, #ffd700, #f8c01f, #edab2e, #de9738, #cd853f);
 }
 
 .decor-1 {

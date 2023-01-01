@@ -91,6 +91,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label text-right" for="offer_type">
+                                        {{ __('Offer Type') }}
+                                        <small class="text-danger">*</small>
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control js-basic-single" id="offer_type" name="offer_type" >
+                                            <option value="Poster" {{ old('role_as', $offer->offer_type) == 'Poster' ? 'selected' : '' }}>Poster</option>
+                                            <option value="Banner" {{ old('role_as', $offer->offer_type) == 'Banner' ? 'selected' : '' }}>Banner</option>
+                                        </select>
+                                        @error('offer_type')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="short_description">
                                         {{ __('Short Description') }}
                                         <small class="text-danger">*</small>

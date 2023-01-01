@@ -53,6 +53,18 @@
                 </div>
             </div>
             <div class="col-lg-3">
+                <div class="booking-btn mb-3">
+                    @if (Auth::user())
+                    <a class="btn btn-primary" href="{{ url('/booking') }}">
+                        {{ _('Book Now') }}
+                    </a>
+                    @else
+                    <a class="btn btn-primary" href="{{ route('login') }}">
+                        {{ _('Book Now') }}
+                    </a>
+                    </li>
+                    @endif
+                </div>
                 <div class="roomAvailability-form mb-4 mb-lg-0">
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">

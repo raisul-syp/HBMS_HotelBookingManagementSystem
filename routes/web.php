@@ -24,6 +24,14 @@ Route::prefix('/')->controller(App\Http\Controllers\Frontend\HomeController::cla
 Route::prefix('/booking')->controller(App\Http\Controllers\Frontend\BookingController::class)->group(function (){
     Route::get('/', 'index');
     Route::post('/', 'store');
+
+});
+
+Route::prefix('/guest')->controller(App\Http\Controllers\Frontend\UserController::class)->group(function (){
+    Route::get('/profile', 'myProfile');
+    Route::get('/profile/edit/{guest}', 'editMyProfile');
+    Route::put('/profile/edit/{guest}', 'updateMyProfile');
+    Route::get('/booking-history', 'bookingHistory');
 });
 
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\PagesController::class)->group(function (){

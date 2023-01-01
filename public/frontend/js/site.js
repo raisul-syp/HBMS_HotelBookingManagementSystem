@@ -91,6 +91,10 @@ $(document).ready(function () {
         maxDate: 30,
     });
 
+    $("#date_of_birth").datepicker({
+        dateFormat: 'yy-mm-dd',
+    });
+
 
 
     $('.page-details-carousel').owlCarousel({

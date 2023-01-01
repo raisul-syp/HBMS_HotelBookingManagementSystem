@@ -17,6 +17,7 @@ class CreateHbOffersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->string('offer_type');
             $table->mediumText('short_description');
             $table->longText('long_description')->nullable();
             $table->dateTime('start_date');

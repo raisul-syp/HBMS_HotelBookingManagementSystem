@@ -14,6 +14,7 @@ class Offer extends Model
     protected $fillable = [
         'name',
         'slug',
+        'offer_type',
         'short_description',
         'long_description',
         'start_date',

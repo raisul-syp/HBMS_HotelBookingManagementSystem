@@ -32,6 +32,10 @@ class OfferFormRequest extends FormRequest
                 'required',
                 'string'
             ],
+            'offer_type' => [
+                'required',
+                'string'
+            ],
             'short_description' => [
                 'required',
                 'string'

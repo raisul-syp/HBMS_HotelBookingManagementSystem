@@ -113,28 +113,18 @@
     </div>
 </section>
 
-@if (count($offers) > 0)
+@if (count($offers) > 1)
 <section id="offer_section" class="offer_section">
     <div class="offer_section_inner">
         <div class="container">
             <div class="row">
-                @foreach ($offers->slice(0, 2) as $offer)
-                <div class="col-lg-6 col-mob-6">
+                @foreach ($offers->where('offer_type', '=', 'Banner')->slice(0,1) as $offer)
+                <div class="col-lg-12 col-mob-12">
                     <div class="offer_sec">
                         <a href="{{ url('offers/offer-details/'.$offer->slug) }}">
-                            <div class="card flex-row">
-                                <div class="card-image">
+                            <div class="card">
+                                <div class="card-image banner">
                                     <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
-                                </div>
-                                <div class="card-body">
-                                    <div class="content">
-                                        <div class="content_inner">
-                                            <h5>{{ $offer->name }}</h5>
-                                            <p>{{ $offer->short_description }}</p>
-                                            <p class="datetime"><strong>Start Date: </strong> <span>{{ date('d F Y, h:i A', strtotime($offer->start_date)) }}</span></p>
-                                            <p class="datetime"><strong>End Date: </strong> <span>{{ date('d F Y, h:i A', strtotime($offer->end_date)) }}</span></p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -236,6 +226,32 @@
         </div>
     </div>
 </section>
+
+@if (count($offers) > 0)
+<section id="offer_section" class="offer_section">
+    <div class="offer_section_inner">
+        <div class="container">
+            <div class="row">
+                @foreach ($offers->where('offer_type', '=', 'Poster')->slice(0,2) as $offer)
+                <div class="col-lg-6 col-mob-6">
+                    <div class="offer_sec">
+                        <a href="{{ url('offers/offer-details/'.$offer->slug) }}">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+@else
+<section id="offer_section" class="offer_section d-none"></section>
+@endif
 
 <section id="facility_section" class="facility_section">
     <div class="facility_section_inner">

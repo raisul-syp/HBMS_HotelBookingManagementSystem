@@ -71,17 +71,21 @@
                 </li>
                 @endif
                 @endforeach
-                
+
                 @if (Auth::user())
                 <li class="nav-item d-block d-lg-none">
                     <a class="nav-link" href="{{ url('/booking') }}">
                         {{ _('Booking') }}
                     </a>
                 </li>
-                @else
-                <li class="nav-item d-none d-lg-none">
-                    <a class="nav-link" href="{{ url('/booking') }}">
-                        {{ _('Booking') }}
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link" href="{{ url('/guest/profile') }}">
+                        {{ _('View Profile') }}
+                    </a>
+                </li>
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link" href="{{ url('/guest/booking-history') }}">
+                        {{ _('Booking History') }}
                     </a>
                 </li>
                 @endif
@@ -89,13 +93,42 @@
 
             <ul class="navbar-nav d-none d-lg-block">
                 @if (Auth::user())
-                <li class="nav-item">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <a class="nav-link btn btn-primary btn-golden" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
-                            <i data-feather="power"></i> {{ _('Logout') }}
+                <li class="nav-item my-account">
+                    <div class="dropdown">
+                        <a class="nav-link btn btn-secondary btn-golden dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><span>My Account</span>
                         </a>
-                    </form>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li class="profile-sec">
+                                @if (Auth::user()->profile_photo != null)
+                                <img src="{{ 'uploads/guests/profile_photo/'.Auth::user()->profile_photo }}">
+                                @else
+                                <img src="{{ asset('admin/images/no-photo.png') }}">
+                                @endif
+                                <h5>{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h5>
+                            </li>
+                            <hr>
+                            <li>
+                                <a class="dropdown-item" href="{{ url('/guest/profile') }}">
+                                    <i data-feather="user"></i>
+                                    <span>View Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ url('/guest/booking-history') }}">
+                                    <i data-feather="clock"></i>
+                                    <span>Booking History</span>
+                                </a>
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        <i data-feather="power"></i> {{ _('Logout') }}
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 @else
                 <li class="nav-item">

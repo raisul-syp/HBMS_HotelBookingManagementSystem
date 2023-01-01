@@ -233,7 +233,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --dark: #454545;
   --siteColor1: #2c2c2c;
   --siteColor2: #D1962B;
-  --goldenBG2: radial-gradient(circle, #FFD99E, #EFBC59, #B07E2B, #D1962B, #9F6D2A);
+  /* --goldenBG2: radial-gradient(circle, #FFD99E, #EFBC59, #B07E2B, #D1962B, #9F6D2A); */
+  --goldenBG2: radial-gradient(circle, #ffd700, #f8c01f, #edab2e, #de9738, #cd853f);
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;

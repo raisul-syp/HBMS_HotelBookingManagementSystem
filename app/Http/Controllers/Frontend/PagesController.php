@@ -33,7 +33,7 @@ class PagesController extends Controller
     {
         $page = Page::where('slug', $page_slug)->first();
         $offerDateTime = Carbon::now();
-        $offers = Offer::all()->where('start_date', '>', $offerDateTime)->where('is_active', '1')->where('is_delete', '1');
+        $offers = Offer::all()->where('end_date', '>', $offerDateTime)->where('is_active', '1')->where('is_delete', '1');
         $rooms = Room::all()->where('is_active','1')->where('is_delete','1');
         $restaurants = Restaurent::all()->where('is_active','1')->where('is_delete','1');
         $halls = Hall::all()->where('is_active','1')->where('is_delete','1');

@@ -3,7 +3,18 @@
 
 @section('content')
 <div class="auth-form">
-    <h4 class="text-center mb-4">{{ __('Sign in your account') }}</h4>
+    <div class="go-back">
+        <a href="{{ url('/') }}">
+            <i class="fa fa-chevron-left"></i>
+            <span>Go Back</span>
+        </a>
+    </div>
+    <div class="header-sec text-center">
+        @foreach ($settings as $item)
+        <img class="w-25" src="{{ asset('uploads/site/'.$item->logo) }}" alt="">
+        @endforeach
+        <h4 class="mt-3 mb-4">{{ __('Sign in your account') }}</h4>
+    </div>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf

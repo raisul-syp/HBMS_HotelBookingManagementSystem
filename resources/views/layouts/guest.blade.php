@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/vendors/fontawesome-5.15.4/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/OwlCarousel2-2.3.4/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/OwlCarousel2-2.3.4/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/vendors/dropify/dist/css/dropify.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/icon-font-1.0.0/icon-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendors/daterangepicker/daterangepicker.css') }}">
 
@@ -82,6 +83,8 @@
     <script src="{{ asset('frontend/vendors/OwlCarousel2-2.3.4/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/vendors/feathericons-4.29.0/feather.min.js') }}"></script>
     <script src="{{ asset('frontend/vendors/iconify-icon/iconify-icon.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendors/dropify/dist/js/dropify.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendors/dropify/dist/js/dropify-init.js') }}"></script>
     <script src="{{ asset('frontend/vendors/moment/moment.min.js') }}"></script>
     <script src="{{ asset('frontend/vendors/daterangepicker/daterangepicker.min.js') }}"></script>
     @livewireScripts

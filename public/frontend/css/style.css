@@ -193,6 +193,54 @@ Header Section Start
     height: 18px;
     stroke-width: 2px;
 }
+
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu {
+    right: 0 !important;
+    min-width: 15rem;
+}
+
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu hr {
+    color: var(--siteColor2);
+    height: 1px;
+    opacity: 1;
+    margin: 0;
+}
+
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu .dropdown-item  {
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu .dropdown-item svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 3px;
+}
+
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 1rem;
+}
+
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec img {
+    width: 20%;
+    border-radius: 50%;
+    border: 2px solid var(--siteColor2);
+    padding: 5px;
+    background: #ffffff;
+}
+
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec h5 {
+    color: var(--siteColor2);
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 0;
+}
 /*==================================
 Header Section End
 ==================================*/
@@ -610,7 +658,7 @@ Rooms Section Start
 ==================================*/
 .rooms_section {}
 .rooms_section .rooms_section_inner {
-    padding: 80px 0 40px;
+    padding: 80px 0 60px;
 }
 .rooms_section .rooms_section_inner .section_title {
     position: relative;
@@ -874,11 +922,14 @@ Offer Section Start
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
 .offer_section .offer_section_inner .offer_sec .card-image {
-    width: 50%;
+    width: 100%;
 }
 .offer_section .offer_section_inner .offer_sec .card-image img {
     width: 100%;
-    height: 160px;
+    height: auto;
+}
+.offer_section .offer_section_inner .offer_sec .card-image.banner {
+    width: 100%;
 }
 .offer_section .offer_section_inner .offer_sec .card-body {
     border: 1px solid var(--siteColor1);
@@ -2100,6 +2151,10 @@ select {
     background: var(--siteColor1) !important;
 }
 
+select.guest-select {
+    background: #ffffff !important;
+}
+
 .pages_section_frontend .page-inner hr {
     margin: 3px 0;
     opacity: 1;
@@ -2109,3 +2164,128 @@ select {
 .pages_section_frontend .page-inner .page-terminal .location, .pages_section_frontend .page-inner .page-terminal .datetime {
     font-size: 12px;
 }
+
+
+.profile-card {
+    border: 1px solid var(--siteColor2) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.profile-card .card-header {
+    padding: 15px 15px;
+    background: var(--siteColor1);
+    border-radius: 0 !important;
+    border-bottom: 1px solid var(--siteColor2);
+}
+.profile-card .card-header .header-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.profile-card .card-header .header-title h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--siteColor2);
+    margin-bottom: 0;
+}
+.profile-card .card-header .header-title a {
+    border-radius: 0;
+    border: 1px solid var(--siteColor2);
+    color: var(--siteColor2);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease-in-out;
+}
+.profile-card .card-header .header-title a:hover {
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
+    color: var(--siteColor1);
+}
+.profile-card .card-header .header-title a svg {
+    width: 16px;
+    height: 16px;
+}
+.profile-card .card-header .header-title a span {
+    font-size: 16px;
+}
+
+
+.profile-card .card-body {
+}
+.profile-card .card-body table {
+    margin-bottom: 0;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,.15)!important;
+}
+.profile-card .card-body table tbody tr th,
+.profile-card .card-body table tbody tr td {
+    border: 1px solid var(--siteColor2) !important;
+    padding: 0.5rem 1.5rem;
+}
+.profile-card .card-body table thead {
+    background: var(--siteColor2);
+}
+.profile-card .card-body table tbody tr td input,
+.profile-card .card-body table tbody tr td select {
+    border: 1px solid var(--siteColor2);
+    border-radius: 0;
+    font-size: 14px;
+}
+.profile-card .card-body table tbody tr td .input-wrapper {
+    position: relative;
+}
+.profile-card .card-body table tbody tr td .input-wrapper span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--siteColor1);
+    background-size: 400% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+.profile-card .image-body {
+    padding: 1rem 1rem;
+}
+.profile-card .image-body.cover {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--siteColor2);
+    box-shadow: 0 1rem 1rem rgba(0,0,0,.15)!important;
+}
+.profile-card .image-body.cover img {
+    width: 100%;
+}
+.profile-card .image-body.profile {}
+.profile-card .image-body.profile img {
+    background: var(--siteColor1);
+    box-shadow: 0 1rem 1rem rgba(0,0,0,.15)!important;
+    padding: 20px;
+    border-radius: 50%;
+    border: 5px solid var(--siteColor2);
+}
+.profile-card .card-footer {
+    padding: 15px 15px;
+    background: var(--siteColor1);
+    border-radius: 0 !important;
+    border-top: 1px solid var(--siteColor2);
+}
+.profile-card .card-footer button {
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
+    color: var(--siteColor1);
+    border: 1px solid var(--siteColor2);
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 800;
+    transition: all 0.3s ease-in-out;
+}
+.profile-card .card-footer button:hover {
+    background: transparent;
+    color: var(--siteColor2);
+}
+
+

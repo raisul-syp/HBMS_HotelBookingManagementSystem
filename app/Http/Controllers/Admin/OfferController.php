@@ -31,6 +31,7 @@ class OfferController extends Controller
 
         $offer->name = $validatedData['name'];
         $offer->slug = Str::slug($validatedData['slug']);
+        $offer->offer_type = $validatedData['offer_type'];
         $offer->short_description = $validatedData['short_description'];
         $offer->long_description = $validatedData['long_description'];
         $offer->start_date = $validatedData['start_date'];
@@ -71,6 +72,7 @@ class OfferController extends Controller
 
         $offer->name = $validatedData['name'];
         $offer->slug = Str::slug($validatedData['slug']);
+        $offer->offer_type = $validatedData['offer_type'];
         $offer->short_description = $validatedData['short_description'];
         $offer->long_description = $validatedData['long_description'];
         $offer->start_date = $validatedData['start_date'];

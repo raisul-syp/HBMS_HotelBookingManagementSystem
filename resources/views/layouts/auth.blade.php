@@ -14,12 +14,13 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/account.css') }}">
     {{-- @livewireStyles --}}
 </head>
-<body class="h-100">
-    <div class="authincation h-100">
-        <div class="container-fluid h-100">
-            <div class="row justify-content-center h-100 align-items-center">
+<body>
+    <div class="authincation">
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center" style="height: 100vh;">
                 <div class="col-md-6">
                     <div class="authincation-content">
                         <div class="row no-gutters">
