@@ -13,7 +13,7 @@
                 <div class="col-lg-7">
                     <div class="footer_links">
                         <h4>
-                            <span>Useful Links</span>
+                            <span>Company</span>
                             <div class="decor-1"></div>
                         </h4>
                         <ul>
@@ -53,22 +53,22 @@
                         @foreach ($settings as $item)
                         <ul class="social">
                             <li>
-                                <a href="{{ $item->social_fb }}">
+                                <a href="{{ $item->social_fb }}" target="_blank">
                                     <i data-feather="facebook"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ $item->social_tw }}">
+                                <a href="{{ $item->social_tw }}" target="_blank">
                                     <i data-feather="twitter"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ $item->social_insta }}">
+                                <a href="{{ $item->social_insta }}" target="_blank">
                                     <i data-feather="instagram"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ $item->social_yt }}">
+                                <a href="{{ $item->social_yt }}" target="_blank">
                                     <i data-feather="youtube"></i>
                                 </a>
                             </li>

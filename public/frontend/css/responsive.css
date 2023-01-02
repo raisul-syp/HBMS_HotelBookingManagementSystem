@@ -317,6 +317,11 @@
     .about_section .about_section_inner .content_box .card .card-body .content p {
         font-size: 12px;
         line-height: 22px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+
     }
     .about_section .about_section_inner .content_box .card .card-body .content .btn-read {
         width: 150px;
@@ -472,7 +477,7 @@
         height: 1px;
     }
     .testimonials_section .testimonials_section_inner .testimonials-slider .item {
-        height: 300px;
+        height: 340px;
         width: 80%;
         margin: 0 auto;
     }
@@ -485,6 +490,7 @@
     }
     .testimonials_section .testimonials_section_inner .testimonials-slider .item .content .card {
         border-width: 3px;
+        height: 300px;
     }
     .testimonials_section .testimonials_section_inner .testimonials-slider .item .content .card .card-body {
         padding: 70px 20px 20px;

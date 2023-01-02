@@ -16,7 +16,7 @@
                         <i data-feather="phone"></i>
                         <span>{{ $item->phone }}</span>
                     </li>
-                </ul>   
+                </ul>
                 @endforeach
             </div>
         </div>
@@ -27,29 +27,29 @@
                 <ul>
                     <li class="facebook" data-bs-toggle="tooltip" data-bs-placement="bottom"
                         title="Facebook">
-                        <a href="{{ $item->social_fb }}">
+                        <a href="{{ $item->social_fb }}" target="_blank">
                             <i data-feather="facebook"></i>
                         </a>
                     </li>
                     <li class="twitter" data-bs-toggle="tooltip" data-bs-placement="bottom"
                         title="Twitter">
-                        <a href="{{ $item->social_tw }}">
+                        <a href="{{ $item->social_tw }}" target="_blank">
                             <i data-feather="twitter"></i>
                         </a>
                     </li>
                     <li class="instagram" data-bs-toggle="tooltip" data-bs-placement="bottom"
                         title="Instagram">
-                        <a href="{{ $item->social_insta }}">
+                        <a href="{{ $item->social_insta }} target="_blank"">
                             <i data-feather="instagram"></i>
                         </a>
                     </li>
                     <li class="youtube" data-bs-toggle="tooltip" data-bs-placement="bottom"
                         title="YouTube">
-                        <a href="{{ $item->social_yt }}">
+                        <a href="{{ $item->social_yt }}" target="_blank">
                             <i data-feather="youtube"></i>
                         </a>
                     </li>
-                </ul>    
+                </ul>
                 @endforeach
             </div>
         </div>

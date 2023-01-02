@@ -39,7 +39,7 @@ class SettingsController extends Controller
             $logoFile = $request->file('logo');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = 'logo-'.'.'.$logoExtension;
+            $logoFilename = 'logo-'.Str::slug($settings->name).'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $settings->logo = $logoFilename;
@@ -50,7 +50,7 @@ class SettingsController extends Controller
             $iconFile = $request->file('icon');
 
             $iconExtension = $iconFile->getClientOriginalExtension();
-            $iconFilename = 'icon-'.'.'.$iconExtension;
+            $iconFilename = 'icon-'.Str::slug($settings->name).'.'.$iconExtension;
             $iconFile->move($iconUploadPath,$iconFilename);
 
             $settings->icon = $iconFilename;
@@ -98,7 +98,7 @@ class SettingsController extends Controller
             $logoFile = $request->file('logo');
 
             $logoExtension = $logoFile->getClientOriginalExtension();
-            $logoFilename = 'logo-'.'.'.$logoExtension;
+            $logoFilename = 'logo-'.Str::slug($settings->name).'.'.$logoExtension;
             $logoFile->move($logoUploadPath,$logoFilename);
 
             $settings->logo = $logoFilename;
@@ -113,7 +113,7 @@ class SettingsController extends Controller
             $iconFile = $request->file('icon');
 
             $iconExtension = $iconFile->getClientOriginalExtension();
-            $iconFilename = 'icon-'.'.'.$iconExtension;
+            $iconFilename = 'icon-'.Str::slug($settings->name).'.'.$iconExtension;
             $iconFile->move($iconUploadPath,$iconFilename);
 
             $settings->icon = $iconFilename;

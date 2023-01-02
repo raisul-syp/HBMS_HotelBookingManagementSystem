@@ -20,9 +20,13 @@ class AdminMiddleware
         // if(!Auth::guard('admin')->role_as == '0'){
         //     return redirect()->with('message', 'Access Denied. As you are not Admin.');
         // }
-        
+
+        // if(!Auth::guard('admin')->check()){
+        //     return redirect('admin/login')->route('admin.auth.login')->with('message', 'Access Denied. As you are not Admin.');
+        // }
+
         if(!Auth::guard('admin')->check()){
-            return redirect()->route('admin.auth.login')->with('message', 'Access Denied. As you are not Admin.');
+            return redirect('admin/login')->with('message', 'Access Denied. As you are not Admin.');
         }
         return $next($request);
     }

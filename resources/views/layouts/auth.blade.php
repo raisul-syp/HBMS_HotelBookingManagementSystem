@@ -7,10 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') - {{ config('app.name') }}</title>
+    @foreach ($settings as $item)
+    <title>@yield('title') - {{ $item->name }}</title>
+    @endforeach
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/favicon.png') }}">
+    @foreach ($settings as $item)
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('uploads/site/'.$item->icon) }}">
+    @endforeach
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">

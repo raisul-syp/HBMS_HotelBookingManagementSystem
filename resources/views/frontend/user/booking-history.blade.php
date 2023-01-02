@@ -53,23 +53,27 @@
                                             </thead>
                                             <tbody>
                                                 @forelse ($bookings as $booking)
-                                                <td>{{ $serialNo++ }}</td>
-                                                <td>{{ $booking->rooms->name }}</td>
-                                                <td>
-                                                    <strong>Adults: </strong>{{ $booking->total_adults }} <br>
-                                                    <strong>Childs: </strong>{{ $booking->total_childs }}
-                                                </td>
-                                                <td>
-                                                    {{ date('d M Y', strtotime($booking->checkin_date)) }} <br>
-                                                    {{ date('h:i A', strtotime($booking->checkin_time)) }}
-                                                </td>
-                                                <td>
-                                                    {{ date('d M Y', strtotime($booking->checkout_date)) }} <br>
-                                                    {{ date('h:i A', strtotime($booking->checkout_time)) }}
-                                                </td>
-                                                <td>{{ '$'.$booking->rooms->price }}</td>
+                                                <tr>
+                                                    <td>{{ $serialNo++ }}</td>
+                                                    <td>{{ $booking->rooms->name }}</td>
+                                                    <td>
+                                                        <strong>Adults: </strong>{{ $booking->total_adults }} <br>
+                                                        <strong>Childs: </strong>{{ $booking->total_childs }}
+                                                    </td>
+                                                    <td>
+                                                        {{ date('d M Y', strtotime($booking->checkin_date)) }} <br>
+                                                        {{ date('h:i A', strtotime($booking->checkin_time)) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ date('d M Y', strtotime($booking->checkout_date)) }} <br>
+                                                        {{ date('h:i A', strtotime($booking->checkout_time)) }}
+                                                    </td>
+                                                    <td>{{ '$'.$booking->rooms->price }}</td>
+                                                </tr>
                                                 @empty
-                                                <td colspan="6">No Bookings History</td>
+                                                <tr>
+                                                    <td colspan="6">No Bookings History</td>
+                                                </tr>
                                                 @endforelse
                                             </tbody>
                                         </table>

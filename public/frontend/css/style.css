@@ -510,7 +510,7 @@ Hero Slider Section Start
     left: -100%;
     content: "";
     position: absolute;
-    background: rgba(0, 0, 0, .25);
+    background: rgba(0, 0, 0, .05);
     width: 100%;
     height: 100%;
     transition: 0.5s;
@@ -919,7 +919,7 @@ Offer Section Start
     transition: all 0.3s ease-in;
 }
 .offer_section .offer_section_inner .offer_sec a .card {
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 0.5rem 1rem #d1962b !important;
 }
 .offer_section .offer_section_inner .offer_sec .card-image {
     width: 100%;
@@ -996,7 +996,7 @@ Testimonials Section Start
     width: 50%;
     border-radius: 50%;
     overflow: hidden;
-    border: 6px solid var(--siteColor1);
+    border: 2px solid var(--siteColor1);
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -1019,12 +1019,13 @@ Testimonials Section Start
     border-image: var(--goldenBG2) 1;
     border-width: 5px;
     border-style: solid;
+    height: 360px;
 }
 .testimonials_section .testimonials_section_inner .testimonials-slider .item .content .card .card-body {
-    padding: 130px 30px 30px;
+    padding: 110px 20px 30px;
 }
 .testimonials_section .testimonials_section_inner .testimonials-slider .item .content .card .card-body h4.title {
-    font-size: 20px;
+    font-size: 18px;
     color: var(--siteColor1);
     font-weight: 800;
     text-transform: uppercase;
@@ -1032,12 +1033,12 @@ Testimonials Section Start
 }
 .testimonials_section .testimonials_section_inner .testimonials-slider .item .content .card .card-body h6.position {
     font-size: 14px;
-    color: var(--siteFont3);
+    color: var(--siteColor2);
     font-style: initial;
     margin-bottom: 0;
 }
 .testimonials_section .testimonials_section_inner .testimonials-slider .item .content .card .card-body h5.company {
-    font-size: 16px;
+    font-size: 15px;
     color: var(--siteBorder);
     font-weight: 600;
     text-transform: capitalize;
@@ -1045,8 +1046,8 @@ Testimonials Section Start
     margin-bottom: 0;
 }
 .testimonials_section .testimonials_section_inner .testimonials-slider .item .content .card .card-body p.message {
-    font-size: 16px;
-    margin: 20px 0 0;
+    font-size: 13px;
+    margin: 15px 0 0;
 }
 /*==================================
 Testimonials Section End
@@ -1158,15 +1159,15 @@ Footer Section Start
     padding-bottom: 0;
 }
 .footer_section .footer_section_inner .footer_top .footer_links ul li svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     margin-bottom: 4px;
     color: var(--siteFont3);
 }
 .footer_section .footer_section_inner .footer_top .footer_links ul li a {
     text-decoration: none;
     color: var(--siteFont3);
-    font-size: 14px;
+    font-size: 12px;
     margin-left: 5px;
 }
 .footer_section .footer_section_inner .footer_top .footer_links ul li:hover svg {
@@ -1207,14 +1208,14 @@ Footer Section Start
     padding-top: 0;
 }
 .footer_section .footer_section_inner .footer_top .footer_contact ul.contact li svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     color: var(--siteFont3);
 }
 .footer_section .footer_section_inner .footer_top .footer_contact ul.contact li a {
     text-decoration: none;
     color: var(--siteFont3);
-    font-size: 14px;
+    font-size: 12px;
     margin-left: 5px;
 }
 .footer_section .footer_section_inner .footer_top .footer_contact ul.contact li:hover svg {
@@ -1544,7 +1545,7 @@ Footer Section End
     left: -100%;
     content: "";
     position: absolute;
-    background: rgba(0, 0, 0, .25);
+    background: rgba(0, 0, 0, .05);
     width: 100%;
     height: 100%;
     transition: 0.5s;
@@ -1704,7 +1705,7 @@ Footer Section End
     left: -100%;
     content: "";
     position: absolute;
-    background: rgba(0, 0, 0, .25);
+    background: rgba(0, 0, 0, .05);
     width: 100%;
     height: 100%;
     transition: 0.5s;

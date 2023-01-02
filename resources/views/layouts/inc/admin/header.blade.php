@@ -1,7 +1,9 @@
 <a href="{{ url('/admin/dashboard') }}" class="brand-logo">
-    @foreach ($settings as $item)
-    <img class="logo-abbr" src="{{ asset('uploads/site/'.$item->logo) }}" alt="">
-    @endforeach
+    @if (!empty($settings->logo))
+    <img class="logo-abbr" src="{{ asset('uploads/site/'.$settings->logo) }}" alt="">
+    @else
+    <img class="logo-abbr" src="{{ asset('uploads/site/logo-the-zabeer-dhaka.png') }}" alt="">
+    @endif
 </a>
 
 <div class="nav-control">

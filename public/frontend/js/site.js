@@ -37,10 +37,11 @@ $(document).ready(function () {
         navText: ["<iconify-icon icon='bytesize:chevron-left' style='color:white;font-size:40px;'></iconify-icon>", "<iconify-icon icon='bytesize:chevron-right' style='color:white;font-size:40px;'></iconify-icon>"],
         items: 1,
         mouseDrag: true,
-        animateOut: 'fadeOut',
-        animateIn: 'flipInX',
-        autoplay: false,
-        autoplayTimeout: 4000,
+        // animateOut: 'fadeOut',
+        // animateIn: 'flipInX',
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
     })
 
 

@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('title') - {{ config('app.name') }}</title>
+    @foreach ($settings as $item)
+    <title>@yield('title') - {{ $item->name }}</title>
+    @endforeach
 
     <!-- Favicon icon -->
     @foreach ($settings as $item)
-    @if ($item->hotel_id == '1')
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('uploads/site/'.$item->icon) }}">
-    @endif
     @endforeach
 
     <!-- Google Fonts -->

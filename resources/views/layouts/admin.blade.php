@@ -4,10 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    @if (!empty($settings->name))
+    <title>@yield('title') - {{ $settings->name }}</title>
+    @else
     <title>@yield('title') - {{ config('app.name') }}</title>
+    @endif
 
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin/images/favicon.ico') }}">
+    @if (!empty($settings->icon))
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('uploads/site/'.$settings->icon) }}">
+    @else
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('uploads/site/icon-the-zabeer-dhaka.png') }}">
+    @endif
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('admin/vendor/pg-calendar/css/pignose.calendar.min.css') }}">
