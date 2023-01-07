@@ -218,7 +218,6 @@
     .availability_form .form_input input, .availability_form .form_input select {
         height: 35px;
         font-size: 12px;
-        line-height: 10px;
     }
     .availability_form .form_input .input-wrapper span.icon {
         top: 12px;

@@ -449,7 +449,6 @@ Hero Slider Section Start
     font-size: 14px;
     padding: 0 8px;
     margin: 0;
-    line-height: 42px;
     border: 1px solid var(--siteFont3);
     border-radius: 0;
     color: var(--siteFont3);
@@ -1390,7 +1389,6 @@ Footer Section End
     font-size: 12px;
     padding: 0 8px;
     margin: 0;
-    line-height: 35px;
     border: 1px solid var(--siteFont3);
     border-radius: 0;
     color: var(--siteFont3);
