@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2022 at 05:10 PM
+-- Generation Time: Jan 07, 2023 at 06:37 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -60,7 +60,9 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `gender`, `date_of_birth`, `phone`, `address`, `city`, `state`, `postal_code`, `country`, `admin_comment`, `profile_photo`, `cover_photo`, `role_as`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Muhammad Raisul', 'Islam', 'admin@gmail.com', NULL, '$2y$10$1usa4p6aEF36rUi1Eivh6.ItXPXh3sOWKYClwArQZ1uOM/UMulwB6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, 1, NULL, NULL, '2022-12-25 10:39:31', '2022-12-25 10:39:31');
+(1, 'Super', 'Admin', 'admin@gmail.com', NULL, '$2y$10$1usa4p6aEF36rUi1Eivh6.ItXPXh3sOWKYClwArQZ1uOM/UMulwB6', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisul-1672574655.png', NULL, 1, 1, 1, NULL, '1', '2022-12-25 10:39:31', '2023-01-02 04:06:15'),
+(2, 'Muhammad Raisl', 'Islam', 'wailantirajoh@gmail.com', NULL, '$2y$10$VlIqr0X7Dc7atSoZxOJzuuCZC9jt9tI54EhAOFfSqihuuaUARFrFq', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisl-1672574931.png', NULL, 0, 1, 1, '1', NULL, '2023-01-01 06:08:51', '2023-01-01 06:08:51'),
+(3, 'sdfdsf dfdsf', 'sdfd sadfsdf', 'asdas@dfsd.com', NULL, '$2y$10$pa3QoWAI045cP5efJh1VwOvI8jTh8GtG1yB.LjcmXWEr8UhDxbhVO', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, NULL, NULL, 0, 1, 1, '1', NULL, '2023-01-01 06:10:43', '2023-01-01 06:10:43');
 
 -- --------------------------------------------------------
 
@@ -129,6 +131,262 @@ CREATE TABLE `hb_country` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_country`
+--
+
+INSERT INTO `hb_country` (`id`, `country_code`, `country_name`, `code`, `currency`, `is_active`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'AFG', 'Afghanistan', 'AF', '', 1, '0', '0', NULL, NULL),
+(2, 'ALA', 'Åland', 'AX', '', 1, '0', '0', NULL, NULL),
+(3, 'ALB', 'Albania', 'AL', '', 1, '0', '0', NULL, NULL),
+(4, 'DZA', 'Algeria', 'DZ', '', 1, '0', '0', NULL, NULL),
+(5, 'ASM', 'American Samoa', 'AS', '', 1, '0', '0', NULL, NULL),
+(6, 'AND', 'Andorra', 'AD', '', 1, '0', '0', NULL, NULL),
+(7, 'AGO', 'Angola', 'AO', '', 1, '0', '0', NULL, NULL),
+(8, 'AIA', 'Anguilla', 'AI', '', 1, '0', '0', NULL, NULL),
+(9, 'ATA', 'Antarctica', 'AQ', '', 1, '0', '0', NULL, NULL),
+(10, 'ATG', 'Antigua and Barbuda', 'AG', '', 1, '0', '0', NULL, NULL),
+(11, 'ARG', 'Argentina', 'AR', '', 1, '0', '0', NULL, NULL),
+(12, 'ARM', 'Armenia', 'AM', '', 1, '0', '0', NULL, NULL),
+(13, 'ABW', 'Aruba', 'AW', '', 1, '0', '0', NULL, NULL),
+(14, 'AUS', 'Australia', 'AU', '', 1, '0', '0', NULL, NULL),
+(15, 'AUT', 'Austria', 'AT', '', 1, '0', '0', NULL, NULL),
+(16, 'AZE', 'Azerbaijan', 'AZ', '', 1, '0', '0', NULL, NULL),
+(17, 'BHS', 'Bahamas', 'BS', '', 1, '0', '0', NULL, NULL),
+(18, 'BHR', 'Bahrain', 'BH', '', 1, '0', '0', NULL, NULL),
+(19, 'BGD', 'Bangladesh', 'BD', '', 1, '0', '0', NULL, NULL),
+(20, 'BRB', 'Barbados', 'BB', '', 1, '0', '0', NULL, NULL),
+(21, 'BLR', 'Belarus', 'BY', '', 1, '0', '0', NULL, NULL),
+(22, 'BEL', 'Belgium', 'BE', '', 1, '0', '0', NULL, NULL),
+(23, 'BLZ', 'Belize', 'BZ', '', 1, '0', '0', NULL, NULL),
+(24, 'BEN', 'Benin', 'BJ', '', 1, '0', '0', NULL, NULL),
+(25, 'BMU', 'Bermuda', 'BM', '', 1, '0', '0', NULL, NULL),
+(26, 'BTN', 'Bhutan', 'BT', '', 1, '0', '0', NULL, NULL),
+(27, 'BOL', 'Bolivia', 'BO', '', 1, '0', '0', NULL, NULL),
+(28, 'BES', 'Bonaire', 'BQ', '', 1, '0', '0', NULL, NULL),
+(29, 'BIH', 'Bosnia and Herzegovina', 'BA', '', 1, '0', '0', NULL, NULL),
+(30, 'BWA', 'Botswana', 'BW', '', 1, '0', '0', NULL, NULL),
+(31, 'BVT', 'Bouvet Island', 'BV', '', 1, '0', '0', NULL, NULL),
+(32, 'BRA', 'Brazil', 'BR', '', 1, '0', '0', NULL, NULL),
+(33, 'IOT', 'British Indian Ocean Territory', 'IO', '', 1, '0', '0', NULL, NULL),
+(34, 'VGB', 'British Virgin Islands', 'VG', '', 1, '0', '0', NULL, NULL),
+(35, 'BRN', 'Brunei', 'BN', '', 1, '0', '0', NULL, NULL),
+(36, 'BGR', 'Bulgaria', 'BG', '', 1, '0', '0', NULL, NULL),
+(37, 'BFA', 'Burkina Faso', 'BF', '', 1, '0', '0', NULL, NULL),
+(38, 'BDI', 'Burundi', 'BI', '', 1, '0', '0', NULL, NULL),
+(39, 'KHM', 'Cambodia', 'KH', '', 1, '0', '0', NULL, NULL),
+(40, 'CMR', 'Cameroon', 'CM', '', 1, '0', '0', NULL, NULL),
+(41, 'CAN', 'Canada', 'CA', '', 1, '0', '0', NULL, NULL),
+(42, 'CPV', 'Cape Verde', 'CV', '', 1, '0', '0', NULL, NULL),
+(43, 'CYM', 'Cayman Islands', 'KY', '', 1, '0', '0', NULL, NULL),
+(44, 'CAF', 'Central African Republic', 'CF', '', 1, '0', '0', NULL, NULL),
+(45, 'TCD', 'Chad', 'TD', '', 1, '0', '0', NULL, NULL),
+(46, 'CHL', 'Chile', 'CL', '', 1, '0', '0', NULL, NULL),
+(47, 'CHN', 'China', 'CN', '', 1, '0', '0', NULL, NULL),
+(48, 'CXR', 'Christmas Island', 'CX', '', 1, '0', '0', NULL, NULL),
+(49, 'CCK', 'Cocos [Keeling] Islands', 'CC', '', 1, '0', '0', NULL, NULL),
+(50, 'COL', 'Colombia', 'CO', '', 1, '0', '0', NULL, NULL),
+(51, 'COM', 'Comoros', 'KM', '', 1, '0', '0', NULL, NULL),
+(52, 'COK', 'Cook Islands', 'CK', '', 1, '0', '0', NULL, NULL),
+(53, 'CRI', 'Costa Rica', 'CR', '', 1, '0', '0', NULL, NULL),
+(54, 'HRV', 'Croatia', 'HR', '', 1, '0', '0', NULL, NULL),
+(55, 'CUB', 'Cuba', 'CU', '', 1, '0', '0', NULL, NULL),
+(56, 'CUW', 'Curacao', 'CW', '', 1, '0', '0', NULL, NULL),
+(57, 'CYP', 'Cyprus', 'CY', '', 1, '0', '0', NULL, NULL),
+(58, 'CZE', 'Czech Republic', 'CZ', '', 1, '0', '0', NULL, NULL),
+(59, 'COD', 'Democratic Republic of the Congo', 'CD', '', 1, '0', '0', NULL, NULL),
+(60, 'DNK', 'Denmark', 'DK', '', 1, '0', '0', NULL, NULL),
+(61, 'DJI', 'Djibouti', 'DJ', '', 1, '0', '0', NULL, NULL),
+(62, 'DMA', 'Dominica', 'DM', '', 1, '0', '0', NULL, NULL),
+(63, 'DOM', 'Dominican Republic', 'DO', '', 1, '0', '0', NULL, NULL),
+(64, 'TLS', 'East Timor', 'TL', '', 1, '0', '0', NULL, NULL),
+(65, 'ECU', 'Ecuador', 'EC', '', 1, '0', '0', NULL, NULL),
+(66, 'EGY', 'Egypt', 'EG', '', 1, '0', '0', NULL, NULL),
+(67, 'SLV', 'El Salvador', 'SV', '', 1, '0', '0', NULL, NULL),
+(68, 'GNQ', 'Equatorial Guinea', 'GQ', '', 1, '0', '0', NULL, NULL),
+(69, 'ERI', 'Eritrea', 'ER', '', 1, '0', '0', NULL, NULL),
+(70, 'EST', 'Estonia', 'EE', '', 1, '0', '0', NULL, NULL),
+(71, 'ETH', 'Ethiopia', 'ET', '', 1, '0', '0', NULL, NULL),
+(72, 'FLK', 'Falkland Islands', 'FK', '', 1, '0', '0', NULL, NULL),
+(73, 'FRO', 'Faroe Islands', 'FO', '', 1, '0', '0', NULL, NULL),
+(74, 'FJI', 'Fiji', 'FJ', '', 1, '0', '0', NULL, NULL),
+(75, 'FIN', 'Finland', 'FI', '', 1, '0', '0', NULL, NULL),
+(76, 'FRA', 'France', 'FR', '', 1, '0', '0', NULL, NULL),
+(77, 'GUF', 'French Guiana', 'GF', '', 1, '0', '0', NULL, NULL),
+(78, 'PYF', 'French Polynesia', 'PF', '', 1, '0', '0', NULL, NULL),
+(79, 'ATF', 'French Southern Territories', 'TF', '', 1, '0', '0', NULL, NULL),
+(80, 'GAB', 'Gabon', 'GA', '', 1, '0', '0', NULL, NULL),
+(81, 'GMB', 'Gambia', 'GM', '', 1, '0', '0', NULL, NULL),
+(82, 'GEO', 'Georgia', 'GE', '', 1, '0', '0', NULL, NULL),
+(83, 'DEU', 'Germany', 'DE', '', 1, '0', '0', NULL, NULL),
+(84, 'GHA', 'Ghana', 'GH', '', 1, '0', '0', NULL, NULL),
+(85, 'GIB', 'Gibraltar', 'GI', '', 1, '0', '0', NULL, NULL),
+(86, 'GRC', 'Greece', 'GR', '', 1, '0', '0', NULL, NULL),
+(87, 'GRL', 'Greenland', 'GL', '', 1, '0', '0', NULL, NULL),
+(88, 'GRD', 'Grenada', 'GD', '', 1, '0', '0', NULL, NULL),
+(89, 'GLP', 'Guadeloupe', 'GP', '', 1, '0', '0', NULL, NULL),
+(90, 'GUM', 'Guam', 'GU', '', 1, '0', '0', NULL, NULL),
+(91, 'GTM', 'Guatemala', 'GT', '', 1, '0', '0', NULL, NULL),
+(92, 'GGY', 'Guernsey', 'GG', '', 1, '0', '0', NULL, NULL),
+(93, 'GIN', 'Guinea', 'GN', '', 1, '0', '0', NULL, NULL),
+(94, 'GNB', 'Guinea-Bissau', 'GW', '', 1, '0', '0', NULL, NULL),
+(95, 'GUY', 'Guyana', 'GY', '', 1, '0', '0', NULL, NULL),
+(96, 'HTI', 'Haiti', 'HT', '', 1, '0', '0', NULL, NULL),
+(97, 'HMD', 'Heard Island and McDonald Islands', 'HM', '', 1, '0', '0', NULL, NULL),
+(98, 'HND', 'Honduras', 'HN', '', 1, '0', '0', NULL, NULL),
+(99, 'HKG', 'Hong Kong', 'HK', '', 1, '0', '0', NULL, NULL),
+(100, 'HUN', 'Hungary', 'HU', '', 1, '0', '0', NULL, NULL),
+(101, 'ISL', 'Iceland', 'IS', '', 1, '0', '0', NULL, NULL),
+(102, 'IND', 'India', 'IN', '', 1, '0', '0', NULL, NULL),
+(103, 'IDN', 'Indonesia', 'ID', '', 1, '0', '0', NULL, NULL),
+(104, 'IRN', 'Iran', 'IR', '', 1, '0', '0', NULL, NULL),
+(105, 'IRQ', 'Iraq', 'IQ', '', 1, '0', '0', NULL, NULL),
+(106, 'IRL', 'Ireland', 'IE', '', 1, '0', '0', NULL, NULL),
+(107, 'IMN', 'Isle of Man', 'IM', '', 1, '0', '0', NULL, NULL),
+(108, 'ISR', 'Israel', 'IL', '', 1, '0', '0', NULL, NULL),
+(109, 'ITA', 'Italy', 'IT', '', 1, '0', '0', NULL, NULL),
+(110, 'CIV', 'Ivory Coast', 'CI', '', 1, '0', '0', NULL, NULL),
+(111, 'JAM', 'Jamaica', 'JM', '', 1, '0', '0', NULL, NULL),
+(112, 'JPN', 'Japan', 'JP', '', 1, '0', '0', NULL, NULL),
+(113, 'JEY', 'Jersey', 'JE', '', 1, '0', '0', NULL, NULL),
+(114, 'JOR', 'Jordan', 'JO', '', 1, '0', '0', NULL, NULL),
+(115, 'KAZ', 'Kazakhstan', 'KZ', '', 1, '0', '0', NULL, NULL),
+(116, 'KEN', 'Kenya', 'KE', '', 1, '0', '0', NULL, NULL),
+(117, 'KIR', 'Kiribati', 'KI', '', 1, '0', '0', NULL, NULL),
+(118, 'XKX', 'Kosovo', 'XK', '', 1, '0', '0', NULL, NULL),
+(119, 'KWT', 'Kuwait', 'KW', '', 1, '0', '0', NULL, NULL),
+(120, 'KGZ', 'Kyrgyzstan', 'KG', '', 1, '0', '0', NULL, NULL),
+(121, 'LAO', 'Laos', 'LA', '', 1, '0', '0', NULL, NULL),
+(122, 'LVA', 'Latvia', 'LV', '', 1, '0', '0', NULL, NULL),
+(123, 'LBN', 'Lebanon', 'LB', '', 1, '0', '0', NULL, NULL),
+(124, 'LSO', 'Lesotho', 'LS', '', 1, '0', '0', NULL, NULL),
+(125, 'LBR', 'Liberia', 'LR', '', 1, '0', '0', NULL, NULL),
+(126, 'LBY', 'Libya', 'LY', '', 1, '0', '0', NULL, NULL),
+(127, 'LIE', 'Liechtenstein', 'LI', '', 1, '0', '0', NULL, NULL),
+(128, 'LTU', 'Lithuania', 'LT', '', 1, '0', '0', NULL, NULL),
+(129, 'LUX', 'Luxembourg', 'LU', '', 1, '0', '0', NULL, NULL),
+(130, 'MAC', 'Macao', 'MO', '', 1, '0', '0', NULL, NULL),
+(131, 'MKD', 'Macedonia', 'MK', '', 1, '0', '0', NULL, NULL),
+(132, 'MDG', 'Madagascar', 'MG', '', 1, '0', '0', NULL, NULL),
+(133, 'MWI', 'Malawi', 'MW', '', 1, '0', '0', NULL, NULL),
+(134, 'MYS', 'Malaysia', 'MY', '', 1, '0', '0', NULL, NULL),
+(135, 'MDV', 'Maldives', 'MV', '', 1, '0', '0', NULL, NULL),
+(136, 'MLI', 'Mali', 'ML', '', 1, '0', '0', NULL, NULL),
+(137, 'MLT', 'Malta', 'MT', '', 1, '0', '0', NULL, NULL),
+(138, 'MHL', 'Marshall Islands', 'MH', '', 1, '0', '0', NULL, NULL),
+(139, 'MTQ', 'Martinique', 'MQ', '', 1, '0', '0', NULL, NULL),
+(140, 'MRT', 'Mauritania', 'MR', '', 1, '0', '0', NULL, NULL),
+(141, 'MUS', 'Mauritius', 'MU', '', 1, '0', '0', NULL, NULL),
+(142, 'MYT', 'Mayotte', 'YT', '', 1, '0', '0', NULL, NULL),
+(143, 'MEX', 'Mexico', 'MX', '', 1, '0', '0', NULL, NULL),
+(144, 'FSM', 'Micronesia', 'FM', '', 1, '0', '0', NULL, NULL),
+(145, 'MDA', 'Moldova', 'MD', '', 1, '0', '0', NULL, NULL),
+(146, 'MCO', 'Monaco', 'MC', '', 1, '0', '0', NULL, NULL),
+(147, 'MNG', 'Mongolia', 'MN', '', 1, '0', '0', NULL, NULL),
+(148, 'MNE', 'Montenegro', 'ME', '', 1, '0', '0', NULL, NULL),
+(149, 'MSR', 'Montserrat', 'MS', '', 1, '0', '0', NULL, NULL),
+(150, 'MAR', 'Morocco', 'MA', '', 1, '0', '0', NULL, NULL),
+(151, 'MOZ', 'Mozambique', 'MZ', '', 1, '0', '0', NULL, NULL),
+(152, 'MMR', 'Myanmar [Burma]', 'MM', '', 1, '0', '0', NULL, NULL),
+(153, 'NAM', 'Namibia', 'NA', '', 1, '0', '0', NULL, NULL),
+(154, 'NRU', 'Nauru', 'NR', '', 1, '0', '0', NULL, NULL),
+(155, 'NPL', 'Nepal', 'NP', '', 1, '0', '0', NULL, NULL),
+(156, 'NLD', 'Netherlands', 'NL', '', 1, '0', '0', NULL, NULL),
+(157, 'NCL', 'New Caledonia', 'NC', '', 1, '0', '0', NULL, NULL),
+(158, 'NZL', 'New Zealand', 'NZ', '', 1, '0', '0', NULL, NULL),
+(159, 'NIC', 'Nicaragua', 'NI', '', 1, '0', '0', NULL, NULL),
+(160, 'NER', 'Niger', 'NE', '', 1, '0', '0', NULL, NULL),
+(161, 'NGA', 'Nigeria', 'NG', '', 1, '0', '0', NULL, NULL),
+(162, 'NIU', 'Niue', 'NU', '', 1, '0', '0', NULL, NULL),
+(163, 'NFK', 'Norfolk Island', 'NF', '', 1, '0', '0', NULL, NULL),
+(164, 'PRK', 'North Korea', 'KP', '', 1, '0', '0', NULL, NULL),
+(165, 'MNP', 'Northern Mariana Islands', 'MP', '', 1, '0', '0', NULL, NULL),
+(166, 'NOR', 'Norway', 'NO', '', 1, '0', '0', NULL, NULL),
+(167, 'OMN', 'Oman', 'OM', '', 1, '0', '0', NULL, NULL),
+(168, 'PAK', 'Pakistan', 'PK', '', 1, '0', '0', NULL, NULL),
+(169, 'PLW', 'Palau', 'PW', '', 1, '0', '0', NULL, NULL),
+(170, 'PSE', 'Palestine', 'PS', '', 1, '0', '0', NULL, NULL),
+(171, 'PAN', 'Panama', 'PA', '', 1, '0', '0', NULL, NULL),
+(172, 'PNG', 'Papua New Guinea', 'PG', '', 1, '0', '0', NULL, NULL),
+(173, 'PRY', 'Paraguay', 'PY', '', 1, '0', '0', NULL, NULL),
+(174, 'PER', 'Peru', 'PE', '', 1, '0', '0', NULL, NULL),
+(175, 'PHL', 'Philippines', 'PH', '', 1, '0', '0', NULL, NULL),
+(176, 'PCN', 'Pitcairn Islands', 'PN', '', 1, '0', '0', NULL, NULL),
+(177, 'POL', 'Poland', 'PL', '', 1, '0', '0', NULL, NULL),
+(178, 'PRT', 'Portugal', 'PT', '', 1, '0', '0', NULL, NULL),
+(179, 'PRI', 'Puerto Rico', 'PR', '', 1, '0', '0', NULL, NULL),
+(180, 'QAT', 'Qatar', 'QA', '', 1, '0', '0', NULL, NULL),
+(181, 'COG', 'Republic of the Congo', 'CG', '', 1, '0', '0', NULL, NULL),
+(182, 'REU', 'Réunion', 'RE', '', 1, '0', '0', NULL, NULL),
+(183, 'ROU', 'Romania', 'RO', '', 1, '0', '0', NULL, NULL),
+(184, 'RUS', 'Russia', 'RU', '', 1, '0', '0', NULL, NULL),
+(185, 'RWA', 'Rwanda', 'RW', '', 1, '0', '0', NULL, NULL),
+(186, 'BLM', 'Saint Barthélemy', 'BL', '', 1, '0', '0', NULL, NULL),
+(187, 'SHN', 'Saint Helena', 'SH', '', 1, '0', '0', NULL, NULL),
+(188, 'KNA', 'Saint Kitts and Nevis', 'KN', '', 1, '0', '0', NULL, NULL),
+(189, 'LCA', 'Saint Lucia', 'LC', '', 1, '0', '0', NULL, NULL),
+(190, 'MAF', 'Saint Martin', 'MF', '', 1, '0', '0', NULL, NULL),
+(191, 'SPM', 'Saint Pierre and Miquelon', 'PM', '', 1, '0', '0', NULL, NULL),
+(192, 'VCT', 'Saint Vincent and the Grenadines', 'VC', '', 1, '0', '0', NULL, NULL),
+(193, 'WSM', 'Samoa', 'WS', '', 1, '0', '0', NULL, NULL),
+(194, 'SMR', 'San Marino', 'SM', '', 1, '0', '0', NULL, NULL),
+(195, 'STP', 'São Tomé and Príncipe', 'ST', '', 1, '0', '0', NULL, NULL),
+(196, 'SAU', 'Saudi Arabia', 'SA', '', 1, '0', '0', NULL, NULL),
+(197, 'SEN', 'Senegal', 'SN', '', 1, '0', '0', NULL, NULL),
+(198, 'SRB', 'Serbia', 'RS', '', 1, '0', '0', NULL, NULL),
+(199, 'SYC', 'Seychelles', 'SC', '', 1, '0', '0', NULL, NULL),
+(200, 'SLE', 'Sierra Leone', 'SL', '', 1, '0', '0', NULL, NULL),
+(201, 'SGP', 'Singapore', 'SG', '', 1, '0', '0', NULL, NULL),
+(202, 'SXM', 'Sint Maarten', 'SX', '', 1, '0', '0', NULL, NULL),
+(203, 'SVK', 'Slovakia', 'SK', '', 1, '0', '0', NULL, NULL),
+(204, 'SVN', 'Slovenia', 'SI', '', 1, '0', '0', NULL, NULL),
+(205, 'SLB', 'Solomon Islands', 'SB', '', 1, '0', '0', NULL, NULL),
+(206, 'SOM', 'Somalia', 'SO', '', 1, '0', '0', NULL, NULL),
+(207, 'ZAF', 'South Africa', 'ZA', '', 1, '0', '0', NULL, NULL),
+(208, 'SGS', 'South Georgia and the South Sandwich Islands', 'GS', '', 1, '0', '0', NULL, NULL),
+(209, 'KOR', 'South Korea', 'KR', '', 1, '0', '0', NULL, NULL),
+(210, 'SSD', 'South Sudan', 'SS', '', 1, '0', '0', NULL, NULL),
+(211, 'ESP', 'Spain', 'ES', '', 1, '0', '0', NULL, NULL),
+(212, 'LKA', 'Sri Lanka', 'LK', '', 1, '0', '0', NULL, NULL),
+(213, 'SDN', 'Sudan', 'SD', '', 1, '0', '0', NULL, NULL),
+(214, 'SUR', 'Suriname', 'SR', '', 1, '0', '0', NULL, NULL),
+(215, 'SJM', 'Svalbard and Jan Mayen', 'SJ', '', 1, '0', '0', NULL, NULL),
+(216, 'SWZ', 'Swaziland', 'SZ', '', 1, '0', '0', NULL, NULL),
+(217, 'SWE', 'Sweden', 'SE', '', 1, '0', '0', NULL, NULL),
+(218, 'CHE', 'Switzerland', 'CH', '', 1, '0', '0', NULL, NULL),
+(219, 'SYR', 'Syria', 'SY', '', 1, '0', '0', NULL, NULL),
+(220, 'TWN', 'Taiwan', 'TW', '', 1, '0', '0', NULL, NULL),
+(221, 'TJK', 'Tajikistan', 'TJ', '', 1, '0', '0', NULL, NULL),
+(222, 'TZA', 'Tanzania', 'TZ', '', 1, '0', '0', NULL, NULL),
+(223, 'THA', 'Thailand', 'TH', '', 1, '0', '0', NULL, NULL),
+(224, 'TGO', 'Togo', 'TG', '', 1, '0', '0', NULL, NULL),
+(225, 'TKL', 'Tokelau', 'TK', '', 1, '0', '0', NULL, NULL),
+(226, 'TON', 'Tonga', 'TO', '', 1, '0', '0', NULL, NULL),
+(227, 'TTO', 'Trinidad and Tobago', 'TT', '', 1, '0', '0', NULL, NULL),
+(228, 'TUN', 'Tunisia', 'TN', '', 1, '0', '0', NULL, NULL),
+(229, 'TUR', 'Turkey', 'TR', '', 1, '0', '0', NULL, NULL),
+(230, 'TKM', 'Turkmenistan', 'TM', '', 1, '0', '0', NULL, NULL),
+(231, 'TCA', 'Turks and Caicos Islands', 'TC', '', 1, '0', '0', NULL, NULL),
+(232, 'TUV', 'Tuvalu', 'TV', '', 1, '0', '0', NULL, NULL),
+(233, 'UMI', 'U.S. Minor Outlying Islands', 'UM', '', 1, '0', '0', NULL, NULL),
+(234, 'VIR', 'U.S. Virgin Islands', 'VI', '', 1, '0', '0', NULL, NULL),
+(235, 'UGA', 'Uganda', 'UG', '', 1, '0', '0', NULL, NULL),
+(236, 'UKR', 'Ukraine', 'UA', '', 1, '0', '0', NULL, NULL),
+(237, 'ARE', 'United Arab Emirates', 'AE', '', 1, '0', '0', NULL, NULL),
+(238, 'GBR', 'United Kingdom', 'GB', '', 1, '0', '0', NULL, NULL),
+(239, 'USA', 'United States', 'US', '$', 1, '0', '0', NULL, NULL),
+(240, 'URY', 'Uruguay', 'UY', '', 1, '0', '0', NULL, NULL),
+(241, 'UZB', 'Uzbekistan', 'UZ', '', 1, '0', '0', NULL, NULL),
+(242, 'VUT', 'Vanuatu', 'VU', '', 1, '0', '0', NULL, NULL),
+(243, 'VAT', 'Vatican City', 'VA', '', 1, '0', '0', NULL, NULL),
+(244, 'VEN', 'Venezuela', 'VE', '', 1, '0', '0', NULL, NULL),
+(245, 'VNM', 'Vietnam', 'VN', '', 1, '0', '0', NULL, NULL),
+(246, 'WLF', 'Wallis and Futuna', 'WF', '', 1, '0', '0', NULL, NULL),
+(247, 'ESH', 'Western Sahara', 'EH', '', 1, '0', '0', NULL, NULL),
+(248, 'YEM', 'Yemen', 'YE', '', 1, '0', '0', NULL, NULL),
+(249, 'ZMB', 'Zambia', 'ZM', '', 1, '0', '0', NULL, NULL),
+(250, 'ZWE', 'Zimbabwe', 'ZW', '', 1, '0', '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -225,6 +483,7 @@ CREATE TABLE `hb_offers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `offer_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `short_description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `long_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `start_date` datetime NOT NULL,
@@ -245,9 +504,10 @@ CREATE TABLE `hb_offers` (
 -- Dumping data for table `hb_offers`
 --
 
-INSERT INTO `hb_offers` (`id`, `name`, `slug`, `short_description`, `long_description`, `start_date`, `end_date`, `thumb`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'New Year Celebration 2023', 'new-year-celebration-2023', 'New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.', '<h4><span style=\"font-weight: bolder;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></h4><h4><span style=\"font-weight: bolder;\"><br></span></h4><p>New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></p>', '2022-12-31 00:00:02', '2023-01-03 00:00:02', 'new-year-celebration-2023.png', 'New Year Celebration 2023', 'New Year Celebration 2023', 'New Year Celebration 2023', 1, 1, '1', NULL, '2022-12-26 04:54:14', '2022-12-26 04:54:14'),
-(2, 'Valentine\'s Day Celebration 2023', 'valentines-day-celebration-2023', 'Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023.', '<h4>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.</h4><p>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span></p>', '2023-02-13 11:59:17', '2023-02-14 23:59:17', 'valentines-day-celebration-2023.png', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 1, 1, '1', NULL, '2022-12-26 05:02:19', '2022-12-26 05:02:19');
+INSERT INTO `hb_offers` (`id`, `name`, `slug`, `offer_type`, `short_description`, `long_description`, `start_date`, `end_date`, `thumb`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'New Year Celebration 2023', 'new-year-celebration-2023', 'Poster', 'New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.', '<h4><span style=\"font-weight: bolder;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></h4><h4><span style=\"font-weight: bolder;\"><br></span></h4><p>New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></p>', '2022-12-31 00:00:02', '2023-01-10 00:00:02', 'new-year-celebration-2023.jpg', 'New Year Celebration 2023', 'New Year Celebration 2023', 'New Year Celebration 2023', 1, 1, '1', '1', '2022-12-26 04:54:14', '2023-01-01 01:59:33'),
+(2, 'Valentine\'s Day Celebration 2023', 'valentines-day-celebration-2023', 'Poster', 'Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023.', '<h4>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.</h4><p>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span></p>', '2023-02-13 11:59:17', '2023-02-14 23:59:17', 'valentines-day-celebration-2023.png', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 1, 1, '1', '1', '2022-12-26 05:02:19', '2023-01-01 01:55:15'),
+(3, 'Grand Opening', 'grand-opening', 'Banner', 'Grand Opening', '<p>Grand Opening<br></p>', '2023-01-02 00:00:30', '2023-01-02 23:59:30', 'grand-opening.jpg', 'Grand Opening', 'Grand Opening', 'Grand Opening', 1, 1, '1', '1', '2023-01-01 01:56:32', '2023-01-01 03:32:23');
 
 -- --------------------------------------------------------
 
@@ -329,7 +589,7 @@ CREATE TABLE `hb_rooms` (
 --
 
 INSERT INTO `hb_rooms` (`id`, `name`, `slug`, `short_description`, `long_description`, `max_adults`, `max_childs`, `quantity`, `price`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Deluxe', 'deluxe', 'Deluxe', '<p>Deluxe<br></p>', 2, 1, 10, 220, 'Deluxe', 'Deluxe', 'Deluxe', 1, 1, '1', NULL, '2022-12-26 05:16:35', '2022-12-26 05:16:35'),
+(1, 'Deluxe', 'deluxe', 'Deluxe', '<p>Deluxe<br></p>', 2, 1, 10, 220, 'Deluxe', 'Deluxe', 'Deluxe', 1, 1, '1', '1', '2022-12-26 05:16:35', '2023-01-02 04:07:16'),
 (2, 'Super Deluxe King', 'super-deluxe-king', 'Super Deluxe King', '<p>Super Deluxe King<br></p>', 3, 2, 10, 260, 'Super Deluxe King', 'Super Deluxe King', 'Super Deluxe King', 1, 1, '0', '1', '2022-12-14 18:45:59', '2022-12-26 05:21:41'),
 (3, 'Premium Delux', 'premium-delux', 'Premium Delux', '<p>Premium Delux<br></p>', 3, 3, 10, 280, 'Premium Delux', 'Premium Delux', 'Premium Delux', 1, 1, '0', '1', '2022-12-14 18:47:55', '2022-12-26 05:23:04'),
 (4, 'Premium Delux Twin', 'premium-delux-twin', 'Premium Delux Twin', '<p>Premium Delux Twin<br></p>', 4, 2, 10, 280, 'Premium Delux Twin', 'Premium Delux Twin', 'Premium Delux Twin', 1, 1, '0', '1', '2022-12-14 18:49:23', '2022-12-26 05:23:58');
@@ -458,16 +718,14 @@ CREATE TABLE `hb_room_images` (
 --
 
 INSERT INTO `hb_room_images` (`id`, `room_id`, `image`, `created_at`, `updated_at`) VALUES
-(1, 1, 'uploads/rooms/deluxe-1672053395-1.jfif', '2022-12-26 05:16:35', '2022-12-26 05:16:35'),
-(2, 1, 'uploads/rooms/deluxe-1672053395-2.jpg', '2022-12-26 05:16:35', '2022-12-26 05:16:35'),
-(3, 1, 'uploads/rooms/deluxe-1672053395-3.jpg', '2022-12-26 05:16:35', '2022-12-26 05:16:35'),
 (4, 2, 'uploads/rooms/super-deluxe-king-1672053701-1.jpg', '2022-12-26 05:21:42', '2022-12-26 05:21:42'),
 (5, 2, 'uploads/rooms/super-deluxe-king-1672053702-2.jfif', '2022-12-26 05:21:42', '2022-12-26 05:21:42'),
 (6, 2, 'uploads/rooms/super-deluxe-king-1672053702-3.jpg', '2022-12-26 05:21:42', '2022-12-26 05:21:42'),
 (7, 3, 'uploads/rooms/premium-delux-1672053784-1.jpg', '2022-12-26 05:23:04', '2022-12-26 05:23:04'),
 (8, 3, 'uploads/rooms/premium-delux-1672053784-2.jpg', '2022-12-26 05:23:04', '2022-12-26 05:23:04'),
 (9, 4, 'uploads/rooms/premium-delux-twin-1672053838-1.jpg', '2022-12-26 05:23:58', '2022-12-26 05:23:58'),
-(10, 4, 'uploads/rooms/premium-delux-twin-1672053838-2.jpg', '2022-12-26 05:23:58', '2022-12-26 05:23:58');
+(10, 4, 'uploads/rooms/premium-delux-twin-1672053838-2.jpg', '2022-12-26 05:23:58', '2022-12-26 05:23:58'),
+(11, 1, 'uploads/rooms/deluxe-1672654036-1.jpeg', '2023-01-02 04:07:16', '2023-01-02 04:07:16');
 
 -- --------------------------------------------------------
 
@@ -504,7 +762,7 @@ CREATE TABLE `hb_settings` (
 --
 
 INSERT INTO `hb_settings` (`id`, `name`, `phone`, `email`, `address`, `logo`, `icon`, `social_fb`, `social_tw`, `social_insta`, `social_yt`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'The Zabeer Dhaka', '(+88) 02224470771-73', 'info@thezabeerdhaka.com', 'House-1, Road-2, Sector-1, Uttara Model Town, Dhaka-1230', 'logo-.png', 'icon-.png', 'https://www.facebook.com/', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', '1', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 1, 1, '1', '1', '2022-12-26 00:35:03', '2022-12-26 02:36:36');
+(1, 'The Zabeer Dhaka', '(+88) 02224470771-73', 'info@thezabeerdhaka.com', 'House-1, Road-2, Sector-1, Uttara Model Town, Dhaka-1230', 'logo-the-zabeer-dhaka.png', 'icon-the-zabeer-dhaka.png', 'https://www.facebook.com/thezabeerdhaka', 'https://twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', '1', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 'The Zabeer Dhaka', 1, 1, '1', '1', '2022-12-26 00:35:03', '2023-01-02 03:03:35');
 
 -- --------------------------------------------------------
 
@@ -892,7 +1150,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `gender`, `date_of_birth`, `phone`, `address`, `city`, `state`, `postal_code`, `country`, `admin_comment`, `profile_photo`, `cover_photo`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Raisul', 'Showmin', 'raisul.syp@gmail.com', NULL, '$2y$10$kwte0lrUblc4rguwE9vyyOUyraOLNT9F1qq3Ds71bbAChqZpTxUjy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2022-12-26 03:59:03', '2022-12-26 03:59:03');
+(1, 'Raisul', 'Showmin', 'raisul.syp@gmail.com', NULL, '$2y$10$kwte0lrUblc4rguwE9vyyOUyraOLNT9F1qq3Ds71bbAChqZpTxUjy', NULL, 'Male', '1995-10-02', '01680078100', 'H-2445/1, Uttarkhan Mazar Para', 'Dhaka', NULL, '1230', 'Bangladesh', NULL, 'Raisul-1672586546.png', 'Raisul-1672588926.png', 1, 1, NULL, '5', '2022-12-26 03:59:03', '2023-01-01 10:02:06'),
+(2, 'Ashraf', 'Khan', 'ashraf.khan@gmail.com', NULL, '$2y$10$3/WZUREEcEE/YqfdmX85E.EPxmy5Lbj1w/FxVl2ZId.1jvNIo7Sh6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-01 09:26:32', '2023-01-01 09:26:32');
 
 --
 -- Indexes for dumped tables
@@ -1090,7 +1349,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1108,7 +1367,7 @@ ALTER TABLE `hb_bookings`
 -- AUTO_INCREMENT for table `hb_country`
 --
 ALTER TABLE `hb_country`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
 
 --
 -- AUTO_INCREMENT for table `hb_facilities`
@@ -1132,7 +1391,7 @@ ALTER TABLE `hb_hall_images`
 -- AUTO_INCREMENT for table `hb_offers`
 --
 ALTER TABLE `hb_offers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `hb_restaurents`
@@ -1174,7 +1433,7 @@ ALTER TABLE `hb_room_facilities`
 -- AUTO_INCREMENT for table `hb_room_images`
 --
 ALTER TABLE `hb_room_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `hb_settings`
@@ -1246,7 +1505,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
