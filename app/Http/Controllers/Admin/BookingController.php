@@ -55,8 +55,6 @@ class BookingController extends Controller
 
     public function availableRooms(Request $request, $checkin_date)
     {
-        // $available_rooms = DB::select("SELECT * FROM hb_rooms WHERE id NOT IN (SELECT room_id FROM hb_bookings WHERE '$checkin_date' BETWEEN checkin_date AND checkout_date)");
-        
         $available_rooms = Room::whereDoesntHave('bookings', function($query) use ($checkin_date) {
             $query->where('checkin_date', '<=', $checkin_date)
                   ->where('checkout_date', '>=', $checkin_date);

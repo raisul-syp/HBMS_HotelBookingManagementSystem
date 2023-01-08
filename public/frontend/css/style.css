@@ -1498,6 +1498,26 @@ Footer Section End
     color: #ffffff;
 }
 
+.availableRoom-div .card .availableRoom-card .room-info .room-view-btn button,
+.availableRoom-div .card .availableRoom-card .room-info .room-view-btn a {
+    background: transparent;
+    border: 1px solid var(--siteColor2);
+    color: var(--siteColor2);
+    font-size: 12px;
+    font-weight: 700;
+    width: 100%;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+.availableRoom-div .card .availableRoom-card .room-info .room-view-btn button:hover,
+.availableRoom-div .card .availableRoom-card .room-info .room-view-btn a:hover {
+    background: var(--goldenBG2);
+    background-size: 400% 200%;
+    color: var(--siteColor1);
+    border: 1px solid transparent;
+}
+
 .availableRoom-div .card .availableRoom-card .room-info {}
 
 .navbar-light .navbar-nav {
@@ -1509,8 +1529,8 @@ Footer Section End
     right: 0;
 }
 .navbar-light .navbar-nav .nav-item.booking-link .nav-link.btn-golden {
-    padding: 35px 15px !important;
-    font-size: 12px;
+    padding: 40px 15px !important;
+    font-size: 14px;
     color: var(--siteColor1) !important;
     font-weight: 900;
     letter-spacing: 1px;
@@ -2285,6 +2305,19 @@ select.guest-select {
 .profile-card .card-footer button:hover {
     background: transparent;
     color: var(--siteColor2);
+}
+
+.confirm-booking-card-header {
+    color: var(--siteFont2);
+    font-size: 18px;
+}
+
+.confirm-booking-text {
+    color: var(--siteFont3);
+    font-size: 14px;
+    margin-bottom: 0;
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
 }
 
 

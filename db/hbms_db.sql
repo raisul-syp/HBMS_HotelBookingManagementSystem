@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2023 at 06:37 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Jan 08, 2023 at 01:51 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -111,7 +111,10 @@ CREATE TABLE `hb_bookings` (
 --
 
 INSERT INTO `hb_bookings` (`id`, `guest_id`, `room_id`, `staff_id`, `checkin_date`, `checkout_date`, `checkin_time`, `checkout_time`, `total_adults`, `total_childs`, `booking_status`, `is_delete`, `booking_comment`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '2022-12-30', '2022-12-31', '14:00', '12:00', '2', '0', 1, 1, 'Admin', '1', NULL, '2022-12-27 00:17:07', '2022-12-27 00:17:07');
+(1, 1, 1, 1, '2022-12-30', '2022-12-31', '14:00', '12:00', '2', '0', 1, 1, 'Admin', '1', NULL, '2022-12-27 00:17:07', '2022-12-27 00:17:07'),
+(2, 1, 1, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '2', '2', 0, 1, 'Booking created by Guest', '5', NULL, '2023-01-08 01:36:13', '2023-01-08 01:36:13'),
+(3, 1, 1, 1, '2023-01-10', '2023-01-11', '14:00', '12:00', '1', '0', 0, 1, 'Booking created by Guest', '5', NULL, '2023-01-08 02:13:22', '2023-01-08 02:13:22'),
+(4, 1, 2, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '0', 0, 1, 'Booking created by Guest', '5', NULL, '2023-01-08 02:15:21', '2023-01-08 02:15:21');
 
 -- --------------------------------------------------------
 
@@ -1361,7 +1364,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hb_bookings`
 --
 ALTER TABLE `hb_bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `hb_country`

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,13 +20,22 @@ Route::prefix('/')->controller(App\Http\Controllers\Frontend\HomeController::cla
     Route::get('/', 'index');
     Route::get('/available-rooms', 'checkAvailability');
     Route::get('/rooms/room-details/{slug}', 'roomDetails');
+    Route::get('/confirm-booking', 'confirmBooking');
 });
 
 Route::group(['middleware' => ['auth']], function() {
     Route::prefix('/booking')->controller(App\Http\Controllers\Frontend\BookingController::class)->group(function (){
         Route::get('/', 'index');
         Route::post('/', 'store');
+        Route::get('/available-rooms/{checkin_date}', 'availableRooms');
+        // Route::get('/confirm-booking', 'confirmBooking');
 
+    });
+
+    Route::prefix('/confirm-booking')->controller(App\Http\Controllers\Frontend\BookingConfirmController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::post('/', 'store');
+        Route::get('/available-rooms/{checkin_date}', 'availableRooms');
     });
 
     Route::prefix('/guest')->controller(App\Http\Controllers\Frontend\UserController::class)->group(function (){

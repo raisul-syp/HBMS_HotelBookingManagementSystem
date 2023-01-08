@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Room;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BookingFormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -39,5 +42,15 @@ class BookingController extends Controller
         $booking->save();
 
         return redirect('booking')->with('message','Congratulations! Your Booking Has Been Created Successfully.');
+    }
+
+    public function availableRooms(Request $request, $checkin_date)
+    {
+        $available_rooms = Room::whereDoesntHave('bookings', function($query) use ($checkin_date) {
+            $query->where('checkin_date', '<=', $checkin_date)
+                  ->where('checkout_date', '>=', $checkin_date);
+        })->get();
+        
+        return response()->json(['data' => $available_rooms]);
     }
 }

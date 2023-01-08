@@ -22,10 +22,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     @if (session('message'))
-                        <div class="alert alert-success solid alert-right-icon alert-dismissible fade show">
-                            <span><i class="mdi mdi-check"></i></span>
-                            <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
-                            </button> {{ session('message') }}
+                        <div class="alert alert-success solid alert-right-icon alert-dismissible fade show mb-0 mt-3">
+                            <span><i class="fas fa-check"></i></span>
+                            {{ session('message') }}
                         </div>
                     @endif
                 </div>
@@ -151,7 +150,7 @@
 
             // Ajax
             $.ajax({
-                url: "{{ url('admin/booking') }}/available-rooms/"+_checkindate,
+                url: "{{ url('booking') }}/available-rooms/"+_checkindate,
                 type: 'get',
                 dataType: 'json',
                 beforeSend: function(){

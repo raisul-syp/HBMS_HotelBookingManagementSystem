@@ -22,7 +22,7 @@
                                                     <div class="input-wrapper">
                                                         <input type="date" class="form-control check-in-out"
                                                             id="checkin_date" name="checkin_date"
-                                                            value="{{ $todayDate }}">
+                                                            value="{{ $checkin_date }}">
                                                         <span class="lnr lnr-calendar-full icon"></span>
                                                     </div>
                                                 </div>
@@ -30,22 +30,22 @@
                                                     <div class="input-wrapper">
                                                         <input type="date" class="form-control check-in-out"
                                                             id="checkout_date" name="checkout_date"
-                                                            value="{{ $tomorrowDate }}">
+                                                            value="{{ $checkout_date }}">
                                                         <span class="lnr lnr-calendar-full icon"></span>
                                                     </div>
                                                 </div>
                                                 <div class="form_input col-12 mb-3">
                                                     <div class="input-wrapper">
                                                         <select class="form-select" id="adults" name="adults">
-                                                            <option value="0">0</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
+                                                            <option value="0" {{ old('adults', $total_adults) == '0' ? 'selected' : '' }}>0</option>
+                                                            <option value="1" {{ old('adults', $total_adults) == '1' ? 'selected' : '' }}>1</option>
+                                                            <option value="2" {{ old('adults', $total_adults) == '2' ? 'selected' : '' }}>2</option>
+                                                            <option value="3" {{ old('adults', $total_adults) == '3' ? 'selected' : '' }}>3</option>
+                                                            <option value="4" {{ old('adults', $total_adults) == '4' ? 'selected' : '' }}>4</option>
+                                                            <option value="5" {{ old('adults', $total_adults) == '5' ? 'selected' : '' }}>5</option>
+                                                            <option value="6" {{ old('adults', $total_adults) == '6' ? 'selected' : '' }}>6</option>
+                                                            <option value="7" {{ old('adults', $total_adults) == '7' ? 'selected' : '' }}>7</option>
+                                                            <option value="8" {{ old('adults', $total_adults) == '8' ? 'selected' : '' }}>8</option>
                                                         </select>
                                                         <span class="lnr lnr-chevron-down icon"></span>
                                                     </div>
@@ -53,15 +53,15 @@
                                                 <div class="form_input col-12 mb-3">
                                                     <div class="input-wrapper">
                                                         <select class="form-select" id="children" name="children">
-                                                            <option value="0">0</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
+                                                            <option value="0" {{ old('children', $total_childs) == '0' ? 'selected' : '' }}>0</option>
+                                                            <option value="1" {{ old('children', $total_childs) == '1' ? 'selected' : '' }}>1</option>
+                                                            <option value="2" {{ old('children', $total_childs) == '2' ? 'selected' : '' }}>2</option>
+                                                            <option value="3" {{ old('children', $total_childs) == '3' ? 'selected' : '' }}>3</option>
+                                                            <option value="4" {{ old('children', $total_childs) == '4' ? 'selected' : '' }}>4</option>
+                                                            <option value="5" {{ old('children', $total_childs) == '5' ? 'selected' : '' }}>5</option>
+                                                            <option value="6" {{ old('children', $total_childs) == '6' ? 'selected' : '' }}>6</option>
+                                                            <option value="7" {{ old('children', $total_childs) == '7' ? 'selected' : '' }}>7</option>
+                                                            <option value="8" {{ old('children', $total_childs) == '8' ? 'selected' : '' }}>8</option>
                                                         </select>
                                                         <span class="lnr lnr-chevron-down icon"></span>
                                                     </div>
@@ -88,7 +88,7 @@
                                         <div class="card-body">
                                             <div class="availableRoom-card">
                                                 <div class="row">
-                                                    <div class="col-lg-4">
+                                                    <div class="col-lg-4 mb-2 mb-lg-0">
                                                         <div class="room-img">
                                                             @foreach ($room->roomImages as $roomImage)
                                                                 <img src="{{ asset($roomImage->image) }}" alt="">
@@ -137,17 +137,27 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-lg-12">
+                                                            <div class="col-lg-6 mb-2 mb-lg-0">
+                                                                <div class="room-view-btn">
+                                                                    <a href="{{ 'http://localhost:8000/rooms/room-details/'.$room->slug }}" class="btn btn-primary">View Room</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
                                                                 @if (Auth::user())
+                                                                <form action="{{ url('confirm-booking') }}" method="GET">
+                                                                    <input type="date" id="checkin_date" name="checkin_date" value="{{ $checkin_date }}" hidden>
+                                                                    <input type="date" id="checkout_date" name="checkout_date" value="{{ $checkout_date }}" hidden>
+                                                                    <input type="text" id="total_adults" name="total_adults" value="{{ $total_adults }}" hidden>
+                                                                    <input type="text" id="total_childs" name="total_childs" value="{{ $total_childs }}" hidden>
+                                                                    <input type="text" id="room_id" name="room_id" value="{{ $room->id }}" hidden>
                                                                     <div class="booking-btn">
-                                                                        <button type="submit"
-                                                                            class="btn btn-primary">Book Now</button>
+                                                                        <button type="submit" class="btn btn-primary">Book Now</button>
                                                                     </div>
+                                                                </form>
                                                                 @else
-                                                                    <div class="booking-btn">
-                                                                        <a href="{{ route('login') }}"
-                                                                            class="btn btn-primary">Book Now</a>
-                                                                    </div>
+                                                                <div class="booking-btn">
+                                                                    <a href="{{ route('login') }}" class="btn btn-primary">Book Now</a>
+                                                                </div>
                                                                 @endif
                                                             </div>
                                                         </div>
