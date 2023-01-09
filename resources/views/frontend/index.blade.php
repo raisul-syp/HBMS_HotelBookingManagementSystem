@@ -73,7 +73,6 @@
                             <label for="adults" class="form-label text-white">Adults:</label>
                             <div class="input-wrapper">
                                 <select class="form-select" id="adults" name="adults">
-                                    <option selected>0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -113,7 +112,7 @@
     </div>
 </section>
 
-@if (count($offers) > 1)
+{{-- @if (count($offers) > 0)
 <section id="offer_section" class="offer_section">
     <div class="offer_section_inner">
         <div class="container">
@@ -137,7 +136,34 @@
 </section>
 @else
 <section id="offer_section" class="offer_section d-none"></section>
+@endif --}}
+
+@if (count($offers) >0)
+<section id="offer_section" class="offer_section">
+    <div class="offer_section_inner">
+        <div class="container">
+            <div class="row">
+                @foreach ($offers->where('offer_type', '=', 'Banner')->slice(0,2) as $offer)
+                <div class="col-lg-6 col-mob-12 mb-3 mb-lg-0">
+                    <div class="offer_sec">
+                        <a href="{{ url('offers/offer-details/'.$offer->slug) }}">
+                            <div class="card">
+                                <div class="card-image banner">
+                                    <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+@else
+<section id="offer_section" class="offer_section d-none"></section>
 @endif
+
 
 <section id="about_section" class="about_section">
     <div class="about_section_inner">
@@ -253,6 +279,39 @@
 <section id="offer_section" class="offer_section d-none"></section>
 @endif
 
+<section id="coreFacility_section" class="coreFacility_section">
+    <div class="coreFacility_section_inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title">
+                        <h4>Core Facilities</h4>
+                        <div class="decor-1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                @foreach ($facilities as $facility)
+                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-4">
+                    <div class="coreFacilities_sec">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="icon">
+                                    <img src="{{ asset('frontend/images/facilities/'.$facility->image) }}" alt="">
+                                </div>
+                                <div class="content">
+                                    <h4>{{ $facility->name }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="facility_section" class="facility_section">
     <div class="facility_section_inner">
         <div class="row">
@@ -356,29 +415,4 @@
         </div>
     </div>
 </div>
-
-<section id="coreFacility_section" class="coreFacility_section">
-    <div class="coreFacility_section_inner">
-        <div class="container">
-            <div class="row">
-                @foreach ($facilities as $facility)
-                <div class="col-lg-3 col-mob-6 mb-2 mb-lg-4">
-                    <div class="coreFacilities_sec">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="icon">
-                                    <img src="{{ asset('frontend/images/facilities/'.$facility->image) }}" alt="">
-                                </div>
-                                <div class="content">
-                                    <h4>{{ $facility->name }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
 @endsection

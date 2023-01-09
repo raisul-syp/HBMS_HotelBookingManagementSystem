@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2023 at 01:51 PM
+-- Generation Time: Jan 09, 2023 at 06:25 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -46,7 +46,7 @@ CREATE TABLE `admins` (
   `admin_comment` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `profile_photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cover_photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `role_as` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Admin, 1=Staff',
+  `role_as` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Admin, 1=Staff, 2=Guest',
   `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
   `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
   `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -60,9 +60,9 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `gender`, `date_of_birth`, `phone`, `address`, `city`, `state`, `postal_code`, `country`, `admin_comment`, `profile_photo`, `cover_photo`, `role_as`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Super', 'Admin', 'admin@gmail.com', NULL, '$2y$10$1usa4p6aEF36rUi1Eivh6.ItXPXh3sOWKYClwArQZ1uOM/UMulwB6', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisul-1672574655.png', NULL, 1, 1, 1, NULL, '1', '2022-12-25 10:39:31', '2023-01-02 04:06:15'),
-(2, 'Muhammad Raisl', 'Islam', 'wailantirajoh@gmail.com', NULL, '$2y$10$VlIqr0X7Dc7atSoZxOJzuuCZC9jt9tI54EhAOFfSqihuuaUARFrFq', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisl-1672574931.png', NULL, 0, 1, 1, '1', NULL, '2023-01-01 06:08:51', '2023-01-01 06:08:51'),
-(3, 'sdfdsf dfdsf', 'sdfd sadfsdf', 'asdas@dfsd.com', NULL, '$2y$10$pa3QoWAI045cP5efJh1VwOvI8jTh8GtG1yB.LjcmXWEr8UhDxbhVO', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, NULL, NULL, 0, 1, 1, '1', NULL, '2023-01-01 06:10:43', '2023-01-01 06:10:43');
+(1, 'Super', 'Admin', 'admin@gmail.com', NULL, '$2y$10$1usa4p6aEF36rUi1Eivh6.ItXPXh3sOWKYClwArQZ1uOM/UMulwB6', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisul-1672574655.png', NULL, 0, 1, 1, NULL, '1', '2022-12-25 10:39:31', '2023-01-02 04:06:15'),
+(2, 'Muhammad Raisl', 'Islam', 'wailantirajoh@gmail.com', NULL, '$2y$10$VlIqr0X7Dc7atSoZxOJzuuCZC9jt9tI54EhAOFfSqihuuaUARFrFq', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisl-1672574931.png', NULL, 1, 1, 1, '1', NULL, '2023-01-01 06:08:51', '2023-01-01 06:08:51'),
+(3, 'sdfdsf dfdsf', 'sdfd sadfsdf', 'asdas@dfsd.com', NULL, '$2y$10$pa3QoWAI045cP5efJh1VwOvI8jTh8GtG1yB.LjcmXWEr8UhDxbhVO', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, NULL, NULL, 1, 1, 1, '1', NULL, '2023-01-01 06:10:43', '2023-01-01 06:10:43');
 
 -- --------------------------------------------------------
 
@@ -97,7 +97,7 @@ CREATE TABLE `hb_bookings` (
   `checkout_time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `total_adults` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `total_childs` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `booking_status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Pending, 1=Booked, 2=Cancel',
+  `booking_status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Pending, 1=Booked, 2=Cancel, 3=Payment Pending',
   `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
   `booking_comment` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -112,9 +112,16 @@ CREATE TABLE `hb_bookings` (
 
 INSERT INTO `hb_bookings` (`id`, `guest_id`, `room_id`, `staff_id`, `checkin_date`, `checkout_date`, `checkin_time`, `checkout_time`, `total_adults`, `total_childs`, `booking_status`, `is_delete`, `booking_comment`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 1, '2022-12-30', '2022-12-31', '14:00', '12:00', '2', '0', 1, 1, 'Admin', '1', NULL, '2022-12-27 00:17:07', '2022-12-27 00:17:07'),
-(2, 1, 1, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '2', '2', 0, 1, 'Booking created by Guest', '5', NULL, '2023-01-08 01:36:13', '2023-01-08 01:36:13'),
-(3, 1, 1, 1, '2023-01-10', '2023-01-11', '14:00', '12:00', '1', '0', 0, 1, 'Booking created by Guest', '5', NULL, '2023-01-08 02:13:22', '2023-01-08 02:13:22'),
-(4, 1, 2, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '0', 0, 1, 'Booking created by Guest', '5', NULL, '2023-01-08 02:15:21', '2023-01-08 02:15:21');
+(2, 1, 1, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '2', '2', 0, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 01:36:13', '2023-01-08 01:36:13'),
+(3, 1, 1, 1, '2023-01-10', '2023-01-11', '14:00', '12:00', '1', '0', 0, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 02:13:22', '2023-01-08 02:13:22'),
+(4, 1, 2, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '0', 0, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 02:15:21', '2023-01-08 02:15:21'),
+(5, 1, 1, 1, '2023-01-20', '2023-01-21', '14:00', '12:00', '2', '1', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 14:03:38', '2023-01-08 14:03:38'),
+(6, 1, 4, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '1', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 14:19:42', '2023-01-08 14:19:42'),
+(7, 1, 3, 1, '2023-01-09', '2023-01-10', '14:00', '12:00', '1', '0', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-09 02:52:46', '2023-01-09 02:52:46'),
+(8, 1, 2, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-09 05:16:22', '2023-01-09 05:16:22'),
+(9, 1, 2, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-09 05:19:07', '2023-01-09 05:19:07'),
+(10, 1, 1, 1, '2023-01-26', '2023-01-27', '14:00', '12:00', '2', '1', 0, 1, 'Booking created by Guest', '2', NULL, '2023-01-09 05:21:05', '2023-01-09 05:21:05'),
+(11, 1, 1, 1, '2023-01-22', '2023-01-23', '14:00', '12:00', '2', '1', 2, 1, 'Booking created by Guest', '2', '1', '2023-01-09 05:33:40', '2023-01-09 06:53:16');
 
 -- --------------------------------------------------------
 
@@ -432,6 +439,44 @@ INSERT INTO `hb_facilities` (`id`, `name`, `slug`, `description`, `image`, `meta
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hb_faqs`
+--
+
+CREATE TABLE `hb_faqs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `faq_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_faqs`
+--
+
+INSERT INTO `hb_faqs` (`id`, `question`, `answer`, `faq_type`, `slug`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'How do I request an early check-in or late check-out with the hotel?', 'Since hotel policies regarding early check-in (generally before 2:00 pm) or late checkout (generally after 12:00 pm) vary by location and by hotel, please call the hotel directly prior to your arrival to make any necessary arrangements. Direct hotel phone numbers can be found on your confirmation email or on the hotel information page.', 'General Information', 'how-do-i-request-an-early-check-in-or-late-check-out-with-the-hotel', 'How do I request an early check-in or late check-out with the hotel?', 'How do I request an early check-in or late check-out with the hotel?', 'How do I request an early check-in or late check-out with the hotel?', 1, 1, '1', '1', '2023-01-08 23:19:03', '2023-01-09 00:11:37'),
+(2, 'What is your policy regarding cancellations?', 'If your travel plans change, you can cancel or modify your reservation in accordance with the hotel\'s cancellation policy as stated during the reservation process.', 'General Information', 'what-is-your-policy-regarding-cancellations', 'What is your policy regarding cancellations?', 'What is your policy regarding cancellations?', 'What is your policy regarding cancellations?', 1, 1, '1', '1', '2023-01-08 23:27:16', '2023-01-09 00:11:55'),
+(3, 'Will I be charged for extra guests occupying my room?', 'Hotel room rates vary by date and by the number of adults occupying a single room. To accommodate more guests, you need to change your reservation. You will be notified of any additional charges prior to confirming your updated reservation.', 'General Information', 'will-i-be-charged-for-extra-guests-occupying-my-room', 'Will I be charged for extra guests occupying my room?', 'Will I be charged for extra guests occupying my room?', 'Will I be charged for extra guests occupying my room?', 1, 1, '1', '1', '2023-01-08 23:28:09', '2023-01-09 00:12:06'),
+(4, 'I\'m having trouble making an online reservation. Is there a toll-free number I can call for help?', 'In case any issues arise during the reservation process, please call the regional help desk.', 'Reservations', 'im-having-trouble-making-an-online-reservation-is-there-a-toll-free-number-i-can-call-for-help', 'I\'m having trouble making an online reservation. Is there a toll-free number I can call for help?', 'I\'m having trouble making an online reservation. Is there a toll-free number I can call for help?', 'I\'m having trouble making an online reservation. Is there a toll-free number I can call for help?', 1, 1, '1', '1', '2023-01-08 23:32:42', '2023-01-09 00:12:17'),
+(5, 'Can I reserve more than one room at a time when I book online?', 'Yes, you can book up to nine rooms at a time. Please see the list of toll-free numbers to contact in your country if you wish to order ten or more rooms.', 'Reservations', 'can-i-reserve-more-than-one-room-at-a-time-when-i-book-online', 'Can I reserve more than one room at a time when I book online?', 'Can I reserve more than one room at a time when I book online?', 'Can I reserve more than one room at a time when I book online?', 1, 1, '1', '1', '2023-01-08 23:33:38', '2023-01-09 00:12:29'),
+(6, 'Am I required to enter my credit card number online to book a reservation? Is your reservation process secure?', 'Yes. A credit card number is required to book a reservation online for those hotels that accept credit cards. For your security, any personal information such as your credit card number or phone number will be encrypted before being transmitted over the internet.', 'Reservations', 'am-i-required-to-enter-my-credit-card-number-online-to-book-a-reservation-is-your-reservation-process-secure', 'Am I required to enter my credit card number online to book a reservation? Is your reservation process secure?', 'Am I required to enter my credit card number online to book a reservation? Is your reservation process secure?', 'Am I required to enter my credit card number online to book a reservation? Is your reservation process secure?', 1, 1, '1', '1', '2023-01-08 23:34:11', '2023-01-09 00:12:44'),
+(7, 'How do I submit a claim if I see a lower rate on another website?', 'Within 24 hours of making your reservation on Radissonhotels.com, visit the Contact us section of Radissonhotels.com and select “Online” contact method and “BORG claim” for topic.', 'Best Rate Guarantee', 'how-do-i-submit-a-claim-if-i-see-a-lower-rate-on-another-website', 'How do I submit a claim if I see a lower rate on another website?', 'How do I submit a claim if I see a lower rate on another website?', 'How do I submit a claim if I see a lower rate on another website?', 1, 1, '1', '1', '2023-01-08 23:35:28', '2023-01-09 00:12:56'),
+(8, 'What do I need to submit a claim?', 'You will need the information related to your thezabeerdhaka.com reservation as well as the specific information related to the lower rate you found (rate, website address, date found).', 'Best Rate Guarantee', 'what-do-i-need-to-submit-a-claim', 'What do I need to submit a claim?', 'What do I need to submit a claim?', 'What do I need to submit a claim?', 1, 1, '1', '1', '2023-01-08 23:36:37', '2023-01-09 00:13:07'),
+(9, 'Is there a time window that I need to submit a claim for the Best Rates Guarantee?', 'Yes. You must submit a claim within 24 hours of the original booking, and at least 48 hours prior to midnight local time of your arrival date at the hotel.', 'Best Rate Guarantee', 'is-there-a-time-window-that-i-need-to-submit-a-claim-for-the-best-rates-guarantee', 'Is there a time window that I need to submit a claim for the Best Rates Guarantee?', 'Is there a time window that I need to submit a claim for the Best Rates Guarantee?', 'Is there a time window that I need to submit a claim for the Best Rates Guarantee?', 1, 1, '1', '1', '2023-01-08 23:37:24', '2023-01-09 00:13:18');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hb_halls`
 --
 
@@ -510,7 +555,9 @@ CREATE TABLE `hb_offers` (
 INSERT INTO `hb_offers` (`id`, `name`, `slug`, `offer_type`, `short_description`, `long_description`, `start_date`, `end_date`, `thumb`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'New Year Celebration 2023', 'new-year-celebration-2023', 'Poster', 'New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.', '<h4><span style=\"font-weight: bolder;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></h4><h4><span style=\"font-weight: bolder;\"><br></span></h4><p>New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></p>', '2022-12-31 00:00:02', '2023-01-10 00:00:02', 'new-year-celebration-2023.jpg', 'New Year Celebration 2023', 'New Year Celebration 2023', 'New Year Celebration 2023', 1, 1, '1', '1', '2022-12-26 04:54:14', '2023-01-01 01:59:33'),
 (2, 'Valentine\'s Day Celebration 2023', 'valentines-day-celebration-2023', 'Poster', 'Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023.', '<h4>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.</h4><p>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span></p>', '2023-02-13 11:59:17', '2023-02-14 23:59:17', 'valentines-day-celebration-2023.png', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 1, 1, '1', '1', '2022-12-26 05:02:19', '2023-01-01 01:55:15'),
-(3, 'Grand Opening', 'grand-opening', 'Banner', 'Grand Opening', '<p>Grand Opening<br></p>', '2023-01-02 00:00:30', '2023-01-02 23:59:30', 'grand-opening.jpg', 'Grand Opening', 'Grand Opening', 'Grand Opening', 1, 1, '1', '1', '2023-01-01 01:56:32', '2023-01-01 03:32:23');
+(3, 'Grand Opening', 'grand-opening', 'Banner', 'Grand Opening', '<p>Grand Opening<br></p>', '2023-01-02 00:00:30', '2023-01-02 23:59:30', 'grand-opening.jpg', 'Grand Opening', 'Grand Opening', 'Grand Opening', 1, 1, '1', '1', '2023-01-01 01:56:32', '2023-01-01 03:32:23'),
+(4, 'Buffet Dinner', 'buffet-dinner', 'Banner', 'Buffet Dinner', '<p>Buffet Dinner<br></p>', '2023-01-09 09:00:42', '2023-01-31 09:00:42', 'buffet-dinner.jpeg', 'Buffet Dinner', 'Buffet Dinner', 'Buffet Dinner', 1, 1, '1', NULL, '2023-01-09 03:01:49', '2023-01-09 03:01:49'),
+(5, 'Coffee Time', 'coffee-time', 'Banner', 'Coffee Time', '<p>Coffee Time<br></p>', '2023-01-09 09:05:52', '2023-01-31 09:05:52', 'coffee-time.jpeg', 'Coffee Time', 'Coffee Time', 'Coffee Time', 1, 1, '1', NULL, '2023-01-09 03:06:23', '2023-01-09 03:06:23');
 
 -- --------------------------------------------------------
 
@@ -913,7 +960,7 @@ INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_descriptio
 (1, 'About Us', 'A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates.', '<p><span style=\"color: rgb(33, 37, 41); font-family: &quot;Nunito Sans&quot;, sans-serif; font-size: 16px; text-align: justify;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span><br></p>', 'about-us', '1', 'about-us.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '1', NULL, '2022-12-26 00:47:16', '2022-12-26 00:47:16'),
 (2, 'Contact Us', 'Contact Us', 'Contact Us', 'Contact Us', '<p>Contact Us<br></p>', 'contact-us', '2', NULL, 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, 1, '1', NULL, '2022-12-26 00:49:07', '2022-12-26 00:49:07'),
 (3, 'Offers', 'Offers', 'Offers', 'Offers', '<p>Offers<br></p>', 'offers', '3', NULL, 'Offers', 'Offers', 'Offers', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:39:55'),
-(4, 'News', 'News', 'News', 'News', '<p>News<br></p>', 'news', '4', NULL, 'News', 'News', 'News', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:40:53'),
+(4, 'FAQ', 'FAQ', 'FAQ', 'FAQ', '<p>FAQ<br></p>', 'faq', '4', NULL, 'FAQ', 'FAQ', 'FAQ', 1, 1, 1, '0', '1', NULL, '2023-01-08 14:40:23'),
 (5, 'Rooms', 'Rooms', 'Rooms', 'Rooms', '<p>Rooms<br></p>', 'rooms', '5', NULL, 'Rooms', 'Rooms', 'Rooms', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:41:12'),
 (6, 'Restaurants', 'Restaurants', 'Restaurants', 'Restaurants', '<p>Restaurants<br></p>', 'restaurants', '6', NULL, 'Restaurants', 'Restaurants', 'Restaurants', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:41:27'),
 (7, 'Halls', 'Halls', 'Halls', 'Meeting & Events', '<p>Meeting &amp; Events<br></p>', 'halls', '7', NULL, 'Halls', 'Halls', 'Halls', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:42:22'),
@@ -1083,7 +1130,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2022_12_15_093650_create_hb_settings_table', 2),
 (25, '2022_12_25_162738_create_hb_bookings_table', 3),
 (26, '2022_12_26_074144_create_hb_webcontactinfos_table', 4),
-(27, '2022_12_26_095654_create_hb_offers_table', 5);
+(27, '2022_12_26_095654_create_hb_offers_table', 5),
+(28, '2023_01_09_044559_create_hb_faqs_table', 6);
 
 -- --------------------------------------------------------
 
@@ -1193,6 +1241,12 @@ ALTER TABLE `hb_country`
 -- Indexes for table `hb_facilities`
 --
 ALTER TABLE `hb_facilities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hb_faqs`
+--
+ALTER TABLE `hb_faqs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1364,7 +1418,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hb_bookings`
 --
 ALTER TABLE `hb_bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `hb_country`
@@ -1376,6 +1430,12 @@ ALTER TABLE `hb_country`
 -- AUTO_INCREMENT for table `hb_facilities`
 --
 ALTER TABLE `hb_facilities`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `hb_faqs`
+--
+ALTER TABLE `hb_faqs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
@@ -1394,7 +1454,7 @@ ALTER TABLE `hb_hall_images`
 -- AUTO_INCREMENT for table `hb_offers`
 --
 ALTER TABLE `hb_offers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `hb_restaurents`
@@ -1496,7 +1556,7 @@ ALTER TABLE `hb_wellness_images`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

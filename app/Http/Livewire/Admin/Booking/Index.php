@@ -11,6 +11,22 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $booking_id;
+
+    public function deleteRecord($booking_id)
+    {
+        $this->booking_id = $booking_id;
+    }
+
+    public function destroyRecord()
+    {
+        $booking =  Booking::find($this->booking_id);
+        $booking->is_delete = '0';
+        $booking->update();
+        return redirect('admin/booking')->with('message','Booking Has Been Deleted Successfully.');
+        $this->dispatchBrowserEvent('close-modal');
+    }
+
     public function render()
     {
         $bookings = Booking::where('is_delete','1')->orderBy('id','ASC')->paginate(10);

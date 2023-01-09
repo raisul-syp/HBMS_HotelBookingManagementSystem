@@ -21,7 +21,7 @@
                 <tbody class="text-center">
                     @forelse ($bookings as $booking)
                     <tr>
-                        <td>{{ $serialNo }}</td>
+                        <td>{{ $serialNo++ }}</td>
                         <td>{{ $booking->guests->first_name.' '.$booking->guests->last_name }}</td>
                         <td>{{ $booking->rooms->name }}</td>
                         <td>{{ $booking->staffs->first_name.' '.$booking->staffs->last_name }}</td>
@@ -38,12 +38,14 @@
                             {{ date('h:i A', strtotime($booking->checkout_time)) }}
                         </td>
                         <td>
-                            @if ($booking->booking_status == 1)
-                            <span class="badge badge-success text-white">Booked</span>
-                            @elseif ($booking->booking_status == 2)
-                            <span class="badge badge-danger">Canceled</span>
-                            @else
+                            @if ($booking->booking_status == '0')
                             <span class="badge badge-warning text-white">Pending</span>
+                            @elseif ($booking->booking_status == '1')
+                            <span class="badge badge-success text-white">Booked</span>
+                            @elseif ($booking->booking_status == '2')
+                            <span class="badge badge-danger text-white">Canceled</span>
+                            @elseif ($booking->booking_status == '3')
+                            <span class="badge badge-info text-white">Payment Pending</span>
                             @endif
                         </td>
                         <td>

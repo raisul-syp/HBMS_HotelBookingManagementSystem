@@ -37,48 +37,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Room Name</th>
-                                                    <th>Guests</th>
-                                                    <th>Check-In</th>
-                                                    <th>Check-Out</th>
-                                                    <th>Price</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @forelse ($bookings as $booking)
-                                                <tr>
-                                                    <td>{{ $serialNo++ }}</td>
-                                                    <td>{{ $booking->rooms->name }}</td>
-                                                    <td>
-                                                        <strong>Adults: </strong>{{ $booking->total_adults }} <br>
-                                                        <strong>Childs: </strong>{{ $booking->total_childs }}
-                                                    </td>
-                                                    <td>
-                                                        {{ date('d M Y', strtotime($booking->checkin_date)) }} <br>
-                                                        {{ date('h:i A', strtotime($booking->checkin_time)) }}
-                                                    </td>
-                                                    <td>
-                                                        {{ date('d M Y', strtotime($booking->checkout_date)) }} <br>
-                                                        {{ date('h:i A', strtotime($booking->checkout_time)) }}
-                                                    </td>
-                                                    <td>{{ '$'.$booking->rooms->price }}</td>
-                                                </tr>
-                                                @empty
-                                                <tr>
-                                                    <td colspan="6">No Bookings History</td>
-                                                </tr>
-                                                @endforelse
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                            <div class="col-lg-12">                                
+                                <livewire:frontend.booking.index />
                             </div>
                         </div>
                     </div>

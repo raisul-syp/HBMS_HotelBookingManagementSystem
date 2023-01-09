@@ -41,7 +41,7 @@ class BookingController extends Controller
 
         $booking->save();
 
-        return redirect('booking')->with('message','Congratulations! Your Booking Has Been Created Successfully.');
+        return redirect('booking/success')->with('message','Congratulations! Your Booking Has Been Created Successfully.');
     }
 
     public function availableRooms(Request $request, $checkin_date)
@@ -52,5 +52,10 @@ class BookingController extends Controller
         })->get();
         
         return response()->json(['data' => $available_rooms]);
+    }
+
+    public function success()
+    {
+        return view('frontend.success.booking');
     }
 }

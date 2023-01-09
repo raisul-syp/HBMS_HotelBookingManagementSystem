@@ -1,16 +1,16 @@
 @extends('layouts.admin')
-@section('title', 'Create A New Booking')
+@section('title', 'Edit Booking')
 
 @section('content')
 <div class="container-fluid">
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h2 class="page-header-title">{{ __('Create A New Booking') }}</h2>
+                <h2 class="page-header-title">{{ __('Edit Booking') }}</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Bookings') }}</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Add Booking') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Edit Booking') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -31,8 +31,9 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form action="{{ url('admin/booking') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('admin/booking/edit/'.$booking->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
 
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
@@ -50,7 +51,7 @@
                                 <select class="form-control js-basic-single" id="guest_id" name="guest_id">
                                     <option selected disabled>--Select Guest--</option>
                                     @forelse ($guests as $guest)
-                                    <option value="{{ $guest->id }}">{{ $guest->first_name.' '.$guest->last_name }}</option>
+                                    <option value="{{ $guest->id }}" {{ old('guest_id', $booking->guest_id) == $guest->id ? 'selected' : '' }}>{{ $guest->first_name.' '.$guest->last_name }}</option>
                                     @empty
                                     <option>No Data</option>
                                     @endforelse
@@ -69,7 +70,7 @@
                                 <select class="form-control js-basic-single" id="staff_id" name="staff_id">
                                     <option selected disabled>--Select Staff--</option>
                                     @forelse ($staffs as $staff)
-                                    <option value="{{ $staff->id }}">{{ $staff->first_name.' '.$staff->last_name }}</option>
+                                    <option value="{{ $staff->id }}" {{ old('guest_id', $booking->staff_id) == $staff->id ? 'selected' : '' }}>{{ $staff->first_name.' '.$staff->last_name }}</option>
                                     @empty
                                     <option>No Data</option>
                                     @endforelse
@@ -85,13 +86,13 @@
                                 <small class="text-danger">*</small>
                             </label>
                             <div class="col-sm-5">
-                                <input type="date" class="form-control checkin-date" id="checkin_date" name="checkin_date" value="{{ $todayDate }}">
+                                <input type="date" class="form-control checkin-date" id="checkin_date" name="checkin_date" value="{{ $booking->checkin_date }}">
                                 @error('checkin_date')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-sm-5">
-                                <input type="time" class="form-control" id="checkin_time" name="checkin_time" value="14:00">
+                                <input type="time" class="form-control" id="checkin_time" name="checkin_time" value="{{ $booking->checkin_time }}">
                                 @error('checkin_time')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -103,13 +104,13 @@
                                 <small class="text-danger">*</small>
                             </label>
                             <div class="col-sm-5">
-                                <input type="date" class="form-control checkout-date" id="checkout_date" name="checkout_date" value="{{ $tomorrowDate }}">
+                                <input type="date" class="form-control checkout-date" id="checkout_date" name="checkout_date" value="{{ $booking->checkout_date }}">
                                 @error('checkout_date')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="col-sm-5">
-                                <input type="time" class="form-control" id="checkout_time" name="checkout_time" value="12:00">
+                                <input type="time" class="form-control" id="checkout_time" name="checkout_time" value="{{ $booking->checkout_time }}">
                                 @error('checkout_time')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -123,14 +124,14 @@
                             <div class="col-sm-5">
                                 <select class="form-control js-basic-single" id="total_adults" name="total_adults">
                                     <option selected disabled>--Select Total Adults--</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
+                                    <option value="1" {{ old('total_adults', $booking->total_adults) == '1' ? 'selected' : '' }}>1</option>
+                                    <option value="2" {{ old('total_adults', $booking->total_adults) == '2' ? 'selected' : '' }}>2</option>
+                                    <option value="3" {{ old('total_adults', $booking->total_adults) == '3' ? 'selected' : '' }}>3</option>
+                                    <option value="4" {{ old('total_adults', $booking->total_adults) == '4' ? 'selected' : '' }}>4</option>
+                                    <option value="5" {{ old('total_adults', $booking->total_adults) == '5' ? 'selected' : '' }}>5</option>
+                                    <option value="6" {{ old('total_adults', $booking->total_adults) == '6' ? 'selected' : '' }}>6</option>
+                                    <option value="7" {{ old('total_adults', $booking->total_adults) == '7' ? 'selected' : '' }}>7</option>
+                                    <option value="8" {{ old('total_adults', $booking->total_adults) == '8' ? 'selected' : '' }}>8</option>
                                 </select>
                                 @error('total_adults')
                                     <small class="text-danger">{{ $message }}</small>
@@ -139,15 +140,15 @@
                             <div class="col-sm-5">
                                 <select class="form-control js-basic-single" id="total_childs" name="total_childs">
                                     <option selected disabled>--Select Total Childs--</option>
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
+                                    <option value="0" {{ old('total_childs', $booking->total_childs) == '0' ? 'selected' : '' }}>0</option>
+                                    <option value="1" {{ old('total_childs', $booking->total_childs) == '1' ? 'selected' : '' }}>1</option>
+                                    <option value="2" {{ old('total_childs', $booking->total_childs) == '2' ? 'selected' : '' }}>2</option>
+                                    <option value="3" {{ old('total_childs', $booking->total_childs) == '3' ? 'selected' : '' }}>3</option>
+                                    <option value="4" {{ old('total_childs', $booking->total_childs) == '4' ? 'selected' : '' }}>4</option>
+                                    <option value="5" {{ old('total_childs', $booking->total_childs) == '5' ? 'selected' : '' }}>5</option>
+                                    <option value="6" {{ old('total_childs', $booking->total_childs) == '6' ? 'selected' : '' }}>6</option>
+                                    <option value="7" {{ old('total_childs', $booking->total_childs) == '7' ? 'selected' : '' }}>7</option>
+                                    <option value="8" {{ old('total_childs', $booking->total_childs) == '8' ? 'selected' : '' }}>8</option>
                                 </select>
                                 @error('total_childs')
                                     <small class="text-danger">{{ $message }}</small>
@@ -161,6 +162,11 @@
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control js-basic-single room-list" id="room_id" name="room_id">
+                                    @forelse ($rooms as $room)
+                                    <option value="{{ $room->id }}" {{ old('guest_id', $booking->room_id) == $room->id ? 'selected' : '' }}>{{ $room->name }}</option>
+                                    @empty
+                                    <option>No Data</option>
+                                    @endforelse
                                 </select>
                                 @error('room_id')
                                     <small class="text-danger">{{ $message }}</small>
@@ -174,10 +180,10 @@
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control js-basic-single" id="booking_status" name="booking_status">
-                                    <option value="0">Pending</option>
-                                    <option value="1">Booked</option>
-                                    <option value="2">Cancel</option>
-                                    <option value="3">Payment Pending</option>
+                                    <option value="0" {{ old('booking_status', $booking->booking_status) == '0' ? 'selected' : '' }}>Pending</option>
+                                    <option value="1" {{ old('booking_status', $booking->booking_status) == '1' ? 'selected' : '' }}>Booked</option>
+                                    <option value="2" {{ old('booking_status', $booking->booking_status) == '2' ? 'selected' : '' }}>Cancel</option>
+                                    <option value="3" {{ old('booking_status', $booking->booking_status) == '3' ? 'selected' : '' }}>Payment Pending</option>
                                 </select>
                                 @error('booking_status')
                                     <small class="text-danger">{{ $message }}</small>
@@ -189,16 +195,16 @@
                                 {{ __('Booking Comment') }}
                             </label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" id="booking_comment" name="booking_comment" rows="5" placeholder="Add booking comment..."></textarea>
+                                <textarea class="form-control" id="booking_comment" name="booking_comment" rows="5" placeholder="Add booking comment...">{{ $booking->booking_comment }}</textarea>
                             </div>
                         </div>
 
-                        <input type="text" hidden id="created_by" name="created_by" value="{{ Auth::guard('admin')->user()->role_as }}">
+                        <input type="text" hidden id="updated_by" name="updated_by" value="{{ Auth::guard('admin')->user()->role_as }}">
                     </div>
                     <div class="card-footer">
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary text-uppercase text-right">
-                                {{ __('Save') }}
+                                {{ __('Update') }}
                             </button>
                         </div>
                     </div>
@@ -208,33 +214,5 @@
         </div>
     </div>
 </div>
-
-
-@section('scripts')
-<script type="text/javascript">
-    $(document).ready(function(){
-        $(".checkin-date").on('blur',function(){
-            var _checkindate = $(this).val();
-
-            // Ajax
-            $.ajax({
-                url: "{{ url('admin/booking') }}/available-rooms/"+_checkindate,
-                type: 'get',
-                dataType: 'json',
-                beforeSend: function(){
-                    $(".room-list").html('<option>Loading...</option>');
-                },
-                success: function(res){
-                    var _html = '';
-                    $.each(res.data,function(index,row){
-                        _html +='<option value="'+row.id+'">'+row.name+" - "+row.quantity+" rooms are available</option>";
-                    });
-                    $(".room-list").html(_html);
-                }
-            });
-        });
-    });
-</script>
-@endsection
 
 @endsection

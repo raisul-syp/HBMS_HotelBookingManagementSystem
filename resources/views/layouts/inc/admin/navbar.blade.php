@@ -85,7 +85,19 @@
                         <i class="mdi mdi-account"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <h4>{{ Auth::guard('admin')->user()->first_name }}</h4>
+                        <div class="user-name-role-img">
+                            <img src="{{ asset('uploads/users/profile_photo/'.Auth::guard('admin')->user()->profile_photo) }}" alt="">
+                            <div class="name-role">
+                                <h4 class="mb-0">{{ Auth::guard('admin')->user()->first_name.' '.Auth::guard('admin')->user()->last_name }}</h4>
+                                <p class="mb-0">
+                                    @if (Auth::guard('admin')->user()->role_as == '0')
+                                        Admin
+                                    @else
+                                        Staff
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
 
                         <a href="./app-profile.html" class="dropdown-item">
                             <i class="icon-user"></i>

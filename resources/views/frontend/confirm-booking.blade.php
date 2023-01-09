@@ -47,98 +47,61 @@
                                         <div class="col-lg-12 mb-4">
                                             <h4 class="confirm-booking-card-header">Booking Schedule</h4>
 
-                                            <div class="form-group row mb-3">
-                                                <div class="col-sm-6">
-                                                    <label class="form-label text-right">
-                                                        {{ __('Checkin Date') }}
-                                                    </label>
-                                                    <div class="input-wrapper">
-                                                        <input type="date" class="form-control checkin-date" id="checkin_date" name="checkin_date" value="{{ $checkin_date }}">
-                                                        <span class="lnr lnr-calendar-full icon"></span>
-                                                    </div>
+                                            <div class="form-group row mb-2">
+                                                <label class="col-sm-2 col-form-label text-right">
+                                                    {{ __('Checkin Date') }}
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <p class="confirm-booking-text">{{ date('d F Y', strtotime($checkin_date)) }}</p>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <label class="form-label text-right">
-                                                        {{ __('Checkout Date') }}
-                                                    </label>
-                                                    <div class="input-wrapper">
-                                                        <input type="date" class="form-control checkout-date" id="checkout_date" name="checkout_date" value="{{ $checkout_date }}">
-                                                        <span class="lnr lnr-calendar-full icon"></span>
-                                                    </div>
+                                                <label class="col-sm-2 col-form-label text-right">
+                                                    {{ __('Checkout Date') }}
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <p class="confirm-booking-text">{{ date('d F Y', strtotime($checkout_date)) }}</p>
                                                 </div>
-                                            </div>
+                                            </div> 
+
+                                            <div class="form-group row mb-2">
+                                                <label class="col-sm-2 col-form-label text-right">
+                                                    {{ __('Total Adults') }}
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <p class="confirm-booking-text">{{ $total_adults }} person(s)</p>
+                                                </div>
+                                                <label class="col-sm-2 col-form-label text-right">
+                                                    {{ __('Total Childs') }}
+                                                </label>
+                                                <div class="col-sm-4">
+                                                    <p class="confirm-booking-text">{{ $total_childs }} person(s)</p>
+                                                </div>
+                                            </div> 
+
                                             <div class="form-group row mb-3">
-                                                <div class="col-sm-6">
-                                                    <label class="form-label text-right">
-                                                        {{ __('Checkin Time') }}
-                                                    </label>
+                                                <label class="col-sm-2 col-form-label text-right">
+                                                    {{ __('Checkin Time') }}
+                                                </label>
+                                                <div class="col-sm-4">
                                                     <div class="input-wrapper">
                                                         <input type="time" class="form-control" id="checkin_time" name="checkin_time" value="14:00">
                                                         <span class="lnr lnr-clock icon"></span>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <label class="form-label text-right">
-                                                        {{ __('Checkout Time') }}
-                                                    </label>
+                                                <label class="col-sm-2 col-form-label text-right">
+                                                    {{ __('Checkout Time') }}
+                                                </label>
+                                                <div class="col-sm-4">
                                                     <div class="input-wrapper">
                                                         <input type="time" class="form-control" id="checkout_time" name="checkout_time" value="12:00">
                                                         <span class="lnr lnr-clock icon"></span>
                                                     </div>
-                                                </div>
-                                            </div><div class="form-group row mb-3">
-                                                <div class="col-sm-6">
-                                                    <label class="form-label text-right">
-                                                        {{ __('Total Adults') }}
-                                                    </label>
-                                                    <select class="form-control" id="total_adults" name="total_adults">
-                                                        <option value="1" {{ old('total_adults', $total_adults) == '1' ? 'selected' : '' }}>1</option>
-                                                        <option value="2" {{ old('total_adults', $total_adults) == '2' ? 'selected' : '' }}>2</option>
-                                                        <option value="3" {{ old('total_adults', $total_adults) == '3' ? 'selected' : '' }}>3</option>
-                                                        <option value="4" {{ old('total_adults', $total_adults) == '4' ? 'selected' : '' }}>4</option>
-                                                        <option value="5" {{ old('total_adults', $total_adults) == '5' ? 'selected' : '' }}>5</option>
-                                                        <option value="6" {{ old('total_adults', $total_adults) == '6' ? 'selected' : '' }}>6</option>
-                                                        <option value="7" {{ old('total_adults', $total_adults) == '7' ? 'selected' : '' }}>7</option>
-                                                        <option value="8" {{ old('total_adults', $total_adults) == '8' ? 'selected' : '' }}>8</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <label class="form-label text-right">
-                                                        {{ __('Total Childs') }}
-                                                    </label>
-                                                    <select class="form-control" id="total_childs" name="total_childs">
-                                                        <option value="1" {{ old('total_childs', $total_childs) == '1' ? 'selected' : '' }}>1</option>
-                                                        <option value="2" {{ old('total_childs', $total_childs) == '2' ? 'selected' : '' }}>2</option>
-                                                        <option value="3" {{ old('total_childs', $total_childs) == '3' ? 'selected' : '' }}>3</option>
-                                                        <option value="4" {{ old('total_childs', $total_childs) == '4' ? 'selected' : '' }}>4</option>
-                                                        <option value="5" {{ old('total_childs', $total_childs) == '5' ? 'selected' : '' }}>5</option>
-                                                        <option value="6" {{ old('total_childs', $total_childs) == '6' ? 'selected' : '' }}>6</option>
-                                                        <option value="7" {{ old('total_childs', $total_childs) == '7' ? 'selected' : '' }}>7</option>
-                                                        <option value="8" {{ old('total_childs', $total_childs) == '8' ? 'selected' : '' }}>8</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                                </div>                                         
+                                            </div>                                            
                                         </div>
 
-                                        <div class="col-lg-6">
-                                            <h4 class="confirm-booking-card-header">Room Details</h4>
-                                            <input type="text" id="room_id" name="room_id" value="{{ $room_id }}" hidden>
-                                            
-                                            {{-- <div class="form-group row mb-3">
-                                                <div class="col-sm-6">
-                                                    <label class="form-label text-right">
-                                                        {{ __('Room Name') }}
-                                                    </label>
-                                                    @foreach ($rooms as $room)
-                                                    @if ($room->id == $room_id)
-                                                    <select class="form-control" id="room_id" name="room_id">
-                                                        <option value="{{ $room_id }}">{{ $room->name }}</option>
-                                                    </select>                                                     
-                                                    @endif
-                                                    @endforeach
-                                                </div>
-                                            </div>    --}}
-                                            
+                                        <div class="col-lg-5">
+                                            <h4 class="confirm-booking-card-header">Room Details</h4>          
+
                                             @foreach ($rooms as $room)
                                             @if ($room->id == $room_id)
                                             <div class="form-group row mb-2">
@@ -148,16 +111,7 @@
                                                 <div class="col-sm-9">
                                                     <p class="confirm-booking-text">{{ $room->name }}</p>
                                                 </div>
-                                            </div>      
-                                            
-                                            <div class="form-group row mb-2">
-                                                <label class="col-sm-3 col-form-label text-right">
-                                                    {{ __('Max. Childs') }}
-                                                </label>
-                                                <div class="col-sm-9">
-                                                    <p class="confirm-booking-text">{{ $room->max_childs }} person(s)</p>
-                                                </div>
-                                            </div>     
+                                            </div>    
                                             
                                             <div class="form-group row mb-2">
                                                 <label class="col-sm-3 col-form-label text-right">
@@ -167,6 +121,15 @@
                                                     <p class="confirm-booking-text">{{ $room->max_adults }} person(s)</p>
                                                 </div>
                                             </div>     
+                                            
+                                            <div class="form-group row mb-2">
+                                                <label class="col-sm-3 col-form-label text-right">
+                                                    {{ __('Max. Childs') }}
+                                                </label>
+                                                <div class="col-sm-9">
+                                                    <p class="confirm-booking-text">{{ $room->max_childs }} person(s)</p>
+                                                </div>
+                                            </div>       
                                             
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label text-right">
@@ -180,9 +143,8 @@
                                             @endforeach                                        
                                         </div>
 
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <h4 class="confirm-booking-card-header">Guest Details</h4>
-                                            <input type="text" id="guest_id" name="guest_id" value="{{ Auth::user()->id }}" hidden>
                                             
                                             <div class="form-group row mb-2">
                                                 <label class="col-sm-3 col-form-label text-right">
@@ -220,6 +182,48 @@
                                                 </div>
                                             </div> 
                                         </div>
+
+                                        <div class="col-lg-3">
+                                            <h4 class="confirm-booking-card-header">Payment Type</h4>
+                                            
+                                            <div class="form-group row">
+                                                <div class="col-sm-12 mb-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            {{ __('Cash On Delivery') }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 mb-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            {{ __('Card') }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 mb-2">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                            {{ __('Mobile Banking') }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                        
+                                    <input id="guest_id" name="guest_id" value="{{ Auth::user()->id }}" hidden>
+                                    <input type="text" id="room_id" name="room_id" value="{{ $room_id }}" hidden>   
+                                    <input id="staff_id" name="staff_id" value="1" hidden>                                    
+                                    <input id="checkin_date" name="checkin_date" value="{{ $checkin_date }}" hidden>
+                                    <input id="checkout_date" name="checkout_date" value="{{ $checkout_date }}" hidden>
+                                    <input id="total_adults" name="total_adults" value="{{ $total_adults }}" hidden>
+                                    <input id="total_childs" name="total_childs" value="{{ $total_childs }}" hidden>
+                                    <input id="booking_status" name="booking_status" value="3" hidden>
+                                    <input id="booking_comment" name="booking_comment" value="Booking created by Guest" hidden>
+                                    <input id="created_by" name="created_by" value="2" hidden>
                                     </div>
                                 </div>
                                 <div class="card-footer">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Hall;
 use App\Models\Room;
 use App\Models\Offer;
+use App\Models\Faq;
 use App\Models\Settings;
 use App\Models\Wellness;
 use App\Models\Restaurent;
@@ -34,11 +35,12 @@ class PagesController extends Controller
         $page = Page::where('slug', $page_slug)->first();
         $offerDateTime = Carbon::now();
         $offers = Offer::all()->where('end_date', '>', $offerDateTime)->where('is_active', '1')->where('is_delete', '1');
+        $faqs = Faq::all()->where('is_active', '1')->where('is_delete', '1');
         $rooms = Room::all()->where('is_active','1')->where('is_delete','1');
         $restaurants = Restaurent::all()->where('is_active','1')->where('is_delete','1');
         $halls = Hall::all()->where('is_active','1')->where('is_delete','1');
         $wellnesses = Wellness::all()->where('is_active','1')->where('is_delete','1');
-        return view('frontend.page', compact('page','offerDateTime','offers','rooms','restaurants','halls','wellnesses'));
+        return view('frontend.page', compact('page','offerDateTime','offers', 'faqs','rooms','restaurants','halls','wellnesses'));
     }
 
     public function offerDetails($pageDetail_slug)

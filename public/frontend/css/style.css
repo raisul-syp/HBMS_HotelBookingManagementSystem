@@ -5,7 +5,7 @@ Header Section Start
 .header_section .header_section_inner {}
 .header_section .header_section_inner .header_top {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
 }
 .header_section .header_section_inner .header_top .header_top_left {}
 .header_section .header_section_inner .header_top .header_top_left ul {
@@ -143,7 +143,7 @@ Header Section Start
 .nav-icon .cart-list span {
     border: 1px solid transparent;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     font-size: 12px;
     color: var(--siteColor1);
     position: absolute;
@@ -180,7 +180,7 @@ Header Section Start
     line-height: 23px;
     border-radius: 0;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     border: 1px solid transparent;
     color: var(--siteColor1);
     width: 35px;
@@ -231,7 +231,7 @@ Header Section Start
     width: 20%;
     border-radius: 50%;
     border: 2px solid var(--siteColor2);
-    padding: 5px;
+    /* padding: 5px; */
     background: #ffffff;
 }
 
@@ -324,7 +324,7 @@ Hero Slider Section Start
     width: 30%;
     margin: 20px auto;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     height: 3px;
 }
 
@@ -340,7 +340,7 @@ Hero Slider Section Start
 .heroSlider_section .owl-item a.btn-read-more,
 .heroSlider_section .owl-item button.btn-read-more {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     border: 2px solid transparent;
     font-size: 18px;
     font-weight: 600;
@@ -348,7 +348,7 @@ Hero Slider Section Start
     height: 50px;
     line-height: 35px;
     border-radius: 30px;
-    margin-top: 10px;
+    margin: 10px 5px 0;
     transition: all 0.3s;
 }
 
@@ -476,7 +476,7 @@ Hero Slider Section Start
     right: 10px;
     background: var(--siteColor2);
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
@@ -492,7 +492,7 @@ Hero Slider Section Start
     height: 42px;
     width: 100%;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     color: var(--siteColor1);
     text-transform: uppercase;
     font-size: 12px;
@@ -543,7 +543,7 @@ About Us Section Start
     border: 6px solid var(--siteColor1);
     border-radius: 0;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
 }
 .about_section .about_section_inner .image_box .card .card-body {}
 .about_section .about_section_inner .image_box .card .card-body .image {
@@ -596,7 +596,7 @@ About Us Section Start
     height: 2px;
     margin: 0;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
 }
 .about_section .about_section_inner .content_box .card .card-body .content p {
     font-size: 16px;
@@ -621,7 +621,7 @@ About Us Section Start
 .about_section .about_section_inner .content_box .card .card-body .content .btn-read span {
     background: var(--siteFont2);
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: all 0.3s ease-in-out;
@@ -657,22 +657,22 @@ Rooms Section Start
 ==================================*/
 .rooms_section {}
 .rooms_section .rooms_section_inner {
-    padding: 80px 0 60px;
+    padding: 30px 0 60px;
 }
 .rooms_section .rooms_section_inner .section_title {
     position: relative;
     text-align: center;
 }
 .rooms_section .rooms_section_inner .section_title h4 {
-    font-size: 50px;
-    line-height: 50px;
+    font-size: 40px;
+    line-height: 40px;
     text-transform: uppercase;
     font-weight: 800;
     color: var(--siteColor1);
     padding-bottom: 15px;
 }
 .rooms_section .rooms_section_inner .section_title .decor-1 {
-    top: 65px;
+    top: 55px;
     left: 0;
     right: 0;
 }
@@ -686,7 +686,7 @@ Rooms Section Start
     border: none;
     border-radius: 0;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
 
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-image {}
@@ -819,7 +819,7 @@ Facilities Section Start
 .facility_section .facility_section_inner .facility_content .btn-book {
     height: 50px;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     border: 1px solid transparent;
     color: var(--siteFont2);
     text-transform: uppercase;
@@ -848,7 +848,7 @@ Breadcrumb Section Start
 ==================================*/
 .breadcrumb_section {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
 }
 .breadcrumb_section .breadcrumb_section_inner {
     padding: 80px 0;
@@ -918,6 +918,7 @@ Offer Section Start
     transition: all 0.3s ease-in;
 }
 .offer_section .offer_section_inner .offer_sec a .card {
+    border: 0 !important;
     box-shadow: 0 0.5rem 1rem #d1962b !important;
 }
 .offer_section .offer_section_inner .offer_sec .card-image {
@@ -964,22 +965,22 @@ Testimonials Section Start
 ==================================*/
 .testimonials_section {}
 .testimonials_section .testimonials_section_inner {
-    padding: 80px 0 0;
+    padding: 50px 0 0;
 }
 .testimonials_section .testimonials_section_inner .section_title {
     position: relative;
     text-align: center;
 }
 .testimonials_section .testimonials_section_inner .section_title h4 {
-    font-size: 50px;
-    line-height: 50px;
+    font-size: 40px;
+    line-height: 40px;
     text-transform: uppercase;
     font-weight: 800;
     color: var(--siteColor1);
     padding-bottom: 15px;
 }
 .testimonials_section .testimonials_section_inner .section_title .decor-1 {
-    top: 65px;
+    top: 55px;
     left: 0;
     right: 0;
 }
@@ -1059,8 +1060,26 @@ Core Facilities Section Start
 ==================================*/
 .coreFacility_section {}
 .coreFacility_section .coreFacility_section_inner {
-    padding: 80px 0;
+    padding: 0;
 }
+.coreFacility_section .coreFacility_section_inner .section_title {
+    position: relative;
+    text-align: center;
+}
+.coreFacility_section .coreFacility_section_inner .section_title h4 {
+    font-size: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--siteColor1);
+    padding-bottom: 15px;
+}
+.coreFacility_section .coreFacility_section_inner .section_title .decor-1 {
+    top: 55px;
+    left: 0;
+    right: 0;
+}
+
 .coreFacility_section .coreFacility_section_inner .coreFacilities_sec {
     text-align: center;
 }
@@ -1118,7 +1137,9 @@ Footer Section Start
 }
 
 
-.footer_section .footer_section_inner .footer_top .footer_links {}
+.footer_section .footer_section_inner .footer_top .footer_links {
+    margin: 0 50px;
+}
 .footer_section .footer_section_inner .footer_top .footer_links h4 {
     position: relative;
     width: fit-content;
@@ -1142,7 +1163,7 @@ Footer Section Start
     padding: 0;
 }
 .footer_section .footer_section_inner .footer_top .footer_links ul li {
-    padding: 6px 0px;
+    padding: 3px 0px;
     transition: all 0.3s ease;
 }
 .footer_section .footer_section_inner .footer_top .footer_links ul li:nth-child(1),
@@ -1200,7 +1221,7 @@ Footer Section Start
     padding: 0;
 }
 .footer_section .footer_section_inner .footer_top .footer_contact ul.contact li {
-    padding: 6px 0px;
+    padding: 4px 0px;
     transition: all 0.3s ease;
 }
 .footer_section .footer_section_inner .footer_top .footer_contact ul.contact li:first-child {
@@ -1254,7 +1275,7 @@ Footer Section Start
 }
 .footer_section .footer_section_inner .footer_top .footer_contact ul.social li:hover {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     border: 1px solid transparent;
 }
 .footer_section .footer_section_inner .footer_top .footer_contact ul.social li:hover a svg {
@@ -1268,7 +1289,7 @@ Footer Section Start
 
 .footer_section .footer_section_inner .footer_bottom {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
 }
 .footer_section .footer_section_inner .footer_bottom .footer_bottom_inner {}
 .footer_section .footer_section_inner .footer_bottom .footer_bottom_inner p {
@@ -1354,7 +1375,7 @@ Footer Section End
 }
 .roomAvailability-form .accordion .accordion-item .accordion-header {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
 }
 .roomAvailability-form .accordion .accordion-item .accordion-header .accordion-button {
     border: none;
@@ -1398,7 +1419,7 @@ Footer Section End
 }
 .roomAvailability-form .submit_btn button {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     border: 1px solid transparent;
     color: var(--siteColor1);
     font-size: 12px;
@@ -1482,7 +1503,7 @@ Footer Section End
 .availableRoom-div .card .availableRoom-card .room-info .booking-btn button,
 .availableRoom-div .card .availableRoom-card .room-info .booking-btn a {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     border: 1px solid transparent;
     color: var(--siteColor1);
     font-size: 12px;
@@ -1513,7 +1534,7 @@ Footer Section End
 .availableRoom-div .card .availableRoom-card .room-info .room-view-btn button:hover,
 .availableRoom-div .card .availableRoom-card .room-info .room-view-btn a:hover {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     color: var(--siteColor1);
     border: 1px solid transparent;
 }
@@ -1539,7 +1560,7 @@ Footer Section End
     padding: 8px 10px !important;
     border-radius: 0 !important;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     border: none;
     color: var(--siteColor1) !important;
     font-weight: 900;
@@ -1645,7 +1666,7 @@ Footer Section End
 }
 .pages_section_frontend .page-loaction {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
     width: fit-content;
     padding: 10px 60px 10px 40px;
@@ -1710,7 +1731,7 @@ Footer Section End
     width: 100%;
     border-radius: 0;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     color: var(--siteColor1);
     font-weight: 700;
     border: 1px solid transparent;
@@ -1770,7 +1791,7 @@ Footer Section End
 
 .page_details_section_frontend .booking-btn a:hover {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     color: var(--siteColor1);
 }
 
@@ -2044,7 +2065,7 @@ Footer Section End
 .contact_section_frontend .contact-section-inner .contact-form .card form button {
     width: 100%;
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     border: 1px solid transparent;
     border-radius: 0;
     height: 35px;
@@ -2108,7 +2129,7 @@ Footer Section End
 }
 .booking-form-inner .card .card-header {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     padding: 20px 30px;
     border-radius: 0;
 }
@@ -2135,6 +2156,13 @@ Footer Section End
     border: 1px solid var(--siteColor2);
     border-radius: 0;
 }
+.booking-form-inner .card .card-body .form-group input:disabled, 
+.booking-form-inner .card .card-body .form-group input[readonly], 
+.booking-form-inner .card .card-body .form-group select:disabled, 
+.booking-form-inner .card .card-body .form-group select[readonly] {
+    background-color: #494646 !important;
+    opacity: 0.5;
+}
 .booking-form-inner .card .card-body .form-group .input-wrapper {
     position: relative;
 }
@@ -2147,7 +2175,7 @@ Footer Section End
 }
 .booking-form-inner .card .card-footer {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     padding: 20px 30px;
     border-radius: 0;
 }
@@ -2218,7 +2246,7 @@ select.guest-select {
 }
 .profile-card .card-header .header-title a:hover {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     color: var(--siteColor1);
 }
 .profile-card .card-header .header-title a svg {
@@ -2240,6 +2268,7 @@ select.guest-select {
 .profile-card .card-body table tbody tr td {
     border: 1px solid var(--siteColor2) !important;
     padding: 0.5rem 1.5rem;
+    font-size: 14px;
 }
 .profile-card .card-body table thead {
     background: var(--siteColor2);
@@ -2258,7 +2287,7 @@ select.guest-select {
     top: 10px;
     right: 10px;
     background: var(--siteColor1);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
@@ -2282,7 +2311,7 @@ select.guest-select {
 .profile-card .image-body.profile img {
     background: var(--siteColor1);
     box-shadow: 0 1rem 1rem rgba(0,0,0,.15)!important;
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 50%;
     border: 5px solid var(--siteColor2);
 }
@@ -2294,7 +2323,7 @@ select.guest-select {
 }
 .profile-card .card-footer button {
     background: var(--goldenBG2);
-    background-size: 400% 200%;
+    /* background-size: 400% 200%; */
     color: var(--siteColor1);
     border: 1px solid var(--siteColor2);
     border-radius: 0;
@@ -2320,4 +2349,94 @@ select.guest-select {
     padding-bottom: calc(0.375rem + 1px);
 }
 
+.form-check-input:checked {
+    background-color: var(--siteColor2) !important;
+}
+.nav-pills.nav-pill-div {
+    border: 1px solid var(--siteColor1);
+}
+
+.nav-pills.nav-pill-div .nav-link.active, .nav-pills .show>.nav-link {
+    color: var(--siteColor1);
+    background: var(--goldenBG2);
+    border-radius: 0;
+    font-size: 12px;
+    padding: 8px;
+    font-weight: 800;
+}
+.nav-pills.nav-pill-div .nav-link {
+    color: var(--siteColor2);
+    font-size: 12px;
+    padding: 8px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--siteColor1);
+    border-radius: 0;
+}
+.nav-pills.nav-pill-div .nav-link:last-child {
+    border-bottom: none;
+}
+
+.accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+.accordion-button {
+    border: 1px solid var(--siteColor1) !important;
+    padding: 10px 1.25rem !important;
+    font-size: 14px !important;
+    color: var(--siteColor1) !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background: var(--goldenBG2) !important;
+    border: 1px solid var(--siteColor2) !important;
+    font-weight: 700;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+.accordion-body {
+    padding: 8px 1.25rem !important;
+    font-size: 12px;
+    border: 1px solid var(--siteColor2);
+    color: var(--siteColor1);
+}
+
+.success-page {
+    text-align: center;
+}
+.success-page .success-icon {
+    border: 2px solid var(--siteColor2);
+    border-radius: 50px;
+    width: 80px;
+    height: 80px;
+    padding: 18px;
+    margin: 0 auto 20px;
+}
+.success-page .success-icon svg {
+    font-size: 40px;
+    color: var(--siteColor2);
+}
+.success-page .success-message {}
+.success-page .success-message h4 {
+    color: var(--siteColor1);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.success-page .success-btn a {
+    background: var(--goldenBG2);
+    /* background-size: 400% 200%; */
+    border: 1px solid transparent;
+    color: var(--siteColor1);
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+.success-page .success-btn a:hover {
+    background: var(--siteColor1);
+    color: #ffffff;
+}
 

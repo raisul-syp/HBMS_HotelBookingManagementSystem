@@ -107,10 +107,72 @@
             </div>
             @endif
 
-            @if ($page->name == 'News')
+            @if ($page->name == 'FAQ')
             <div class="row mt-4">
-                <div class="col-lg-4 mb-4">
-                    No News Record Available!
+                <div class="col-lg-3">
+                    <div class="nav flex-column nav-pills nav-pill-div me-0 me-lg-0 mb-3 mb-lg-0" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" id="general_information-tab" data-bs-toggle="pill" data-bs-target="#general_information" type="button" role="tab" aria-controls="general_information" aria-selected="true">General Information</button>
+                        <button class="nav-link" id="reservations-tab" data-bs-toggle="pill" data-bs-target="#reservations" type="button" role="tab" aria-controls="reservations" aria-selected="false">Reservations</button>
+                        <button class="nav-link" id="best_rate_guarantee-tab" data-bs-toggle="pill" data-bs-target="#best_rate_guarantee" type="button" role="tab" aria-controls="best_rate_guarantee" aria-selected="false">Best Rate Guarantee</button>
+                    </div>
+                </div>
+                <div class="col-lg-9">                  
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="general_information" role="tabpanel" aria-labelledby="general_information-tab">
+                            @foreach ($faqs as $faq)
+                            @if ($faq->faq_type == 'General Information')  
+                            <div class="accordion-item mb-2">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $faq->slug }}" aria-expanded="false" aria-controls="{{ $faq->slug }}">
+                                        {{ $faq->question }}
+                                    </button>
+                                </h2>
+                                <div id="{{ $faq->slug }}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {{ $faq->answer }}
+                                    </div>
+                                </div>
+                            </div>
+                            @endif   
+                            @endforeach                       
+                        </div>
+                        <div class="tab-pane fade" id="reservations" role="tabpanel" aria-labelledby="reservations-tab">
+                            @foreach ($faqs as $faq)
+                            @if ($faq->faq_type == 'Reservations')  
+                            <div class="accordion-item mb-3">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $faq->slug }}" aria-expanded="false" aria-controls="{{ $faq->slug }}">
+                                        {{ $faq->question }}
+                                    </button>
+                                </h2>
+                                <div id="{{ $faq->slug }}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {{ $faq->answer }}
+                                    </div>
+                                </div>
+                            </div>
+                            @endif   
+                            @endforeach     
+                        </div>
+                        <div class="tab-pane fade" id="best_rate_guarantee" role="tabpanel" aria-labelledby="best_rate_guarantee-tab">
+                            @foreach ($faqs as $faq)
+                            @if ($faq->faq_type == 'Best Rate Guarantee')  
+                            <div class="accordion-item mb-3">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $faq->slug }}" aria-expanded="false" aria-controls="{{ $faq->slug }}">
+                                        {{ $faq->question }}
+                                    </button>
+                                </h2>
+                                <div id="{{ $faq->slug }}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {{ $faq->answer }}
+                                    </div>
+                                </div>
+                            </div>
+                            @endif   
+                            @endforeach     
+                        </div>
+                    </div>
                 </div>
             </div>
             @endif

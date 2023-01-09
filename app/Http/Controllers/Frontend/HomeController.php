@@ -12,6 +12,7 @@ use Illuminate\Support\Carbon;
 use App\Models\Website\Facility;
 use App\Models\Website\Testimonial;
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 
 class HomeController extends Controller
 {
@@ -46,12 +47,6 @@ class HomeController extends Controller
 
     public function checkAvailability(Request $request)
     {
-        // $todayDate = Carbon::today()->format('Y-m-d');
-        // $tomorrowDate = Carbon::tomorrow()->format('Y-m-d');
-        // $checkin_date = $request->checkin_date;
-        // $checkout_date = $request->checkout_date;
-        // $total_adults = $request->adults;
-        // $total_childs = $request->children;
         $checkin_date = $request->input('checkin_date');
         $checkout_date = $request->input('checkout_date');
         $total_adults = $request->input('adults');
@@ -67,7 +62,6 @@ class HomeController extends Controller
         ->where('max_childs', '>=', (int) $total_childs)
         ->where('is_active', 1)
         ->get();
-
 
         return view('frontend.available-rooms', compact('available_rooms', 'checkin_date', 'checkout_date', 'total_adults', 'total_childs'));
     }

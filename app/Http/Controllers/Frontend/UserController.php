@@ -84,9 +84,10 @@ class UserController extends Controller
 
     public function bookingHistory()
     {
-        $serialNo = 1;
-        $guests = Auth::user();
-        $bookings = Booking::all()->where('guest_id', $guests->id);
-        return view('frontend.user.booking-history', compact('serialNo', 'guests', 'bookings'));
+        // $serialNo = 1;
+        // $guests = Auth::user();
+        // $bookings = Booking::all()->where('guest_id', $guests->id);
+        // return view('frontend.user.booking-history', compact('serialNo', 'guests', 'bookings'));
+        return view('frontend.user.booking-history');
     }
 }

@@ -49,8 +49,11 @@ $(document).ready(function () {
     $('.testimonials-slider').owlCarousel({
         loop: true,
         margin: 50,
-        nav: true,
+        nav: false,
         dots: false,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
         responsive:{
             0:{
                 items:1

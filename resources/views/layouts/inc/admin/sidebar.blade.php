@@ -79,6 +79,16 @@
         <li>
             <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                 <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('FAQ') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/faq/create') }}">{{ __('Add FAQ') }}</a></li>
+                <li><a href="{{ url('admin/faq') }}">{{ __('All FAQ') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
                 <span class="nav-text">{{ __('Bookings') }}</span>
             </a>
             <ul aria-expanded="false">

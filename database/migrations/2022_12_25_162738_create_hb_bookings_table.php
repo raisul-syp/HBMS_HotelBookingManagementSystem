@@ -24,7 +24,7 @@ class CreateHbBookingsTable extends Migration
             $table->string('checkout_time');
             $table->string('total_adults');
             $table->string('total_childs');
-            $table->tinyInteger('booking_status')->default('1')->comment('0=Pending, 1=Booked, 2=Cancel');
+            $table->tinyInteger('booking_status')->default('1')->comment('0=Pending, 1=Booked, 2=Cancel, 3=Payment Pending');
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->mediumText('booking_comment')->nullable();
 

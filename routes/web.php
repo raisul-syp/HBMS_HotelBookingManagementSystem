@@ -28,14 +28,13 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/', 'index');
         Route::post('/', 'store');
         Route::get('/available-rooms/{checkin_date}', 'availableRooms');
-        // Route::get('/confirm-booking', 'confirmBooking');
-
+        Route::get('/success', 'success');
     });
 
     Route::prefix('/confirm-booking')->controller(App\Http\Controllers\Frontend\BookingConfirmController::class)->group(function (){
         Route::get('/', 'index');
         Route::post('/', 'store');
-        Route::get('/available-rooms/{checkin_date}', 'availableRooms');
+        Route::get('/success', 'success');
     });
 
     Route::prefix('/guest')->controller(App\Http\Controllers\Frontend\UserController::class)->group(function (){
@@ -128,6 +127,15 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::put('/edit/{offer}', 'update');
     });
 
+    // FAQ
+    Route::prefix('/admin/faq')->controller(App\Http\Controllers\Admin\FaqController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{faq}', 'edit');
+        Route::put('/edit/{faq}', 'update');
+    });
+
     // Guest
     Route::prefix('/admin/guest')->controller(App\Http\Controllers\Admin\GuestController::class)->group(function (){
         Route::get('/', 'index');
@@ -151,8 +159,8 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::get('/', 'index');
         Route::get('/create', 'create');
         Route::post('/', 'store');
-        Route::get('/edit/{room}', 'edit');
-        Route::put('/edit/{room}', 'update');
+        Route::get('/edit/{booking}', 'edit');
+        Route::put('/edit/{booking}', 'update');
         Route::get('/available-rooms/{checkin_date}', 'availableRooms');
     });
 
