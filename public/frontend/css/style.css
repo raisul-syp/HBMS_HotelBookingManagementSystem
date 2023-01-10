@@ -1112,7 +1112,7 @@ Testimonials Section Start
 .testimonials_section {
 }
 .testimonials_section .testimonials_section_inner {
-    padding: 50px 0 0;
+    padding: 50px 0 40px;
 }
 .testimonials_section .testimonials_section_inner .section_title {
     position: relative;
@@ -1351,7 +1351,7 @@ Footer Section Start
 
 .footer_section .footer_section_inner .footer_top .footer_logo {
     width: 100%;
-    margin: 70px auto 30px 0;
+    margin: 40px auto 30px 0;
 }
 .footer_section .footer_section_inner .footer_top .footer_logo img {
     width: 100%;
@@ -2891,3 +2891,158 @@ select.guest-select {
     background: var(--siteColor1);
     color: #ffffff;
 }
+
+.offer-page-parent {}
+.offer-page-parent .row .col-mob-6:nth-last-child(1),
+.offer-page-parent .row .col-mob-6:nth-last-child(2) {
+    margin-bottom: 0 !important;
+}
+
+/* ------------------------- Video Section CSS Start --------------------- */
+.video-section-area {
+    position: relative;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  .video-section-area:after {
+    content: "";
+    background: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    z-index: -1;
+  }
+  .play-btn-box {
+    border: 2px solid #d1962b7d;
+    border-radius: 50%;
+    width: 287px;
+    height: 287px;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .play-btn-line1 {
+    border: 2px solid #d1962bbf;
+    border-radius: 50%;
+    width: 230px;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right-color: transparent;
+  }
+  .play-btn-line2 {
+    border: 2px solid var(--siteColor2);
+    border-radius: 50%;
+    width: 172px;
+    height: 172px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right-color: transparent;
+  }
+  .play-button {
+    background: var(--goldenBG2);
+    width: 106px;
+    height: 106px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .play-button svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 7px;
+    font-size: 20px;
+  }
+  
+  #line1 {
+    -webkit-animation: rotation 4s infinite linear;
+  }
+  
+  @-webkit-keyframes rotation {
+    from {
+      -webkit-transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(359deg);
+    }
+  }
+  
+  #line2 {
+    -webkit-animation: rotation1 3s infinite linear;
+  }
+  
+  @-webkit-keyframes rotation1 {
+    from {
+      -webkit-transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(359deg);
+    }
+  }
+  .video-overlay {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: all ease 500ms;
+    visibility: hidden;
+  }
+  
+  .video-overlay.open {
+    position: fixed;
+    z-index: 99999999999999999999;
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .video-overlay-close {
+    position: absolute;
+    z-index: 100000;
+    top: 120px;
+    right: 120px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 200ms;
+  }
+  
+  .video-overlay-close:hover {
+    color: #fa183d;
+  }
+  
+  .video-overlay iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    /* width: 90%; */
+    /* height: auto; */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+  }
+  /* ------------------------- Video Section CSS End --------------------- */

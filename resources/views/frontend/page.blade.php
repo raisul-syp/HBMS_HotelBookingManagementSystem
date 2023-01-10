@@ -21,89 +21,100 @@
             </div>
 
             @if ($page->name == 'Offers')
-            <div class="row mt-4">
-                @forelse ($offers as $offer)
-                @if ($offer->offer_type == 'Poster')
-                <div class="col-lg-4 col-mob-6 mb-4">
-                    <div class="page-inner">
-                        <div class="card">
-                            <div class="page-image">
-                                <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
-                            </div>
-                            <div class="card-body">
-                                <hr>
-                                <div class="page-terminal d-flex align-items-center justify-content-between">
-                                    <div class="datetime">
-                                        <i class="fa fa-calendar me-1"></i>
-                                        <span>{{ date('d M Y', strtotime($offer->start_date)).' - '.date('d M Y', strtotime($offer->end_date)) }}</span>
-                                    </div>
-                                    <div class="offer-type">
-                                        <span class="badge bg-dark">{{ $offer->offer_type }}</span>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="page-header">
-                                    <div class="page-title">
-                                        {{ $offer->name }}
-                                    </div>
-                                </div>
-                                <div class="page-body">
-                                    <div class="page-dscrp">
-                                        {{ $offer->short_description }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="page-details-btn">
-                                <a href="{{ url('offers/offer-details/'.$offer->slug) }}" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endif
-                @if ($offer->offer_type == 'Banner')
-                <div class="col-lg-6 col-mob-6 mb-4">
-                    <div class="page-inner">
-                        <div class="card">
-                            <div class="page-image">
-                                <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
-                            </div>
-                            <div class="card-body">
-                                <hr>
-                                <div class="page-terminal d-flex align-items-center justify-content-between">
-                                    <div class="datetime">
-                                        <i class="fa fa-calendar me-1"></i>
-                                        <span>{{ date('d M Y', strtotime($offer->start_date)).' - '.date('d M Y', strtotime($offer->end_date)) }}</span>
-                                    </div>
-                                    <div class="offer-type">
-                                        <span class="badge bg-dark">{{ $offer->offer_type }}</span>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="page-header">
-                                    <div class="page-title">
-                                        {{ $offer->name }}
-                                    </div>
-                                </div>
-                                <div class="page-body">
-                                    <div class="page-dscrp">
-                                        {{ $offer->short_description }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="page-details-btn">
-                                <a href="{{ url('offers/offer-details/'.$offer->slug) }}" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endif
-                @empty
+            <div class="offer-page-parent">
                 <div class="row mt-4">
+                    @forelse ($offers as $offer)
+                    @if ($offer->offer_type == 'Poster')
+                    <div class="col-lg-6 col-mob-6 mb-4">
+                        <div class="page-inner">
+                            <div class="card">
+                                <div class="page-image">
+                                    <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <hr>
+                                    <div class="page-terminal d-flex align-items-center justify-content-between">
+                                        <div class="datetime">
+                                            <i class="fa fa-calendar me-1"></i>
+                                            <strong>Start Date: </strong><span>{{ date('d M Y', strtotime($offer->start_date)) }}</span>
+                                        </div>
+                                        <div class="datetime">
+                                            <i class="fa fa-calendar me-1"></i>
+                                            <strong>End Date: </strong><span>{{ date('d M Y', strtotime($offer->end_date)) }}</span>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="page-header">
+                                        <div class="page-title">
+                                            {{ $offer->name }}
+                                        </div>
+                                    </div>
+                                    <div class="page-body">
+                                        <div class="page-dscrp">
+                                            {{ $offer->short_description }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="page-details-btn">
+                                    <a href="{{ url('offers/offer-details/'.$offer->slug) }}" class="btn btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    @empty
                     <div class="col-lg-12">
                         No Offers Record Available!
                     </div>
+                    @endforelse
                 </div>
-                @endforelse
+                
+                <div class="row mt-4">
+                    @forelse ($offers as $offer)
+                    @if ($offer->offer_type == 'Banner')
+                    <div class="col-lg-6 col-mob-6 mb-4">
+                        <div class="page-inner">
+                            <div class="card">
+                                <div class="page-image">
+                                    <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
+                                </div>
+                                <div class="card-body">
+                                    <hr>
+                                    <div class="page-terminal d-flex align-items-center justify-content-between">
+                                        <div class="datetime">
+                                            <i class="fa fa-calendar me-1"></i>
+                                            <strong>Start Date: </strong><span>{{ date('d M Y', strtotime($offer->start_date)) }}</span>
+                                        </div>
+                                        <div class="datetime">
+                                            <i class="fa fa-calendar me-1"></i>
+                                            <strong>End Date: </strong><span>{{ date('d M Y', strtotime($offer->end_date)) }}</span>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="page-header">
+                                        <div class="page-title">
+                                            {{ $offer->name }}
+                                        </div>
+                                    </div>
+                                    <div class="page-body">
+                                        <div class="page-dscrp">
+                                            {{ $offer->short_description }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="page-details-btn">
+                                    <a href="{{ url('offers/offer-details/'.$offer->slug) }}" class="btn btn-primary">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    @empty
+                    <div class="col-lg-12">
+                        No Offers Record Available!
+                    </div>
+                    @endforelse
+                </div>
             </div>
             @endif
 

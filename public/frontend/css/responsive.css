@@ -1,5 +1,8 @@
 /* Media Query for Mobile Devices */
 @media (max-width: 480px) {
+    body::-webkit-scrollbar {
+        width: 5px;
+    } 
     .col-mob-3 {
         width: 25% !important;
     }
@@ -729,6 +732,112 @@
     .profile-card .card-footer button {
         width: 100%;
     }
+
+    .offer-page-parent .row .col-mob-6:nth-child(odd) {
+        padding-right: 5px;
+    }
+    .offer-page-parent .row .col-mob-6:nth-child(even) {
+        padding-left: 5px;
+    }
+    .pages_section_frontend .page-inner .page-terminal {
+        display: block !important;
+    }
+
+    .pages_section_frontend .page-inner .page-terminal .location, 
+    .pages_section_frontend .page-inner .page-terminal .datetime {
+        font-size: 10px;
+    }
+    .pages_section_frontend .card .card-body {
+        padding: 5px 10px;
+    }
+    .pages_section_frontend .page-header .page-title {
+        font-size: 14px;
+        line-height: 14px;
+    }
+    .pages_section_frontend .page-body .page-dscrp {
+        font-size: 12px;
+        line-height: 12px;
+    }
+    .pages_section_frontend .page-details-btn a {
+        font-size: 14px;
+    }
+
+
+
+
+
+    
+  .play-btn-box {
+    width: 200px;
+    height: 200px;
+  }
+
+  .play-btn-line1 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .play-btn-line2 {
+    height: 120px;
+    width: 120px;
+  }
+
+  .play-button {
+    width: 80px;
+    height: 80px;
+  }
+
+  .play-button .fas {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+
+  .video-section-area {
+    height: auto;
+    padding: 30px;
+  }
+  .play-btn-box {
+    width: 200px;
+    height: 200px;
+  }
+
+  .play-btn-line1 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .play-btn-line2 {
+    height: 120px;
+    width: 120px;
+  }
+
+  .play-button {
+    width: 80px;
+    height: 80px;
+  }
+
+  .play-button svg {
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+  }
+
+  .video-section-area {
+    height: auto;
+    padding: 30px;
+  }
+
+  .video-overlay iframe {
+    width: 80%;
+    height: 50%;
+  }
+
+  .video-overlay-close {
+    right: 20px;
+    top: 90px;
+    font-size: 25px;
+  }
 }
 
 

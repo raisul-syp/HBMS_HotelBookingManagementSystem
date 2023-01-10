@@ -379,6 +379,18 @@
     </div>
 </section>
 
+<section class="video-section-area" style="background-image: url(../frontend/images/vidoe-section-bg.jpg);">
+    <div class="play-btn-box" id="play-video">
+      <div class="play-button"><i class="fas fa-play"></i></div>
+      <div class="play-btn-line1" id="line1">
+        <div class="play-btn-line2" id="line2"></div>
+      </div>
+    </div>
+    <div id="video-overlay" class="video-overlay">
+      <a class="video-overlay-close"><i class="fa-solid fa-xmark"></i></a>
+    </div>
+</section>
+
 <div id="testimonials_section" class="testimonials_section">
     <div class="testimonials_section_inner">
         <div class="container">
