@@ -3036,7 +3036,8 @@ select.guest-select {
     color: #fa183d;
   }
   
-  .video-overlay iframe {
+  .video-overlay iframe,
+  .video-overlay video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -3044,5 +3045,6 @@ select.guest-select {
     /* width: 90%; */
     /* height: auto; */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+    background: var(--goldenBG2);
   }
   /* ------------------------- Video Section CSS End --------------------- */
