@@ -68,7 +68,7 @@
                     </div>
                     @endforelse
                 </div>
-                
+
                 <div class="row mt-4">
                     @forelse ($offers as $offer)
                     @if ($offer->offer_type == 'Banner')
@@ -127,11 +127,11 @@
                         <button class="nav-link" id="best_rate_guarantee-tab" data-bs-toggle="pill" data-bs-target="#best_rate_guarantee" type="button" role="tab" aria-controls="best_rate_guarantee" aria-selected="false">Best Rate Guarantee</button>
                     </div>
                 </div>
-                <div class="col-lg-9">                  
+                <div class="col-lg-9">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="general_information" role="tabpanel" aria-labelledby="general_information-tab">
                             @foreach ($faqs as $faq)
-                            @if ($faq->faq_type == 'General Information')  
+                            @if ($faq->faq_type == 'General Information')
                             <div class="accordion-item mb-2">
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $faq->slug }}" aria-expanded="false" aria-controls="{{ $faq->slug }}">
@@ -144,12 +144,12 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif   
-                            @endforeach                       
+                            @endif
+                            @endforeach
                         </div>
                         <div class="tab-pane fade" id="reservations" role="tabpanel" aria-labelledby="reservations-tab">
                             @foreach ($faqs as $faq)
-                            @if ($faq->faq_type == 'Reservations')  
+                            @if ($faq->faq_type == 'Reservations')
                             <div class="accordion-item mb-3">
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $faq->slug }}" aria-expanded="false" aria-controls="{{ $faq->slug }}">
@@ -162,12 +162,12 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif   
-                            @endforeach     
+                            @endif
+                            @endforeach
                         </div>
                         <div class="tab-pane fade" id="best_rate_guarantee" role="tabpanel" aria-labelledby="best_rate_guarantee-tab">
                             @foreach ($faqs as $faq)
-                            @if ($faq->faq_type == 'Best Rate Guarantee')  
+                            @if ($faq->faq_type == 'Best Rate Guarantee')
                             <div class="accordion-item mb-3">
                                 <h2 class="accordion-header" id="headingTwo">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $faq->slug }}" aria-expanded="false" aria-controls="{{ $faq->slug }}">
@@ -180,8 +180,8 @@
                                     </div>
                                 </div>
                             </div>
-                            @endif   
-                            @endforeach     
+                            @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -374,32 +374,40 @@
 
             @if ($page->name == 'Certificates & Awards')
             <div class="row mt-4">
-                <div class="col-lg-4 mb-4">
-                    No Certificates & Awards Record Available!
+                <div class="col-lg-12">
+                    <div class="hotel-policy-div">
+                        {!! html_entity_decode($page->long_description) !!}
+                    </div>
                 </div>
             </div>
             @endif
 
             @if ($page->name == 'Booking Cancelation Policy')
             <div class="row mt-4">
-                <div class="col-lg-4 mb-4">
-                    No Booking Cancelation Policy Record Available!
+                <div class="col-lg-12">
+                    <div class="hotel-policy-div">
+                        {!! html_entity_decode($page->long_description) !!}
+                    </div>
                 </div>
             </div>
             @endif
 
             @if ($page->name == 'Privacy Policy')
             <div class="row mt-4">
-                <div class="col-lg-4 mb-4">
-                    No Privacy Policy Record Available!
+                <div class="col-lg-12">
+                    <div class="hotel-policy-div">
+                        {!! html_entity_decode($page->long_description) !!}
+                    </div>
                 </div>
             </div>
             @endif
 
             @if ($page->name == 'Terms & Conditions')
             <div class="row mt-4">
-                <div class="col-lg-4 mb-4">
-                    No Terms & Conditions Record Available!
+                <div class="col-lg-12">
+                    <div class="hotel-policy-div">
+                        {!! html_entity_decode($page->long_description) !!}
+                    </div>
                 </div>
             </div>
             @endif

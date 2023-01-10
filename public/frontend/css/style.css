@@ -1990,6 +1990,10 @@ Footer Section End
     align-items: center;
     margin: 0 auto;
 }
+.pages_section_frontend .card.wellness .page-image.logo {
+    width: 100%;
+    height: auto;
+}
 .pages_section_frontend .page-image img {
     width: 100%;
 }
@@ -2909,7 +2913,7 @@ select.guest-select {
     align-items: center;
     z-index: 2;
   }
-  
+
   .video-section-area:after {
     content: "";
     background: black;
@@ -2972,11 +2976,11 @@ select.guest-select {
     margin-left: 7px;
     font-size: 20px;
   }
-  
+
   #line1 {
     -webkit-animation: rotation 4s infinite linear;
   }
-  
+
   @-webkit-keyframes rotation {
     from {
       -webkit-transform: rotate(0deg);
@@ -2985,11 +2989,11 @@ select.guest-select {
       -webkit-transform: rotate(359deg);
     }
   }
-  
+
   #line2 {
     -webkit-animation: rotation1 3s infinite linear;
   }
-  
+
   @-webkit-keyframes rotation1 {
     from {
       -webkit-transform: rotate(0deg);
@@ -3010,14 +3014,14 @@ select.guest-select {
     transition: all ease 500ms;
     visibility: hidden;
   }
-  
+
   .video-overlay.open {
     position: fixed;
     z-index: 99999999999999999999;
     visibility: visible;
     opacity: 1;
   }
-  
+
   .video-overlay-close {
     position: absolute;
     z-index: 100000;
@@ -3031,11 +3035,11 @@ select.guest-select {
     cursor: pointer;
     transition: all 200ms;
   }
-  
+
   .video-overlay-close:hover {
     color: #fa183d;
   }
-  
+
   .video-overlay iframe,
   .video-overlay video {
     position: absolute;
@@ -3048,3 +3052,8 @@ select.guest-select {
     background: var(--goldenBG2);
   }
   /* ------------------------- Video Section CSS End --------------------- */
+
+
+  .hotel-policy-div {
+    text-align: justify;
+  }
