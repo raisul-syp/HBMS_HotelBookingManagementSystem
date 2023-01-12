@@ -123,7 +123,10 @@
                                             {{ __('Payment Type') }}
                                         </label>
                                         <div class="col-sm-10 mt-2">
-                                            <div class="form-check">
+                                            <label class="form-label">
+                                                {{ __('Please, pay on arrival!') }}
+                                            </label>
+                                            {{-- <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                     {{ __('Cash On Delivery') }}
@@ -140,7 +143,7 @@
                                                 <label class="form-check-label" for="flexRadioDefault2">
                                                     {{ __('Mobile Banking') }}
                                                 </label>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>  
                                     <input id="guest_id" name="guest_id" value="{{ Auth::user()->id }}" hidden>

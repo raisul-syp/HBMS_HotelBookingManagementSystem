@@ -112,7 +112,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th class="text-start">Postal Code</th>
+                                                <th class="text-start">Country</th>
                                                 <td class="text-start">
                                                     <div class="input-wrapper">
                                                         <select class="form-control guest-select" id="country" name="country" >

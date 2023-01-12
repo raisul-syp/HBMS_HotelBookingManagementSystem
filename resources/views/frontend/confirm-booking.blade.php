@@ -187,7 +187,12 @@
                                             <h4 class="confirm-booking-card-header">Payment Type</h4>
                                             
                                             <div class="form-group row">
-                                                <div class="col-sm-12 mb-2">
+                                                <div class="col-sm-12">
+                                                    <label class="form-label">
+                                                        {{ __('Please, pay on arrival!') }}
+                                                    </label>
+                                                </div>
+                                                {{-- <div class="col-sm-12 mb-2">
                                                     <div class="form-check">
                                                         <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                                         <label class="form-check-label" for="flexRadioDefault1">
@@ -210,7 +215,7 @@
                                                             {{ __('Mobile Banking') }}
                                                         </label>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                             </div>  
                                         </div>
                                         
