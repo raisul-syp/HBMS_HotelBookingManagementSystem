@@ -51,15 +51,14 @@ class RoomFormRequest extends FormRequest
             'price' => [
                 'nullable'
             ],
+            'discount_rate' => [
+                'nullable'
+            ],
+            'discount_price' => [
+                'nullable'
+            ],
             'image' => [
                 'nullable',
-                // 'image|mimes:jpg,jpeg,png'
-            ],
-            'is_active' => [
-                'nullable'
-            ],
-            'is_delete' => [
-                'nullable'
             ],
             'meta_title' => [
                 'required',

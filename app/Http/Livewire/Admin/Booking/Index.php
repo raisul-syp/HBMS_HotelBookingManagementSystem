@@ -29,7 +29,7 @@ class Index extends Component
 
     public function render()
     {
-        $bookings = Booking::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
+        $bookings = Booking::where('is_delete','1')->orderBy('created_at','DESC')->paginate(10);
         $serialNo = ($bookings->perPage() * ($bookings->currentPage() - 1)) + 1;
         return view('livewire.admin.booking.index', compact('bookings', 'serialNo'));
     }

@@ -22,12 +22,15 @@ class CreateHbRoomsTable extends Migration
             $table->integer('max_adults')->nullable();
             $table->integer('max_childs')->nullable();
             $table->integer('quantity')->nullable();
-            $table->integer('price')->nullable();
+            $table->float('price')->default('0.00');
+            $table->integer('discount_rate')->default('0');
+            $table->float('discount_price')->default('0.00');
 
             $table->string('meta_title');
             $table->string('meta_keyword');
             $table->mediumText('meta_decription')->nullable();
 
+            $table->tinyInteger('has_discount')->default('0')->comment('0=No, 1=Yes');
             $table->tinyInteger('is_active')->default('1')->comment('0=Deactive, 1=Active');
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->string('created_by')->nullable();

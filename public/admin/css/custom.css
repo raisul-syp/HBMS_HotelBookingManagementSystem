@@ -71,6 +71,10 @@
     color: #505050 !important;
 }
 
+.table thead th {
+    vertical-align: middle !important;
+}
+
 body {
     color: #505050 !important;
 }
@@ -281,6 +285,15 @@ img.list-image {
 
 .header-right .header-profile img {
     border: 1px solid var(--siteColor2);
+}
+
+.nav.nav-pills .nav-item a.nav-link:hover{
+    color: var(--siteColor2) !important;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background: #e3e3e3 !important;
 }
 
 

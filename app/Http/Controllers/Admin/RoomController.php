@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoomFormRequest;
+use Psy\Readline\Hoa\Console;
 
 class RoomController extends Controller
 {
@@ -41,11 +42,14 @@ class RoomController extends Controller
         $room->max_childs = $validatedData['max_childs'];
         $room->quantity = $validatedData['quantity'];
         $room->price = $validatedData['price'];
+        $room->discount_rate = $validatedData['discount_rate'];
+        $room->discount_price = $validatedData['discount_price'];
 
         $room->meta_title = $validatedData['meta_title'];
         $room->meta_keyword = $validatedData['meta_keyword'];
         $room->meta_decription = $validatedData['meta_decription'];
 
+        $room->has_discount = $request->has_discount == true ? '1':'0';
         $room->is_active = $request->is_active == true ? '1':'0';
         $room->created_by = $validatedData['created_by'];
         $room->save();
@@ -100,11 +104,14 @@ class RoomController extends Controller
         $room->max_childs = $validatedData['max_childs'];
         $room->quantity = $validatedData['quantity'];
         $room->price = $validatedData['price'];
+        $room->discount_rate = $validatedData['discount_rate'];
+        $room->discount_price = $validatedData['discount_price'];
 
         $room->meta_title = $validatedData['meta_title'];
         $room->meta_keyword = $validatedData['meta_keyword'];
         $room->meta_decription = $validatedData['meta_decription'];
 
+        $room->has_discount = $request->has_discount == true ? '1':'0';
         $room->is_active = $request->is_active == true ? '1':'0';
         $room->updated_by = $validatedData['updated_by'];
         $room->update();

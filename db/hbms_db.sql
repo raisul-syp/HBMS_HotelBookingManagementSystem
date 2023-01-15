@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2023 at 09:29 PM
+-- Generation Time: Jan 15, 2023 at 07:15 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -503,9 +503,9 @@ CREATE TABLE `hb_halls` (
 --
 
 INSERT INTO `hb_halls` (`id`, `name`, `slug`, `short_description`, `long_description`, `logo_image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Board Room', 'board-room', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p style=\"text-align: left;\">The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Board Room', 'Board Room', 'Board Room', 1, 1, '0', '1', '2022-12-13 20:54:56', '2022-12-29 10:07:26'),
-(2, 'Olive Hall', 'olive-hall', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Olive Hall', 'Olive Hall', 'Olive Hall', 1, 1, '0', '1', '2022-12-13 22:58:33', '2022-12-29 10:07:39'),
-(3, 'Tulip Hall', 'tulip-hall', 'The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Tulip Hall', 'Tulip Hall', 'Tulip Hall', 1, 1, '0', '1', '2022-12-13 22:59:14', '2022-12-29 10:07:53');
+(1, 'Board Room', 'board-room', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p style=\"text-align: left;\">The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For Board Room 30 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Board Room', 'Board Room', 'Board Room', 0, 1, '0', '0', '2022-12-13 20:54:56', '2023-01-15 00:23:13'),
+(2, 'Olive Hall', 'olive-hall', 'The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-VisuThe Hotel Has 3 Dedicated Conference And Event Venues Has The Olive Hall Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Olive Hall', 'Olive Hall', 'Olive Hall', 0, 1, '0', '1', '2022-12-13 22:58:33', '2022-12-29 10:07:39'),
+(3, 'Tulip Hall', 'tulip-hall', 'The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.', '<p>The Hotel Has 3 The Hotel Has 3 Dedicated Conference And Event Venues Has The Tulip Hall Capacity For 80 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.<br></p>', NULL, 'Tulip Hall', 'Tulip Hall', 'Tulip Hall', 0, 1, '0', '1', '2022-12-13 22:59:14', '2022-12-29 10:07:53');
 
 -- --------------------------------------------------------
 
@@ -622,10 +622,13 @@ CREATE TABLE `hb_rooms` (
   `max_adults` int(11) DEFAULT NULL,
   `max_childs` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
-  `price` int(11) DEFAULT NULL,
+  `price` float(8,2) NOT NULL DEFAULT 0.00,
+  `discount_rate` int(11) NOT NULL DEFAULT 0,
+  `discount_price` float(8,2) NOT NULL DEFAULT 0.00,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `has_discount` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
   `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
   `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
   `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -638,11 +641,11 @@ CREATE TABLE `hb_rooms` (
 -- Dumping data for table `hb_rooms`
 --
 
-INSERT INTO `hb_rooms` (`id`, `name`, `slug`, `short_description`, `long_description`, `max_adults`, `max_childs`, `quantity`, `price`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Deluxe', 'deluxe', 'Deluxe', '<p>Deluxe<br></p>', 2, 1, 10, 220, 'Deluxe', 'Deluxe', 'Deluxe', 1, 1, '1', '1', '2022-12-26 05:16:35', '2023-01-02 04:07:16'),
-(2, 'Super Deluxe King', 'super-deluxe-king', 'Super Deluxe King', '<p>Super Deluxe King<br></p>', 3, 2, 10, 260, 'Super Deluxe King', 'Super Deluxe King', 'Super Deluxe King', 1, 1, '0', '1', '2022-12-14 18:45:59', '2022-12-26 05:21:41'),
-(3, 'Premium Delux', 'premium-delux', 'Premium Delux', '<p>Premium Delux<br></p>', 3, 3, 10, 280, 'Premium Delux', 'Premium Delux', 'Premium Delux', 1, 1, '0', '1', '2022-12-14 18:47:55', '2022-12-26 05:23:04'),
-(4, 'Premium Delux Twin', 'premium-delux-twin', 'Premium Delux Twin', '<p>Premium Delux Twin<br></p>', 4, 2, 10, 280, 'Premium Delux Twin', 'Premium Delux Twin', 'Premium Delux Twin', 1, 1, '0', '1', '2022-12-14 18:49:23', '2022-12-26 05:23:58');
+INSERT INTO `hb_rooms` (`id`, `name`, `slug`, `short_description`, `long_description`, `max_adults`, `max_childs`, `quantity`, `price`, `discount_rate`, `discount_price`, `meta_title`, `meta_keyword`, `meta_decription`, `has_discount`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Deluxe', 'deluxe', 'Deluxe', '<p>Deluxe<br></p>', 2, 1, 10, 220.00, 0, 0.00, 'Deluxe', 'Deluxe', 'Deluxe', 0, 1, 1, '1', '1', '2022-12-26 05:16:35', '2023-01-02 04:07:16'),
+(2, 'Super Deluxe King', 'super-deluxe-king', 'Super Deluxe King', '<p>Super Deluxe King<br></p>', 3, 2, 10, 260.00, 0, 0.00, 'Super Deluxe King', 'Super Deluxe King', 'Super Deluxe King', 0, 1, 1, '0', '1', '2022-12-14 18:45:59', '2022-12-26 05:21:41'),
+(3, 'Premium Delux', 'premium-delux', 'Premium Delux', '<p>Premium Delux<br></p>', 3, 3, 10, 280.00, 0, 0.00, 'Premium Delux', 'Premium Delux', 'Premium Delux', 0, 1, 1, '0', '1', '2022-12-14 18:47:55', '2022-12-26 05:23:04'),
+(4, 'Premium Delux Twin', 'premium-delux-twin', 'Premium Delux Twin', '<p>Premium Delux Twin<br></p>', 4, 2, 10, 280.00, 10, 252.00, 'Premium Delux Twin', 'Premium Delux Twin', 'Premium Delux Twin', 1, 1, 1, '0', '0', '2022-12-14 18:49:23', '2023-01-15 05:38:07');
 
 -- --------------------------------------------------------
 
@@ -919,7 +922,7 @@ INSERT INTO `hb_webnavs` (`id`, `name`, `slug`, `display_order`, `meta_title`, `
 (1, 'Home', '', '1', 'Home', 'Home', 'Home', 1, 1, '0', '0', '2022-12-12 17:24:20', '2022-12-16 18:25:51'),
 (2, 'Rooms', 'rooms', '2', 'Rooms', 'Rooms', 'Rooms', 1, 1, '0', '0', '2022-12-12 21:43:09', '2022-12-13 23:02:28'),
 (3, 'Restaurants', 'restaurants', '3', 'Restaurants', 'Restaurants', 'Restaurants', 1, 1, '0', '0', '2022-12-13 19:07:41', '2022-12-19 18:25:02'),
-(4, 'Halls', 'halls', '4', 'Halls', 'Halls', 'Halls', 1, 1, '0', '0', '2022-12-13 23:03:01', '2022-12-13 23:04:11'),
+(4, 'Halls', 'halls', '4', 'Halls', 'Halls', 'Halls', 0, 1, '0', '0', '2022-12-13 23:03:01', '2022-12-13 23:04:11'),
 (5, 'Wellness', 'wellnesses', '5', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', '0', '2022-12-13 23:42:36', '2022-12-19 19:41:32'),
 (6, 'About Us', 'about-us', '6', 'About Us', 'About Us', 'About Us', 1, 1, '0', NULL, '2022-12-13 23:42:56', '2022-12-13 23:42:56'),
 (7, 'Contact Us', 'contact-us', '7', 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, '0', NULL, '2022-12-13 23:43:18', '2022-12-13 23:43:18');
@@ -963,7 +966,7 @@ INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_descriptio
 (4, 'FAQ', 'FAQ', 'FAQ', 'FAQ', '<p>FAQ<br></p>', 'faq', '4', NULL, 'FAQ', 'FAQ', 'FAQ', 1, 1, 1, '0', '1', NULL, '2023-01-08 14:40:23'),
 (5, 'Rooms', 'Rooms', 'Rooms', 'Rooms', '<p>Rooms<br></p>', 'rooms', '5', NULL, 'Rooms', 'Rooms', 'Rooms', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:41:12'),
 (6, 'Restaurants', 'Restaurants', 'Restaurants', 'Restaurants', '<p>Restaurants<br></p>', 'restaurants', '6', NULL, 'Restaurants', 'Restaurants', 'Restaurants', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:41:27'),
-(7, 'Halls', 'Halls', 'Halls', 'Meeting & Events', '<p>Meeting &amp; Events<br></p>', 'halls', '7', NULL, 'Halls', 'Halls', 'Halls', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:42:22'),
+(7, 'Halls', 'Halls', 'Halls', 'Meeting & Events', '<p>Meeting &amp; Events<br></p>', 'halls', '7', NULL, 'Halls', 'Halls', 'Halls', 0, 0, 1, '0', '0', NULL, '2023-01-15 00:35:00'),
 (8, 'Wellness', 'Wellness', 'Wellness', 'Wellness', '<p>Wellness<br></p>', 'wellness', '8', NULL, 'Wellness', 'Wellness', 'Wellness', 1, 1, 1, '0', '0', NULL, '2022-12-21 01:50:27'),
 (9, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', '<p>Certificates &amp; Awards<br></p>', 'certificates-awards', '9', NULL, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:42:54'),
 (10, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', '<p>Booking Cancelation Policy<br></p>', 'booking-cancelation-policy', '10', NULL, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:43:20'),
@@ -1070,7 +1073,7 @@ CREATE TABLE `hb_wellness` (
 INSERT INTO `hb_wellness` (`id`, `name`, `slug`, `short_description`, `long_description`, `logo_image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'Spa', 'spa', 'Spa', '<p>Spa<br></p>', 'spa.png', 'Spa', 'Spa', 'Spa', 1, 1, '0', '0', '2022-12-13 23:35:12', '2023-01-10 13:44:44'),
 (2, 'Gym', 'gym', 'Gym', '<p>Gym<br></p>', 'gym.png', 'Gym', 'Gym', 'Gym', 1, 1, '0', '0', '2022-12-13 23:35:51', '2023-01-10 13:44:59'),
-(3, 'Saloon', 'saloon', 'Saloon', '<p>Saloon<br></p>', 'saloon.png', 'Saloon', 'Saloon', 'Saloon', 1, 1, '0', '0', '2022-12-13 23:36:38', '2023-01-10 13:45:15'),
+(3, 'Saloon', 'saloon', 'Saloon', '<p>Saloon<br></p>', 'saloon.png', 'Saloon', 'Saloon', 'Saloon', 0, 1, '0', '0', '2022-12-13 23:36:38', '2023-01-15 01:15:31'),
 (4, 'Swimming Pool', 'swimming-pool', 'Swimming Pool', '<p>Swimming Pool<br></p>', NULL, 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 0, 1, '0', '0', '2022-12-13 23:37:31', '2023-01-10 13:45:33');
 
 -- --------------------------------------------------------
@@ -1472,7 +1475,7 @@ ALTER TABLE `hb_restaurent_images`
 -- AUTO_INCREMENT for table `hb_rooms`
 --
 ALTER TABLE `hb_rooms`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `hb_roomtype`
@@ -1484,19 +1487,19 @@ ALTER TABLE `hb_roomtype`
 -- AUTO_INCREMENT for table `hb_roomtype_view`
 --
 ALTER TABLE `hb_roomtype_view`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `hb_room_facilities`
 --
 ALTER TABLE `hb_room_facilities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `hb_room_images`
 --
 ALTER TABLE `hb_room_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `hb_settings`

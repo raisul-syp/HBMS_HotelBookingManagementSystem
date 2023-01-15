@@ -112,32 +112,6 @@
     </div>
 </section>
 
-{{-- @if (count($offers) > 0)
-<section id="offer_section" class="offer_section">
-    <div class="offer_section_inner">
-        <div class="container">
-            <div class="row">
-                @foreach ($offers->where('offer_type', '=', 'Banner')->slice(0,1) as $offer)
-                <div class="col-lg-12 col-mob-12">
-                    <div class="offer_sec">
-                        <a href="{{ url('offers/offer-details/'.$offer->slug) }}">
-                            <div class="card">
-                                <div class="card-image banner">
-                                    <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="">
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
-@else
-<section id="offer_section" class="offer_section d-none"></section>
-@endif --}}
-
 @if (count($offers) >0)
 <section id="offer_section" class="offer_section">
     <div class="offer_section_inner">
@@ -233,10 +207,24 @@
                                 <div class="content">
                                     <div class="content_inner">
                                         <h4>{{ $room->name }}</h4>
-                                        <div class="room-price">
-                                            <p><strong>${{ $room->price }}++</strong>/night</p>
-                                            <small>Rack Rate</small>
+                                        @if ($room->has_discount == 1)
+                                        <div class="room-price more-price">
+                                            <div class="previous-price">
+                                                <h5>{{ '$'.$room->price.'++' }} <span>/ night</span></h5>
+                                            </div>
+                                            <div class="discount-price">
+                                                <h5>{{ '$'.$room->discount_price.'++' }} <span>/ night</span></h5>
+                                                <h6>{{ $room->discount_rate.'%' }}<span>off</span></h6>
+                                            </div>
                                         </div>
+                                        @else
+                                        <div class="room-price">
+                                            <div class="actual-price">
+                                                <h5>{{ '$'.$room->price.'++' }} <span>/ night</span></h5>
+                                                <h6>Rack Rate</h6>
+                                            </div>
+                                        </div>
+                                        @endif
                                     </div>
                                     <a href="{{ url('rooms/room-details/'.$room->slug) }}" class="btn-view">
                                         <span>View details</span>
@@ -325,20 +313,6 @@
                     <h4>Restaurants</h4>
                     <p>The hotel has 3 dedicated restaurants for any kind of function and has the capacity for 200+ guests. Each restaurant has very well decoration and world-class service.</p>
                     <a class="btn btn-primary btn-book" href="{{ url('/restaurants') }}">{{ _('View more') }}</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6 p-0">
-                <div class="facility_image">
-                    <img src="{{ asset('frontend/images/wellness/meeting.png') }}" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 p-0">
-                <div class="facility_content">
-                    <h4>Halls</h4>
-                    <p>The hotel has 3 dedicated halls for conferences and the event has the capacity for 200 delegates. Each hall with the very latest audio-visual and lighting technology.</p>
-                    <a class="btn btn-primary btn-book" href="{{ url('/halls') }}">{{ _('View more') }}</a>
                 </div>
             </div>
         </div>

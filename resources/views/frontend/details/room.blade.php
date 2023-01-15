@@ -38,32 +38,35 @@
                                 <div class="page-title">
                                     {{ $room->name }}
                                 </div>
-                                <div class="room-price">
-                                    ${{ $room->price }}++<span>/ night</span>
+                                @if ($room->has_discount == 1)
+                                <div class="room-price more-price">
+                                    <div class="previous-price">
+                                        <h5>{{ '$'.$room->price.'++' }} <span>/ night</span></h5>
+                                    </div>
+                                    <div class="discount-price">
+                                        <h5>{{ '$'.$room->discount_price.'++' }} <span>/ night</span></h5>
+                                        <h6>{{ $room->discount_rate.'%' }}<span>off</span></h6>
+                                    </div>
                                 </div>
+                                @else
+                                <div class="room-price">
+                                    <div class="actual-price">
+                                        <h5>{{ '$'.$room->price.'++' }} <span>/ night</span></h5>
+                                        <h6>Rack Rate</h6>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
 
                             <hr>
                             <div class="row">
-                                <div class="col-lg-3 col-mob-3">
-                                    <div class="page-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Adult">
-                                        <i class="fas fa-user"></i>
-                                        {{ $room->max_adults }}
+                                <div class="col-lg-6 col-mob-6">
+                                    <div class="page-capacity">
+                                        <i class="fas fa-user"></i> <strong>Max. Guest:</strong>
+                                        {{ $room->max_adults + $room->max_childs }} person(s)
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-mob-3">
-                                    <div class="page-capacity" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Max. Child">
-                                        <i class="fas fa-baby"></i>
-                                        {{ $room->max_childs }}
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-mob-3">
-                                    <div class="page-location" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Location">
-                                        <i class="fas fa-map-marked-alt"></i>
-                                        {{ $room->hotel_location }}
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-mob-3">
+                                <div class="col-lg-6 col-mob-6">
                                     <div class="page-availability">
                                         @if (count($room->bookings) > 0)
                                         <span class="badge bg-danger">Occupied</span>
