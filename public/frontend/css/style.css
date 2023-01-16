@@ -764,7 +764,7 @@ Rooms Section Start
 
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body {
     border-top: 5px solid var(--siteColor1);
-    padding: 20px 10px;
+    padding: 15px 10px;
 }
 
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content {
@@ -772,10 +772,6 @@ Rooms Section Start
 }
 
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner {
-    /* display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 15px; */
     margin-bottom: 10px;
 }
 
@@ -783,7 +779,7 @@ Rooms Section Start
     color: var(--siteColor1);
     font-weight: 700;
     font-size: 18px;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     line-height: 18px;
     text-align: center;
 }
@@ -818,20 +814,20 @@ Rooms Section Start
 
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner .room-price .previous-price {}
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner .room-price .previous-price h5 {
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: 0;
     text-transform: lowercase;
     text-decoration: line-through;
     text-decoration-color: red;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 0;
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 3px;
+    gap: 2px;
 }
 .rooms_section .rooms_section_inner .rooms_sec .card .card-body .content .content_inner .room-price .previous-price h5 span {
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 700;
 }
 

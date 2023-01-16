@@ -73,6 +73,7 @@
     <script src="{{ asset('frontend/js/jquery-ui-1.13.2.js') }}"></script>
     <script src="{{ asset('frontend/js/site.js') }}"></script>
     <script src="{{ asset('frontend/js/default.js') }}"></script>
+    <script src="{{ asset('frontend/js/slider.js') }}"></script>
     <script src="{{ asset('frontend/js/popper.js') }}"></script>
 
     <!-- Vendor Scripts -->

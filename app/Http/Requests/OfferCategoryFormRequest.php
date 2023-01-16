@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OfferFormRequest extends FormRequest
+class OfferCategoryFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,26 +31,6 @@ class OfferFormRequest extends FormRequest
             'slug' => [
                 'required',
                 'string'
-            ],
-            'offer_category' => [
-                'required',
-                'string'
-            ],
-            'short_description' => [
-                'required',
-                'string'
-            ],
-            'long_description' => [
-                'nullable'
-            ],
-            'start_date' => [
-                'nullable',
-            ],
-            'end_date' => [
-                'nullable',
-            ],
-            'thumb' => [
-                'nullable',
             ],
             'is_active' => [
                 'nullable'

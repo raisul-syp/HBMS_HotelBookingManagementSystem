@@ -91,16 +91,19 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="offer_type">
-                                        {{ __('Offer Type') }}
+                                    <label class="col-sm-2 col-form-label text-right" for="offer_category">
+                                        {{ __('Offer Category') }}
                                         <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
-                                        <select class="form-control js-basic-single" id="offer_type" name="offer_type" >
-                                            <option value="Poster" {{ old('role_as', $offer->offer_type) == 'Poster' ? 'selected' : '' }}>Poster</option>
-                                            <option value="Banner" {{ old('role_as', $offer->offer_type) == 'Banner' ? 'selected' : '' }}>Banner</option>
+                                        <select class="form-control js-basic-single" id="offer_category" name="offer_category" >
+                                            @forelse ($offerCategory as $offerCat)
+                                            <option value="{{ $offerCat->name }}" {{ old('offer_category', $offer->offer_category) == $offerCat->name ? 'selected' : '' }}>{{ $offerCat->name }}</option>
+                                            @empty
+                                            <option>No Data</option>
+                                            @endforelse
                                         </select>
-                                        @error('offer_type')
+                                        @error('offer_category')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>

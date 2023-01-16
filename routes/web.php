@@ -127,6 +127,15 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::put('/edit/{offer}', 'update');
     });
 
+    // Offer Category
+    Route::prefix('/admin/offer-category')->controller(App\Http\Controllers\Admin\OfferCategoryController::class)->group(function (){
+        Route::get('/', 'index');
+        Route::get('/create', 'create');
+        Route::post('/', 'store');
+        Route::get('/edit/{offer_cat}', 'edit');
+        Route::put('/edit/{offer_cat}', 'update');
+    });
+
     // FAQ
     Route::prefix('/admin/faq')->controller(App\Http\Controllers\Admin\FaqController::class)->group(function (){
         Route::get('/', 'index');

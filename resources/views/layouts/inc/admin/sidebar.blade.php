@@ -74,6 +74,7 @@
             <ul aria-expanded="false">
                 <li><a href="{{ url('admin/offers/create') }}">{{ __('Add Offer') }}</a></li>
                 <li><a href="{{ url('admin/offers') }}">{{ __('All Offer') }}</a></li>
+                <li><a href="{{ url('admin/offer-category') }}">{{ __('Offer Category') }}</a></li>
             </ul>
         </li>
         <li>

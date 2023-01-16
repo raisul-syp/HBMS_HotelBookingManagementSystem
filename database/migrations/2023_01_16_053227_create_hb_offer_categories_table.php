@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHbOffersTable extends Migration
+class CreateHbOfferCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,10 @@ class CreateHbOffersTable extends Migration
      */
     public function up()
     {
-        Schema::create('hb_offers', function (Blueprint $table) {
+        Schema::create('hb_offer_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('offer_category');
-            $table->mediumText('short_description');
-            $table->longText('long_description')->nullable();
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->string('thumb')->nullable();
 
             $table->string('meta_title');
             $table->string('meta_keyword');
@@ -43,6 +37,6 @@ class CreateHbOffersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hb_offers');
+        Schema::dropIfExists('hb_offer_categories');
     }
 }

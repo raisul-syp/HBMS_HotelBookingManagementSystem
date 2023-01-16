@@ -9,29 +9,20 @@
                 <thead class="text-center bg-primary text-white">
                     <tr>
                         <th>#</th>
-                        <th>Thumb</th>
                         <th>Name</th>
-                        <th>Offer Category</th>
-                        <th>Offer Duration</th>
+                        <th>Slug</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @forelse ($offers as $offer)
+                    @forelse ($offer_categories as $offer_cat)
                     <tr>
                         <td>{{ $serialNo++ }}</td>
+                        <td>{{ $offer_cat->name }}</td>
+                        <td>{{ $offer_cat->slug }}</td>
                         <td>
-                            <img src="{{ asset('uploads/offer/'.$offer->thumb) }}" alt="" class="list-image">
-                        </td>
-                        <td>{{ $offer->name }}</td>
-                        <td>{{ $offer->offer_category }}</td>
-                        <td>
-                            <strong>Start:</strong> {{ date('d M Y', strtotime($offer->start_date)) }} <br>
-                            <strong>End:</strong> {{ date('d M Y', strtotime($offer->end_date)) }}
-                        </td>
-                        <td>
-                            @if ($offer->is_active == '1')
+                            @if ($offer_cat->is_active == '1')
                                 <span class="badge badge-success text-white">Active</span>
                             @else
                                 <span class="badge badge-danger">Deactive</span>
@@ -39,17 +30,17 @@
                         </td>
                         <td>
                             <span data-toggle="tooltip" data-placement="top" title="Edit">
-                                <a href="{{ url('admin/offers/edit/'.$offer->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
+                                <a href="{{ url('admin/offer-category/edit/'.$offer_cat->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
                             <span data-toggle="tooltip" data-placement="top" title="Delete">
-                                <a href="#" wire:click="deleteRecord({{ $offer->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
+                                <a href="#" wire:click="deleteRecord({{ $offer_cat->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
                             @include('modal.admin.delete')
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="7">
+                        <td colspan="5">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>
@@ -59,7 +50,7 @@
         </div>
 
         <div class="pagination-section">
-            {{ $offers->links() }}
+            {{ $offer_categories->links() }}
         </div>
     </div>
 </div>

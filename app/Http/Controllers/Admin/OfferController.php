@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\OfferFormRequest;
+use App\Models\OfferCategory;
 
 class OfferController extends Controller
 {
@@ -20,7 +21,8 @@ class OfferController extends Controller
     public function create()
     {
         $offerDateTime = Carbon::now();
-        return view('admin.offer.create', compact('offerDateTime'));
+        $offerCategory = OfferCategory::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.offer.create', compact('offerDateTime','offerCategory'));
     }
 
     public function store(OfferFormRequest $request)
@@ -31,7 +33,7 @@ class OfferController extends Controller
 
         $offer->name = $validatedData['name'];
         $offer->slug = Str::slug($validatedData['slug']);
-        $offer->offer_type = $validatedData['offer_type'];
+        $offer->offer_category = $validatedData['offer_category'];
         $offer->short_description = $validatedData['short_description'];
         $offer->long_description = $validatedData['long_description'];
         $offer->start_date = $validatedData['start_date'];
@@ -61,7 +63,8 @@ class OfferController extends Controller
 
     public function edit(Offer $offer)
     {
-        return view('admin.offer.edit', compact('offer'));
+        $offerCategory = OfferCategory::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.offer.edit', compact('offer','offerCategory'));
     }
 
     public function update(OfferFormRequest $request, int $offer_id)
@@ -72,7 +75,7 @@ class OfferController extends Controller
 
         $offer->name = $validatedData['name'];
         $offer->slug = Str::slug($validatedData['slug']);
-        $offer->offer_type = $validatedData['offer_type'];
+        $offer->offer_category = $validatedData['offer_category'];
         $offer->short_description = $validatedData['short_description'];
         $offer->long_description = $validatedData['long_description'];
         $offer->start_date = $validatedData['start_date'];
