@@ -41,6 +41,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/profile', 'myProfile');
         Route::get('/profile/edit/{guest}', 'editMyProfile');
         Route::put('/profile/edit/{guest}', 'updateMyProfile');
+        Route::get('/change-password', 'changePassword');
+        Route::post('/change-password', 'updatePassword');
         Route::get('/booking-history', 'bookingHistory');
     });
 });
@@ -229,6 +231,15 @@ Route::group(['middleware' => 'isAdmin'], function() {
             Route::get('/edit/{contacts}', 'edit');
             Route::put('/edit/{contacts}', 'update');
         });
+    });
+
+    // Profile Settings
+    Route::prefix('/admin/profile-settings')->controller(App\Http\Controllers\Admin\ProfileSettingsController::class)->group(function (){
+        Route::get('/my-profile', 'myProfile');
+        Route::get('/my-profile/edit/{user}', 'editMyProfile');
+        Route::put('/my-profile/edit/{user}', 'updateMyProfile');
+        Route::get('/change-password', 'changePassword');
+        Route::post('/change-password', 'updatePassword');
     });
 
     // Settings

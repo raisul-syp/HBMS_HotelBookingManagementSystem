@@ -21,19 +21,20 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-lg-12">
-                    @if (session('message'))
-                        <div class="alert alert-success solid alert-right-icon alert-dismissible fade show">
-                            <span><i class="mdi mdi-check"></i></span>
-                            <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
-                            </button> {{ session('message') }}
-                        </div>
+                    @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger solid alert-right-icon alert-dismissible fade show">
+                        <span><i class="fas fa-exclamation-triangle"></i></span>
+                        {{ $error }}
+                    </div>
+                    @endforeach
                     @endif
                 </div>
             </div>
 
-            <div class="row mt-4">
+            <div class="row">
                 <div class="col-lg-12">
                     <form action="{{ url('guest/profile/edit/'.$guests->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf

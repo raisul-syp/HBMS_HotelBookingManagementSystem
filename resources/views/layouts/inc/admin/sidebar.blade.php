@@ -168,6 +168,16 @@
             </ul>
         </li>
         <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-single-04"></i>
+                <span class="nav-text">{{ __('Profile Settings') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/profile-settings/my-profile') }}">{{ __('My Profile') }}</a></li>
+                <li><a href="{{ url('admin/profile-settings/change-password') }}">{{ __('Change Password') }}</a></li>
+            </ul>
+        </li>
+        <li>
             <a href="{{ url('admin/settings') }}">
                 <i class="icon icon-single-04"></i>
                 <span class="nav-text">{{ __('Settings') }}</span>

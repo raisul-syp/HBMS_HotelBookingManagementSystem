@@ -7,12 +7,12 @@
 }
 
 .card-header {
-    border-bottom: 1px solid #593bdb !important;
+    border-bottom: 1px solid var(--siteColor2) !important;
     padding: 1rem !important;
 }
 
 .card-footer {
-    border-top: 1px solid #593bdb !important;
+    border-top: 1px solid var(--siteColor2) !important;
 }
 
 .form-title h4 {
@@ -294,6 +294,14 @@ img.list-image {
 .form-control:disabled,
 .form-control[readonly] {
     background: #e3e3e3 !important;
+}
+
+.photo-content .cover-photo {
+    background: none !important;
+    max-height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 

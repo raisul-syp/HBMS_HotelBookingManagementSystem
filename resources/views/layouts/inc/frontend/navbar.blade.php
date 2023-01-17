@@ -114,6 +114,12 @@
                                 </a>
                             </li>
                             <li>
+                                <a class="dropdown-item" href="{{ url('/guest/change-password') }}">
+                                    <i data-feather="key"></i>
+                                    <span>Change Password</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a class="dropdown-item" href="{{ url('/guest/booking-history') }}">
                                     <i data-feather="clock"></i>
                                     <span>Booking History</span>

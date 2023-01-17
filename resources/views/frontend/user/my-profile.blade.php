@@ -20,19 +20,18 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-lg-12">
                     @if (session('message'))
-                        <div class="alert alert-success solid alert-right-icon alert-dismissible fade show">
-                            <span><i class="mdi mdi-check"></i></span>
-                            <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
-                            </button> {{ session('message') }}
-                        </div>
+                    <div class="alert alert-success solid alert-right-icon alert-dismissible fade show">                       
+                        <span><i class="fas fa-check"></i></span>
+                        {{ session('message') }}
+                    </div>
                     @endif
                 </div>
             </div>
 
-            <div class="row mt-4">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="card profile-card">
                         <div class="row">
@@ -40,10 +39,16 @@
                                 <div class="card-header">
                                     <div class="header-title">
                                         <h4>Personal Information</h4>
-                                        <a href="{{ url('guest/profile/edit/'.$guests->id) }}" class="btn btn-outline-primary">
-                                            <i data-feather="edit"></i>
-                                            <span>Edit Profile</span>
-                                        </a>
+                                        <div style="display: flex; gap: 5px;">
+                                            <a href="{{ url('guest/profile/edit/'.$guests->id) }}" class="btn btn-outline-primary">
+                                                <i data-feather="edit"></i>
+                                                <span>Edit Profile</span>
+                                            </a>
+                                            <a href="{{ url('guest/change-password') }}" class="btn btn-outline-primary">
+                                                <i data-feather="key"></i>
+                                                <span>Change Password</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

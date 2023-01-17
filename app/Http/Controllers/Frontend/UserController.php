@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\User;
+use App\Models\Booking;
 use App\Models\Settings;
 use App\Models\CountryList;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\GuestEditFormRequest;
-use App\Models\Booking;
 
 class UserController extends Controller
 {
@@ -80,6 +81,30 @@ class UserController extends Controller
         $guests->update();
 
         return redirect('guest/profile')->with('message','Congratulations! Your Personal Information Has Been Updated Successfully.');
+    }
+
+    public function changePassword()
+    {
+        return view('frontend.user.change-password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required','string','min:8'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
+        ]);
+
+        $currentPasswordStatus = Hash::check($request->current_password, auth()->user()->password);
+        if($currentPasswordStatus){
+            User::findOrFail(Auth::user()->id)->update([
+                'password' => Hash::make($request->password),
+            ]);
+            return redirect()->back()->with('message','Password Updated Successfully!');
+        }
+        else{
+            return redirect()->back()->with('error','Old Password does not match!');
+        }
     }
 
     public function bookingHistory()
