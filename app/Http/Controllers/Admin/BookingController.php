@@ -45,6 +45,7 @@ class BookingController extends Controller
         $booking->total_adults = $validatedData['total_adults'];
         $booking->total_childs = $validatedData['total_childs'];
         $booking->booking_status = $validatedData['booking_status'];
+        $booking->payment_mode = $validatedData['payment_mode'];
         $booking->booking_comment = $validatedData['booking_comment'];
         $booking->created_by = $validatedData['created_by'];
 
@@ -77,11 +78,21 @@ class BookingController extends Controller
         $booking->total_adults = $validatedData['total_adults'];
         $booking->total_childs = $validatedData['total_childs'];
         $booking->booking_status = $validatedData['booking_status'];
+        $booking->payment_mode = $validatedData['payment_mode'];
         $booking->booking_comment = $validatedData['booking_comment'];
         $booking->updated_by = $validatedData['updated_by'];
         $booking->update();
 
         return redirect('admin/booking')->with('message','Congratulations! New Booking Has Been Updated Successfully.');
+    }
+
+    public function details(Booking $booking)
+    {
+        $serialNo = 1;
+        $guests = User::all()->where('is_active','1')->where('is_delete','1');
+        $rooms = Room::all()->where('is_active','1')->where('is_delete','1');
+        $staffs = Admin::all()->where('is_active','1')->where('is_delete','1');
+        return view('admin.booking.details', compact('booking', 'guests', 'rooms', 'staffs', 'serialNo'));
     }
 
     public function availableRooms(Request $request, $checkin_date)

@@ -44,10 +44,12 @@
                             <div class="card-header">
                                 <div class="header-title">
                                     <h4>Edit Personal Information</h4>
-                                    <a href="{{ url('guest/profile/') }}" class="btn btn-icon btn-square btn-outline-primary list-button">
-                                        <i data-feather="chevron-left"></i>
-                                        <span>Skip Back</span>
-                                    </a>
+                                    <div class="profile-buttons">
+                                        <a href="{{ url('guest/profile/') }}" class="btn btn-icon btn-square btn-outline-primary list-button">
+                                            <i data-feather="chevron-left"></i>
+                                            <span>Back To Profile</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body">

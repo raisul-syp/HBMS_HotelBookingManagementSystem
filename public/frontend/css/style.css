@@ -2637,7 +2637,12 @@ select.guest-select {
     margin-bottom: 0;
 }
 
-.profile-card .card-header .header-title a {
+.profile-card .card-header .header-title .profile-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.profile-card .card-header .header-title .profile-buttons a {
     border-radius: 0;
     border: 1px solid var(--siteColor2);
     color: var(--siteColor2);
@@ -2647,18 +2652,18 @@ select.guest-select {
     transition: all 0.3s ease-in-out;
 }
 
-.profile-card .card-header .header-title a:hover {
+.profile-card .card-header .header-title .profile-buttons a:hover {
     background: var(--goldenBG2);
     /* background-size: 400% 200%; */
     color: var(--siteColor1);
 }
 
-.profile-card .card-header .header-title a svg {
+.profile-card .card-header .header-title .profile-buttons a svg {
     width: 16px;
     height: 16px;
 }
 
-.profile-card .card-header .header-title a span {
+.profile-card .card-header .header-title .profile-buttons a span {
     font-size: 16px;
 }
 
@@ -2707,13 +2712,15 @@ select.guest-select {
 }
 
 .profile-card .image-body.cover {
-    height: 200px;
+    height: 300px;
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     border-bottom: 2px solid var(--siteColor2);
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 1rem 1rem rgb(0 0 0 / 15%) !important;
+    padding: 0;
+    background: var(--goldenBG2);
 }
 
 .profile-card .image-body.cover img {

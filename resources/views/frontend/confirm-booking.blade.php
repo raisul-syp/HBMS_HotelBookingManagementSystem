@@ -184,34 +184,29 @@
                                         </div>
 
                                         <div class="col-lg-3">
-                                            <h4 class="confirm-booking-card-header">Payment Type</h4>
+                                            <h4 class="confirm-booking-card-header">Payment Mode</h4>
                                             
                                             <div class="form-group row">
-                                                <div class="col-sm-12">
-                                                    <label class="form-label">
-                                                        {{ __('Please, pay on arrival!') }}
-                                                    </label>
-                                                </div>
-                                                {{-- <div class="col-sm-12 mb-2">
+                                                <div class="col-sm-12 mb-2">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            {{ __('Cash On Delivery') }}
+                                                        <input class="form-check-input" type="radio" name="payment_mode" id="flexRadioDefault1" value="Pay on arrival" checked>
+                                                        <label class="form-check-label" for="payment_mode">
+                                                            {{ __('Pay on arrival') }}
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-12 mb-2">
+                                                {{-- <div class="col-sm-12 mb-2">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                        <input class="form-check-input" type="radio" name="payment_mode" id="flexRadioDefault2" value="Card" disabled>
+                                                        <label class="form-check-label" for="payment_mode">
                                                             {{ __('Card') }}
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12 mb-2">
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
+                                                        <input class="form-check-input" type="radio" name="payment_mode" id="flexRadioDefault3" value="Mobile Banking" disabled>
+                                                        <label class="form-check-label" for="payment_mode">
                                                             {{ __('Mobile Banking') }}
                                                         </label>
                                                     </div>

@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Faq;
 use App\Models\Hall;
 use App\Models\Room;
 use App\Models\Offer;
-use App\Models\Faq;
 use App\Models\Settings;
 use App\Models\Wellness;
 use App\Models\Restaurent;
 use App\Models\Website\Page;
 use Illuminate\Http\Request;
+use App\Models\OfferCategory;
 use Illuminate\Support\Carbon;
 use App\Models\Website\ContactInfo;
 use App\Http\Controllers\Controller;
-use App\Models\OfferCategory;
+use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
 {
@@ -29,6 +30,37 @@ class PagesController extends Controller
         $pages = Page::all()->where('is_active', '1')->where('is_delete', '1');
         $contacts = ContactInfo::all()->where('is_active', '1')->where('is_delete', '1');
         return view('frontend.contact-us', compact('pages', 'contacts'));
+    }
+
+    public function sendContactUs(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        $data = array(
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'msg' => $request->message,
+        );
+
+        Mail::send('frontend.mail-template.contactus', $data, function ($message) {
+            $message->from('raisul.syp@gmail.com', 'The Zabeer Dhaka');
+            // $message->sender('john@johndoe.com', 'John Doe');
+            $message->to('rishowmin.seu38@gmail.com', 'Raisul Islam')->subject('Contact Us Query');
+            // $message->cc('john@johndoe.com', 'John Doe');
+            // $message->bcc('john@johndoe.com', 'John Doe');
+            // $message->replyTo('john@johndoe.com', 'John Doe');
+            // $message->subject('Subject');
+            // $message->priority(3);
+            // $message->attach('pathToFile');
+        });
+
+        return redirect('contact-us')->with('success', 'Mail has been sent!');
     }
 
     public function pages($page_slug)

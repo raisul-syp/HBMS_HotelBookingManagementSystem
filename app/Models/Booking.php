@@ -23,6 +23,7 @@ class Booking extends Model
         'total_childs',
         'booking_status',
         'is_delete',
+        'payment_mode',
         'booking_comment',
         'created_by',
         'updated_by',

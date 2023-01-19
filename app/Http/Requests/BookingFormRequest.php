@@ -57,6 +57,9 @@ class BookingFormRequest extends FormRequest
             'is_delete' => [
                 'nullable',
             ],
+            'payment_mode' => [
+                'required',
+            ],
             'booking_comment' => [
                 'nullable',
             ],

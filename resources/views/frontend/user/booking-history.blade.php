@@ -28,10 +28,12 @@
                                 <div class="card-header">
                                     <div class="header-title">
                                         <h4>Previous Booking History</h4>
-                                        <a href="{{ url('/') }}" class="btn btn-outline-primary">
-                                            <i data-feather="chevron-left"></i>
-                                            <span>Back To Home</span>
-                                        </a>
+                                        <div class="profile-buttons">
+                                            <a href="{{ url('/') }}" class="btn btn-outline-primary">
+                                                <i data-feather="chevron-left"></i>
+                                                <span>Back To Home</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

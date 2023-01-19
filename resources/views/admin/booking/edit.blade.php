@@ -191,6 +191,22 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label text-right" for="payment_mode">
+                                {{ __('Payment Mode') }}
+                                <small class="text-danger">*</small>
+                            </label>
+                            <div class="col-sm-10">
+                                <select class="form-control js-basic-single" id="payment_mode" name="payment_mode">
+                                    <option value="Pay on arrival" {{ old('payment_mode', $booking->payment_mode) == 'Pay on arrival' ? 'selected' : '' }}>Pay on arrival</option>
+                                    <option value="Card" {{ old('payment_mode', $booking->payment_mode) == 'Card' ? 'selected' : '' }}>Card</option>
+                                    <option value="Mobile Banking" {{ old('payment_mode', $booking->payment_mode) == 'Mobile Banking' ? 'selected' : '' }}>Mobile Banking</option>
+                                </select>
+                                @error('payment_mode')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-sm-2 col-form-label text-right" for="booking_comment">
                                 {{ __('Booking Comment') }}
                             </label>

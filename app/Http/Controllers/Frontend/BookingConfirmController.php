@@ -39,6 +39,7 @@ class BookingConfirmController extends Controller
         $booking->total_adults = $validatedData['total_adults'];
         $booking->total_childs = $validatedData['total_childs'];
         $booking->booking_status = $validatedData['booking_status'];
+        $booking->payment_mode = $validatedData['payment_mode'];
         $booking->booking_comment = $validatedData['booking_comment'];
         $booking->created_by = $validatedData['created_by'];
 

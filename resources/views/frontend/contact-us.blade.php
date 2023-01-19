@@ -21,6 +21,28 @@
             </div>
 
             <div class="row mt-4">
+                @if (session('success'))
+                <div class="col-lg-12">
+                    <div class="alert alert-success solid alert-right-icon alert-dismissible fade show">                            
+                        <span><i class="fas fa-check"></i></span>
+                        {{ session('success') }}
+                    </div>
+                </div>
+                @endif
+                
+                @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                <div class="col-lg-6">
+                    <div class="alert alert-danger solid alert-right-icon alert-dismissible fade show">
+                        <span><i class="fas fa-exclamation-triangle"></i></span>
+                        {{ $error }}
+                    </div>
+                </div>
+                @endforeach
+                @endif
+            </div>
+
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="contact-section-inner">
                         <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
@@ -109,21 +131,22 @@
                                                         <div class="contact-form-header">
                                                             <h4>If you have any queries, please send us an email.<br>We will respond to you very soon.</h4>
                                                         </div>
-                                                        <form>
+                                                        <form method="post" action="{{ url('contact-us') }}">
+                                                            @csrf
                                                             <div class="mb-3">
-                                                                <label for="name" class="form-label">Your Name</label>
+                                                                <label for="name" class="form-label">Your Name<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="name" name="name">
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="email" class="form-label">Email Address</label>
+                                                                <label for="email" class="form-label">Email Address<span class="text-danger">*</span></label>
                                                                 <input type="email" class="form-control" id="email" name="email">
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="subject" class="form-label">Subject</label>
+                                                                <label for="subject" class="form-label">Subject<span class="text-danger">*</span></label>
                                                                 <input type="text" class="form-control" id="subject" name="subject">
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="message" class="form-label">Your Message</label>
+                                                                <label for="message" class="form-label">Your Message<span class="text-danger">*</span></label>
                                                                 <textarea class="form-control" name="message" id="message" rows="4"></textarea>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">Submit</button>

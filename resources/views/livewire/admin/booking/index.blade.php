@@ -15,6 +15,7 @@
                         <th>Checkin Date & Time</th>
                         <th>Checkout Date & Time</th>
                         <th>Booking Status</th>
+                        <th>Payment Mode</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -48,11 +49,15 @@
                             <span class="badge badge-info text-white">Payment Pending</span>
                             @endif
                         </td>
+                        <td>{{ $booking->payment_mode }}</td>
                         <td>
-                            <span>
+                            <span data-toggle="tooltip" data-placement="top" title="View Booking">
+                                <a href="{{ url('admin/booking/details/'.$booking->id) }}" class="btn btn-icon btn-square btn-outline-info list-button"><i class="fa fa-file-text-o"></i></a>
+                            </span>
+                            <span data-toggle="tooltip" data-placement="top" title="Edit">
                                 <a href="{{ url('admin/booking/edit/'.$booking->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
-                            <span>
+                            <span data-toggle="tooltip" data-placement="top" title="Delete">
                                 <a href="#" wire:click="deleteRecord({{ $booking->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
                             @include('modal.admin.delete')

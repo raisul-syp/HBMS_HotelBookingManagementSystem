@@ -304,4 +304,35 @@ img.list-image {
     align-items: center;
 }
 
+hr {
+    border-top: 1px solid var(--siteColor2) !important;
+}
+
+.pagination .page-item.active .page-link,
+.pagination .page-item .page-link:hover {
+    background: var(--goldenBG2) !important;
+    background-size: 400% 300% !important;
+    border-color: var(--siteColor2) !important;
+}
+
+.photo-content .profile-photo {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background: var(--goldenBG2);
+    box-sizing: border-box;
+    -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+}
+
+.photo-content .profile-photo .rounded-circle {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 144px;
+    height: 144px;
+    border-radius: 0 !important;
+    -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+}
 

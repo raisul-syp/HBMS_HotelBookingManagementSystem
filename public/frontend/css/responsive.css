@@ -764,6 +764,9 @@
     .content_section .section_title h4 {
         font-size: 20px;
     }
+    .profile-card .image-body.cover {
+        height: 200px;
+    }
     .profile-card .image-body.profile {
         width: 50%;
         margin: 0 auto;
@@ -776,22 +779,38 @@
         margin-top: 60px;
     }
     .profile-card .card-body table thead tr th{
-        padding: 0.1rem 1rem;
+        padding: 2px 5px;
         font-size: 12px;
+    }
+    .profile-card .card-body table tbody tr th {
+        width: 35%;
     }
     .profile-card .card-body table tbody tr th,
     .profile-card .card-body table tbody tr td {
-        padding: 0.1rem 1rem;
+        padding: 2px 5px;
         font-size: 12px;
     }
-    .profile-card .card-header .header-title h4 {
-        font-size: 14px;
+    .profile-card .card-header .header-title {
+        display: block;
+        text-align: center;
     }
-    .profile-card .card-header .header-title a svg {
+    .profile-card .card-header .header-title h4 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .profile-card .card-header .header-title .profile-buttons {
+        justify-content: center;
+    }
+    .profile-card .card-header .header-title .profile-buttons a {
+        width: 100%;
+        justify-content: center;
+        padding: 5px 10px;
+    }
+    .profile-card .card-header .header-title .profile-buttons a svg {
         width: 14px;
         height: 14px;
     }
-    .profile-card .card-header .header-title a span {
+    .profile-card .card-header .header-title .profile-buttons a span {
         font-size: 14px;
     }
     .profile-card .card-footer button {

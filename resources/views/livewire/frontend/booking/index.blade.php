@@ -9,6 +9,7 @@
                     <th>Check-In</th>
                     <th>Check-Out</th>
                     <th>Booking Status</th>
+                    <th>Payment Mode</th>
                     <th>Price</th>
                 </tr>
             </thead>
@@ -40,6 +41,7 @@
                             <span class="badge bg-info">Payment Pending</span>
                         @endif
                     </td>
+                    <td>{{ $booking->payment_mode }}</td>
                     <td>{{ '$'.$booking->rooms->price }}</td>
                 </tr>
                 @empty

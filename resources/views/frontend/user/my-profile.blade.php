@@ -39,7 +39,7 @@
                                 <div class="card-header">
                                     <div class="header-title">
                                         <h4>Personal Information</h4>
-                                        <div style="display: flex; gap: 5px;">
+                                        <div class="profile-buttons">
                                             <a href="{{ url('guest/profile/edit/'.$guests->id) }}" class="btn btn-outline-primary">
                                                 <i data-feather="edit"></i>
                                                 <span>Edit Profile</span>

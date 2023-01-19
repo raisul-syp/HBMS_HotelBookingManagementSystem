@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function() {
 Route::prefix('/')->controller(App\Http\Controllers\Frontend\PagesController::class)->group(function (){
     Route::get('/about-us', 'aboutUs');
     Route::get('/contact-us', 'contactUs');
+    Route::post('/contact-us', 'sendContactUs');
     Route::get('/{slug}', 'pages');
     Route::get('/offers/offer-details/{slug}', 'offerDetails');
     Route::get('/rooms/room-details/{slug}', 'roomDetails');
@@ -172,6 +173,7 @@ Route::group(['middleware' => 'isAdmin'], function() {
         Route::post('/', 'store');
         Route::get('/edit/{booking}', 'edit');
         Route::put('/edit/{booking}', 'update');
+        Route::get('/details/{booking}', 'details');
         Route::get('/available-rooms/{checkin_date}', 'availableRooms');
     });
 

@@ -118,34 +118,19 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label text-right" for="room_id">
-                                            {{ __('Payment Type') }}
+                                    
+                                    <div class="form-group row mb-3">
+                                        <label class="col-sm-2 col-form-label text-right" for="payment_mode">
+                                            {{ __('Payment Mode') }}
                                         </label>
-                                        <div class="col-sm-10 mt-2">
-                                            <label class="form-label">
-                                                {{ __('Please, pay on arrival!') }}
-                                            </label>
-                                            {{-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                    {{ __('Cash On Delivery') }}
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                <label class="form-check-label" for="flexRadioDefault2">
-                                                    {{ __('Card') }}
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                                                <label class="form-check-label" for="flexRadioDefault2">
-                                                    {{ __('Mobile Banking') }}
-                                                </label>
-                                            </div> --}}
+                                        <div class="col-sm-10">
+                                            <select class="form-control" id="payment_mode" name="payment_mode">
+                                                <option value="Pay on arrival">Pay on arrival</option>
+                                                {{-- <option value="Card" disabled>Card</option>
+                                                <option value="Mobile Banking" disabled>Mobile Banking</option> --}}
+                                            </select>
                                         </div>
-                                    </div>  
+                                    </div> 
                                     <input id="guest_id" name="guest_id" value="{{ Auth::user()->id }}" hidden>
                                     <input id="staff_id" name="staff_id" value="1" hidden>
                                     <input id="booking_status" name="booking_status" value="0" hidden>
