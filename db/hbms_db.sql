@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2023 at 07:15 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Jan 19, 2023 at 01:46 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,8 +60,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `gender`, `date_of_birth`, `phone`, `address`, `city`, `state`, `postal_code`, `country`, `admin_comment`, `profile_photo`, `cover_photo`, `role_as`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Super', 'Admin', 'admin@gmail.com', NULL, '$2y$10$1usa4p6aEF36rUi1Eivh6.ItXPXh3sOWKYClwArQZ1uOM/UMulwB6', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisul-1672574655.png', NULL, 0, 1, 1, NULL, '1', '2022-12-25 10:39:31', '2023-01-02 04:06:15'),
-(2, 'Muhammad Raisl', 'Islam', 'wailantirajoh@gmail.com', NULL, '$2y$10$VlIqr0X7Dc7atSoZxOJzuuCZC9jt9tI54EhAOFfSqihuuaUARFrFq', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisl-1672574931.png', NULL, 1, 1, 1, '1', NULL, '2023-01-01 06:08:51', '2023-01-01 06:08:51'),
+(1, 'Super', 'Admin', 'admin@gmail.com', NULL, '$2y$10$gnkYXf1/YYANYrtwJEFtjeevxkyADSdRH8ic4IKFquEDG9uxjki0m', NULL, 'Male', '1995-10-03', '01680078100', 'Uttarkhan', 'Dhaka', NULL, '1230', 'Bangladesh', NULL, 'Super-1674131293.jpg', 'Super-1674131293.jpg', 0, 1, 1, NULL, '0', '2022-12-25 10:39:31', '2023-01-19 06:28:13'),
+(2, 'Muhammad Raisul', 'Islam', 'wailantirajoh@gmail.com', NULL, '$2y$10$VlIqr0X7Dc7atSoZxOJzuuCZC9jt9tI54EhAOFfSqihuuaUARFrFq', NULL, 'Male', NULL, '01797530063', NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisl-1672574931.png', NULL, 1, 1, 1, '1', '0', '2023-01-01 06:08:51', '2023-01-19 04:14:23'),
 (3, 'sdfdsf dfdsf', 'sdfd sadfsdf', 'asdas@dfsd.com', NULL, '$2y$10$pa3QoWAI045cP5efJh1VwOvI8jTh8GtG1yB.LjcmXWEr8UhDxbhVO', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, NULL, NULL, 1, 1, 1, '1', NULL, '2023-01-01 06:10:43', '2023-01-01 06:10:43');
 
 -- --------------------------------------------------------
@@ -99,6 +99,7 @@ CREATE TABLE `hb_bookings` (
   `total_childs` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `booking_status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Pending, 1=Booked, 2=Cancel, 3=Payment Pending',
   `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `payment_mode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `booking_comment` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -110,18 +111,21 @@ CREATE TABLE `hb_bookings` (
 -- Dumping data for table `hb_bookings`
 --
 
-INSERT INTO `hb_bookings` (`id`, `guest_id`, `room_id`, `staff_id`, `checkin_date`, `checkout_date`, `checkin_time`, `checkout_time`, `total_adults`, `total_childs`, `booking_status`, `is_delete`, `booking_comment`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '2022-12-30', '2022-12-31', '14:00', '12:00', '2', '0', 1, 1, 'Admin', '1', NULL, '2022-12-27 00:17:07', '2022-12-27 00:17:07'),
-(2, 1, 1, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '2', '2', 0, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 01:36:13', '2023-01-08 01:36:13'),
-(3, 1, 1, 1, '2023-01-10', '2023-01-11', '14:00', '12:00', '1', '0', 0, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 02:13:22', '2023-01-08 02:13:22'),
-(4, 1, 2, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '0', 0, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 02:15:21', '2023-01-08 02:15:21'),
-(5, 1, 1, 1, '2023-01-20', '2023-01-21', '14:00', '12:00', '2', '1', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 14:03:38', '2023-01-08 14:03:38'),
-(6, 1, 4, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '1', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-08 14:19:42', '2023-01-08 14:19:42'),
-(7, 1, 3, 1, '2023-01-09', '2023-01-10', '14:00', '12:00', '1', '0', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-09 02:52:46', '2023-01-09 02:52:46'),
-(8, 1, 2, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-09 05:16:22', '2023-01-09 05:16:22'),
-(9, 1, 2, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 3, 1, 'Booking created by Guest', '2', NULL, '2023-01-09 05:19:07', '2023-01-09 05:19:07'),
-(10, 1, 1, 1, '2023-01-26', '2023-01-27', '14:00', '12:00', '2', '1', 0, 1, 'Booking created by Guest', '2', NULL, '2023-01-09 05:21:05', '2023-01-09 05:21:05'),
-(11, 1, 1, 1, '2023-01-22', '2023-01-23', '14:00', '12:00', '2', '1', 2, 1, 'Booking created by Guest', '2', '1', '2023-01-09 05:33:40', '2023-01-09 06:53:16');
+INSERT INTO `hb_bookings` (`id`, `guest_id`, `room_id`, `staff_id`, `checkin_date`, `checkout_date`, `checkin_time`, `checkout_time`, `total_adults`, `total_childs`, `booking_status`, `is_delete`, `payment_mode`, `booking_comment`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, '2022-12-30', '2022-12-31', '14:00', '12:00', '2', '0', 1, 1, '', 'Admin', '1', NULL, '2022-12-27 00:17:07', '2022-12-27 00:17:07'),
+(2, 1, 1, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '2', '2', 0, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 01:36:13', '2023-01-08 01:36:13'),
+(3, 1, 1, 1, '2023-01-10', '2023-01-11', '14:00', '12:00', '1', '0', 0, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 02:13:22', '2023-01-08 02:13:22'),
+(4, 1, 2, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '0', 0, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 02:15:21', '2023-01-08 02:15:21'),
+(5, 1, 1, 1, '2023-01-20', '2023-01-21', '14:00', '12:00', '2', '1', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 14:03:38', '2023-01-08 14:03:38'),
+(6, 1, 4, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '1', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 14:19:42', '2023-01-08 14:19:42'),
+(7, 1, 3, 1, '2023-01-09', '2023-01-10', '14:00', '12:00', '1', '0', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-09 02:52:46', '2023-01-09 02:52:46'),
+(8, 1, 2, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-09 05:16:22', '2023-01-09 05:16:22'),
+(9, 1, 2, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-09 05:19:07', '2023-01-09 05:19:07'),
+(10, 1, 1, 1, '2023-01-26', '2023-01-27', '14:00', '12:00', '2', '1', 0, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-09 05:21:05', '2023-01-09 05:21:05'),
+(11, 1, 1, 1, '2023-01-22', '2023-01-23', '14:00', '12:00', '2', '1', 2, 1, '', 'Booking created by Guest', '2', '1', '2023-01-09 05:33:40', '2023-01-09 06:53:16'),
+(12, 1, 3, 1, '2023-01-18', '2023-01-19', '14:00', '12:00', '1', '0', 0, 1, 'Pay on arrival', 'Booking created by Guest', '2', '0', '2023-01-18 03:37:08', '2023-01-19 02:23:20'),
+(13, 1, 1, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 0, 1, 'Pay on arrival', 'Booking created by Guest', '2', NULL, '2023-01-19 02:29:03', '2023-01-19 02:29:03'),
+(14, 1, 4, 2, '2023-01-19', '2023-01-20', '18:00', '10:00', '1', '0', 3, 1, 'Pay on arrival', 'Booking created by Guest', '2', '0', '2023-01-19 03:17:22', '2023-01-19 03:35:11');
 
 -- --------------------------------------------------------
 
@@ -531,7 +535,7 @@ CREATE TABLE `hb_offers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `offer_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `offer_category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `short_description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `long_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `start_date` datetime NOT NULL,
@@ -552,12 +556,46 @@ CREATE TABLE `hb_offers` (
 -- Dumping data for table `hb_offers`
 --
 
-INSERT INTO `hb_offers` (`id`, `name`, `slug`, `offer_type`, `short_description`, `long_description`, `start_date`, `end_date`, `thumb`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'New Year Celebration 2023', 'new-year-celebration-2023', 'Poster', 'New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.', '<h4><span style=\"font-weight: bolder;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></h4><h4><span style=\"font-weight: bolder;\"><br></span></h4><p>New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></p>', '2022-12-31 00:00:02', '2023-01-10 00:00:02', 'new-year-celebration-2023.jpg', 'New Year Celebration 2023', 'New Year Celebration 2023', 'New Year Celebration 2023', 1, 1, '1', '1', '2022-12-26 04:54:14', '2023-01-01 01:59:33'),
-(2, 'Valentine\'s Day Celebration 2023', 'valentines-day-celebration-2023', 'Poster', 'Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023.', '<h4>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.</h4><p>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span></p>', '2023-02-13 11:59:17', '2023-02-14 23:59:17', 'valentines-day-celebration-2023.png', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 1, 1, '1', '1', '2022-12-26 05:02:19', '2023-01-01 01:55:15'),
-(3, 'Grand Opening', 'grand-opening', 'Banner', 'Grand Opening', '<p>Grand Opening<br></p>', '2023-01-02 00:00:30', '2023-01-02 23:59:30', 'grand-opening.jpg', 'Grand Opening', 'Grand Opening', 'Grand Opening', 1, 1, '1', '1', '2023-01-01 01:56:32', '2023-01-01 03:32:23'),
-(4, 'Buffet Dinner', 'buffet-dinner', 'Banner', 'Buffet Dinner', '<p>Buffet Dinner<br></p>', '2023-01-09 09:00:42', '2023-01-31 09:00:42', 'buffet-dinner.jpeg', 'Buffet Dinner', 'Buffet Dinner', 'Buffet Dinner', 1, 1, '1', NULL, '2023-01-09 03:01:49', '2023-01-09 03:01:49'),
-(5, 'Coffee Time', 'coffee-time', 'Banner', 'Coffee Time', '<p>Coffee Time<br></p>', '2023-01-09 09:05:52', '2023-01-31 09:05:52', 'coffee-time.jpeg', 'Coffee Time', 'Coffee Time', 'Coffee Time', 1, 1, '1', NULL, '2023-01-09 03:06:23', '2023-01-09 03:06:23');
+INSERT INTO `hb_offers` (`id`, `name`, `slug`, `offer_category`, `short_description`, `long_description`, `start_date`, `end_date`, `thumb`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'New Year Celebration 2023', 'new-year-celebration-2023', 'Others', 'New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.', '<h4><span style=\"font-weight: bolder;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></h4><h4><span style=\"font-weight: bolder;\"><br></span></h4><p>New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">New Year Celebration 2023. New Year Celebration 2023. New Year Celebration 2023.</span></p>', '2022-12-31 00:00:02', '2023-01-10 00:00:02', 'new-year-celebration-2023.jpg', 'New Year Celebration 2023', 'New Year Celebration 2023', 'New Year Celebration 2023', 1, 1, '1', '0', '2022-12-26 04:54:14', '2023-01-16 01:46:47'),
+(2, 'Valentine\'s Day Celebration 2023', 'valentines-day-celebration-2023', 'Others', 'Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023. Valentine\'s Day Celebration 2023.', '<h4>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.</h4><p>Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;<span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span><span style=\"font-size: 0.875rem;\">Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;Valentine\'s Day Celebration 2023.&nbsp;</span></p>', '2023-02-13 11:59:17', '2023-02-14 23:59:17', 'valentines-day-celebration-2023.png', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 'Valentine\'s Day Celebration 2023', 1, 1, '1', '0', '2022-12-26 05:02:19', '2023-01-16 01:47:02'),
+(3, 'Grand Opening', 'grand-opening', 'Others', 'Grand Opening', '<p>Grand Opening<br></p>', '2023-01-02 00:00:30', '2023-01-02 23:59:30', 'grand-opening.jpg', 'Grand Opening', 'Grand Opening', 'Grand Opening', 1, 1, '1', '0', '2023-01-01 01:56:32', '2023-01-16 01:47:17'),
+(4, 'Buffet Dinner', 'buffet-dinner', 'Restaurant', 'Buffet Dinner', '<p>Buffet Dinner<br></p>', '2023-01-09 09:00:42', '2023-01-31 09:00:42', 'buffet-dinner.jpeg', 'Buffet Dinner', 'Buffet Dinner', 'Buffet Dinner', 1, 1, '1', '0', '2023-01-09 03:01:49', '2023-01-16 01:44:20'),
+(5, 'Coffee Time', 'coffee-time', 'Restaurant', 'Coffee Time', '<p>Coffee Time<br></p>', '2023-01-09 09:05:52', '2023-01-31 09:05:52', 'coffee-time.jpeg', 'Coffee Time', 'Coffee Time', 'Coffee Time', 1, 1, '1', '0', '2023-01-09 03:06:23', '2023-01-16 01:47:30'),
+(6, 'Deluxe 50% Discount', 'deluxe-50-discount', 'Room', 'Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount.', '<p>Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount.&nbsp;Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount.&nbsp;Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount.&nbsp;Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount. Deluxe 50% Discount.&nbsp;<br></p>', '2023-01-16 09:37:10', '2023-02-14 09:37:10', 'deluxe-50-discount.png', 'Deluxe 50% Discount', 'Deluxe 50% Discount', 'Deluxe 50% Discount', 0, 1, '0', '0', '2023-01-16 03:39:12', '2023-01-17 03:10:38'),
+(7, 'Premium Delux Twin 50% Discount', 'premium-delux-twin-50-discount', 'Room', 'Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount.', '<p>Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount.&nbsp;Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount.&nbsp;Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount.&nbsp;Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount. Premium Delux Twin 50% Discount.&nbsp;<br></p>', '2023-01-16 09:39:25', '2023-01-31 09:39:25', 'premium-delux-twin-50-discount.png', 'Premium Delux Twin 50% Discount', 'Premium Delux Twin 50% Discount', 'Premium Delux Twin 50% Discount', 0, 1, '0', '0', '2023-01-16 03:40:23', '2023-01-17 03:10:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hb_offer_categories`
+--
+
+CREATE TABLE `hb_offer_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_decription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hb_offer_categories`
+--
+
+INSERT INTO `hb_offer_categories` (`id`, `name`, `slug`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Room', 'room', 'Room', 'Room', 'Room', 1, 1, '0', '0', '2023-01-16 01:27:01', '2023-01-16 01:27:37'),
+(2, 'Restaurant', 'restaurant', 'Restaurant', 'Restaurant', 'Restaurant', 1, 1, '0', '0', '2023-01-16 01:40:25', '2023-01-16 01:40:49'),
+(3, 'Hall', 'hall', 'Hall', 'Hall', 'Hall', 1, 1, '0', '0', '2023-01-16 01:41:19', '2023-01-16 01:42:31'),
+(4, 'Wellness', 'wellness', 'Wellness', 'Wellness', 'Wellness', 1, 1, '0', NULL, '2023-01-16 01:42:58', '2023-01-16 01:42:58'),
+(5, 'Others', 'others', 'Others', 'Others', 'Others', 1, 1, '0', NULL, '2023-01-16 01:43:15', '2023-01-16 01:43:15');
 
 -- --------------------------------------------------------
 
@@ -645,7 +683,7 @@ INSERT INTO `hb_rooms` (`id`, `name`, `slug`, `short_description`, `long_descrip
 (1, 'Deluxe', 'deluxe', 'Deluxe', '<p>Deluxe<br></p>', 2, 1, 10, 220.00, 0, 0.00, 'Deluxe', 'Deluxe', 'Deluxe', 0, 1, 1, '1', '1', '2022-12-26 05:16:35', '2023-01-02 04:07:16'),
 (2, 'Super Deluxe King', 'super-deluxe-king', 'Super Deluxe King', '<p>Super Deluxe King<br></p>', 3, 2, 10, 260.00, 0, 0.00, 'Super Deluxe King', 'Super Deluxe King', 'Super Deluxe King', 0, 1, 1, '0', '1', '2022-12-14 18:45:59', '2022-12-26 05:21:41'),
 (3, 'Premium Delux', 'premium-delux', 'Premium Delux', '<p>Premium Delux<br></p>', 3, 3, 10, 280.00, 0, 0.00, 'Premium Delux', 'Premium Delux', 'Premium Delux', 0, 1, 1, '0', '1', '2022-12-14 18:47:55', '2022-12-26 05:23:04'),
-(4, 'Premium Delux Twin', 'premium-delux-twin', 'Premium Delux Twin', '<p>Premium Delux Twin<br></p>', 4, 2, 10, 280.00, 10, 252.00, 'Premium Delux Twin', 'Premium Delux Twin', 'Premium Delux Twin', 1, 1, 1, '0', '0', '2022-12-14 18:49:23', '2023-01-15 05:38:07');
+(4, 'Premium Delux Twin', 'premium-delux-twin', 'Premium Delux Twin', '<p>Premium Delux Twin<br></p>', 4, 2, 10, 280.00, 10, 252.00, 'Premium Delux Twin', 'Premium Delux Twin', 'Premium Delux Twin', 0, 1, 1, '0', '0', '2022-12-14 18:49:23', '2023-01-17 03:09:46');
 
 -- --------------------------------------------------------
 
@@ -961,7 +999,7 @@ CREATE TABLE `hb_webpages` (
 
 INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_description`, `long_description`, `slug`, `display_order`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `footer_item`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'About Us', 'A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates.', '<p><span style=\"color: rgb(33, 37, 41); font-family: &quot;Nunito Sans&quot;, sans-serif; font-size: 16px; text-align: justify;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span><br></p>', 'about-us', '1', 'about-us.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '1', NULL, '2022-12-26 00:47:16', '2022-12-26 00:47:16'),
-(2, 'Contact Us', 'Contact Us', 'Contact Us', 'Contact Us', '<p>Contact Us<br></p>', 'contact-us', '2', NULL, 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, 1, '1', NULL, '2022-12-26 00:49:07', '2022-12-26 00:49:07'),
+(2, 'Contact Us', 'Contact Us', 'Contact Us', 'Contact Us', '<p>Contact Us<br></p>', 'contact-us', '2', NULL, 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, 1, '1', '0', '2022-12-26 00:49:07', '2023-01-15 23:52:02'),
 (3, 'Offers', 'Offers', 'Offers', 'Offers', '<p>Offers<br></p>', 'offers', '3', NULL, 'Offers', 'Offers', 'Offers', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:39:55'),
 (4, 'FAQ', 'FAQ', 'FAQ', 'FAQ', '<p>FAQ<br></p>', 'faq', '4', NULL, 'FAQ', 'FAQ', 'FAQ', 1, 1, 1, '0', '1', NULL, '2023-01-08 14:40:23'),
 (5, 'Rooms', 'Rooms', 'Rooms', 'Rooms', '<p>Rooms<br></p>', 'rooms', '5', NULL, 'Rooms', 'Rooms', 'Rooms', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:41:12'),
@@ -1134,7 +1172,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2022_12_25_162738_create_hb_bookings_table', 3),
 (26, '2022_12_26_074144_create_hb_webcontactinfos_table', 4),
 (27, '2022_12_26_095654_create_hb_offers_table', 5),
-(28, '2023_01_09_044559_create_hb_faqs_table', 6);
+(28, '2023_01_09_044559_create_hb_faqs_table', 6),
+(29, '2023_01_16_053227_create_hb_offer_categories_table', 7);
 
 -- --------------------------------------------------------
 
@@ -1204,7 +1243,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `gender`, `date_of_birth`, `phone`, `address`, `city`, `state`, `postal_code`, `country`, `admin_comment`, `profile_photo`, `cover_photo`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Raisul', 'Showmin', 'raisul.syp@gmail.com', NULL, '$2y$10$kwte0lrUblc4rguwE9vyyOUyraOLNT9F1qq3Ds71bbAChqZpTxUjy', NULL, 'Male', '1995-10-02', '01680078100', 'H-2445/1, Uttarkhan Mazar Para', 'Dhaka', NULL, '1230', 'Bangladesh', NULL, 'Raisul-1672586546.png', 'Raisul-1672588926.png', 1, 1, NULL, '5', '2022-12-26 03:59:03', '2023-01-01 10:02:06'),
+(1, 'Raisul', 'Showmin', 'raisul.syp@gmail.com', NULL, '$2y$10$8SHpXdo.ipSuthNmUs7LnODtm8KT0yzJUd1zRv8Ec6nImOSwRS8B.', NULL, 'Male', '1995-10-03', '01680078100', 'H-2445/1, Uttarkhan Mazar Para', 'Dhaka', NULL, '1230', 'Bangladesh', NULL, 'Raisul-1674020067.jpg', 'Raisul-1674020067.jpg', 1, 1, NULL, '5', '2022-12-26 03:59:03', '2023-01-17 23:34:27'),
 (2, 'Ashraf', 'Khan', 'ashraf.khan@gmail.com', NULL, '$2y$10$3/WZUREEcEE/YqfdmX85E.EPxmy5Lbj1w/FxVl2ZId.1jvNIo7Sh6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-01 09:26:32', '2023-01-01 09:26:32');
 
 --
@@ -1269,6 +1308,12 @@ ALTER TABLE `hb_hall_images`
 -- Indexes for table `hb_offers`
 --
 ALTER TABLE `hb_offers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hb_offer_categories`
+--
+ALTER TABLE `hb_offer_categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1421,7 +1466,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hb_bookings`
 --
 ALTER TABLE `hb_bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `hb_country`
@@ -1457,6 +1502,12 @@ ALTER TABLE `hb_hall_images`
 -- AUTO_INCREMENT for table `hb_offers`
 --
 ALTER TABLE `hb_offers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `hb_offer_categories`
+--
+ALTER TABLE `hb_offer_categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -1559,7 +1610,7 @@ ALTER TABLE `hb_wellness_images`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
