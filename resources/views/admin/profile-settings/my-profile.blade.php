@@ -49,9 +49,9 @@
                             </div>
                         </div>
                         <div class="profile-info">
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-end">
                                 <div class="col-lg-8">
-                                    <div class="profile-details">                                        
+                                    <div class="profile-details">
                                         <table class="table table-bordered table-responsive-sm">
                                             <tbody>
                                             <tr>

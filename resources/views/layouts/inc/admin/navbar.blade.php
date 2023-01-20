@@ -86,7 +86,9 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="user-name-role-img">
-                            <img src="{{ asset('uploads/users/profile_photo/'.Auth::guard('admin')->user()->profile_photo) }}" alt="">
+                            <div class="user-img">
+                                <img src="{{ asset('uploads/users/profile_photo/'.Auth::guard('admin')->user()->profile_photo) }}" alt="">
+                            </div>
                             <div class="name-role">
                                 <h4 class="mb-0">{{ Auth::guard('admin')->user()->first_name.' '.Auth::guard('admin')->user()->last_name }}</h4>
                                 <p class="mb-0">

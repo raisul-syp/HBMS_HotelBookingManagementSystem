@@ -283,8 +283,22 @@ img.list-image {
     color: var(--siteColor1);
 }
 
-.header-right .header-profile img {
-    border: 1px solid var(--siteColor2);
+.header-right .header-profile .user-img {
+    display: inline-block;
+    padding: 3px;
+    background: var(--goldenBG2);
+    box-sizing: border-box;
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    box-shadow: 0 1rem 1rem rgb(0 0 0 / 15%) !important;
+}
+
+.header-right .header-profile .user-img img {
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
 .nav.nav-pills .nav-item a.nav-link:hover{
@@ -321,8 +335,8 @@ hr {
     height: 150px;
     background: var(--goldenBG2);
     box-sizing: border-box;
-    -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
-    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
 .photo-content .profile-photo .rounded-circle {
@@ -332,7 +346,7 @@ hr {
     width: 144px;
     height: 144px;
     border-radius: 0 !important;
-    -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
-    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 

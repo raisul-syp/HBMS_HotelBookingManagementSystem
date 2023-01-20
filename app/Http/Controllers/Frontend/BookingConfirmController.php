@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Room;
+use App\Models\User;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use App\Mail\BookingMailable;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\BookingFormRequest;
 
 class BookingConfirmController extends Controller
@@ -25,27 +29,49 @@ class BookingConfirmController extends Controller
 
     public function store(BookingFormRequest $request)
     {
-        $validatedData = $request->validated();
+        try {
+            $validatedData = $request->validated();
 
-        $booking = new Booking;
+            $guest = User::find($request->guest_id);
+            $room = Room::find($request->room_id);
+            $booking = new Booking;
 
-        $booking->guest_id = $validatedData['guest_id'];
-        $booking->room_id = $validatedData['room_id'];
-        $booking->staff_id = $validatedData['staff_id'];
-        $booking->checkin_date = $validatedData['checkin_date'];
-        $booking->checkout_date = $validatedData['checkout_date'];
-        $booking->checkin_time = $validatedData['checkin_time'];
-        $booking->checkout_time = $validatedData['checkout_time'];
-        $booking->total_adults = $validatedData['total_adults'];
-        $booking->total_childs = $validatedData['total_childs'];
-        $booking->booking_status = $validatedData['booking_status'];
-        $booking->payment_mode = $validatedData['payment_mode'];
-        $booking->booking_comment = $validatedData['booking_comment'];
-        $booking->created_by = $validatedData['created_by'];
+            $booking->guest_id = $validatedData['guest_id'];
+            $booking->room_id = $validatedData['room_id'];
+            $booking->staff_id = $validatedData['staff_id'];
+            $booking->checkin_date = $validatedData['checkin_date'];
+            $booking->checkout_date = $validatedData['checkout_date'];
+            $booking->checkin_time = $validatedData['checkin_time'];
+            $booking->checkout_time = $validatedData['checkout_time'];
+            $booking->total_adults = $validatedData['total_adults'];
+            $booking->total_childs = $validatedData['total_childs'];
+            $booking->booking_status = $validatedData['booking_status'];
+            $booking->payment_mode = $validatedData['payment_mode'];
+            $booking->booking_comment = $validatedData['booking_comment'];
+            $booking->created_by = $validatedData['created_by'];
+            $booking->save();
 
-        $booking->save();
+            $data = array(
+                'guest_name' => $guest->first_name.' '.$guest->last_name,
+                'guest_email' => $guest->email,
+                'guest_phone' => $guest->phone,
+                'room_name' => $room->name,
+                'room_price' => $room->price,
+                'checkin_date' => $booking->checkin_date,
+                'checkin_time' => $booking->checkin_time,
+                'checkout_date' => $booking->checkout_date,
+                'checkout_time' => $booking->checkout_time,
+                'booking_date' => $booking->created_at,
+                'booking_status' => $booking->booking_status,
+                'payment_mode' => $booking->payment_mode,
+            );
 
-        return redirect('confirm-booking/success')->with('message','Congratulations! Your Booking Has Been Created Successfully.');
+            Mail::to(Auth::user()->email)->send(new BookingMailable($data));
+            return redirect('confirm-booking/success')->with('success','Your booking has been completed successfully. We will contact with you very shortly.');
+        }
+        catch(\Exception $e) {
+            return redirect('confirm-booking/success')->with('error','Something Went Wrong!');
+        }
     }
 
     public function success()

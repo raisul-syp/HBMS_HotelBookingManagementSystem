@@ -256,17 +256,27 @@ Header Section Start
     padding: 1rem;
 }
 
-.navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec img {
-    width: 20%;
-    border-radius: 50%;
-    border: 2px solid var(--siteColor2);
-    /* padding: 5px; */
-    background: #ffffff;
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec .profile-img {
+    display: inline-block;
+    padding: 3px;
+    background: var(--goldenBG2);
+    box-sizing: border-box;
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    box-shadow: 0 1rem 1rem rgb(0 0 0 / 15%) !important;
+}
+
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec .profile-img img {
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
 .navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec h5 {
     color: var(--siteColor2);
-    font-weight: 700;
+    font-weight: 800;
     font-size: 14px;
     margin-bottom: 0;
 }
@@ -2727,14 +2737,19 @@ select.guest-select {
     width: 100%;
 }
 
-.profile-card .image-body.profile {}
+.profile-card .image-body.profile {
+    display: inline-block;
+    padding: 10px;
+    background: var(--goldenBG2);
+    box-sizing: border-box;
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    box-shadow: 0 1rem 1rem rgb(0 0 0 / 15%) !important;
+}
 
 .profile-card .image-body.profile img {
-    background: var(--siteColor1);
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.15) !important;
-    /* padding: 20px; */
-    border-radius: 50%;
-    border: 5px solid var(--siteColor2);
+    -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
 .profile-card .card-footer {

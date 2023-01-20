@@ -39,7 +39,7 @@
                     </li>
                     <li class="instagram" data-bs-toggle="tooltip" data-bs-placement="bottom"
                         title="Instagram">
-                        <a href="{{ $item->social_insta }} target="_blank"">
+                        <a href="{{ $item->social_insta }}" target="_blank">
                             <i data-feather="instagram"></i>
                         </a>
                     </li>

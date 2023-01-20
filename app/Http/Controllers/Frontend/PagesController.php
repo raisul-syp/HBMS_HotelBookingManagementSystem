@@ -48,7 +48,7 @@ class PagesController extends Controller
             'msg' => $request->message,
         );
 
-        Mail::send('frontend.mail-template.contactus', $data, function ($message) {
+        Mail::send('mail-template.contactus', $data, function ($message) {
             $message->from('raisul.syp@gmail.com', 'The Zabeer Dhaka');
             // $message->sender('john@johndoe.com', 'John Doe');
             $message->to('rishowmin.seu38@gmail.com', 'Raisul Islam')->subject('Contact Us Query');

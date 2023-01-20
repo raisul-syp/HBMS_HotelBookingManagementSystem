@@ -100,9 +100,13 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li class="profile-sec">
                                 @if (Auth::user()->profile_photo != null)
-                                <img src="{{ 'uploads/guests/profile_photo/'.Auth::user()->profile_photo }}">
+                                <div class="profile-img">
+                                    <img src="{{ 'uploads/guests/profile_photo/'.Auth::user()->profile_photo }}">
+                                </div>
                                 @else
-                                <img src="{{ asset('admin/images/no-photo.png') }}">
+                                <div class="profile-img">
+                                    <img src="{{ asset('admin/images/no-photo.png') }}">
+                                </div>
                                 @endif
                                 <h5>{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h5>
                             </li>
