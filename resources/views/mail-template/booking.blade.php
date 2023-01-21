@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html>
   <head>
     <meta charset="utf-8" />
@@ -60,7 +60,7 @@
     <center
       class="wrapper"
       width="100%"
-      style="width: 100%; table-layout: fixed; background-color: #ffd7004f; padding-bottom: 30px"
+      style="width: 100%; table-layout: fixed; background-color: #ffd7004f; padding: 30px 0;"
     >
       <table
         align="center"
@@ -103,14 +103,15 @@
                     class="header-logo"
                     style="
                       text-align: center;
-                      padding-bottom: 15px;
-                      border-bottom: 2px solid #dea500;
+                      padding: 15px 0;
+                      border-bottom: 3px solid #dea500;
                       margin-bottom: 15px;
+                      background: #2c2c2c;
                     "
                   >
                     <a href="https://thezabeerdhaka.com/" target="_blank">
                       <img
-                        src="https://iili.io/HayX4jt.md.png"
+                        src="https://thezabeerdhaka.com/public/uploads/site/logo-the-zabeer-dhaka.png"
                         alt="The Zabeer"
                         width="120"
                         style="border: 0; display: inline-block"
@@ -119,8 +120,8 @@
                   </div>
 
                   <div class="booking-msg" style="text-align: center; margin-bottom: 20px">
-                    <h2 style="color: #dea500; font-weight: 300; margin: 0">Thank you for Hotel Booking !</h2>
-                    <p style="font-weight: 300; margin: 0; padding: 0">We will contact to you soon...</p>
+                    <h2 style="color: #dea500; font-weight: 300; margin: 0">Thank you for Hotel Reservation !</h2>
+                    <p style="font-weight: 300; margin: 0; padding: 0">We will contact to you shortly...</p>
                   </div>
 
                   <div class="booking-information" style="background: #f9f9f9; padding: 10px 15px">
@@ -323,7 +324,7 @@
             align="center"
             bgcolor="#2c2c2c"
             colspan="2"
-            style="margin: 0 auto; padding: 20px 0px 0px 0; border-bottom: 1px solid #f2f2f221"
+            style="margin: 0 auto; padding: 20px 0px 0px 0; border-bottom: 1px solid #dea500; border-top: 3px solid #dea500;"
           >
             <a href="https://thezabeerdhaka.com/" target="_blank">
               <img

@@ -63,7 +63,7 @@ class BookingController extends Controller
                 'payment_mode' => $booking->payment_mode,
             );
 
-            Mail::to(Auth::user()->email)->send(new BookingMailable($data));
+            Mail::send(new BookingMailable($data));
             return redirect('booking/success')->with('success','Your booking has been completed successfully. We will contact with you very shortly.');
         }
         catch(\Exception $e) {

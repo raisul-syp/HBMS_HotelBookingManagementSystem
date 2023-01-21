@@ -28,6 +28,13 @@
                         {{ session('success') }}
                     </div>
                 </div>
+                @elseif (session('danger'))
+                <div class="col-lg-12">
+                    <div class="alert alert-danger solid alert-right-icon alert-dismissible fade show">                            
+                        <span><i class="fas fa-exclamation-triangle"></i></span>
+                        {{ session('danger') }}
+                    </div>
+                </div>
                 @endif
                 
                 @if ($errors->any())

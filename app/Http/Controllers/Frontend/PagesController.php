@@ -15,6 +15,7 @@ use App\Models\OfferCategory;
 use Illuminate\Support\Carbon;
 use App\Models\Website\ContactInfo;
 use App\Http\Controllers\Controller;
+use App\Mail\ContactUsMailable;
 use Illuminate\Support\Facades\Mail;
 
 class PagesController extends Controller
@@ -34,33 +35,27 @@ class PagesController extends Controller
 
     public function sendContactUs(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'subject' => 'required',
-            'message' => 'required',
-        ]);
-
-        $data = array(
-            'name' => $request->name,
-            'email' => $request->email,
-            'subject' => $request->subject,
-            'msg' => $request->message,
-        );
-
-        Mail::send('mail-template.contactus', $data, function ($message) {
-            $message->from('raisul.syp@gmail.com', 'The Zabeer Dhaka');
-            // $message->sender('john@johndoe.com', 'John Doe');
-            $message->to('rishowmin.seu38@gmail.com', 'Raisul Islam')->subject('Contact Us Query');
-            // $message->cc('john@johndoe.com', 'John Doe');
-            // $message->bcc('john@johndoe.com', 'John Doe');
-            // $message->replyTo('john@johndoe.com', 'John Doe');
-            // $message->subject('Subject');
-            // $message->priority(3);
-            // $message->attach('pathToFile');
-        });
-
-        return redirect('contact-us')->with('success', 'Mail has been sent!');
+        try {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'subject' => 'required',
+                'message' => 'required',
+            ]);
+    
+            $data = array(
+                'name' => $request->name,
+                'email' => $request->email,
+                'subject' => $request->subject,
+                'msg' => $request->message,
+            );
+            
+            Mail::send(new ContactUsMailable($data));
+            return redirect('contact-us')->with('success', 'Thank you for your query! We will get back you soon.');
+        }
+        catch(\Exception $e) {
+            return redirect('contact-us')->with('danger', 'Something Went Wrong!');
+        }
     }
 
     public function pages($page_slug)

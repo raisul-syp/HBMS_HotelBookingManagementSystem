@@ -225,7 +225,7 @@ Header Section Start
 
 .navbar-nav .nav-item.my-account .dropdown .dropdown-menu {
     right: 0 !important;
-    min-width: 15rem;
+    min-width: 16rem;
 }
 
 .navbar-nav .nav-item.my-account .dropdown .dropdown-menu hr {
@@ -274,11 +274,18 @@ Header Section Start
     clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
-.navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec h5 {
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec .profile-info h5 {
     color: var(--siteColor2);
     font-weight: 800;
     font-size: 14px;
     margin-bottom: 0;
+    letter-spacing: 0;
+}
+
+.navbar-nav .nav-item.my-account .dropdown .dropdown-menu li.profile-sec .profile-info h6 {
+    margin-bottom: 0;
+    font-size: 12px;
+    color: var(--siteFont3);
 }
 
 /*==================================

@@ -119,7 +119,8 @@
                   </div>
 
                   <div class="contact-msg" style="text-align: center; margin-bottom: 20px">
-                    <h2 style="color: #dea500; font-weight: 300; margin: 0">Guest Enquery</h2>
+                    <h2 style="color: #dea500; font-weight: 300; margin: 0">Your Account Has Been Created Successfully!</h2>
+                    <p style="font-weight: 300; margin: 0; padding: 0">Your Credential</p>
                   </div>
 
                   <table
@@ -139,19 +140,25 @@
                   >
                     <tr>
                       <th style="font-size: 12px; padding: 10px; font-weight: 400; text-align: left;">Name</th>
-                      <td style="margin: 0 auto; font-size: 12px; font-weight: 300; padding: 10px; text-align: left;">{{ $name }}</td>
+                      <td style="margin: 0 auto; font-size: 12px; font-weight: 300; padding: 10px; text-align: left;">{{ $user_name }}</td>
+                    </tr>
+                    <tr>
+                      <th style="font-size: 12px; padding: 10px; font-weight: 400; text-align: left;">User Role</th>
+                      <td style="margin: 0 auto; font-size: 12px; font-weight: 300; padding: 10px; text-align: left;">
+                        @if ($user_role == 0)
+                          Admin
+                        @elseif ($user_role == 1)
+                          Staff
+                        @endif  
+                      </td>
                     </tr>
                     <tr>
                       <th style="font-size: 12px; padding: 10px; font-weight: 400; text-align: left;">Email</th>
-                      <td style="margin: 0 auto; font-size: 12px; font-weight: 300; padding: 10px; text-align: left;">{{ $email }}</td>
+                      <td style="margin: 0 auto; font-size: 12px; font-weight: 300; padding: 10px; text-align: left;">{{ $user_email }}</td>
                     </tr>
                     <tr>
-                      <th style="font-size: 12px; padding: 10px; font-weight: 400; text-align: left;">Subject</th>
-                      <td style="margin: 0 auto; font-size: 12px; font-weight: 300; padding: 10px; text-align: left;">{{ $subject }}</td>
-                    </tr>
-                    <tr>
-                      <th style="font-size: 12px; padding: 10px; font-weight: 400; text-align: left;">Message</th>
-                      <td style="margin: 0 auto; font-size: 12px; font-weight: 300; padding: 10px; text-align: left;">{{ $msg }}</td>
+                      <th style="font-size: 12px; padding: 10px; font-weight: 400; text-align: left;">Password</th>
+                      <td style="margin: 0 auto; font-size: 12px; font-weight: 300; padding: 10px; text-align: left;">{{ $user_password }}</td>
                     </tr>
                   </table>
                 </td>

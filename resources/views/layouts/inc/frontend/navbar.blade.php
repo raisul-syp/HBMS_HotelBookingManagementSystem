@@ -108,7 +108,10 @@
                                     <img src="{{ asset('admin/images/no-photo.png') }}">
                                 </div>
                                 @endif
-                                <h5>{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h5>
+                                <div class="profile-info">
+                                    <h5>{{ Auth::user()->first_name.' '.Auth::user()->last_name }}</h5>
+                                    <h6>{{ Auth::user()->email }}</h6>
+                                </div>
                             </li>
                             <hr>
                             <li>

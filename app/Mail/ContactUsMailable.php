@@ -2,14 +2,12 @@
 
 namespace App\Mail;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
 
-class BookingMailable extends Mailable
+class ContactUsMailable extends Mailable
 {
     use Queueable, SerializesModels;
     public $data;
@@ -31,13 +29,11 @@ class BookingMailable extends Mailable
      */
     public function build()
     {
-        $subject = "Hotel Reservation";
-        return $this->from('reservation@thezabeerdhaka.com', 'The Zabeer Dhaka Reservation Team')
-                    ->to([$this->data['guest_email'], 'reservation@thezabeerdhaka.com'])
-                    ->cc(['branding@thezabeerdhaka.com', 'fo@thezabeerdhaka.com'])
-                    ->view('mail-template.booking')
+        $subject = "Guest Enquery";
+        return $this->from($this->data['email'], $this->data['name'])
+                    ->to('info@thezabeerdhaka.com')
+                    ->view('mail-template.contactus')
                     ->with($this->data)
                     ->subject($subject);
     }
-
 }
