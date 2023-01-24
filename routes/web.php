@@ -67,6 +67,27 @@ Route::group(['middleware' => 'isAdmin'], function() {
     Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/logout', [App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
 
+    // Role & Permission
+    Route::prefix('/admin/role-permission')->group(function (){
+        // Role
+        Route::prefix('/role')->controller(App\Http\Controllers\Admin\RoleController::class)->group(function (){
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/edit/{role}', 'edit');
+            Route::put('/edit/{role}', 'update');
+        });
+
+        // Permission
+        Route::prefix('/permission')->controller(App\Http\Controllers\Admin\PermissionController::class)->group(function (){
+            Route::get('/', 'index');
+            Route::get('/create', 'create');
+            Route::post('/', 'store');
+            Route::get('/edit/{permission}', 'edit');
+            Route::put('/edit/{permission}', 'update');
+        });
+    });
+
     // Room Type
     Route::prefix('/admin/roomtype')->controller(App\Http\Controllers\Admin\RoomtypeController::class)->group(function (){
         Route::get('/', 'index');

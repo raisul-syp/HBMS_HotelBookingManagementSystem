@@ -8,6 +8,16 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                <i class="icon icon-bell-53"></i>
+                <span class="nav-text">{{ __('Role & Permission') }}</span>
+            </a>
+            <ul aria-expanded="false">
+                <li><a href="{{ url('admin/role-permission/role') }}">{{ __('Manage Role') }}</a></li>
+                <li><a href="{{ url('admin/role-permission/permission') }}">{{ __('Manage Permission') }}</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                 <i class="icon icon-single-04"></i>
                 <span class="nav-text">{{ __('Room Type') }}</span>
             </a>
@@ -38,7 +48,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                <i class="icon icon-single-04"></i>
+                <i class="icon icon-coffee"></i>
                 <span class="nav-text">{{ __('Restaurants') }}</span>
             </a>
             <ul aria-expanded="false">
@@ -179,7 +189,7 @@
         </li>
         <li>
             <a href="{{ url('admin/settings') }}">
-                <i class="icon icon-single-04"></i>
+                <i class="icon icon-settings-gear-64"></i>
                 <span class="nav-text">{{ __('Settings') }}</span>
             </a>
         </li>
