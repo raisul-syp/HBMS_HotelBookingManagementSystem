@@ -9,6 +9,7 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -17,6 +18,13 @@
                     <tr>
                         <td>{{ $serialNo++ }}</td>
                         <td>{{ $role->name }}</td>
+                        <td>
+                            @if ($role->is_active == '1')
+                                <span class="badge badge-success text-white">Active</span>
+                            @else
+                                <span class="badge badge-danger">Deactive</span>
+                            @endif
+                        </td>
                         <td>
                             <span>
                                 <a href="{{ url('admin/role-permission/role/edit/'.$role->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
@@ -39,9 +47,9 @@
         </div>
 
 
-        {{-- <div class="pagination-section">
+        <div class="pagination-section">
             {{ $roles->links() }}
-        </div> --}}
+        </div>
     </div>
 </div>
 

@@ -58,19 +58,64 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row mb-0">
+                                <div class="form-group row">
                                     <div class="col-sm-2 col-form-label text-right" for="permissions">{{ __('Permissions') }}</div>
                                     <div class="col-sm-10">
-                                        @forelse ($permissions as $permission)
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="permissions{{ $permission->id }}" name="permissions[]" value="{{ $permission->name }}">
+                                            <input type="checkbox" class="form-check-input" id="permissionsAll" value="1">
+                                            <label class="form-check-label" for="permissionsAll">All</label>
+                                        </div> 
+
+                                        {{-- @foreach ($permissions as $permission)
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input role-permission-checkbox" id="permissions{{ $permission->id }}" name="permissions[]" value="{{ $permission->name }}">
                                             <label class="form-check-label" for="permissions{{ $permission->id }}">{{ $permission->name }}</label>
-                                        </div>     
-                                        @empty
-                                        No Data Found!
-                                        @endforelse
+                                        </div>            
+                                        @endforeach --}}
+
+                                        <hr>
+
+                                        @php $i = 1; @endphp
+                                        @foreach ($permission_groups as $group)
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="{{ $i }}Management" name="permissions[]" value="{{ $group->name }}" onclick="checkPermissionByGroup('role-{{ $i }}-management-checkbox', this)">
+                                                    <label class="form-check-label" for="permissions">{{ $group->name }}</label>
+                                                </div>  
+                                            </div>
+
+                                            <div class="col-8 role-{{ $i }}-management-checkbox">
+                                                @php 
+                                                    $permissions = App\Models\Admin::getpermissionsByGroupName($group->name);
+                                                    $j = 1; 
+                                                @endphp
+                                                @foreach ($permissions as $permission)
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input role-permission-checkbox" id="checkPermission{{ $permission->id }}" name="permissions[]" value="{{ $permission->name }}">
+                                                    <label class="form-check-label" for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
+                                                </div>   
+                                                @php $j++; @endphp  
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        @php $i++; @endphp  
+                                        
+                                        <hr>
+                                        @endforeach
                                     </div>
                                 </div>
+                                <div class="form-group row mb-0">
+                                    <div class="col-sm-2 col-form-label text-right" for="is_active">{{ __('Status') }}</div>
+                                    <div class="col-sm-10">
+                                        <label class="switch switch-square">
+                                            <input type="checkbox" class="switch-input" id="is_active" name="is_active" checked>
+                                            <span class="switch-toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <input type="text" hidden id="created_by" name="created_by" value="{{ Auth::guard('admin')->user()->role_as }}">
                             </div>
                         </div>
                     </div>
@@ -87,4 +132,30 @@
         </div>
     </div>
 </div>
+@endsection
+
+
+@section('scripts')
+    <script>
+        $("#permissionsAll").click(function(){
+            if($(this).is(':checked')) {
+                $(".role-permission-checkbox").prop('checked', true);
+            }
+            else {
+                $(".role-permission-checkbox").prop('checked', false);
+            }
+        });
+
+        function checkPermissionByGroup(className, checkThis) {
+            const groupIdName = $("#"+checkThis.id);
+            const classCheckBox = $('.'+className+' input');
+            
+            if(groupIdName.is(':checked')) {
+                classCheckBox.prop('checked', true);
+            }
+            else {
+                classCheckBox.prop('checked', false);
+            }
+        }
+    </script>
 @endsection

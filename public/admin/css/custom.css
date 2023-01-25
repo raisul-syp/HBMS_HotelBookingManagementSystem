@@ -350,3 +350,14 @@ hr {
     clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
+.form-check-input {
+    position: relative !important;
+}
+
+.switch-input {
+    position: absolute;
+}
+
+input[type="checkbox"]:checked:after {
+    background: var(--siteColor2) !important;
+}

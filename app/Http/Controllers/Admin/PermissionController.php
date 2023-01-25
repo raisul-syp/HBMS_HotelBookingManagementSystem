@@ -22,10 +22,14 @@ class PermissionController extends Controller
     {
         $request->validate([
             'name' => 'required|max:100|unique:permissions',
+            'group_name' => 'required|max:100',
         ]);
 
         Permission::create([
             'name' => $request->name,
+            'group_name' => $request->group_name,
+            'is_active' => $request->is_active == true ? '1':'0',
+            'created_by' => $request->created_by,
         ]);
 
         return redirect('admin/role-permission/permission')->with('message','Congratulations! New Permission Has Been Created Successfully.');
@@ -39,13 +43,17 @@ class PermissionController extends Controller
     public function update(Request $request, $permission)
     {
         $request->validate([
-            'name' => 'required|max:100|unique:roles',
+            'name' => 'required|max:100',
+            'group_name' => 'required|max:100',
         ]);
 
         $permission = Permission::findOrFail($permission);
 
         $permission->update([
             'name' => $request->name,
+            'group_name' => $request->group_name,
+            'is_active' => $request->is_active == true ? '1':'0',
+            'updated_by' => $request->updated_by,
         ]);
 
         return redirect('admin/role-permission/permission')->with('message','Congratulations! New Permission Has Been Updated Successfully.');

@@ -21,18 +21,16 @@ class Index extends Component
     public function destroyRecord()
     {
         $permission = Permission::find($this->permission_id);
-        // $permission->is_delete = '0';
-        // $permission->update();
-        $permission->delete();
+        $permission->is_delete = '0';
+        $permission->update();
         return redirect('admin/role-permission/permission')->with('message','Permission Has Been Deleted Successfully.');
         $this->dispatchBrowserEvent('close-modal');
     }
     
     public function render()
     {
-        $permissions = Permission::all();
-        // $serialNo = ($roles->perPage() * ($roles->currentPage() - 1)) + 1;
-        $serialNo = 1;
+        $permissions = Permission::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
+        $serialNo = ($permissions->perPage() * ($permissions->currentPage() - 1)) + 1;
         return view('livewire.admin.permission.index', compact('permissions', 'serialNo'));
     }
 }
