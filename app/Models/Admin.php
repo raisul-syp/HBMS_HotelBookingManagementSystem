@@ -71,10 +71,9 @@ class Admin extends Authenticatable
     public static function getPermissionGroups()
     {
         $permission_groups = DB::table('permissions')
-                            ->select('group_name as name')
-                            ->groupBy('group_name')
-                            ->get();
-
+            ->select('group_name as name')
+            ->groupBy('group_name')
+            ->get();
         return $permission_groups;
     }
 
@@ -85,5 +84,17 @@ class Admin extends Authenticatable
             ->where('group_name', $group_name)
             ->get();
         return $permissions;
+    }
+
+    public static function roleHasPermissions($role, $permissions)
+    {
+        $hasPermission = true;
+        foreach ($permissions as $permission) {
+            if (!$role->hasPermissionTo($permission->name)) {
+                $hasPermission = false;
+                return $hasPermission;
+            }
+        }
+        return $hasPermission;
     }
 }

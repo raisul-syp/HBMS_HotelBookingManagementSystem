@@ -59,13 +59,66 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group row mb-0">
+                                <div class="form-group row">
                                     <div class="col-sm-2 col-form-label text-right" for="is_active">{{ __('Status') }}</div>
                                     <div class="col-sm-10">
                                         <label class="switch switch-square">
-                                            <input type="checkbox" class="switch-input" id="is_active" name="is_active"  {{ $role->is_active == '1' ? 'checked':'' }}>
+                                            <input type="checkbox" class="switch-input" id="is_active" name="is_active" {{ $role->is_active == '1' ? 'checked':'' }}>
                                             <span class="switch-toggle-slider"></span>
                                         </label>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-0">
+                                    <div class="col-sm-2 col-form-label text-right" for="permissions">{{ __('Permissions') }}</div>
+                                    <div class="col-sm-10">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                                <thead class="bg-primary text-white text-center">
+                                                    <tr>
+                                                        <th scope="col">Group Name</th>
+                                                        <th scope="col">All</th>
+                                                        <th scope="col">Index</th>
+                                                        <th scope="col">Create</th>
+                                                        <th scope="col">Update</th>
+                                                        <th scope="col">Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-center">
+                                                    <tr>
+                                                        <th class="bg-primary">All</th>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="permissionsAll" value="1" {{ App\Models\Admin::roleHasPermissions($role, $all_permissions) ? 'checked':'' }}>
+                                                            </div> 
+                                                        </td>
+                                                    </tr>
+                                                    @php $i = 1; @endphp
+                                                    @foreach ($permission_groups as $group)
+                                                    <tr>
+                                                        @php 
+                                                            $permissions = App\Models\Admin::getpermissionsByGroupName($group->name);
+                                                            $j = 1; 
+                                                        @endphp
+                                                        <th class="bg-primary">{{ $group->name }}</th>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input role-permission-checkbox" id="{{ $i }}Management" value="{{ $group->name }}" onclick="checkPermissionByGroup('role-{{ $i }}-management-checkbox', this)" {{ App\Models\Admin::roleHasPermissions($role, $permissions) ? 'checked':'' }}>
+                                                            </div>
+                                                        </td>
+                                                        @foreach ($permissions as $permission)
+                                                        <td class="role-{{ $i }}-management-checkbox">
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input role-permission-checkbox" id="checkPermission{{ $permission->id }}" name="permissions[]" value="{{ $permission->name }}" onclick="checkSinglePermission('role-{{ $i }}-management-checkbox', '{{ $i }}Management', {{ count($permissions) }})" {{ $role->hasPermissionTo($permission->name) ? 'checked':'' }}>
+                                                            </div>   
+                                                        </td>
+                                                        @php $j++; @endphp  
+                                                        @endforeach
+                                                    </tr>
+                                                    @php $i++; @endphp
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -86,4 +139,56 @@
         </div>
     </div>
 </div>
+@endsection
+
+
+@section('scripts')
+    <script>
+        $("#permissionsAll").click(function(){
+            if($(this).is(':checked')) {
+                $(".role-permission-checkbox").prop('checked', true);
+            }
+            else {
+                $(".role-permission-checkbox").prop('checked', false);
+            }
+        });
+
+        function checkPermissionByGroup(className, checkThis) {
+            const groupIdName = $("#"+checkThis.id);
+            const classCheckBox = $('.'+className+' input');
+            
+            if(groupIdName.is(':checked')) {
+                classCheckBox.prop('checked', true);
+            }
+            else {
+                classCheckBox.prop('checked', false);
+            }
+            implementAllChecked();
+        }
+
+        function checkSinglePermission(groupClassName, groupID, countTotalPermission) {
+            const classCheckbox = $('.'+groupClassName+ ' input');
+            const groupIdCheckbox = $("#"+groupID);
+
+            if($('.'+groupClassName+ ' input:checked').length == countTotalPermission) {
+                groupIdCheckbox.prop('checked', true);
+            }
+            else {
+                groupIdCheckbox.prop('checked', false);
+            }
+            implementAllChecked();
+        }
+
+        function implementAllChecked() {
+            const countPermissions = {{ count($all_permissions) }};
+            const countPermissionGroups = {{ count($permission_groups) }};
+
+            if($('.role-permission-checkbox:checked').length >= (countPermissions + countPermissionGroups)) {
+                $("#permissionsAll").prop('checked', true);
+            }
+            else {
+                $("#permissionsAll").prop('checked', false);
+            }
+        }        
+    </script>
 @endsection

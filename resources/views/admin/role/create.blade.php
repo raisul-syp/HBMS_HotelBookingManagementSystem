@@ -59,59 +59,65 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-2 col-form-label text-right" for="permissions">{{ __('Permissions') }}</div>
-                                    <div class="col-sm-10">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="permissionsAll" value="1">
-                                            <label class="form-check-label" for="permissionsAll">All</label>
-                                        </div> 
-
-                                        {{-- @foreach ($permissions as $permission)
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input role-permission-checkbox" id="permissions{{ $permission->id }}" name="permissions[]" value="{{ $permission->name }}">
-                                            <label class="form-check-label" for="permissions{{ $permission->id }}">{{ $permission->name }}</label>
-                                        </div>            
-                                        @endforeach --}}
-
-                                        <hr>
-
-                                        @php $i = 1; @endphp
-                                        @foreach ($permission_groups as $group)
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="{{ $i }}Management" name="permissions[]" value="{{ $group->name }}" onclick="checkPermissionByGroup('role-{{ $i }}-management-checkbox', this)">
-                                                    <label class="form-check-label" for="permissions">{{ $group->name }}</label>
-                                                </div>  
-                                            </div>
-
-                                            <div class="col-8 role-{{ $i }}-management-checkbox">
-                                                @php 
-                                                    $permissions = App\Models\Admin::getpermissionsByGroupName($group->name);
-                                                    $j = 1; 
-                                                @endphp
-                                                @foreach ($permissions as $permission)
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input role-permission-checkbox" id="checkPermission{{ $permission->id }}" name="permissions[]" value="{{ $permission->name }}">
-                                                    <label class="form-check-label" for="checkPermission{{ $permission->id }}">{{ $permission->name }}</label>
-                                                </div>   
-                                                @php $j++; @endphp  
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                        @php $i++; @endphp  
-                                        
-                                        <hr>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="is_active">{{ __('Status') }}</div>
                                     <div class="col-sm-10">
                                         <label class="switch switch-square">
                                             <input type="checkbox" class="switch-input" id="is_active" name="is_active" checked>
                                             <span class="switch-toggle-slider"></span>
                                         </label>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-0">
+                                    <div class="col-sm-2 col-form-label text-right" for="permissions">{{ __('Permissions') }}</div>
+                                    <div class="col-sm-10">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                                <thead class="bg-primary text-white text-center">
+                                                    <tr>
+                                                        <th scope="col">Group Name</th>
+                                                        <th scope="col">All</th>
+                                                        <th scope="col">Index</th>
+                                                        <th scope="col">Create</th>
+                                                        <th scope="col">Update</th>
+                                                        <th scope="col">Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-center">
+                                                    <tr>
+                                                        <th class="bg-primary">All</th>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input" id="permissionsAll" value="1">
+                                                            </div> 
+                                                        </td>
+                                                    </tr>
+                                                    @php $i = 1; @endphp
+                                                    @foreach ($permission_groups as $group)
+                                                    <tr>
+                                                        @php 
+                                                            $permissions = App\Models\Admin::getpermissionsByGroupName($group->name);
+                                                            $j = 1; 
+                                                        @endphp
+                                                        <th class="bg-primary">{{ $group->name }}</th>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input role-permission-checkbox" id="{{ $i }}Management" value="{{ $group->name }}" onclick="checkPermissionByGroup('role-{{ $i }}-management-checkbox', this)">
+                                                            </div>
+                                                        </td>
+                                                        @foreach ($permissions as $permission)
+                                                        <td class="role-{{ $i }}-management-checkbox">
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input role-permission-checkbox" id="checkPermission{{ $permission->id }}" name="permissions[]" value="{{ $permission->name }}">
+                                                            </div>   
+                                                        </td>
+                                                        @php $j++; @endphp  
+                                                        @endforeach
+                                                    </tr>
+                                                    @php $i++; @endphp
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
 

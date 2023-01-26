@@ -18,10 +18,9 @@ class RoleController extends Controller
 
     public function create()
     {
-        $permissions = Permission::all();
+        $all_permissions = Permission::all();
         $permission_groups = Admin::getPermissionGroups();
-        // $permission_groups = DB::table('permissions')->select('group_name')->groupBy('group_name')->get();
-        return view('admin.role.create', compact('permissions', 'permission_groups'));
+        return view('admin.role.create', compact('all_permissions', 'permission_groups'));
     }
 
     public function store(Request $request)
@@ -47,7 +46,9 @@ class RoleController extends Controller
 
     public function edit(Role $role)
     {
-        return view('admin.role.edit', compact('role'));
+        $all_permissions = Permission::all();
+        $permission_groups = Admin::getPermissionGroups();
+        return view('admin.role.edit', compact('role', 'all_permissions', 'permission_groups'));
     }
 
     public function update(Request $request, $role)
@@ -63,6 +64,12 @@ class RoleController extends Controller
             'is_active' => $request->is_active == true ? '1':'0',
             'updated_by' => $request->updated_by,
         ]);
+
+        $permission = $request->input('permissions');
+
+        if(!empty($permission)) {
+            $role->syncPermissions($permission);
+        }
 
         return redirect('admin/role-permission/role')->with('message','Congratulations! New Role Has Been Updated Successfully.');
     }
