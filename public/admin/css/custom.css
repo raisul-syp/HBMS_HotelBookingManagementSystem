@@ -235,6 +235,10 @@ img.list-image {
     background-size: 400% 300% !important;
 }
 
+.badge-primary {
+    background-color: var(--siteColor2) !important;
+}
+
 .card-header {
     border-bottom: 1px solid var(--siteColor2) !important;
 }

@@ -2,15 +2,16 @@
     <div class="card-header">
         <h4 class="card-title">Role Table</h4>
     </div>
-    <div class="card-body">   
+    <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th width="5%">#</th>
+                        <th width="15%">Name</th>
+                        <th width="50%">Permissions</th>
+                        <th width="10%">Status</th>
+                        <th width="20%">Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -18,6 +19,13 @@
                     <tr>
                         <td>{{ $serialNo++ }}</td>
                         <td>{{ $role->name }}</td>
+                        <td>
+                            @forelse ($role->permissions as $permission)
+                            <span class="badge badge-primary mb-1">{{ $permission->name }}</span>
+                            @empty
+                            <small class="text-danger">No Permissions Assigned!</small>
+                            @endforelse
+                        </td>
                         <td>
                             @if ($role->is_active == '1')
                                 <span class="badge badge-success text-white">Active</span>
@@ -34,13 +42,13 @@
                             </span>
                             @include('modal.admin.delete')
                         </td>
-                    </tr>                        
+                    </tr>
                     @empty
                     <tr>
                         <td colspan="4">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
-                    </tr>                        
+                    </tr>
                     @endforelse
                 </tbody>
             </table>

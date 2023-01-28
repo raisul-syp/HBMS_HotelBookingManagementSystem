@@ -2,7 +2,7 @@
     <div class="card-header">
         <h4 class="card-title">Permission Table</h4>
     </div>
-    <div class="card-body">   
+    <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover table-responsive-sm">
                 <thead class="text-center bg-primary text-white">
@@ -36,13 +36,13 @@
                             </span>
                             @include('modal.admin.delete')
                         </td>
-                    </tr>                        
+                    </tr>
                     @empty
                     <tr>
-                        <td colspan="4">
+                        <td colspan="5">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
-                    </tr>                        
+                    </tr>
                     @endforelse
                 </tbody>
             </table>

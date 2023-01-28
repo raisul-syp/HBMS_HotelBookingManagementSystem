@@ -88,15 +88,15 @@
                                                         <td>
                                                             <div class="form-check">
                                                                 <input type="checkbox" class="form-check-input" id="permissionsAll" value="1">
-                                                            </div> 
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     @php $i = 1; @endphp
                                                     @foreach ($permission_groups as $group)
                                                     <tr>
-                                                        @php 
+                                                        @php
                                                             $permissions = App\Models\Admin::getpermissionsByGroupName($group->name);
-                                                            $j = 1; 
+                                                            $j = 1;
                                                         @endphp
                                                         <th class="bg-primary">{{ $group->name }}</th>
                                                         <td>
@@ -108,9 +108,9 @@
                                                         <td class="role-{{ $i }}-management-checkbox">
                                                             <div class="form-check">
                                                                 <input type="checkbox" class="form-check-input role-permission-checkbox" id="checkPermission{{ $permission->id }}" name="permissions[]" value="{{ $permission->name }}">
-                                                            </div>   
+                                                            </div>
                                                         </td>
-                                                        @php $j++; @endphp  
+                                                        @php $j++; @endphp
                                                         @endforeach
                                                     </tr>
                                                     @php $i++; @endphp
@@ -155,7 +155,7 @@
         function checkPermissionByGroup(className, checkThis) {
             const groupIdName = $("#"+checkThis.id);
             const classCheckBox = $('.'+className+' input');
-            
+
             if(groupIdName.is(':checked')) {
                 classCheckBox.prop('checked', true);
             }

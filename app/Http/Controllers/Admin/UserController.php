@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\UserEditFormRequest;
 use App\Mail\AdminRegisterMailable;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -23,17 +24,18 @@ class UserController extends Controller
 
     public function create()
     {
-        $countries = CountryList::all()->where('is_active','1');
-        return view('admin.user.create', compact('countries'));
+        $countries = CountryList::all()->where('is_active', 1);
+        $roles = Role::all()->where('is_active', 1)->where('is_delete', 1);
+        return view('admin.user.create', compact('countries', 'roles'));
     }
 
     public function store(UserFormRequest $request)
     {
         try {
             $validatedData = $request->validated();
-    
+
             $users = new Admin;
-    
+
             $users->first_name = $validatedData['first_name'];
             $users->last_name = $validatedData['last_name'];
             $users->email = $validatedData['email'];
@@ -50,31 +52,33 @@ class UserController extends Controller
             $users->is_active = $request->is_active == true ? '1':'0';
             $users->created_by = $validatedData['created_by'];
             $users->role_as = $validatedData['role_as'];
-    
+
+            $users->assignRole($validatedData['role_as']);
+
             if($request->hasFile('profile_photo')){
                 $uploadProfilePath = 'uploads/users/profile_photo/';
-    
+
                 $profilePhotoFile = $request->file('profile_photo');
                 $profileExtension = $profilePhotoFile->getClientOriginalExtension();
                 $profileName =  $users->first_name.'-'.time().'.'.$profileExtension;
                 $profilePhotoFile->move($uploadProfilePath,$profileName);
-    
+
                 $users->profile_photo = $profileName;
             }
-    
+
             if($request->hasFile('cover_photo')){
                 $uploadCoverPath = 'uploads/users/cover_photo/';
-    
+
                 $coverPhotoFile = $request->file('cover_photo');
                 $coverExtension = $coverPhotoFile->getClientOriginalExtension();
                 $coverName =  $users->first_name.'-'.time().'.'.$coverExtension;
                 $coverPhotoFile->move($uploadCoverPath,$coverName);
-    
+
                 $users->cover_photo = $coverName;
             }
-    
+
             $users->save();
-            
+
             $data = array(
                 'user_name' => $request->first_name.' '.$request->last_name,
                 'user_email' => $request->email,
@@ -82,7 +86,7 @@ class UserController extends Controller
                 'user_role' => $request->role_as,
             );
 
-            Mail::send(new AdminRegisterMailable($data));    
+            Mail::send(new AdminRegisterMailable($data));
             return redirect('admin/user')->with('message','Congratulations! New User Has Been Created Successfully.');
         }
         catch(\Exception $e) {
@@ -92,8 +96,9 @@ class UserController extends Controller
 
     public function edit(Admin $user)
     {
-        $countries = CountryList::all()->where('is_active','1');
-        return view('admin.user.edit', compact('user','countries'));
+        $countries = CountryList::all()->where('is_active', 1);
+        $roles = Role::all()->where('is_active', 1)->where('is_delete', 1);
+        return view('admin.user.edit', compact('user', 'countries', 'roles'));
     }
 
     public function update(UserEditFormRequest $request, $user)

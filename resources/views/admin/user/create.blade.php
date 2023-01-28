@@ -91,9 +91,12 @@
                                             <label for="role_as">
                                                 {{ __('Role') }}
                                             </label>
-                                            <select class="form-control" id="role_as" name="role_as" >
-                                                <option value="0">Admin</option>
-                                                <option value="1">Staff</option>
+                                            <select class="form-control js-basic-single" id="role_as" name="role_as" >
+                                                @forelse ($roles as $role)
+                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                @empty
+                                                <option>No Data</option>
+                                                @endforelse
                                             </select>
                                         </div>
                                     </div>
@@ -103,7 +106,7 @@
                                             <label for="gender">
                                                 {{ __('Gender') }}
                                             </label>
-                                            <select class="form-control" id="gender" name="gender" >
+                                            <select class="form-control js-basic-single" id="gender" name="gender" >
                                                 <option selected disabled>--Select Your Gender--</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
@@ -159,7 +162,7 @@
                                             <label for="country">
                                                 {{ __('Country') }}
                                             </label>
-                                            <select class="form-control" id="country" name="country" >
+                                            <select class="form-control js-basic-single" id="country" name="country" >
                                                 <option selected disabled>--Select Your Country--</option>
                                                 @forelse ($countries as $country)
                                                 <option value="{{ $country->country_name }}">{{ $country->country_name }}</option>

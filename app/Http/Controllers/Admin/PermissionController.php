@@ -43,7 +43,7 @@ class PermissionController extends Controller
     public function update(Request $request, $permission)
     {
         $request->validate([
-            'name' => 'required|max:100',
+            'name' => 'required|max:100|unique:permissions,name,'.$permission,
             'group_name' => 'required|max:100',
         ]);
 

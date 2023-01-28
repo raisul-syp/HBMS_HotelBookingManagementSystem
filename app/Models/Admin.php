@@ -73,6 +73,7 @@ class Admin extends Authenticatable
         $permission_groups = DB::table('permissions')
             ->select('group_name as name')
             ->groupBy('group_name')
+            ->orderBy('id', 'ASC')
             ->get();
         return $permission_groups;
     }

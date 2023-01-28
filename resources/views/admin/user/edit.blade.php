@@ -93,8 +93,11 @@
                                                 {{ __('Role') }}
                                             </label>
                                             <select class="form-control" id="role_as" name="role_as" >
-                                                <option value="0" {{ old('role_as', $user->role_as) == 0 ? 'selected' : '' }}>Admin</option>
-                                                <option value="1" {{ old('role_as', $user->role_as) == 1 ? 'selected' : '' }}>Staff</option>
+                                                @forelse ($roles as $role)
+                                                <option value="{{ $role->id }}" {{ old('role_as', $user->role_as) == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
+                                                @empty
+                                                <option>No Data</option>
+                                                @endforelse
                                             </select>
                                         </div>
                                     </div>

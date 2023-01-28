@@ -35,7 +35,7 @@ class CreateAdminsTable extends Migration
             $table->string('profile_photo')->nullable();
             $table->string('cover_photo')->nullable();
 
-            $table->tinyInteger('role_as')->default('1')->comment('0=Admin, 1=Staff, 2=Guest');
+            $table->tinyInteger('roles')->default('1')->comment('1=Admin, 2=Manager, 3=Front Desk Officer, 4=Guest');
             $table->tinyInteger('is_active')->default('1')->comment('0=Deactive, 1=Active');
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->string('created_by')->nullable();

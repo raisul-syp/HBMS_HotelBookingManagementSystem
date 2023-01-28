@@ -31,11 +31,11 @@
                         </td>
                         <td>{{ $user->first_name.' '.$user->last_name }}</td>
                         <td>
-                            @if ($user->role_as == 0)
-                            <strong>Admin</strong>
-                            @else
-                            <strong>Staff</strong>
+                            @foreach ($roles as $role)
+                            @if ($role->id == $user->role_as)
+                            <strong>{{ $role->name }}</strong>
                             @endif
+                            @endforeach
                         </td>
                         <td>
                             @if ($user->date_of_birth)

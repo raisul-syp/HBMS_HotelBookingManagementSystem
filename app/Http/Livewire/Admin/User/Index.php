@@ -6,6 +6,7 @@ use App\Models\Admin;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\WithPagination;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 class Index extends Component
@@ -32,7 +33,8 @@ class Index extends Component
     public function render()
     {
         $users = Admin::where('is_delete','1')->orderBy('id','ASC')->paginate(10);
+        $roles = Role::all()->where('is_active', 1)->where('is_delete', 1);
         $serialNo = ($users->perPage() * ($users->currentPage() - 1)) + 1;
-        return view('livewire.admin.user.index', compact('users', 'serialNo'));
+        return view('livewire.admin.user.index', compact('users', 'roles', 'serialNo'));
     }
 }
