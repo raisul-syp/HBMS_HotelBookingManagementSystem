@@ -21,6 +21,14 @@
 
     <div class="row">
         <div class="col-lg-12">
+            @if (session('error'))
+                @include('alertMessage.admin.error')
+            @endif
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
             <form action="{{ url('admin/user/edit/'.$user->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -92,9 +100,9 @@
                                             <label for="role_as">
                                                 {{ __('Role') }}
                                             </label>
-                                            <select class="form-control" id="role_as" name="role_as" >
+                                            <select class="form-control js-basic-single" id="role_as" name="role_as" >
                                                 @forelse ($roles as $role)
-                                                <option value="{{ $role->id }}" {{ old('role_as', $user->role_as) == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
+                                                <option value="{{ $role->id }}" {{ $user->hasRole($role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
                                                 @empty
                                                 <option>No Data</option>
                                                 @endforelse
@@ -107,7 +115,7 @@
                                             <label for="gender">
                                                 {{ __('Gender') }}
                                             </label>
-                                            <select class="form-control" id="gender" name="gender" >
+                                            <select class="form-control js-basic-single" id="gender" name="gender" >
                                                 <option selected disabled>--Select Your Gender--</option>
                                                 <option value="Male" {{ old('gender', $user->gender) == 'Male' ? 'selected' : '' }}>Male</option>
                                                 <option value="Female" {{ old('gender', $user->gender) == 'Female' ? 'selected' : '' }}>Female</option>
@@ -163,7 +171,7 @@
                                             <label for="country">
                                                 {{ __('Country') }}
                                             </label>
-                                            <select class="form-control" id="country" name="country" >
+                                            <select class="form-control js-basic-single" id="country" name="country" >
                                                 <option selected disabled>--Select Your Country--</option>
                                                 @forelse ($countries as $country)
                                                 <option value="{{ $country->country_name }}" {{ old('country', $user->country) == $country->country_name ? 'selected' : '' }}>{{ $country->country_name }}</option>

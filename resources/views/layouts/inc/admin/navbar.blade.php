@@ -18,6 +18,7 @@
                 <li class="nav-item live_website">
                     <a class="nav-link" href="{{ url('/') }}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Live Website">
                         <i class="mdi mdi-web"></i>
+                        <div class="pulse-css"></div>
                     </a>
                 </li>
                 {{-- <li class="nav-item dropdown notification_dropdown">
@@ -92,11 +93,16 @@
                             <div class="name-role">
                                 <h4 class="mb-0">{{ Auth::guard('admin')->user()->first_name.' '.Auth::guard('admin')->user()->last_name }}</h4>
                                 <p class="mb-0">
-                                    @if (Auth::guard('admin')->user()->role_as == '0')
+                                    {{-- @if (Auth::guard('admin')->user()->role_as == '0')
                                         Admin
                                     @else
                                         Staff
+                                    @endif --}}
+                                    @foreach ($roles as $role)
+                                    @if ($role->id == Auth::guard('admin')->user()->role_as)
+                                    {{ $role->name }}
                                     @endif
+                                    @endforeach
                                 </p>
                             </div>
                         </div>

@@ -31,10 +31,8 @@
                         </td>
                         <td>{{ $user->first_name.' '.$user->last_name }}</td>
                         <td>
-                            @foreach ($roles as $role)
-                            @if ($role->id == $user->role_as)
+                            @foreach ($user->roles as $role)
                             <strong>{{ $role->name }}</strong>
-                            @endif
                             @endforeach
                         </td>
                         <td>

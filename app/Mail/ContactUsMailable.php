@@ -32,8 +32,8 @@ class ContactUsMailable extends Mailable
         $subject = "Guest Enquery";
         return $this->from($this->data['email'], $this->data['name'])
                     ->to('info@thezabeerdhaka.com')
-                    ->view('mail-template.contactus')
+                    ->subject($subject)
                     ->with($this->data)
-                    ->subject($subject);
+                    ->view('mail-template.contactus');
     }
 }

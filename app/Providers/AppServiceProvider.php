@@ -4,10 +4,11 @@ namespace App\Providers;
 
 use App\Models\Hall;
 use App\Models\Room;
+use App\Models\Settings;
 use App\Models\Wellness;
 use App\Models\Restaurent;
-use App\Models\Settings;
 use App\Models\Website\Page;
+use Spatie\Permission\Models\Role;
 use App\Models\Website\NavigationMenu;
 use Illuminate\Support\ServiceProvider;
 
@@ -37,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         $restaurents = Restaurent::where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->get();
         $halls = Hall::where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->get();
         $wellnesses = Wellness::where('is_active','1')->where('is_delete','1')->orderBy('id','ASC')->get();
-        view()->share(compact('settings', 'menuItems', 'footerItems', 'rooms', 'restaurents', 'halls', 'wellnesses'));
+        $roles = Role::where('is_active', 1)->where('is_delete', 1)->orderBy('id','ASC')->get();
+        view()->share(compact('settings', 'menuItems', 'footerItems', 'rooms', 'restaurents', 'halls', 'wellnesses', 'roles'));
     }
 }

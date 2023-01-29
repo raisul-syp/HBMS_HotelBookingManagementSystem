@@ -35,9 +35,9 @@ class BookingMailable extends Mailable
         return $this->from('reservation@thezabeerdhaka.com', 'The Zabeer Dhaka Reservation Team')
                     ->to([$this->data['guest_email'], 'reservation@thezabeerdhaka.com'])
                     ->cc(['branding@thezabeerdhaka.com', 'fo@thezabeerdhaka.com'])
-                    ->view('mail-template.booking')
+                    ->subject($subject)
                     ->with($this->data)
-                    ->subject($subject);
+                    ->view('mail-template.booking');
     }
 
 }

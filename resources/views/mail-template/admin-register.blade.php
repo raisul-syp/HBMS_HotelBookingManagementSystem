@@ -145,11 +145,11 @@
                     <tr>
                       <th style="font-size: 12px; padding: 10px; font-weight: 400; text-align: left;">User Role</th>
                       <td style="margin: 0 auto; font-size: 12px; font-weight: 300; padding: 10px; text-align: left;">
-                        @if ($user_role == 0)
-                          Admin
-                        @elseif ($user_role == 1)
-                          Staff
-                        @endif  
+                        @foreach ($roles as $role)
+                        @if ($role->id == $user_role)
+                        {{ $role->name }}
+                        @endif
+                        @endforeach
                       </td>
                     </tr>
                     <tr>

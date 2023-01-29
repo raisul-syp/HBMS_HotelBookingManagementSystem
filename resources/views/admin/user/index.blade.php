@@ -21,7 +21,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            @if (session('message'))
+            @if (session('success'))
                 @include('alertMessage.admin.success')
             @endif
         </div>

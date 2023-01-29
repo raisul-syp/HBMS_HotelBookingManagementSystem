@@ -365,3 +365,7 @@ hr {
 input[type="checkbox"]:checked:after {
     background: var(--siteColor2) !important;
 }
+
+.header-right .live_website .nav-link {
+    position: relative;
+}

@@ -31,6 +31,7 @@ class RoleController extends Controller
 
         $role = Role::create([
             'name' => $request->name,
+            'guard_name' => 'admin',
             'is_active' => $request->is_active == true ? '1':'0',
             'created_by' => $request->created_by,
         ]);
@@ -61,6 +62,7 @@ class RoleController extends Controller
 
         $role->update([
             'name' => $request->name,
+            'guard_name' => 'admin',
             'is_active' => $request->is_active == true ? '1':'0',
             'updated_by' => $request->updated_by,
         ]);

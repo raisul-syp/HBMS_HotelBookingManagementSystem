@@ -53,7 +53,9 @@ class UserController extends Controller
             $users->created_by = $validatedData['created_by'];
             $users->role_as = $validatedData['role_as'];
 
-            $users->assignRole($validatedData['role_as']);
+            if($users->role_as) {
+                $users->assignRole($users->role_as);
+            }
 
             if($request->hasFile('profile_photo')){
                 $uploadProfilePath = 'uploads/users/profile_photo/';
@@ -87,10 +89,10 @@ class UserController extends Controller
             );
 
             Mail::send(new AdminRegisterMailable($data));
-            return redirect('admin/user')->with('message','Congratulations! New User Has Been Created Successfully.');
+            return redirect('admin/user')->with('success','Congratulations! New User Has Been Created Successfully.');
         }
         catch(\Exception $e) {
-            return redirect('admin/user')->with('message','Something Went Wrong!');
+            return redirect('admin/user/create')->with('error','Something Went Wrong!');
         }
     }
 
@@ -122,6 +124,11 @@ class UserController extends Controller
         $users->is_active = $request->is_active == true ? '1':'0';
         $users->updated_by = $validatedData['updated_by'];
         $users->role_as = $validatedData['role_as'];
+
+        $users->roles()->detach();
+        if($users->role_as) {
+            $users->assignRole($users->role_as);
+        }
 
         if($request->hasFile('profile_photo')){
             $uploadProfilePath = 'uploads/users/profile_photo/';

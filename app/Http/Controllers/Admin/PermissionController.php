@@ -27,6 +27,7 @@ class PermissionController extends Controller
 
         Permission::create([
             'name' => $request->name,
+            'guard_name' => 'admin',
             'group_name' => $request->group_name,
             'is_active' => $request->is_active == true ? '1':'0',
             'created_by' => $request->created_by,
@@ -51,6 +52,7 @@ class PermissionController extends Controller
 
         $permission->update([
             'name' => $request->name,
+            'guard_name' => 'admin',
             'group_name' => $request->group_name,
             'is_active' => $request->is_active == true ? '1':'0',
             'updated_by' => $request->updated_by,

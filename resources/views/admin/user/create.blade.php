@@ -21,6 +21,14 @@
 
     <div class="row">
         <div class="col-lg-12">
+            @if (session('error'))
+                @include('alertMessage.admin.error')
+            @endif
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
             <form action="{{ url('admin/user') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 

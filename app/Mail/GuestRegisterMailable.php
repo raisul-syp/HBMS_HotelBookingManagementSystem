@@ -32,8 +32,8 @@ class GuestRegisterMailable extends Mailable
         $subject = "Guest Registration";
         return $this->from('info@thezabeerdhaka.com', 'The Zabeer Dhaka Guest Registration')
                     ->to($this->data['guest_email'])
-                    ->view('mail-template.guest-register')
+                    ->subject($subject)
                     ->with($this->data)
-                    ->subject($subject);
+                    ->view('mail-template.guest-register');
     }
 }
