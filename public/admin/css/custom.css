@@ -369,3 +369,37 @@ input[type="checkbox"]:checked:after {
 .header-right .live_website .nav-link {
     position: relative;
 }
+
+
+
+.error-page .card {
+    border-radius: 0;
+    border: 3px solid var(--siteColor2);
+}
+.error-page h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 80px;
+    background: var(--goldenBG2);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0;
+}
+.error-page h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.error-page h5 {
+    margin-bottom: 20px;
+}
+.error-page a {
+    border: 1px solid transparent !important;
+    border-radius: 0;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+.error-page a:hover {
+    border: 1px solid var(--siteColor2) !important;
+    background: transparent !important;
+    color: var(--siteColor2);
+}

@@ -10,6 +10,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Group Name</th>
+                        <th>Page Type</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -20,6 +21,7 @@
                         <td>{{ $serialNo++ }}</td>
                         <td>{{ $permission->name }}</td>
                         <td>{{ $permission->group_name }}</td>
+                        <td>{{ $permission->page_type }}</td>
                         <td>
                             @if ($permission->is_active == '1')
                                 <span class="badge badge-success text-white">Active</span>
@@ -39,7 +41,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5">
+                        <td colspan="6">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>

@@ -62,13 +62,17 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label text-right" for="group_name">
                                         {{ __('Group Name') }}
-                                        <small class="text-danger">*</small>
                                     </label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="group_name" name="group_name" value="{{ $permission->group_name }}" placeholder="Add Group Name...">
-                                        @error('group_name')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label text-right" for="page_type">
+                                        {{ __('Page Type') }}
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="page_type" name="page_type" value="{{ $permission->page_type }}" placeholder="Add Group Name...">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0">

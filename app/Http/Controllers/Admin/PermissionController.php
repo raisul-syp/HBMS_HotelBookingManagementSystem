@@ -29,6 +29,7 @@ class PermissionController extends Controller
             'name' => $request->name,
             'guard_name' => 'admin',
             'group_name' => $request->group_name,
+            'page_type' => $request->page_type,
             'is_active' => $request->is_active == true ? '1':'0',
             'created_by' => $request->created_by,
         ]);
@@ -54,6 +55,7 @@ class PermissionController extends Controller
             'name' => $request->name,
             'guard_name' => 'admin',
             'group_name' => $request->group_name,
+            'page_type' => $request->page_type,
             'is_active' => $request->is_active == true ? '1':'0',
             'updated_by' => $request->updated_by,
         ]);

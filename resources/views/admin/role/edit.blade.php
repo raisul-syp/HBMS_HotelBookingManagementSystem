@@ -72,14 +72,14 @@
                                     <div class="col-sm-2 col-form-label text-right" for="permissions">{{ __('Permissions') }}</div>
                                     <div class="col-sm-10">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                            <table class="table table-bordered verticle-middle table-responsive-sm">
                                                 <thead class="bg-primary text-white text-center">
                                                     <tr>
                                                         <th scope="col">Group Name</th>
                                                         <th scope="col">All</th>
                                                         <th scope="col">Index</th>
                                                         <th scope="col">Create</th>
-                                                        <th scope="col">Update</th>
+                                                        <th scope="col">Edit</th>
                                                         <th scope="col">Delete</th>
                                                     </tr>
                                                 </thead>

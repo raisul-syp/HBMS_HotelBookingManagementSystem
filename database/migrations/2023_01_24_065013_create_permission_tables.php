@@ -30,6 +30,7 @@ class CreatePermissionTables extends Migration
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
             $table->string('group_name')->nullable();
+            $table->string('page_type')->nullable();
             $table->tinyInteger('is_active')->default('1')->comment('0=Deactive, 1=Active');
             $table->tinyInteger('is_delete')->default('1')->comment('0=Delete, 1=Not Delete');
             $table->string('created_by')->nullable();
