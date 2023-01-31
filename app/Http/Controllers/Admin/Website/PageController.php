@@ -7,23 +7,46 @@ use Illuminate\Support\Str;
 use App\Models\Website\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Website\PageFormRequest;
 
 class PageController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Website.Pages.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Page of Website.');
+        }
+        
         return view('admin.website.page.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Website.Pages.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Page of Website.');
+        }
+        
         return view('admin.website.page.create');
     }
 
     public function store(PageFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Website.Pages.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Page of Website.');
+        }
+        
         $validatedData = $request->validated();
 
         $page = new Page();
@@ -61,11 +84,19 @@ class PageController extends Controller
 
     public function edit(Page $page)
     {
+        if(is_null($this->user) || !$this->user->can('Website.Pages.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Page of Website.');
+        }
+        
         return view('admin.website.page.edit', compact('page'));
     }
 
     public function update(PageFormRequest $request, $page)
     {
+        if(is_null($this->user) || !$this->user->can('Website.Pages.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Page of Website.');
+        }
+        
         $validatedData = $request->validated();
 
         $page = Page::findOrFail($page);

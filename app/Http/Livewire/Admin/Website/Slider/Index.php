@@ -11,6 +11,7 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $user;
     public $slider_id;
 
     public function deleteRecord($slider_id)
@@ -20,6 +21,10 @@ class Index extends Component
 
     public function destroyRecord()
     {
+        if(is_null($this->user) || !$this->user->can('Website.Sliders.Delete')) {
+            abort(403, 'Sorry! You do not have permission to delete any Slider of Website.');
+        }
+
         $sliders =  Slider::find($this->slider_id);
         $sliders->is_delete = '0';
         $sliders->update();

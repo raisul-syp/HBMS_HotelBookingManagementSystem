@@ -7,23 +7,46 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Website\Slider;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Website\SliderFormRequest;
 
 class SliderController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Website.Sliders.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Slider of Website.');
+        }
+        
         return view('admin.website.slider.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Website.Sliders.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Slider of Website.');
+        }
+        
         return view('admin.website.slider.create');
     }
 
     public function store(SliderFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Website.Sliders.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Slider of Website.');
+        }
+        
         $validatedData = $request->validated();
 
         $slider = new Slider();
@@ -73,11 +96,19 @@ class SliderController extends Controller
 
     public function edit(Slider $slider)
     {
+        if(is_null($this->user) || !$this->user->can('Website.Sliders.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Slider of Website.');
+        }
+        
         return view('admin.website.slider.edit', compact('slider'));
     }
 
     public function update(SliderFormRequest $request, $slider)
     {
+        if(is_null($this->user) || !$this->user->can('Website.Sliders.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Slider of Website.');
+        }
+        
         $validatedData = $request->validated();
 
         $slider = Slider::findOrFail($slider);

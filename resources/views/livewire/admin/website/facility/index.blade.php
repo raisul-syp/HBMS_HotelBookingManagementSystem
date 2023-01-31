@@ -13,7 +13,9 @@
                         <th>Name</th>
                         <th>Display Order</th>
                         <th>Status</th>
+                        @if (Auth::guard('admin')->user()->can('Website.Facilities.Edit') || Auth::guard('admin')->user()->can('Website.Facilities.Delete'))
                         <th>Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -34,15 +36,21 @@
                                 <span class="badge badge-danger">Deactive</span>
                             @endif
                         </td>
+                        @if (Auth::guard('admin')->user()->can('Website.Facilities.Edit') || Auth::guard('admin')->user()->can('Website.Facilities.Delete'))
                         <td>
+                            @if (Auth::guard('admin')->user()->can('Website.Facilities.Edit'))
                             <span data-toggle="tooltip" data-placement="top" title="Edit">
                                 <a href="{{ url('admin/website/facilities/edit/'.$facility->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
+                            @endif
+                            @if (Auth::guard('admin')->user()->can('Website.Facilities.Delete'))
                             <span data-toggle="tooltip" data-placement="top" title="Delete">
                                 <a href="#" wire:click="deleteRecord({{ $facility->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
+                            @endif
                             @include('modal.admin.delete')
                         </td>
+                        @endif
                     </tr>
                     @empty
                     <tr>

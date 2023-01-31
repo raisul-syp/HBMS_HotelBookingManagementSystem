@@ -7,23 +7,46 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Website\Testimonial;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Website\TestimonialFormRequest;
 
 class TestimonialController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Website.Testimonials.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Testimonial of Website.');
+        }
+        
         return view('admin.website.testimonial.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Website.Testimonials.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Testimonial of Website.');
+        }
+        
         return view('admin.website.testimonial.create');
     }
 
     public function store(TestimonialFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Website.Testimonials.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Testimonial of Website.');
+        }
+        
         $validatedData = $request->validated();
 
         $testimonial = new Testimonial();
@@ -59,11 +82,19 @@ class TestimonialController extends Controller
 
     public function edit(Testimonial $testimonial)
     {
+        if(is_null($this->user) || !$this->user->can('Website.Testimonials.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Testimonial of Website.');
+        }
+        
         return view('admin.website.testimonial.edit', compact('testimonial'));
     }
 
     public function update(TestimonialFormRequest $request, $testimonial)
     {
+        if(is_null($this->user) || !$this->user->can('Website.Testimonials.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Testimonial of Website.');
+        }
+        
         $validatedData = $request->validated();
 
         $testimonial = Testimonial::findOrFail($testimonial);

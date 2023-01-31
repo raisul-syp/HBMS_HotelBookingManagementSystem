@@ -10,7 +10,6 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Group Name</th>
-                        <th>Page Type</th>
                         <th>Status</th>
                         @if (Auth::guard('admin')->user()->can('Permission.Edit') || Auth::guard('admin')->user()->can('Permission.Delete'))
                         <th>Action</th>
@@ -23,7 +22,6 @@
                         <td>{{ $serialNo++ }}</td>
                         <td>{{ $permission->name }}</td>
                         <td>{{ $permission->group_name }}</td>
-                        <td>{{ $permission->page_type }}</td>
                         <td>
                             @if ($permission->is_active == '1')
                                 <span class="badge badge-success text-white">Active</span>
@@ -49,7 +47,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="6">
+                        <td colspan="5">
                             <h4 class="mb-0">{{ __('No Records Available!') }}</h4>
                         </td>
                     </tr>

@@ -16,7 +16,9 @@
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            @if (Auth::guard('admin')->user()->can('Website.ContactInfos.Create'))
             <a href="{{ url('admin/website/contactinfo/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Contact Info') }}</a>
+            @endif
         </div>
     </div>
 

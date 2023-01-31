@@ -11,6 +11,7 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $user;
     public $contacts_id;
 
     public function deleteRecord($contacts_id)
@@ -20,6 +21,10 @@ class Index extends Component
 
     public function destroyRecord()
     {
+        if(is_null($this->user) || !$this->user->can('Website.ContactInfos.Delete')) {
+            abort(403, 'Sorry! You do not have permission to delete any Contact Info of Website.');
+        }
+
         $contacts =  ContactInfo::find($this->contacts_id);
         $contacts->is_delete = '0';
         $contacts->update();

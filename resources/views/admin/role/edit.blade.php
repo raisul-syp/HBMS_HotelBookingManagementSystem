@@ -69,8 +69,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-0">
-                                    <div class="col-sm-2 col-form-label text-right" for="permissions">{{ __('Permissions') }}</div>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-12">
+                                        <label for="permissions">{{ __('Permissions') }}</label>
                                         <div class="table-responsive">
                                             <table class="table table-bordered verticle-middle table-responsive-sm">
                                                 <thead class="bg-primary text-white text-center">

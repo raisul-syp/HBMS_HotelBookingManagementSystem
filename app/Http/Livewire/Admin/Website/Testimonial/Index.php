@@ -11,6 +11,7 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $user;
     public $testimonial_id;
 
     public function deleteRecord($testimonial_id)
@@ -20,6 +21,10 @@ class Index extends Component
 
     public function destroyRecord()
     {
+        if(is_null($this->user) || !$this->user->can('Website.Testimonials.Delete')) {
+            abort(403, 'Sorry! You do not have permission to delete any Testimonial of Website.');
+        }
+
         $testimonials =  Testimonial::find($this->testimonial_id);
         $testimonials->is_delete = '0';
         $testimonials->update();

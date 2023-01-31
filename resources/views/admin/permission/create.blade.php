@@ -66,14 +66,6 @@
                                         <input type="text" class="form-control" id="group_name" name="group_name" placeholder="Add Group Name...">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label text-right" for="page_type">
-                                        {{ __('Page Type') }}
-                                    </label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="page_type" name="page_type" placeholder="Add Group Name...">
-                                    </div>
-                                </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-sm-2 col-form-label text-right" for="is_active">{{ __('Status') }}</div>
                                     <div class="col-sm-10">
