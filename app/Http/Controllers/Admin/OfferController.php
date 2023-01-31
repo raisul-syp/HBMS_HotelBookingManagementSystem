@@ -5,21 +5,40 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Offer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\OfferCategory;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\OfferFormRequest;
-use App\Models\OfferCategory;
 
 class OfferController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Offer.');
+        }
+        
         return view('admin.offer.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Offer.');
+        }
+        
         $offerDateTime = Carbon::now();
         $offerCategory = OfferCategory::all()->where('is_active','1')->where('is_delete','1');
         return view('admin.offer.create', compact('offerDateTime','offerCategory'));
@@ -27,6 +46,10 @@ class OfferController extends Controller
 
     public function store(OfferFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Offer.');
+        }
+        
         $validatedData = $request->validated();
 
         $offer = new Offer();
@@ -63,12 +86,20 @@ class OfferController extends Controller
 
     public function edit(Offer $offer)
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Offer.');
+        }
+        
         $offerCategory = OfferCategory::all()->where('is_active','1')->where('is_delete','1');
         return view('admin.offer.edit', compact('offer','offerCategory'));
     }
 
     public function update(OfferFormRequest $request, int $offer_id)
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Offer.');
+        }
+        
         $validatedData = $request->validated();
 
         $offer = Offer::findOrFail($offer_id);

@@ -11,6 +11,7 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $user;
     public $menu_id;
 
     public function deleteRecord($menu_id)
@@ -20,6 +21,10 @@ class Index extends Component
 
     public function destroyRecord()
     {
+        if(is_null($this->user) || !$this->user->can('Website.Menu.Delete')) {
+            abort(403, 'Sorry! You do not have permission to delete any Menu of Website.');
+        }
+
         $menus =  NavigationMenu::find($this->menu_id);
         $menus->is_delete = '0';
         $menus->update();

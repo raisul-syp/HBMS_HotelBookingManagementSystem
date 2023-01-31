@@ -15,7 +15,9 @@
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            @if (Auth::guard('admin')->user()->can('Offers.Create'))
             <a href="{{ url('admin/offer-category/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Offer Category') }}</a>
+            @endif
         </div>
     </div>
 

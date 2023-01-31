@@ -6,24 +6,43 @@ use App\Models\Admin;
 use App\Models\CountryList;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
+use Spatie\Permission\Models\Role;
+use App\Mail\AdminRegisterMailable;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\UserEditFormRequest;
-use App\Mail\AdminRegisterMailable;
-use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Users.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any User.');
+        }
+        
         return view('admin.user.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Users.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any User.');
+        }
+        
         $countries = CountryList::all()->where('is_active', 1);
         $roles = Role::all()->where('is_active', 1)->where('is_delete', 1);
         return view('admin.user.create', compact('countries', 'roles'));
@@ -31,6 +50,10 @@ class UserController extends Controller
 
     public function store(UserFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Users.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any User.');
+        }
+        
         try {
             $validatedData = $request->validated();
 
@@ -98,6 +121,10 @@ class UserController extends Controller
 
     public function edit(Admin $user)
     {
+        if(is_null($this->user) || !$this->user->can('Users.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any User.');
+        }
+        
         $countries = CountryList::all()->where('is_active', 1);
         $roles = Role::all()->where('is_active', 1)->where('is_delete', 1);
         return view('admin.user.edit', compact('user', 'countries', 'roles'));
@@ -105,6 +132,10 @@ class UserController extends Controller
 
     public function update(UserEditFormRequest $request, $user)
     {
+        if(is_null($this->user) || !$this->user->can('Users.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any User.');
+        }
+        
         $validatedData = $request->validated();
 
         $users = Admin::findOrFail($user);

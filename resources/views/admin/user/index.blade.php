@@ -15,7 +15,9 @@
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            @if (Auth::guard('admin')->user()->can('Users.Create'))
             <a href="{{ url('admin/user/create') }}" class="btn btn-success text-white ml-1">{{ __('Add User') }}</a>
+            @endif
         </div>
     </div>
 

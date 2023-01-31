@@ -7,6 +7,7 @@ use App\Models\CountryList;
 use Illuminate\Http\Request;
 use App\Mail\GuestRegisterMailable;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -15,19 +16,41 @@ use App\Http\Requests\GuestEditFormRequest;
 
 class GuestController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Guests.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Guest.');
+        }
+        
         return view('admin.guest.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Guests.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Guest.');
+        }
+        
         $countries = CountryList::all()->where('is_active','1');
         return view('admin.guest.create', compact('countries'));
     }
 
     public function store(GuestFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Guests.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Guest.');
+        }
+        
         try {
             $validatedData = $request->validated();
 
@@ -89,12 +112,20 @@ class GuestController extends Controller
 
     public function edit(User $guest)
     {
+        if(is_null($this->user) || !$this->user->can('Guests.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Guest.');
+        }
+        
         $countries = CountryList::all()->where('is_active','1');
         return view('admin.guest.edit', compact('guest','countries'));
     }
 
     public function update(GuestEditFormRequest $request, $guest)
     {
+        if(is_null($this->user) || !$this->user->can('Guests.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Guest.');
+        }
+        
         $validatedData = $request->validated();
 
         $guests = User::findOrFail($guest);

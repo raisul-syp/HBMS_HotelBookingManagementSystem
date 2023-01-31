@@ -11,6 +11,7 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $user;
     public $offer_category_id;
 
     public function deleteRecord($offer_category_id)
@@ -20,6 +21,10 @@ class Index extends Component
 
     public function destroyRecord()
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Delete')) {
+            abort(403, 'Sorry! You do not have permission to delete any Offer Category.');
+        }
+
         $offer_category =  OfferCategory::find($this->offer_category_id);
         $offer_category->is_delete = '0';
         $offer_category->update();

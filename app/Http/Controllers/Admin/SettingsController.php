@@ -7,23 +7,46 @@ use App\Models\Settings;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\SettingsFormRequest;
 
 class SettingsController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Settings.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Settings.');
+        }
+        
         return view('admin.settings.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Settings.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Settings.');
+        }
+        
         return view('admin.settings.create');
     }
 
     public function store(SettingsFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Settings.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Settings.');
+        }
+        
         $validatedData = $request->validated();
 
         $settings = new Settings();
@@ -74,11 +97,19 @@ class SettingsController extends Controller
 
     public function edit(Settings $settings)
     {
+        if(is_null($this->user) || !$this->user->can('Settings.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Settings.');
+        }
+        
         return view('admin.settings.edit', compact('settings'));
     }
 
     public function update(SettingsFormRequest $request, int $settings_id)
     {
+        if(is_null($this->user) || !$this->user->can('Settings.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Settings.');
+        }
+        
         $validatedData = $request->validated();
 
         $settings = Settings::findOrFail($settings_id);
@@ -132,6 +163,6 @@ class SettingsController extends Controller
         $settings->updated_by = $validatedData['updated_by'];
         $settings->update();
 
-        return redirect('admin/settings')->with('message','Congratulations! New Settings Has Been Updated Successfully.');
+        return redirect('admin/settings')->with('message','Congratulations! Your Settings Has Been Updated Successfully.');
     }
 }

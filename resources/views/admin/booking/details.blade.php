@@ -87,14 +87,10 @@
                                 <p class="mb-0"><strong>Staff Name:</strong> <span>{{ $staff->first_name.' '.$staff->last_name }}</span></p>
                                 <p class="mb-0"><strong>Email Address:</strong> <span>{{ $staff->email }}</span></p>
                                 <p class="mb-0"><strong>Phone Number:</strong> <span>{{ $staff->phone }}</span></p>
-                                <p class="mb-0"><strong>Role:</strong> 
-                                    <span>
-                                        @if ($staff->role_as == 0)
-                                        Admin
-                                        @elseif ($staff->role_as == 1)
-                                        Staff
-                                        @endif
-                                    </span>
+                                <p class="mb-0"><strong>Role:</strong>                                     
+                                    @foreach ($staff->roles as $role)
+                                    <span>{{ $role->name }}</span>
+                                    @endforeach
                                 </p>              
                                 @endif
                                 @endforeach

@@ -6,22 +6,45 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\OfferCategory;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\OfferCategoryFormRequest;
 
 class OfferCategoryController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Offer Category.');
+        }
+        
         return view('admin.offer-category.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Offer Category.');
+        }
+        
         return view('admin.offer-category.create');
     }
 
     public function store(OfferCategoryFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Offer Category.');
+        }
+        
         $validatedData = $request->validated();
 
         $offer_cat = new OfferCategory();
@@ -42,11 +65,19 @@ class OfferCategoryController extends Controller
 
     public function edit(OfferCategory $offer_cat)
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Offer Category.');
+        }
+        
         return view('admin.offer-category.edit', compact('offer_cat'));
     }
 
     public function update(OfferCategoryFormRequest $request, int $offer_category_id)
     {
+        if(is_null($this->user) || !$this->user->can('Offers.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Offer Category.');
+        }
+        
         $validatedData = $request->validated();
 
         $offer_cat = OfferCategory::findOrFail($offer_category_id);

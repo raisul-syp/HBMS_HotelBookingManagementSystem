@@ -14,6 +14,7 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $user;
     public $user_id;
 
     public function deleteRecord($user_id)
@@ -22,7 +23,11 @@ class Index extends Component
     }
 
     public function destroyRecord()
-    {
+    { 
+        if(is_null($this->user) || !$this->user->can('Users.Delete')) {
+            abort(403, 'Sorry! You do not have permission to delete any User.');
+        }
+
         $users =  Admin::find($this->user_id);
         $users->is_delete = '0';
         $users->update();

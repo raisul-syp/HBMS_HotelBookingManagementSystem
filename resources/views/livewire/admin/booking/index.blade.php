@@ -51,15 +51,19 @@
                         </td>
                         <td>{{ $booking->payment_mode }}</td>
                         <td>
-                            <span data-toggle="tooltip" data-placement="top" title="View Booking">
-                                <a href="{{ url('admin/booking/details/'.$booking->id) }}" class="btn btn-icon btn-square btn-outline-info list-button"><i class="fa fa-file-text-o"></i></a>
+                            <span data-toggle="tooltip" data-placement="top" title="Booking Details">
+                                <a href="{{ url('admin/booking/details/'.$booking->id) }}" class="btn btn-icon btn-square btn-outline-info list-button" target="_blank"><i class="fa fa-file-text-o"></i></a>
                             </span>
+                            @if (Auth::guard('admin')->user()->can('Bookings.Edit'))
                             <span data-toggle="tooltip" data-placement="top" title="Edit">
                                 <a href="{{ url('admin/booking/edit/'.$booking->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
+                            @endif
+                            @if (Auth::guard('admin')->user()->can('Bookings.Delete'))
                             <span data-toggle="tooltip" data-placement="top" title="Delete">
                                 <a href="#" wire:click="deleteRecord({{ $booking->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
+                            @endif
                             @include('modal.admin.delete')
                         </td>
                     </tr>                        

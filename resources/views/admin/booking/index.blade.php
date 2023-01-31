@@ -15,7 +15,9 @@
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            @if (Auth::guard('admin')->user()->can('Bookings.Create'))
             <a href="{{ url('admin/booking/create') }}" class="btn btn-success text-white">{{ __('Add Booking') }}</a>
+            @endif
         </div>
     </div>
 

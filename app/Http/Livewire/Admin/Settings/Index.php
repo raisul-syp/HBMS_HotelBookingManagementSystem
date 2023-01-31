@@ -11,6 +11,7 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $user;
     public $settings_id;
 
     public function deleteRecord($settings_id)
@@ -19,11 +20,15 @@ class Index extends Component
     }
 
     public function destroyRecord()
-    {
+    { 
+        if(is_null($this->user) || !$this->user->can('Settings.Delete')) {
+            abort(403, 'Sorry! You do not have permission to delete any Settings.');
+        }
+
         $settings =  Settings::find($this->settings_id);
         $settings->is_delete = '0';
         $settings->update();
-        return redirect('admin/settings')->with('message','Wellness Has Been Deleted Successfully.');
+        return redirect('admin/settings')->with('message','Settings Has Been Deleted Successfully.');
         $this->dispatchBrowserEvent('close-modal');
     }
     

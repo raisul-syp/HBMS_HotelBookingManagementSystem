@@ -16,7 +16,9 @@
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            @if (Auth::guard('admin')->user()->can('Website.Menu.Create'))
             <a href="{{ url('admin/website/menu/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Menu') }}</a>
+            @endif
         </div>
     </div>
 
