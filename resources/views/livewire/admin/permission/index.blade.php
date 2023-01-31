@@ -12,7 +12,9 @@
                         <th>Group Name</th>
                         <th>Page Type</th>
                         <th>Status</th>
+                        @if (Auth::guard('admin')->user()->can('Permission.Edit') && Auth::guard('admin')->user()->can('Permission.Delete'))
                         <th>Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -29,15 +31,21 @@
                                 <span class="badge badge-danger">Deactive</span>
                             @endif
                         </td>
+                        @if (Auth::guard('admin')->user()->can('Permission.Edit') && Auth::guard('admin')->user()->can('Permission.Delete'))
                         <td>
+                            @if (Auth::guard('admin')->user()->can('Permission.Edit'))
                             <span>
                                 <a href="{{ url('admin/role-permission/permission/edit/'.$permission->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
+                            @endif
+                            @if (Auth::guard('admin')->user()->can('Permission.Delete'))
                             <span>
                                 <a href="#" wire:click="deleteRecord({{ $permission->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
+                            @endif
                             @include('modal.admin.delete')
                         </td>
+                        @endif
                     </tr>
                     @empty
                     <tr>

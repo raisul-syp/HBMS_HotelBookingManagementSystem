@@ -6,23 +6,46 @@ use App\Models\Roomtype;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\RoomtypeFormRequest;
 
 class RoomtypeController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('RoomType.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Room Type.');
+        }
+        
         return view('admin.roomtype.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('RoomType.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Room Type.');
+        }
+        
         return view('admin.roomtype.create');
     }
 
     public function store(RoomtypeFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('RoomType.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Room Type.');
+        }
+        
         $validatedData = $request->validated();
 
         $roomtype = new Roomtype();
@@ -53,11 +76,19 @@ class RoomtypeController extends Controller
 
     public function edit(Roomtype $roomtype)
     {
+        if(is_null($this->user) || !$this->user->can('RoomType.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Room Type.');
+        }
+        
         return view('admin.roomtype.edit', compact('roomtype'));
     }
 
     public function update(RoomtypeFormRequest $request, $roomtype)
     {
+        if(is_null($this->user) || !$this->user->can('RoomType.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Room Type.');
+        }
+        
         $validatedData = $request->validated();
         
         $roomtype = Roomtype::findOrFail($roomtype);

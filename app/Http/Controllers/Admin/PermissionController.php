@@ -4,22 +4,45 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Permission.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Permission.');
+        }
+        
         return view('admin.permission.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Permission.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Permission.');
+        }
+        
         return view('admin.permission.create');
     }
 
     public function store(Request $request)
     {
+        if(is_null($this->user) || !$this->user->can('Permission.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Permission.');
+        }
+        
         $request->validate([
             'name' => 'required|max:100|unique:permissions',
             'group_name' => 'required|max:100',
@@ -39,11 +62,19 @@ class PermissionController extends Controller
 
     public function edit(Permission $permission)
     {
+        if(is_null($this->user) || !$this->user->can('Permission.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Permission.');
+        }
+        
         return view('admin.permission.edit', compact('permission'));
     }
 
     public function update(Request $request, $permission)
     {
+        if(is_null($this->user) || !$this->user->can('Permission.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Permission.');
+        }
+        
         $request->validate([
             'name' => 'required|max:100|unique:permissions,name,'.$permission,
             'group_name' => 'required|max:100',

@@ -11,7 +11,7 @@
                         <th width="15%">Name</th>
                         <th width="50%">Permissions</th>
                         <th width="10%">Status</th>
-                        @if (Auth::guard('admin')->user()->can('Role.Edit') || Auth::guard('admin')->user()->can('Role.Delete'))
+                        @if (Auth::guard('admin')->user()->can('Role.Edit') && Auth::guard('admin')->user()->can('Role.Delete'))
                         <th width="20%">Action</th>
                         @endif
                     </tr>
@@ -35,7 +35,7 @@
                                 <span class="badge badge-danger">Deactive</span>
                             @endif
                         </td>
-                        @if (Auth::guard('admin')->user()->can('Role.Edit') || Auth::guard('admin')->user()->can('Role.Delete'))
+                        @if (Auth::guard('admin')->user()->can('Role.Edit') && Auth::guard('admin')->user()->can('Role.Delete'))
                         <td>
                             @if (Auth::guard('admin')->user()->can('Role.Edit'))
                             <span>

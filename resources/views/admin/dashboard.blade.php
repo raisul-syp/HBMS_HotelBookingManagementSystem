@@ -13,7 +13,7 @@
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Layout</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Blank</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Dashboard</a></li>
             </ol>
         </div>
     </div>
@@ -106,7 +106,9 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h4 class="card-title">Bookings</h4>
+                    @if (Auth::guard('admin')->user()->can('Bookings.Index'))
                     <a href="{{ url('admin/booking') }}" class="btn btn-primary btn-xs">Booking List</a>
+                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -123,7 +125,7 @@
                             <tbody class="text-center">
                                 @forelse ($bookings->slice(0,5) as $booking)
                                 <tr>
-                                    <td>{{ $serialNo++ }}</td>
+                                    <td>{{ $serialNoBokking++ }}</td>
                                     <td>{{ $booking->guests->first_name.' '.$booking->guests->last_name }}</td>
                                     <td>{{ $booking->rooms->name }}</td>
                                     <td>
@@ -157,7 +159,9 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h4 class="card-title">Offers</h4>
+                    @if (Auth::guard('admin')->user()->can('Offers.Index'))
                     <a href="{{ url('admin/offers') }}" class="btn btn-primary btn-xs">Offer List</a>
+                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -173,7 +177,7 @@
                             <tbody class="text-center">
                                 @forelse ($offers->slice(0,5) as $offer)
                                 <tr>
-                                    <td>{{ $serialNo++ }}</td>
+                                    <td>{{ $serialNoOffer++ }}</td>
                                     <td>{{ $offer->name }}</td>
                                     <td>
                                         <strong>Start:</strong> {{ date('d M Y, h:i A', strtotime($offer->start_date)) }} <br>
@@ -204,7 +208,9 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h4 class="card-title">Rooms</h4>
+                    @if (Auth::guard('admin')->user()->can('Rooms.Index'))
                     <a href="{{ url('admin/room') }}" class="btn btn-primary btn-xs">Room List</a>
+                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -220,7 +226,7 @@
                             <tbody class="text-center">
                                 @forelse ($rooms->slice(0,5) as $room)
                                 <tr>
-                                    <td>{{ $serialNo++ }}</td>
+                                    <td>{{ $serialNoRoom++ }}</td>
                                     <td>{{ $room->name }}</td>
                                     <td>{{ $room->price }}</td>
                                     <td>
@@ -248,7 +254,9 @@
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h4 class="card-title">Guests</h4>
+                    @if (Auth::guard('admin')->user()->can('Guests.Index'))
                     <a href="{{ url('admin/guest') }}" class="btn btn-primary btn-xs">Guest List</a>
+                    @endif
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -264,7 +272,7 @@
                             <tbody class="text-center">
                                 @forelse ($guests->slice(0,5) as $guest)
                                 <tr>
-                                    <td>{{ $serialNo++ }}</td>
+                                    <td>{{ $serialNoGuest++ }}</td>
                                     <td>{{ $guest->first_name.' '.$guest->last_name }}</td>
                                     <td>{{ $guest->email }}</td>
                                     <td>
