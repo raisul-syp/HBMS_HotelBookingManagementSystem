@@ -15,7 +15,9 @@
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            @if (Auth::guard('admin')->user()->can('Facilities.Create'))
             <a href="{{ url('admin/facility/create') }}" class="btn btn-success text-white">{{ __('Add Facility') }}</a>
+            @endif
         </div>
     </div>
 

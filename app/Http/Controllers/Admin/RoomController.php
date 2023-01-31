@@ -9,20 +9,39 @@ use App\Models\Facility;
 use App\Models\Roomtype;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Psy\Readline\Hoa\Console;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RoomFormRequest;
-use Psy\Readline\Hoa\Console;
 
 class RoomController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Rooms.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Room.');
+        }
+        
         return view('admin.room.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Rooms.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Room.');
+        }
+        
         $facilities = Facility::all()->where('is_active','1')->where('is_delete','1');
         $views = Roomtype::all()->where('is_active','1')->where('is_delete','1');
         return view('admin.room.create', compact('facilities', 'views'));
@@ -30,6 +49,10 @@ class RoomController extends Controller
 
     public function store(RoomFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Rooms.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Room.');
+        }
+        
         $validatedData = $request->validated();
 
         $room = new Room();
@@ -82,6 +105,10 @@ class RoomController extends Controller
 
     public function edit(int $room_id)
     {
+        if(is_null($this->user) || !$this->user->can('Rooms.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Room.');
+        }
+        
         $room = Room::findOrFail($room_id);
         $facilities = Facility::all()->where('is_active','1')->where('is_delete','1');
         $roomFacilities = $room->facilities();
@@ -92,6 +119,10 @@ class RoomController extends Controller
 
     public function update(RoomFormRequest $request, int $room_id)
     {
+        if(is_null($this->user) || !$this->user->can('Rooms.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Room.');
+        }
+        
         $validatedData = $request->validated();
 
         $room = Room::findOrFail($room_id);

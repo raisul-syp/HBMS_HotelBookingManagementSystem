@@ -1,21 +1,23 @@
 @extends('layouts.admin')
-@section('title', 'Restaurent List')
+@section('title', 'Restaurant List')
 
 @section('content')
 <div class="container-fluid">
     <div class="row page-titles mx-0">
         <div class="col-sm-6 p-md-0">
             <div class="welcome-text">
-                <h2 class="page-header-title">{{ __('Restaurent List') }}</h2>
+                <h2 class="page-header-title">{{ __('Restaurant List') }}</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Restaurents') }}</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Restaurent List') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">{{ __('Restaurants') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">{{ __('Restaurant List') }}</a></li>
                 </ol>
             </div>
         </div>
         <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-            <a href="{{ url('admin/restaurent/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Restaurent') }}</a>
+            @if (Auth::guard('admin')->user()->can('Restaurants.Create'))
+            <a href="{{ url('admin/restaurent/create') }}" class="btn btn-success text-white mr-1">{{ __('Add Restaurant') }}</a>
+            @endif
         </div>
     </div>
 

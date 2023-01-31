@@ -7,23 +7,46 @@ use App\Models\Restaurent;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\RestaurentFormRequest;
 
 class RestaurentController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Restaurants.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Restaurant.');
+        }
+        
         return view('admin.restaurent.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Restaurants.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Restaurant.');
+        }
+        
         return view('admin.restaurent.create');
     }
 
     public function store(RestaurentFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Restaurants.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Restaurant.');
+        }
+        
         $validatedData = $request->validated();
 
         $restaurent = new Restaurent();
@@ -74,11 +97,19 @@ class RestaurentController extends Controller
 
     public function edit(Restaurent $restaurent)
     {
+        if(is_null($this->user) || !$this->user->can('Restaurants.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Restaurant.');
+        }
+        
         return view('admin.restaurent.edit', compact('restaurent'));
     }
 
     public function update(RestaurentFormRequest $request, int $restaurent_id)
     {
+        if(is_null($this->user) || !$this->user->can('Restaurants.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Restaurant.');
+        }
+        
         $validatedData = $request->validated();
 
         $restaurent = Restaurent::findOrFail($restaurent_id);

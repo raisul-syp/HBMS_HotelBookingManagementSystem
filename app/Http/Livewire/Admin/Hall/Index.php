@@ -11,6 +11,7 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
+    public $user;
     public $hall_id;
 
     public function deleteRecord($hall_id)
@@ -19,7 +20,11 @@ class Index extends Component
     }
 
     public function destroyRecord()
-    {
+    {  
+        if(is_null($this->user) || !$this->user->can('Halls.Delete')) {
+            abort(403, 'Sorry! You do not have permission to delete any Hall.');
+        }
+
         $hall =  Hall::find($this->hall_id);
         $hall->is_delete = '0';
         $hall->update();

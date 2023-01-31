@@ -18,7 +18,9 @@
                         <th>Available</th>
                         <th>Price</th>
                         <th>Status</th>
+                        @if (Auth::guard('admin')->user()->can('Rooms.Edit') || Auth::guard('admin')->user()->can('Rooms.Delete'))
                         <th>Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -67,15 +69,21 @@
                                 <span class="badge badge-danger">Deactive</span>
                             @endif
                         </td>
+                        @if (Auth::guard('admin')->user()->can('Rooms.Edit') || Auth::guard('admin')->user()->can('Rooms.Delete'))
                         <td>
+                            @if (Auth::guard('admin')->user()->can('Rooms.Edit'))
                             <span data-toggle="tooltip" data-placement="top" title="Edit">
                                 <a href="{{ url('admin/room/edit/'.$room->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
+                            @endif
+                            @if (Auth::guard('admin')->user()->can('Rooms.Delete'))
                             <span data-toggle="tooltip" data-placement="top" title="Delete">
                                 <a href="#" wire:click="deleteRecord({{ $room->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
+                            @endif
                             @include('modal.admin.delete')
                         </td>
+                        @endif
                     </tr>
                     @empty
                     <tr>

@@ -13,7 +13,9 @@
                         <th>Name</th>
                         <th>Slug</th>
                         <th>Status</th>
+                        @if (Auth::guard('admin')->user()->can('Wellness.Edit') || Auth::guard('admin')->user()->can('Wellness.Delete'))
                         <th>Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -32,15 +34,21 @@
                                 <span class="badge badge-danger">Deactive</span>
                             @endif
                         </td>
+                        @if (Auth::guard('admin')->user()->can('Wellness.Edit') || Auth::guard('admin')->user()->can('Wellness.Delete'))
                         <td>
+                            @if (Auth::guard('admin')->user()->can('Wellness.Edit'))
                             <span data-toggle="tooltip" data-placement="top" title="Edit">
                                 <a href="{{ url('admin/wellness/edit/'.$wellness->id) }}" class="btn btn-icon btn-square btn-outline-warning list-button"><i class="fa fa-pencil-square-o"></i></a>
                             </span>
+                            @endif
+                            @if (Auth::guard('admin')->user()->can('Wellness.Delete'))
                             <span data-toggle="tooltip" data-placement="top" title="Delete">
                                 <a href="#" wire:click="deleteRecord({{ $wellness->id }})" class="btn btn-icon btn-square btn-outline-danger list-button" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o"></i></a>
                             </span>
+                            @endif
                             @include('modal.admin.delete')
                         </td>
+                        @endif
                     </tr>
                     @empty
                     <tr>

@@ -12,7 +12,7 @@
                         <th>Group Name</th>
                         <th>Page Type</th>
                         <th>Status</th>
-                        @if (Auth::guard('admin')->user()->can('Permission.Edit') && Auth::guard('admin')->user()->can('Permission.Delete'))
+                        @if (Auth::guard('admin')->user()->can('Permission.Edit') || Auth::guard('admin')->user()->can('Permission.Delete'))
                         <th>Action</th>
                         @endif
                     </tr>
@@ -31,7 +31,7 @@
                                 <span class="badge badge-danger">Deactive</span>
                             @endif
                         </td>
-                        @if (Auth::guard('admin')->user()->can('Permission.Edit') && Auth::guard('admin')->user()->can('Permission.Delete'))
+                        @if (Auth::guard('admin')->user()->can('Permission.Edit') || Auth::guard('admin')->user()->can('Permission.Delete'))
                         <td>
                             @if (Auth::guard('admin')->user()->can('Permission.Edit'))
                             <span>

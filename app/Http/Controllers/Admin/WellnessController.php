@@ -7,23 +7,46 @@ use App\Models\Wellness;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\WellnessFormRequest;
 
 class WellnessController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Wellness.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Wellness.');
+        }
+        
         return view('admin.wellness.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Wellness.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Wellness.');
+        }
+        
         return view('admin.wellness.create');
     }
 
     public function store(WellnessFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Wellness.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Wellness.');
+        }
+        
         $validatedData = $request->validated();
 
         $wellness = new Wellness();
@@ -74,11 +97,19 @@ class WellnessController extends Controller
 
     public function edit(Wellness $wellness)
     {
+        if(is_null($this->user) || !$this->user->can('Wellness.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Wellness.');
+        }
+        
         return view('admin.wellness.edit', compact('wellness'));
     }
 
     public function update(WellnessFormRequest $request, int $wellness_id)
     {
+        if(is_null($this->user) || !$this->user->can('Wellness.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Wellness.');
+        }
+        
         $validatedData = $request->validated();
 
         $wellness = Wellness::findOrFail($wellness_id);

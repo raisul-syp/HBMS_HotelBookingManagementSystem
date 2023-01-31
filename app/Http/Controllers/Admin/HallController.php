@@ -7,23 +7,46 @@ use App\Models\Hotel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\HallFormRequest;
 
 class HallController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function($request, $next) {
+            $this->user = Auth::guard('admin')->user();
+            return $next($request);
+        });
+    }
+
     public function index()
     {
+        if(is_null($this->user) || !$this->user->can('Halls.Index')) {
+            abort(403, 'Sorry! You do not have permission to view any Hall.');
+        }
+        
         return view('admin.hall.index');
     }
 
     public function create()
     {
+        if(is_null($this->user) || !$this->user->can('Halls.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Hall.');
+        }
+        
         return view('admin.hall.create');
     }
 
     public function store(HallFormRequest $request)
     {
+        if(is_null($this->user) || !$this->user->can('Halls.Create')) {
+            abort(403, 'Sorry! You do not have permission to create any Hall.');
+        }
+        
         $validatedData = $request->validated();
 
         $hall = new Hall();
@@ -74,11 +97,19 @@ class HallController extends Controller
 
     public function edit(Hall $hall)
     {
+        if(is_null($this->user) || !$this->user->can('Halls.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Hall.');
+        }
+        
         return view('admin.hall.edit', compact('hall'));
     }
 
     public function update(HallFormRequest $request, int $hall_id)
     {
+        if(is_null($this->user) || !$this->user->can('Halls.Edit')) {
+            abort(403, 'Sorry! You do not have permission to edit any Hall.');
+        }
+        
         $validatedData = $request->validated();
 
         $hall = Hall::findOrFail($hall_id);

@@ -13,7 +13,7 @@
                         <th>Name</th>
                         <th>Slug</th>
                         <th>Status</th>
-                        @if (Auth::guard('admin')->user()->can('RoomType.Edit') && Auth::guard('admin')->user()->can('RoomType.Delete'))
+                        @if (Auth::guard('admin')->user()->can('RoomType.Edit') || Auth::guard('admin')->user()->can('RoomType.Delete'))
                         <th>Action</th>
                         @endif
                     </tr>
@@ -38,7 +38,7 @@
                                 <span class="badge badge-danger">Deactive</span>
                             @endif
                         </td>
-                        @if (Auth::guard('admin')->user()->can('RoomType.Edit') && Auth::guard('admin')->user()->can('RoomType.Delete'))
+                        @if (Auth::guard('admin')->user()->can('RoomType.Edit') || Auth::guard('admin')->user()->can('RoomType.Delete'))
                         <td>
                             @if (Auth::guard('admin')->user()->can('RoomType.Edit'))
                             <span>
