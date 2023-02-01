@@ -40,4 +40,9 @@ $(document).on("change keyup blur", "#discount_rate", function() {
     $('#discount_price').val(discount_price);
 });
 
+$(function () {
+    thisyear = new Date().getFullYear();
+    $('.copyright-year').text(thisyear);
+});
+
 

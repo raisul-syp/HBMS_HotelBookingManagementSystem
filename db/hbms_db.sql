@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2023 at 01:46 PM
+-- Generation Time: Feb 01, 2023 at 10:16 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -46,7 +46,7 @@ CREATE TABLE `admins` (
   `admin_comment` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `profile_photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cover_photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `role_as` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Admin, 1=Staff, 2=Guest',
+  `role_as` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=Admin, 2=Manager, 3=Front Desk Officer, 4=Guest',
   `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
   `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
   `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -60,9 +60,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `gender`, `date_of_birth`, `phone`, `address`, `city`, `state`, `postal_code`, `country`, `admin_comment`, `profile_photo`, `cover_photo`, `role_as`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Super', 'Admin', 'admin@gmail.com', NULL, '$2y$10$gnkYXf1/YYANYrtwJEFtjeevxkyADSdRH8ic4IKFquEDG9uxjki0m', NULL, 'Male', '1995-10-03', '01680078100', 'Uttarkhan', 'Dhaka', NULL, '1230', 'Bangladesh', NULL, 'Super-1674131293.jpg', 'Super-1674131293.jpg', 0, 1, 1, NULL, '0', '2022-12-25 10:39:31', '2023-01-19 06:28:13'),
-(2, 'Muhammad Raisul', 'Islam', 'wailantirajoh@gmail.com', NULL, '$2y$10$VlIqr0X7Dc7atSoZxOJzuuCZC9jt9tI54EhAOFfSqihuuaUARFrFq', NULL, 'Male', NULL, '01797530063', NULL, NULL, NULL, NULL, 'Bangladesh', NULL, 'Muhammad Raisl-1672574931.png', NULL, 1, 1, 1, '1', '0', '2023-01-01 06:08:51', '2023-01-19 04:14:23'),
-(3, 'sdfdsf dfdsf', 'sdfd sadfsdf', 'asdas@dfsd.com', NULL, '$2y$10$pa3QoWAI045cP5efJh1VwOvI8jTh8GtG1yB.LjcmXWEr8UhDxbhVO', NULL, 'Male', NULL, NULL, NULL, NULL, NULL, NULL, 'Bangladesh', NULL, NULL, NULL, 1, 1, 1, '1', NULL, '2023-01-01 06:10:43', '2023-01-01 06:10:43');
+(1, 'Super', 'Admin', 'admin@gmail.com', NULL, '$2y$10$gnkYXf1/YYANYrtwJEFtjeevxkyADSdRH8ic4IKFquEDG9uxjki0m', NULL, 'Male', '1995-10-03', '01680078100', 'Uttarkhan', 'Dhaka', NULL, '1230', 'Bangladesh', NULL, 'Super-1674131293.jpg', 'Super-1674131293.jpg', 1, 1, 1, NULL, '1', '2022-12-25 10:39:31', '2023-01-29 04:00:27'),
+(15, 'Muhammad', 'Raisul', 'rishowmin.seu38@gmail.com', NULL, '$2y$10$luOvslrp/eEdaV3VY7Uy1uwJjrp0kU4YQveaQgx2sFDPwlpM0OUP6', NULL, 'Male', NULL, '01680078100', NULL, NULL, NULL, NULL, 'Bangladesh', NULL, NULL, NULL, 3, 1, 1, '1', '1', '2023-01-30 02:38:50', '2023-01-31 04:32:16');
 
 -- --------------------------------------------------------
 
@@ -112,20 +111,21 @@ CREATE TABLE `hb_bookings` (
 --
 
 INSERT INTO `hb_bookings` (`id`, `guest_id`, `room_id`, `staff_id`, `checkin_date`, `checkout_date`, `checkin_time`, `checkout_time`, `total_adults`, `total_childs`, `booking_status`, `is_delete`, `payment_mode`, `booking_comment`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '2022-12-30', '2022-12-31', '14:00', '12:00', '2', '0', 1, 1, '', 'Admin', '1', NULL, '2022-12-27 00:17:07', '2022-12-27 00:17:07'),
-(2, 1, 1, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '2', '2', 0, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 01:36:13', '2023-01-08 01:36:13'),
-(3, 1, 1, 1, '2023-01-10', '2023-01-11', '14:00', '12:00', '1', '0', 0, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 02:13:22', '2023-01-08 02:13:22'),
-(4, 1, 2, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '0', 0, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 02:15:21', '2023-01-08 02:15:21'),
-(5, 1, 1, 1, '2023-01-20', '2023-01-21', '14:00', '12:00', '2', '1', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 14:03:38', '2023-01-08 14:03:38'),
-(6, 1, 4, 1, '2023-01-08', '2023-01-09', '14:00', '12:00', '1', '1', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-08 14:19:42', '2023-01-08 14:19:42'),
-(7, 1, 3, 1, '2023-01-09', '2023-01-10', '14:00', '12:00', '1', '0', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-09 02:52:46', '2023-01-09 02:52:46'),
-(8, 1, 2, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-09 05:16:22', '2023-01-09 05:16:22'),
-(9, 1, 2, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 3, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-09 05:19:07', '2023-01-09 05:19:07'),
-(10, 1, 1, 1, '2023-01-26', '2023-01-27', '14:00', '12:00', '2', '1', 0, 1, '', 'Booking created by Guest', '2', NULL, '2023-01-09 05:21:05', '2023-01-09 05:21:05'),
-(11, 1, 1, 1, '2023-01-22', '2023-01-23', '14:00', '12:00', '2', '1', 2, 1, '', 'Booking created by Guest', '2', '1', '2023-01-09 05:33:40', '2023-01-09 06:53:16'),
-(12, 1, 3, 1, '2023-01-18', '2023-01-19', '14:00', '12:00', '1', '0', 0, 1, 'Pay on arrival', 'Booking created by Guest', '2', '0', '2023-01-18 03:37:08', '2023-01-19 02:23:20'),
-(13, 1, 1, 1, '2023-01-19', '2023-01-20', '14:00', '12:00', '1', '0', 0, 1, 'Pay on arrival', 'Booking created by Guest', '2', NULL, '2023-01-19 02:29:03', '2023-01-19 02:29:03'),
-(14, 1, 4, 2, '2023-01-19', '2023-01-20', '18:00', '10:00', '1', '0', 3, 1, 'Pay on arrival', 'Booking created by Guest', '2', '0', '2023-01-19 03:17:22', '2023-01-19 03:35:11');
+(1, 1, 1, 1, '2022-12-30', '2022-12-31', '14:00', '12:00', '2', '0', 1, 1, '', 'Super Admin', '1', NULL, '2022-12-26 18:17:07', '2022-12-26 18:17:07'),
+(2, 1, 2, 1, '2023-01-03', '2023-01-04', '14:00', '12:00', '2', '1', 0, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-01 21:20:58', '2023-01-01 21:20:58'),
+(3, 1, 1, 1, '2023-01-09', '2023-01-10', '14:00', '12:00', '1', '0', 3, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-08 20:53:13', '2023-01-08 20:53:13'),
+(4, 5, 2, 1, '2023-01-10', '2023-01-10', '14:00', '12:00', '2', '1', 0, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-08 21:00:56', '2023-01-08 21:00:56'),
+(5, 5, 3, 1, '2023-01-10', '2023-01-10', '14:00', '12:00', '2', '1', 0, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-08 21:05:52', '2023-01-08 21:05:52'),
+(6, 5, 2, 1, '2023-01-10', '2023-01-11', '14:00', '12:00', '6', '5', 0, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-08 21:18:36', '2023-01-08 21:18:36'),
+(7, 5, 4, 1, '2023-01-10', '2023-01-11', '14:00', '12:00', '2', '1', 1, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-08 23:28:29', '2023-01-11 19:28:59'),
+(8, 5, 1, 1, '2023-01-11', '2023-01-12', '14:00', '12:00', '2', '1', 3, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-08 23:51:49', '2023-01-08 23:51:49'),
+(9, 1, 4, 1, '2023-01-30', '2023-01-31', '14:00', '12:00', '2', '1', 0, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-09 00:09:07', '2023-01-09 00:09:07'),
+(10, 1, 1, 1, '2023-01-28', '2023-01-29', '14:00', '12:00', '2', '0', 2, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-09 00:12:58', '2023-01-09 01:08:26'),
+(11, 1, 1, 1, '2023-01-30', '2023-01-31', '14:00', '12:00', '1', '0', 1, 1, '', 'Super Admin', '1', NULL, '2023-01-09 01:08:04', '2023-01-09 01:08:04'),
+(12, 6, 3, 1, '2023-01-11', '2023-01-12', '14:00', '12:00', '2', '0', 1, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-10 18:38:15', '2023-01-10 18:42:28'),
+(13, 6, 2, 1, '2023-01-18', '2023-01-19', '14:00', '12:00', '1', '0', 3, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-10 19:10:30', '2023-01-10 19:10:30'),
+(14, 6, 4, 1, '2023-01-28', '2023-01-29', '14:00', '12:00', '1', '0', 3, 1, '', 'Super Admin', '1', '0', '2023-01-10 19:51:28', '2023-01-10 19:52:01'),
+(15, 4, 2, 1, '2023-01-12', '2023-01-14', '14:00', '12:00', '1', '0', 1, 1, '', 'Booking created by Guest', '6', NULL, '2023-01-10 20:30:57', '2023-01-11 19:26:29');
 
 -- --------------------------------------------------------
 
@@ -680,10 +680,10 @@ CREATE TABLE `hb_rooms` (
 --
 
 INSERT INTO `hb_rooms` (`id`, `name`, `slug`, `short_description`, `long_description`, `max_adults`, `max_childs`, `quantity`, `price`, `discount_rate`, `discount_price`, `meta_title`, `meta_keyword`, `meta_decription`, `has_discount`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Deluxe', 'deluxe', 'Deluxe', '<p>Deluxe<br></p>', 2, 1, 10, 220.00, 0, 0.00, 'Deluxe', 'Deluxe', 'Deluxe', 0, 1, 1, '1', '1', '2022-12-26 05:16:35', '2023-01-02 04:07:16'),
-(2, 'Super Deluxe King', 'super-deluxe-king', 'Super Deluxe King', '<p>Super Deluxe King<br></p>', 3, 2, 10, 260.00, 0, 0.00, 'Super Deluxe King', 'Super Deluxe King', 'Super Deluxe King', 0, 1, 1, '0', '1', '2022-12-14 18:45:59', '2022-12-26 05:21:41'),
-(3, 'Premium Delux', 'premium-delux', 'Premium Delux', '<p>Premium Delux<br></p>', 3, 3, 10, 280.00, 0, 0.00, 'Premium Delux', 'Premium Delux', 'Premium Delux', 0, 1, 1, '0', '1', '2022-12-14 18:47:55', '2022-12-26 05:23:04'),
-(4, 'Premium Delux Twin', 'premium-delux-twin', 'Premium Delux Twin', '<p>Premium Delux Twin<br></p>', 4, 2, 10, 280.00, 10, 252.00, 'Premium Delux Twin', 'Premium Delux Twin', 'Premium Delux Twin', 0, 1, 1, '0', '0', '2022-12-14 18:49:23', '2023-01-17 03:09:46');
+(1, 'Deluxe', 'deluxe', 'Approximate room size:320 Sqft premium Rooms are larger than Deluxe Rooms and offer one king size or two twin size beds to suit your needs .Sink into one of two sofa chairs, and enjoy air conditioning plush bathrobes and free high speed wireless internet .', '<p>Experience the ultimate in luxury and comfort in our Delux Rooms. Our spacious and stylish guest rooms feature a range of top-of-the-line amenities to help you relax and unwind during your stay. Each room features a comfortable king-sized bed with plush bedding, a flat-screen TV with cable channels, and a private bathroom with a shower and bathtub. Book now and indulge in the ultimate in comfort and style in our Delux Rooms.<br></p>', 2, 0, 7, 220.00, 0, 0.00, 'Deluxe', 'Deluxe', 'Deluxe', 0, 1, 1, '1', '1', '2022-12-26 05:16:35', '2023-02-01 02:13:44'),
+(2, 'Premium Delux', 'premium-delux', 'Approximate room size: 320 Sqft premium Rooms are larger than Premium Deluxe Rooms and offer one king size or two twin size beds to suit your needs .Sink into one of two sofa chairs, and enjoy air conditioning plush bathrobes and free high speed wireless internet .', '<p>Step up to the ultimate in luxury and indulgence in our Premium Deluxe Rooms. Our spacious and elegantly appointed guest rooms offer the ultimate in comfort and style. Each room features a plush king-sized bed with high-quality bedding, a flat-screen TV with premium cable channels, and a private bathroom with a spa-like shower and bathtub. In addition, guests in our Premium Deluxe Rooms have access to exclusive amenities. Book now and experience the ultimate in luxury in our Premium Deluxe Rooms&nbsp;<br></p>', 2, 0, 21, 260.00, 0, 0.00, 'Premium Delux', 'Premium Delux', 'Premium Delux', 0, 1, 1, '0', '1', '2022-12-14 18:45:59', '2023-02-01 02:12:05'),
+(3, 'Premium Delux Twin', 'premium-delux-twin', 'Approximate room size:320 Sqft Premium Delux Twin Rooms are larger than Premium Delux Twin Rooms and offer one king size or two twin size beds to suit your needs .Sink into one of two sofa chairs, and enjoy air conditioning plush bathrobes and free high speed wireless internet .', '<p>Experience the ultimate in luxury and comfort in our Premium Delux Twin Rooms. Our spacious and elegantly appointed guest rooms offer a range of top-of-the-line amenities to help you relax and unwind during your stay. Each room features a plush king-sized bed with high-quality bedding, a flat-screen TV with premium cable channels, and a private bathroom with a spa-like shower and bathtub. In addition, guests in our Premium Delux Twin Rooms have access to exclusive amenities and a private balcony or terrace with stunning views of the surrounding area. Book now and indulge in the ultimate in luxury and comfort in our Premium Delux Twin Rooms&nbsp;<br></p>', 2, 0, 7, 280.00, 0, 0.00, 'Premium Delux Twin', 'Premium Delux Twin', 'Premium Delux Twin', 0, 1, 1, '0', '1', '2022-12-14 18:47:55', '2023-02-01 02:14:27'),
+(4, 'Zabeer Suite', 'zabeer-suite', 'Approximate room size:320 Sqft Zabeer Suite Rooms are larger than Zabeer Suite Rooms and offer one king size or two twin size beds to suit your needs .Sink into one of two sofa chairs, and enjoy air conditioning plush bathrobes and free high speed wireless internet .', '<p><span style=\"color: rgb(33, 37, 41); font-family: &quot;Nunito Sans&quot;, sans-serif;\">Experience the ultimate in luxury and comfort in our Zabeer Suite Rooms. Our spacious and elegantly appointed guest rooms offer a range of top-of-the-line amenities to help you relax and unwind during your stay. Each room features two comfortable twin-sized beds with high-quality bedding, a flat-screen TV with premium cable channels, and a private bathroom with a spa-like shower and bathtub. In addition, guests in our Zabeer Suite&nbsp;Rooms have access to exclusive amenities and a private balcony or terrace with stunning views of the surrounding area. Book now and indulge in the ultimate in luxury and comfort in our Zabeer Suite&nbsp;Rooms</span><br></p>', 2, 0, 7, 300.00, 10, 252.00, 'Zabeer Suite', 'Zabeer Suite', 'Zabeer Suite', 0, 1, 1, '0', '1', '2022-12-14 18:49:23', '2023-02-01 02:16:31');
 
 -- --------------------------------------------------------
 
@@ -715,7 +715,7 @@ CREATE TABLE `hb_roomtype` (
 INSERT INTO `hb_roomtype` (`id`, `name`, `slug`, `description`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
 (1, 'City View', 'city-view', 'City View', 'city-view.png', 'City View', 'City View', NULL, 1, 1, '0', '1', '2022-11-20 21:16:45', '2022-12-26 05:40:26'),
 (2, 'Balcony', 'balcony', 'Balcony', 'balcony.png', 'Balcony', 'Balcony', NULL, 1, 1, '0', '1', '2022-11-20 21:25:24', '2022-12-26 05:40:44'),
-(3, 'Sea View', 'sea-view', 'Sea View', 'sea-view.png', 'Sea View', 'Sea View', NULL, 1, 1, '0', '1', '2022-12-19 17:58:02', '2022-12-26 05:40:59');
+(3, 'Sea View', 'sea-view', 'Sea View', 'sea-view.png', 'Sea View', 'Sea View', NULL, 0, 1, '0', '1', '2022-12-19 17:58:02', '2023-02-01 02:12:59');
 
 -- --------------------------------------------------------
 
@@ -740,10 +740,8 @@ INSERT INTO `hb_roomtype_view` (`id`, `room_id`, `roomtype_id`, `created_at`, `u
 (2, 2, 1, NULL, NULL),
 (3, 2, 2, NULL, NULL),
 (4, 3, 2, NULL, NULL),
-(5, 3, 3, NULL, NULL),
 (6, 4, 1, NULL, NULL),
-(7, 4, 2, NULL, NULL),
-(8, 4, 3, NULL, NULL);
+(7, 4, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -809,14 +807,10 @@ CREATE TABLE `hb_room_images` (
 --
 
 INSERT INTO `hb_room_images` (`id`, `room_id`, `image`, `created_at`, `updated_at`) VALUES
-(4, 2, 'uploads/rooms/super-deluxe-king-1672053701-1.jpg', '2022-12-26 05:21:42', '2022-12-26 05:21:42'),
-(5, 2, 'uploads/rooms/super-deluxe-king-1672053702-2.jfif', '2022-12-26 05:21:42', '2022-12-26 05:21:42'),
-(6, 2, 'uploads/rooms/super-deluxe-king-1672053702-3.jpg', '2022-12-26 05:21:42', '2022-12-26 05:21:42'),
-(7, 3, 'uploads/rooms/premium-delux-1672053784-1.jpg', '2022-12-26 05:23:04', '2022-12-26 05:23:04'),
-(8, 3, 'uploads/rooms/premium-delux-1672053784-2.jpg', '2022-12-26 05:23:04', '2022-12-26 05:23:04'),
-(9, 4, 'uploads/rooms/premium-delux-twin-1672053838-1.jpg', '2022-12-26 05:23:58', '2022-12-26 05:23:58'),
-(10, 4, 'uploads/rooms/premium-delux-twin-1672053838-2.jpg', '2022-12-26 05:23:58', '2022-12-26 05:23:58'),
-(11, 1, 'uploads/rooms/deluxe-1672654036-1.jpeg', '2023-01-02 04:07:16', '2023-01-02 04:07:16');
+(1, 1, 'uploads/rooms/deluxe-1675238126-1.jpeg', '2023-02-01 01:55:26', '2023-02-01 01:55:26'),
+(2, 2, 'uploads/rooms/premium-delux-1675238913-1.jpeg', '2023-02-01 02:08:33', '2023-02-01 02:08:33'),
+(3, 3, 'uploads/rooms/premium-delux-twin-1675238977-1.jpeg', '2023-02-01 02:09:37', '2023-02-01 02:09:37'),
+(4, 4, 'uploads/rooms/zabeer-suite-1675239035-1.jpeg', '2023-02-01 02:10:35', '2023-02-01 02:10:35');
 
 -- --------------------------------------------------------
 
@@ -998,7 +992,7 @@ CREATE TABLE `hb_webpages` (
 --
 
 INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_description`, `long_description`, `slug`, `display_order`, `image`, `meta_title`, `meta_keyword`, `meta_decription`, `footer_item`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'About Us', 'A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates.', '<p><span style=\"color: rgb(33, 37, 41); font-family: &quot;Nunito Sans&quot;, sans-serif; font-size: 16px; text-align: justify;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span><br></p>', 'about-us', '1', 'about-us.jpg', 'About Us', 'About Us', 'About Us', 1, 1, 1, '1', NULL, '2022-12-26 00:47:16', '2022-12-26 00:47:16'),
+(1, 'About Us', 'A place that sparks creativity, fuels the imagination and welcomes reflection and relaxation.', 'The Zabeer Dhaka', 'We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates.', '<p><span style=\"color: rgb(33, 37, 41); font-family: &quot;Nunito Sans&quot;, sans-serif; font-size: 16px; text-align: justify;\">We Offer 5-Star Banquet Spaces, Complete With Catering And Event Management Facilities. Discover The International Favorites Grilled To Perfection In The Live Kitchen. Experiment With Choicest Of Accompaniments And Sauces.The Hotel Has 3 Dedicated Conference And Event Venues Has The Capacity For 200 Delegates. Each Equipped With The Very Latest Audio-Visual And Lighting Technology.The Ambience And Therapies At Our International Spa Offered By Experienced Professionals Ensure That You Are Rejuvenated.State Of The Art Gymnasium And With An Exercise Studio.Haircare And Beauty Treatments By Trained Stylists.The Elegant Att-Day Three Restaurant Provides A Stunning Atmosphere In Which To Sample Europian,Asian,Thai, Chinese Arabic And Our Own Local Cuisine.</span><br></p>', 'about-us', '1', 'about-us.png', 'About Us', 'About Us', 'About Us', 1, 1, 1, '1', '1', '2022-12-26 00:47:16', '2023-02-01 01:52:23'),
 (2, 'Contact Us', 'Contact Us', 'Contact Us', 'Contact Us', '<p>Contact Us<br></p>', 'contact-us', '2', NULL, 'Contact Us', 'Contact Us', 'Contact Us', 1, 1, 1, '1', '0', '2022-12-26 00:49:07', '2023-01-15 23:52:02'),
 (3, 'Offers', 'Offers', 'Offers', 'Offers', '<p>Offers<br></p>', 'offers', '3', NULL, 'Offers', 'Offers', 'Offers', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:39:55'),
 (4, 'FAQ', 'FAQ', 'FAQ', 'FAQ', '<p>FAQ<br></p>', 'faq', '4', NULL, 'FAQ', 'FAQ', 'FAQ', 1, 1, 1, '0', '1', NULL, '2023-01-08 14:40:23'),
@@ -1009,7 +1003,7 @@ INSERT INTO `hb_webpages` (`id`, `name`, `title`, `sub_title`, `short_descriptio
 (9, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', '<p>Certificates &amp; Awards<br></p>', 'certificates-awards', '9', NULL, 'Certificates & Awards', 'Certificates & Awards', 'Certificates & Awards', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:42:54'),
 (10, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', '<p>Booking Cancelation Policy<br></p>', 'booking-cancelation-policy', '10', NULL, 'Booking Cancelation Policy', 'Booking Cancelation Policy', 'Booking Cancelation Policy', 1, 1, 1, '0', '0', NULL, '2022-12-16 18:43:20'),
 (11, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', '<p><br></p>', 'privacy-policy', '11', NULL, 'Privacy Policy', 'Privacy Policy', 'Privacy Policy', 1, 1, 1, '0', '0', NULL, '2023-01-10 14:13:12'),
-(12, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '<p><span style=\"font-weight: bolder;\">PLEASE READ THESE BINDING LEGAL TERMS CAREFULLY BEFORE USING THIS SITE OR MAKING A RESERVATION.</span></p><p><span style=\"font-weight: bolder;\">BY ACCESSING, USING, VIEWING, TRANSMITTING, CACHING OR STORING THIS SITE OR ANY OF ITS SERVICES, FUNCTIONS, MATERIALS, OR CONTENTS, YOU SHALL BE DEEMED TO HAVE AGREED TO EACH AND ALL THE TERMS, CONDITIONS, AND NOTICES IN THIS SITE (\"AGREEMENT\") WITHOUT MODIFICATION. CERTAIN TERMS, INCLUDING BUT NOT LIMITED TO THE ARBITRATION CLAUSE AND CLASS ACTION WAIVER CLAUSE, MAY RESTRICT YOUR RIGHTS TO BRING A CLAIM IN A COURT OF LAW. If you are not an Authorised User, and if you do not agree to the terms of this Agreement, you may not use this Site, including without limitation to make a reservation, or download any Materials from it. If you do not agree with these terms and conditions, please leave the Site immediately.</span></p><p><span style=\"font-weight: bolder;\">AGREEMENT FOR USE</span>. You warrant that you are at least 18 years of age and possess the legal authority to enter into this agreement and to use this Site in accordance with all terms and conditions herein. You agree to be financially responsible for all of your use of this Site (as well as for use of your account by others, including without limitation minors living with you). You agree to supervise all usage by minors of this Site under your name or account. You also warrant that all information supplied by you or members of your household in using this Site is true and accurate and without limitation, or any false or fraudulent reservation. You agree that the reservations facilities of this Site shall be used only to make legitimate reservations or purchases for you or for another person for whom you are legally authorised to act. You understand that overuse or abuse of the reservation facilities of this Site may result in your being denied access to such facilities.</p><p>For any reservations or other services for which fees may be charged, you agree to abide by the terms or conditions of purchase imposed, including, but not limited to, payment of all amounts when due and compliance with all rules and restrictions regarding availability of rates, products, or services. You shall be completely responsible for all charges, fees, duties, taxes, and assessments arising out of the use of this Site. Note that in most cases branded hotels are independently owned and your transaction may not be a direct transaction with The Zabeer Dhaka, but with the franchisee/licensee of a hotel. By using this Site you agree to be bound to the owner of the hotel and to The Zabeer Dhaka, if applicable, and to abide by the booking terms and conditions.</p><p><span style=\"font-weight: bolder;\">WIRELESS RESERVATIONS</span>. Functionality is not guaranteed with all types of mobile devices in using this Site. You should contact your service provider directly for technical assistance or any questions. Please note that security features vary by carrier/service provider and mobile device. Additional minutes/charges may apply and may be charged by your mobile carrier/service provider.</p><p><span style=\"font-weight: bolder;\">CURRENCY CONVERSION</span>. Currency rates are based on publicly available sources and should be used as guidelines only. Room rates are guaranteed only in hotel\'s local currency. Currency quotes are not updated every day. The currency information supplied by this Site is believed to be accurate, but The Zabeer Dhaka and/or its parent, subsidiaries and affiliates do not warrant or guarantee such accuracy.</p><p><span style=\"font-weight: bolder;\">LIMITED LICENCE TO VIEW AND COPY</span>. The content and information displayed on this Site is the property of The Zabeer Dhaka. The downloading, reproduction, or retransmission of information, other than for non-commercial individual use, is strictly prohibited.</p><p>This Site is to be used by Authorised Users for personal use only. Commercial uses of this Site are strictly prohibited. If you are currently an Authorised User, you are granted a limited, non-transferable, revocable license to view and copy the Materials solely for your personal use, subject to the restrictions below.</p><p><span style=\"font-weight: bolder;\">PROHIBITED CONDUCT</span>. You agree not to: (a) copy, display, modify, reproduce, or otherwise transfer any of the Materials to any third party without the prior written permission of The Zabeer Dhaka; (b) interfere or disrupt networks connected to the Site; (c) use or attempt to use any device, software or routine which interferes with the proper functioning of the Site or any transactions being offered through the Site; (d) transmit files, data or other materials containing a computer virus, corrupted data, worms, “Trojan horses” or other instructions or design that would erase data or programming or cause the Site or any equipment or system to become inoperable or incapable of being used in the full manner for which it was designed; (e) deliver any communication to or through the Site which violates any local, state, federal or international law; (f) deliver any communication to or through the Site that contains defamatory, libellous, abusive or obscene material; or (g) deliver any communication to or through the Site that will infringe upon the rights of any third party.</p><p><span style=\"font-weight: bolder;\">INTELLECTUAL PROPERTY RIGHTS</span>. This Site and the Materials contain and reference trademarks, patents, trade secrets, technologies, products, processes or other proprietary rights of&nbsp; companies and/or other parties. No licence or right to or in any such trademarks, patents, trade secrets, technologies, products, processes and other proprietary rights of&nbsp; companies and/or other parties is granted to or conferred upon you. Reproduction or storage of materials obtained from this Site is subject to the U.S. Copyright Act of 1976, Title 17 U.S.C. No Materials may be reproduced, distributed, posted, displayed, uploaded, or transmitted except as expressly permitted herein. You may not remove any copyright, trademark notice or proprietary notices from the Materials; or use the Materials or this Site except as permitted in this Agreement. The use of any Materials from the Site on any other internet, intranet, web or other site or computer environment is prohibited. You may not utilise framing techniques to frame any&nbsp; trademarks, logos, or other proprietary information (including images and text). You may not use any meta tags or any other \"hidden text\" utilising our name, trademarks or other proprietary information.</p><p><span style=\"font-weight: bolder;\">COPYRIGHT AND TRADEMARK NOTICES</span>. All contents of this Site are the copyrighted property of one of the&nbsp; companies, or their subsidiaries, affiliates, or an&nbsp; licensor, as applicable. All contents of this Site are protected by United States and international copyright laws.</p><p>The Zabeer Dhaka Hotels Group and ® Hotels &amp; Resorts are trade names describing the subsidiary companies of The Zabeer Dhaka Hotels Group PLC involved in the hotel business around the world. In the U.S. and Canada, Holiday Hospitality Franchising, LLC is the franchisor/licensor of most&nbsp; brand names and marks. Trademarks owned by an&nbsp; company may not be used or displayed publicly without the prior written permission of the owner of the marks, except for downloaded logos and photographs as provided for elsewhere on this Site. Any rights not expressly granted herein are reserved.</p><p>The following are some of the service marks owned by The Zabeer Dhaka, its parents, subsidiaries, or affiliates (all The Zabeer Dhaka Hotels Group companies): ®, The Zabeer Dhaka®, Regent®, Kimpton®, voco®, Crowne Plaza®, HUALUXE®, EVEN®, Hotel Indigo®, Holiday Inn®, Holiday Inn Express®, avid®, Holiday Inn Resort®, Holiday Inn Club Vacations®, Staybridge Suites®, Candlewood Suites®, ® One Rewards, Six Senses®, Atwell Suites™, Vignette™.</p><p>The Zabeer Dhaka respects the copyright rights of others and has adopted and implemented a policy that provides for (a) the removal of content from this Site under appropriate circumstances, and (b) the suspension or termination of account holders or subscribers who repeatedly infringe the copyright rights of others. If you are a copyright owner and you believe your work has been copied in a way that constitutes copyright infringement, please contact ’s designated Copyright Agent, as hereafter defined, and provide the following information:</p><p>A physical or electronic signature of a person authorised to act on behalf of the owner of an exclusive right of copyright that is allegedly infringed;</p><p>Identification of the copyrighted work claimed to have been infringed or, if multiple copyrighted works at a single online site are covered by a single notification, a representative list of such works at that site;</p><p>Identification of the material that is claimed to be infringing or to be the subject of infringing activity, and information reasonably sufficient to permit us to locate the material;</p><p>Information reasonably sufficient to permit us to contact the complaining party (for example, the complaining party’s physical address, email address, and telephone number);</p><p>A statement that the complaining party has a good faith belief that use of the material is unauthorised; and,</p><p>A statement that the information in the notification is accurate and, under penalty of perjury, that the complaining party is authorised to act on behalf of the owner of an exclusive right that is allegedly infringed.</p><p>Parties submitting content to the Site should be aware that&nbsp; companies reserve the right to suspend or terminate their subscriptions or accounts in the event that&nbsp; companies determine, in their sole discretion, that they have engaged in repeated acts of copyright infringement.</p><p><span style=\"font-weight: bolder;\">OWNERSHIP OF MATERIALS</span>. The Materials are confidential and proprietary information of&nbsp; companies or its licensors, as applicable.</p><p><span style=\"font-weight: bolder;\">LINKED WEB SITES</span>. This Site includes links to other web sites. The Zabeer Dhaka provides such links solely as a convenience to you and for informational purposes only. The Zabeer Dhaka has not reviewed all of the information on these other web sites. The inclusion of these links in no way indicates The Zabeer Dhaka’s or other&nbsp; companies’ endorsement, support or approval of the content, advertising, products, services, policies or other materials on or available from such web sites. Neither The Zabeer Dhaka, nor any other providers of products or services related to this Site, shall be responsible for the content of any other web sites and make no representation or warranty regarding any other web sites or the contents or materials on such web sites. If you decide to access other web sites, you do so at your own risk. Other web sites may include links to the Site. The inclusion of such links does not indicate the other web site’s endorsement, support or approval of the content, advertising, products, services, policies or other materials on or available from the Site.</p><p><span style=\"font-weight: bolder;\">PRIVACY</span>. Your use of the Site is subject to the&nbsp; Privacy Policy. If you would like to view the privacy practices please review our Privacy Statement.</p><p><span style=\"font-weight: bolder;\">SECURITY</span>. If you have been provided with a login and password, then any such login and password are for your personal use only. You may not reveal your login or password to anyone else or permit anyone else to use your login and password to access the Site. You are responsible for maintaining the confidentiality and security of your login and password and accept responsibility for all activities that occur under your account or password. You must notify&nbsp; immediately in the event that the security of your login or password has been breached.</p><p><span style=\"font-weight: bolder;\">DISCLAIMER</span>. THE MATERIALS ARE PROVIDED \"AS IS\" WITHOUT ANY WARRANTY, REPRESENTATION, CONDITION, UNDERTAKING OR TERM OF ANY KIND, EXPRESS OR IMPLIED, STATUTORY OR OTHERWISE, INCLUDING WITHOUT LIMITATION, THE WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT OF INTELLECTUAL PROPERTY, OR FITNESS FOR A PARTICULAR PURPOSE. BECAUSE SOME JURISDICTIONS PROHIBIT THE EXCLUSION OF IMPLIED WARRANTIES, THE ABOVE EXCLUSIONS MAY NOT APPLY TO YOU. Further The Zabeer Dhaka does not warrant the accuracy or completeness of the information, text, graphics, links or other items contained within the Materials. The Zabeer Dhaka may make changes to the Materials, or the programmes, policies or other information described in the Materials, at any time without notice. The Zabeer Dhaka makes no commitment to update the Materials.</p><p><span style=\"font-weight: bolder;\">LIMITATION OF LIABILITY. IN NO EVENT SHALL AN&nbsp; COMPANY BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER, INCLUDING LOSS OF PROFITS OR DATA, WHETHER IN AN ACTION IN CONTRACT OR TORT, ARISING OUT OF THE USE OR PERFORMANCE OF THE SITE, THESE TERMS OF USE, THE MATERIALS, THE AGREEMENT, OR THE PERFORMANCE OR NON-PERFORMANCE BY AN&nbsp; COMPANY OR ANY THIRD PARTY PROVIDERS OF PRODUCTS OR SERVICES RELATED TO THIS SITE. THIS LIMITATION OF LIABILITY SHALL APPLY REGARDLESS OF WHETHER THE CLAIM ASSERTED IS BASED ON CONTRACT, NEGLIGENCE, OR ANY OTHER THEORY OF RECOVERY, EVEN IF&nbsp; HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. BECAUSE SOME JURISDICTIONS PROHIBIT THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, THE ABOVE LIMITATION MAY NOT APPLY TO YOU.</span></p><p><span style=\"font-weight: bolder;\">ELECTRONIC COMMUNICATIONS PRIVACY ACT NOTICE (18 U.S.C. 2701-2711): WE MAKE NO GUARANTY OF CONFIDENTIALITY OR PRIVACY OF ANY COMMUNICATION OR INFORMATION TRANSMITTED ON THE SITE OR ANY WEB SITE LINKED TO THE SITE. WE WILL NOT BE LIABLE FOR THE PRIVACY OF THE INFORMATION, E-MAIL ADDRESSES, REGISTRATION AND IDENTIFICATION INFORMATION, DISK SPACE, COMMUNICATIONS, CONFIDENTIAL OR TRADE-SECRET INFORMATION, OR ANY OTHER CONTENT TRANSMITTED OVER NETWORKS ACCESSED BY THE SITE, OR OTHERWISE CONNECTED WITH YOUR USE OF THE SITE.</span></p><p><span style=\"font-weight: bolder;\">TERMINATION/ACCESS RESTRICTION</span>. The Zabeer Dhaka reserves the right, in its sole discretion, to modify your access or terminate your access to the Site and the Materials or any portion thereof at any time, without notice.</p><p><span style=\"font-weight: bolder;\">NOTICES</span>. All notices and other communications permitted or required by the provisions of this Agreement may be given by electronic mail, conventional mail or, if by an&nbsp; company, by posting such notice on this Site. Notice is deemed given upon receipt by you if sent by electronic mail or conventional mail, or immediately upon posting to this Site.</p><p><span style=\"font-weight: bolder;\">GOVERNING LAW</span>. These Terms of Use shall be governed by, construed and enforced in accordance with the laws of the State of Georgia, United States, without regard to its conflicts of law rules. The exclusive jurisdiction for any dispute not covered by the terms of the Arbitration provision set forth in this Agreement or Materials may be filed only in the state or federal courts located in the State of Georgia, United States.</p><p><span style=\"font-weight: bolder;\">ARBITRATION</span>. Except with respect to any claim or dispute involving the ownership, validity or use of any&nbsp; trademarks or service marks, and to the extent permitted by applicable law, any dispute arising out of or related to the use or performance of this Site, these Terms of Use, the Materials, or the Agreement, seeking as relief money damages and/or attorneys’ fees or other damages (“Covered Claims”) will be submitted for arbitration to the American Arbitration Association (AAA). The Zabeer Dhaka shall have the right in a proper case to obtain temporary restraining orders, temporary or preliminary injunctive relief and/or declaratory relief (other than declarations with respect to the amount of money damages) from a court of competent jurisdiction.</p><p>The arbitration proceedings shall be heard by one independent arbitrator who shall be an attorney or retired judge. The arbitration shall be held in accordance with the then-existing Commercial Arbitration Rules of the AAA. All matters within the scope of the Federal Arbitration Act (9 U.S.C. 1, et seq.) will be governed by it and not by any state arbitration law. You and The Zabeer Dhaka waive any rights to maintain other available resolution processes for such disputes, such as a court action or administrative proceeding, to settle disputes. You and The Zabeer Dhaka waive any right to a jury trial for such disputes. The rules in arbitration are different from the rules that apply in court. There is no judge or jury, and review is limited, but an arbitrator can award the same damages and relief, and must honour the same limitations stated in the Agreement, as a court would.</p><p>In reaching his or her decision, the arbitrator shall follow this Agreement and Materials, shall be bound to apply the applicable law and shall not rule inconsistently with the applicable law. The arbitrator may not (1) without the consent of all parties, combine more than one individual’s claim or claims into a single case, (2) participate in or facilitate notification to others of potential claims, or (3) arbitrate or preside over any form of a class, mass, collective, or representative proceeding. The arbitrator shall include in his or her award any relief he or she deems proper in terms of money damages (with interest on unpaid amounts from the date due at the maximum rate allowed by law), and attorneys’ fees and costs. The award of the arbitrator shall be conclusive and binding upon all parties hereto and judgment upon the award may be entered in any court of competent jurisdiction.</p><p>If a party violates this arbitration agreement by commencing an action asserting a Covered Claim in a court of law, then the court (and not an arbitrator) shall have the authority to resolve any disputes about the interpretation, formation, existence, enforceability, validity, and scope of these Terms of Use, including the Agreement, this arbitration agreement, and the Waiver of Class, Mass, Collective, and Representative Claims. However, if a party complies with this arbitration agreement and files for arbitration without filing a complaint in a court of law, then the arbitrator shall have the authority to resolve any disputes about the interpretation of these Terms of Use for purposes of discovery or the merits of the underlying claim, but shall have no authority to resolve any disputes about the formation, existence, enforceability, or validity of the Terms of Use, including the Agreement, this arbitration agreement, and the Waiver of Class, Mass, Collective, and Representative Claims.</p><p>Confidential. Other than as may be required by law, the entire arbitration proceedings (including, but not limited to, any rulings, decisions or orders of the arbitrator), shall remain confidential and not be disclosed to anyone other than the parties to this Agreement.</p><p><span style=\"font-weight: bolder;\">LIMITATIONS PERIOD</span>. Any and all Covered Claims shall be commenced within one (1) year from the occurrence of the facts giving rise to such claim or action, or such claim or action shall be barred. This Limitations Period section does not apply to residents of New Jersey, and is not applicable where local law prohibits it.</p><p><span style=\"font-weight: bolder;\">WAIVER OF CLASS, MASS, COLLECTIVE, AND REPRESENTATIVE CLAIMS</span>. To the extent permitted by law, you agree that you will not file a class action against an&nbsp; company, participate in a class action against an&nbsp; company, file or seek a class, mass, collective, or representative arbitration against an&nbsp; company, or participate in such an arbitration against an&nbsp; company, for any Covered Claims. To the extent permitted by law, you agree that all such claims may only be brought in your individual capacity, and not on behalf of other individuals.</p><p><span style=\"font-weight: bolder;\">MISCELLANEOUS PROVISIONS</span>. This Agreement constitutes the entire agreement of the parties with respect to the subject matter hereof and supersedes all prior oral and written agreements. No failure or delay on the part of&nbsp; in exercising any right or remedy hereunder or enforcing the terms and conditions of this Agreement will operate as a waiver thereof. If any part or provision of this Agreement is found to be invalid, unenforceable or void, then the remaining portion shall remain in full force and effect. If the Waiver of Class, Mass, Collective, and Representative Claims is found to be unenforceable, then any claim brought on a class, mass, collective, or representative action basis must be filed in a court of competent jurisdiction, and such court shall be the exclusive forum for such claims. Headings are for convenience only and not for use in interpretation of this Agreement.</p><p>&nbsp;</p><p><span style=\"font-weight: bolder;\">© Copyright 2023 The Zabeer Dhaka, House-1, Road-2, Sector-1, Uttara Model Town, Dhaka-1230. All rights reserved.</span></p><p><span style=\"font-weight: bolder;\">Effective Date: 02 January 2023</span></p>', 'terms-conditions', '12', NULL, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 1, 1, 1, '0', '0', NULL, '2023-01-10 14:07:03');
+(12, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', '<p class=\"Default\"><b><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">Check-in / Check-out </span></b><span style=\"font-family:\r\n&quot;Times New Roman&quot;,serif;color:windowtext\">Standard Check-in: 14:00 hours,\r\nCheck-Out: 12:00 hours <o:p></o:p></span></p><p class=\"Default\" style=\"text-align:justify\"><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">All guests would be required to produce photo identification\r\nat the time of check-in, in accordance with local law and for security\r\npurposes. Passports for foreign travelers are mandated.</span></p><p class=\"Default\"><b><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">Early Check-in: </span></b><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">For guests that arrive prior to 14:00 hours, the hotel will\r\nmake all endeavors to provide complementary early arrival. However, in order to\r\nhave guaranteed room availability for Check-In prior to 1400 hours, the room\r\nmust be pre-booked from the previous night. In this case, one night’s\r\nadditional room charge will apply.</span></p><p class=\"Default\"><b><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">Early Departure: </span></b><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">In case of early departure additional one-night charge will\r\nbe posted on your billing.</span><span style=\"color: windowtext; font-family: &quot;Times New Roman&quot;, serif; font-size: 0.875rem;\">&nbsp;</span></p><p class=\"Default\"><b><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">Late Check-out: </span></b><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">Guests Checking-Out between 1200 hours – 1800 hours, will be\r\ncharged 50% of the room rate (Subject to availability). For guests Checking-Out\r\nafter 1800 hours, a full room charge will be applicable (Subject to\r\navailability).</span><span style=\"color: windowtext; font-family: &quot;Times New Roman&quot;, serif; font-size: 0.875rem;\">&nbsp;</span></p><p class=\"Default\" style=\"margin-bottom:2.9pt\"><b><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">No Show: </span></b><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">In the eventuality that a guest with a confirmed reservation\r\ndoes not arrive at the date specified, “No-show” charges will be automatically\r\ncharged to the guest’s master account or credit card, towards the retention of\r\none night.</span><span style=\"color: windowtext; font-family: &quot;Times New Roman&quot;, serif; font-size: 0.875rem;\">&nbsp;</span></p><p class=\"Default\"><span style=\"font-family:&quot;Times New Roman&quot;,serif;color:windowtext\">&nbsp;</span></p><p class=\"Default\"><span style=\"font-family:&quot;Times New Roman&quot;,serif;color:windowtext\">These\r\nspecial rates are applicable for all reservations made directly with the hotel\r\nrepresentative, through telephone or email.</span><span style=\"color: windowtext; font-family: &quot;Times New Roman&quot;, serif; font-size: 0.875rem;\">&nbsp;</span></p><p class=\"Default\" style=\"margin-top:0in;margin-right:0in;margin-bottom:2.9pt;\r\nmargin-left:.5in;text-indent:-.25in;line-height:150%;mso-list:l0 level1 lfo1\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;line-height:150%;font-family:\r\nWingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;\r\ncolor:windowtext\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp;\r\n</span></span><!--[endif]--><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">All rooms are subject to availability at the time of\r\nguaranteeing the same by Credit Card/Company Guarantee/ Cash payment. <o:p></o:p></span></p><p class=\"Default\" style=\"margin-top:0in;margin-right:0in;margin-bottom:2.9pt;\r\nmargin-left:.5in;text-indent:-.25in;line-height:150%;mso-list:l0 level1 lfo1\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;line-height:150%;font-family:\r\nWingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;\r\ncolor:windowtext\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp;\r\n</span></span><!--[endif]--><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">Payments shall be settled directly by cash or credit card. <o:p></o:p></span></p><p class=\"Default\" style=\"margin-top:0in;margin-right:0in;margin-bottom:2.9pt;\r\nmargin-left:.5in;text-indent:-.25in;line-height:150%;mso-list:l0 level1 lfo1\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;line-height:150%;font-family:\r\nWingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;\r\ncolor:windowtext\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp;\r\n</span></span><!--[endif]--><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">All the booking requests must be communicated to the hotel\r\nrepresentative in writing <o:p></o:p></span></p><p class=\"Default\" style=\"margin-top:0in;margin-right:0in;margin-bottom:2.9pt;\r\nmargin-left:.5in;line-height:150%\"><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">(Either by letter, facsimile, or email). <o:p></o:p></span></p><p class=\"Default\" style=\"margin-top:0in;margin-right:0in;margin-bottom:2.9pt;\r\nmargin-left:.5in;text-indent:-.25in;line-height:150%;mso-list:l0 level1 lfo1\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;line-height:150%;font-family:\r\nWingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;\r\ncolor:windowtext\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp;\r\n</span></span><!--[endif]--><span style=\"font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:windowtext\">The Corporate Client will make an advance reservation with\r\nthe hotel and the hotel will confirm the reservation subject to availability.\r\nThe hotel will send reservation confirmation to the client upon receipt of the reservation\r\nrequest in writing. <o:p></o:p></span></p><p class=\"Default\" style=\"margin-top:0in;margin-right:0in;margin-bottom:2.9pt;\r\nmargin-left:.5in;text-indent:-.25in;line-height:150%;mso-list:l0 level1 lfo1\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;line-height:150%;font-family:\r\nWingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><span style=\"mso-bidi-font-size:14.0pt;line-height:150%\">During Check-In time, credit\r\ncard pre-authorization will be taken by the Front Office of the respective\r\nguest. All the guests will settle the bill by cash or rearwards during the time\r\nof Check-Out unless we have a credit arrangement with the client. <o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">POLICIES:&nbsp;</span></b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">The guests have to abide\r\nby all the rules of the hotel. the guests cannot do anything which will be\r\nagainst the hotel policy. The guests must have valid documents with them during\r\nthe time of check-in.&nbsp;</span><span style=\"font-size:10.5pt;font-family:\r\n&quot;Arial&quot;,sans-serif;color:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">PAYMENTS:&nbsp;</span></b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">The guests can pay at the\r\nhotel by cash or credit card. The hotel may ask for advance during the time of\r\ncheck-in.</span><span style=\"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;\r\ncolor:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">VAT &amp;&nbsp;SERVICE\r\nCHARGE:&nbsp;</span></b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">&nbsp;The\r\nguests have to pay vat and service charges according to the hotel policy or\r\nrule.</span><span style=\"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;\r\ncolor:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">CANCELLATION\r\nPOLICY:&nbsp;&nbsp;</span></b><span style=\"font-family:&quot;Arial&quot;,sans-serif;\r\ncolor:#333333\">If the guests want to cancel the booking then the guests have to\r\ninform the hotel 72 hours before otherwise 1 night will be charged.</span><span style=\"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">CHECK-IN &amp; CHECK-OUT\r\nTIME:&nbsp;&nbsp;&nbsp;</span></b><span style=\"font-family:&quot;Arial&quot;,sans-serif;\r\ncolor:#333333\">12 noon.</span><span style=\"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;\r\ncolor:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><strong><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">REQUIRED AT CHECK-IN TIME:</span></strong><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">&nbsp; A copy of the\r\npassport or NID</span><span style=\"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;\r\ncolor:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">PARKING:&nbsp;</span></b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">Available</span><span style=\"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">PETS:&nbsp;</span></b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">Pets are not allowed.</span><span style=\"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">CHILDREN:&nbsp;</span></b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">Children are allowed</span><span style=\"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; text-indent: -0.25in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><!--[if !supportLists]--><span style=\"font-size:14.0pt;mso-bidi-font-size:16.0pt;font-family:Wingdings;\r\nmso-fareast-font-family:Wingdings;mso-bidi-font-family:Wingdings;color:#333333\">§<span style=\"font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 7pt; line-height: normal; font-family: &quot;Times New Roman&quot;;\">&nbsp; </span></span><!--[endif]--><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">EXTRA BEDS:&nbsp;&nbsp;</span></b><span style=\"font-family:&quot;Arial&quot;,sans-serif;color:#333333\">Extra beds are available.</span><span style=\"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#333333\"><o:p></o:p></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><b><span style=\"font-family:&quot;Arial&quot;,sans-serif;\r\ncolor:#333333\">Privacy Policy<o:p></o:p></span></b></p><p style=\"margin: 0in 0in 7.5pt 0.5in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"font-size: 10.5pt; font-family: Arial, sans-serif; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\">1.To obtain and confirm your\r\nbooking of accommodations and other services, and to provide such services as\r\nrequested. Since this processing is required to define our contractual\r\nrelationship and to perform under our contract with you, your consent is not\r\nrequired, unless certain “sensitive” information is submitted. Should you\r\nrefuse to submit your personal information, we will not be able to confirm your\r\nbooking or provide you with the requested services. Processing shall cease once\r\nyou check out, although some of your personal information may (or in some\r\ninstances, has to) continue to be processed for the purposes and in the manner\r\ndescribed below;</span><span style=\"font-size: 10.5pt; font-family: Arial, sans-serif;\"><br>\r\n<span style=\"background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\">2.To comply with our “Public Safety Law” which\r\nrequires that we provide identification data of our guests to the police, for\r\npurposes of public safety. Data submission is mandatory and does not require\r\nyour consent. Should you refuse to provide such information, we will not be\r\nable to host you in our hotel.</span></span></p><p style=\"margin: 0in 0in 7.5pt 0.5in; line-height: 18pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"font-size: 10.5pt; line-height: 107%; font-family: Arial, sans-serif;\">\r\n<span style=\"background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\">3. To comply with applicable administrative,\r\naccounting, and tax regulations. For these purposes, your consent is not\r\nrequired. Personal information is processed by us and our persons in charge of\r\ndata processing and is disclosed outside the company only when and if required\r\nby law. Should you refuse to submit the required data for the above purposes,\r\nwe will not be able to provide you with the requested services.</span><br>\r\n<span style=\"background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\">4. To speed up check-in on your next visit to\r\nour hotel. For such purposes, upon obtaining your consent (which can be revoked\r\nat any moment), your information will be retained for a maximum of 5 years, and\r\nwill be used the next time you are our guest, for the reasons listed supra.</span><br>\r\n<span style=\"background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\">5. To allow you to receive messages and\r\ntelephone calls during your stay. Your consent is required for such purposes.\r\nYou can revoke your consent at any time. Such processing, where consent is\r\ngranted, shall end when you check out;</span><br>\r\n<span style=\"background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\">6.To send you advertising messages and updates\r\non special rates and promotions. For this purpose, upon obtaining your consent,\r\nyour information shall be retained for a maximum of 5 years, and will not be\r\ndisclosed to third parties. You may revoke your consent at any moment;</span></span><span style=\"font-size: 10.5pt; font-family: Arial, sans-serif;\"><br></span></p>', 'terms-conditions', '12', NULL, 'Terms & Conditions', 'Terms & Conditions', 'Terms & Conditions', 1, 1, 1, '0', '1', NULL, '2023-02-01 01:43:50');
 
 -- --------------------------------------------------------
 
@@ -1045,7 +1039,9 @@ CREATE TABLE `hb_websliders` (
 --
 
 INSERT INTO `hb_websliders` (`id`, `name`, `slug`, `desktop_image`, `mobile_image`, `content_1`, `content_2`, `content_3`, `content_4`, `content_5`, `display_order`, `meta_title`, `meta_keyword`, `meta_decription`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Slider 1', 'slider-1', 'desk-slider-1.png', 'mobl-slider-1.png', 'Welcome to', 'The Zabeer Dhaka', 'A place that sparks creativity, fuels the imagination andwelcomes reflection and relaxation.', NULL, NULL, '1', 'Slider 1', 'Slider 1', 'Slider 1', 1, 1, '1', NULL, '2022-12-26 00:44:04', '2022-12-26 00:44:04');
+(1, 'Slider 1', 'slider-1', 'desk-slider-1.png', 'mobl-slider-1.png', 'Welcome to', 'The Zabeer Dhaka', 'A place that sparks creativity, fuels the imagination andwelcomes reflection and relaxation.', NULL, NULL, '1', 'Slider 1', 'Slider 1', 'Slider 1', 1, 1, '1', '1', '2022-12-26 00:44:04', '2023-02-01 01:48:05'),
+(2, 'Slider 2', 'slider-2', 'desk-slider-2.png', 'mobl-slider-2.png', 'Welcome to', 'The Zabeer Dhaka', 'A place that sparks creativity, fuels the imagination andwelcomes reflection and relaxation.', NULL, NULL, '2', 'Slider 2', 'Slider 2', 'Slider 2', 1, 1, '1', NULL, '2023-02-01 01:49:23', '2023-02-01 01:49:23'),
+(3, 'Slider 3', 'slider-3', 'desk-slider-3.png', 'mobl-slider-3.png', 'Welcome to', 'The Zabeer Dhaka', 'A place that sparks creativity, fuels the imagination andwelcomes reflection and relaxation.', NULL, NULL, '3', 'Slider 3', 'Slider 3', 'Slider 3', 1, 1, '1', NULL, '2023-02-01 01:50:09', '2023-02-01 01:50:09');
 
 -- --------------------------------------------------------
 
@@ -1112,7 +1108,7 @@ INSERT INTO `hb_wellness` (`id`, `name`, `slug`, `short_description`, `long_desc
 (1, 'Spa', 'spa', 'Spa', '<p>Spa<br></p>', 'spa.png', 'Spa', 'Spa', 'Spa', 1, 1, '0', '0', '2022-12-13 23:35:12', '2023-01-10 13:44:44'),
 (2, 'Gym', 'gym', 'Gym', '<p>Gym<br></p>', 'gym.png', 'Gym', 'Gym', 'Gym', 1, 1, '0', '0', '2022-12-13 23:35:51', '2023-01-10 13:44:59'),
 (3, 'Saloon', 'saloon', 'Saloon', '<p>Saloon<br></p>', 'saloon.png', 'Saloon', 'Saloon', 'Saloon', 0, 1, '0', '0', '2022-12-13 23:36:38', '2023-01-15 01:15:31'),
-(4, 'Swimming Pool', 'swimming-pool', 'Swimming Pool', '<p>Swimming Pool<br></p>', NULL, 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 0, 1, '0', '0', '2022-12-13 23:37:31', '2023-01-10 13:45:33');
+(4, 'Swimming Pool', 'swimming-pool', 'Swimming Pool', '<p>Swimming Pool<br></p>', 'swimming-pool.png', 'Swimming Pool', 'Swimming Pool', 'Swimming Pool', 0, 1, '0', '1', '2022-12-13 23:37:31', '2023-02-01 02:20:56');
 
 -- --------------------------------------------------------
 
@@ -1173,7 +1169,40 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (26, '2022_12_26_074144_create_hb_webcontactinfos_table', 4),
 (27, '2022_12_26_095654_create_hb_offers_table', 5),
 (28, '2023_01_09_044559_create_hb_faqs_table', 6),
-(29, '2023_01_16_053227_create_hb_offer_categories_table', 7);
+(29, '2023_01_16_053227_create_hb_offer_categories_table', 7),
+(30, '2023_01_24_065013_create_permission_tables', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\Admin', 1),
+(3, 'App\\Models\\Admin', 15);
 
 -- --------------------------------------------------------
 
@@ -1186,6 +1215,112 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `group_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_name`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Dashboard.Index', 'admin', 'Dashboard', 1, 1, '0', '1', '2023-01-24 23:59:14', '2023-01-29 00:58:17'),
+(2, 'Role.Index', 'admin', 'Role', 1, 1, '0', '0', '2023-01-25 00:19:48', '2023-01-25 01:05:46'),
+(3, 'Role.Create', 'admin', 'Role', 1, 1, '0', '1', '2023-01-25 00:20:03', '2023-01-30 01:12:45'),
+(4, 'Role.Edit', 'admin', 'Role', 1, 1, '0', '0', '2023-01-25 00:20:19', '2023-01-25 01:06:12'),
+(5, 'Role.Delete', 'admin', 'Role', 1, 1, '0', '0', '2023-01-25 00:20:33', '2023-01-25 01:06:23'),
+(6, 'Permission.Index', 'admin', 'Permission', 1, 1, '0', NULL, '2023-01-25 00:20:52', '2023-01-25 00:20:52'),
+(7, 'Permission.Create', 'admin', 'Permission', 1, 1, '0', NULL, '2023-01-25 00:21:11', '2023-01-25 00:21:11'),
+(8, 'Permission.Edit', 'admin', 'Permission', 1, 1, '0', NULL, '2023-01-25 00:21:27', '2023-01-25 00:21:27'),
+(9, 'Permission.Delete', 'admin', 'Permission', 1, 1, '0', NULL, '2023-01-25 00:21:40', '2023-01-25 00:21:40'),
+(10, 'RoomType.Index', 'admin', 'Room Type', 1, 1, '0', NULL, '2023-01-25 00:22:05', '2023-01-25 00:22:05'),
+(11, 'RoomType.Create', 'admin', 'Room Type', 1, 1, '0', NULL, '2023-01-25 00:22:17', '2023-01-25 00:22:17'),
+(12, 'RoomType.Edit', 'admin', 'Room Type', 1, 1, '0', NULL, '2023-01-25 00:22:31', '2023-01-25 00:22:31'),
+(13, 'RoomType.Delete', 'admin', 'Room Type', 1, 1, '0', '1', '2023-01-25 00:22:43', '2023-01-29 00:59:03'),
+(14, 'Facilities.Index', 'admin', 'Facilities', 1, 1, '1', NULL, '2023-01-29 00:54:47', '2023-01-29 00:54:47'),
+(15, 'Facilities.Create', 'admin', 'Facilities', 1, 1, '1', NULL, '2023-01-29 00:55:10', '2023-01-29 00:55:10'),
+(16, 'Facilities.Edit', 'admin', 'Facilities', 1, 1, '1', NULL, '2023-01-29 00:55:25', '2023-01-29 00:55:25'),
+(17, 'Facilities.Delete', 'admin', 'Facilities', 1, 1, '1', NULL, '2023-01-29 00:55:40', '2023-01-29 00:55:40'),
+(18, 'Rooms.Index', 'admin', 'Rooms', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(19, 'Rooms.Create', 'admin', 'Rooms', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(20, 'Rooms.Edit', 'admin', 'Rooms', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(21, 'Rooms.Delete', 'admin', 'Rooms', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(22, 'Restaurants.Index', 'admin', 'Restaurants', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(23, 'Restaurants.Create', 'admin', 'Restaurants', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(24, 'Restaurants.Edit', 'admin', 'Restaurants', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(25, 'Restaurants.Delete', 'admin', 'Restaurants', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(26, 'Halls.Index', 'admin', 'Halls', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(27, 'Halls.Create', 'admin', 'Halls', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(28, 'Halls.Edit', 'admin', 'Halls', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(29, 'Halls.Delete', 'admin', 'Halls', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(30, 'Wellness.Index', 'admin', 'Wellness', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(31, 'Wellness.Create', 'admin', 'Wellness', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(32, 'Wellness.Edit', 'admin', 'Wellness', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(33, 'Wellness.Delete', 'admin', 'Wellness', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(34, 'Offers.Index', 'admin', 'Offers', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(35, 'Offers.Create', 'admin', 'Offers', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(36, 'Offers.Edit', 'admin', 'Offers', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(37, 'Offers.Delete', 'admin', 'Offers', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(38, 'FAQ.Index', 'admin', 'FAQ', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(39, 'FAQ.Create', 'admin', 'FAQ', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(40, 'FAQ.Edit', 'admin', 'FAQ', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(41, 'FAQ.Delete', 'admin', 'FAQ', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(42, 'Bookings.Index', 'admin', 'Bookings', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(43, 'Bookings.Create', 'admin', 'Bookings', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(44, 'Bookings.Edit', 'admin', 'Bookings', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(45, 'Bookings.Delete', 'admin', 'Bookings', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(46, 'Guests.Index', 'admin', 'Guests', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(47, 'Guests.Create', 'admin', 'Guests', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(48, 'Guests.Edit', 'admin', 'Guests', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(49, 'Guests.Delete', 'admin', 'Guests', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(50, 'Users.Index', 'admin', 'Users', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(51, 'Users.Create', 'admin', 'Users', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(52, 'Users.Edit', 'admin', 'Users', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(53, 'Users.Delete', 'admin', 'Users', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(54, 'Website.Menu.Index', 'admin', 'Website > Menu', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(55, 'Website.Menu.Create', 'admin', 'Website > Menu', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(56, 'Website.Menu.Edit', 'admin', 'Website > Menu', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(57, 'Website.Menu.Delete', 'admin', 'Website > Menu', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(58, 'Website.Pages.Index', 'admin', 'Website > Pages', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(59, 'Website.Pages.Create', 'admin', 'Website > Pages', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(60, 'Website.Pages.Edit', 'admin', 'Website > Pages', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(61, 'Website.Pages.Delete', 'admin', 'Website > Pages', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(62, 'Website.Sliders.Index', 'admin', 'Website > Sliders', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(63, 'Website.Sliders.Create', 'admin', 'Website > Sliders', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(64, 'Website.Sliders.Edit', 'admin', 'Website > Sliders', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(65, 'Website.Sliders.Delete', 'admin', 'Website > Sliders', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(66, 'Website.Testimonials.Index', 'admin', 'Website > Testimonials', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(67, 'Website.Testimonials.Create', 'admin', 'Website > Testimonials', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(68, 'Website.Testimonials.Edit', 'admin', 'Website > Testimonials', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(69, 'Website.Testimonials.Delete', 'admin', 'Website > Testimonials', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(70, 'Website.Facilities.Index', 'admin', 'Website > Facilities', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(71, 'Website.Facilities.Create', 'admin', 'Website > Facilities', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(72, 'Website.Facilities.Edit', 'admin', 'Website > Facilities', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(73, 'Website.Facilities.Delete', 'admin', 'Website > Facilities', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(74, 'Website.ContactInfos.Index', 'admin', 'Website > Contact Infos', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(75, 'Website.ContactInfos.Create', 'admin', 'Website > Contact Infos', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(76, 'Website.ContactInfos.Edit', 'admin', 'Website > Contact Infos', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(77, 'Website.ContactInfos.Delete', 'admin', 'Website > Contact Infos', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(78, 'Settings.Index', 'admin', 'Settings', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(79, 'Settings.Create', 'admin', 'Settings', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(80, 'Settings.Edit', 'admin', 'Settings', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40'),
+(81, 'Settings.Delete', 'admin', 'Settings', 1, 1, '1', '1', '2023-01-28 18:55:40', '2023-01-28 18:55:40');
 
 -- --------------------------------------------------------
 
@@ -1204,6 +1339,251 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Deactive, 1=Active',
+  `is_delete` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=Delete, 1=Not Delete',
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `updated_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
+(1, 'Super Admin', 'admin', 1, 1, '1', '1', '2023-01-30 02:29:12', '2023-01-31 00:50:20'),
+(2, 'Admin', 'admin', 1, 1, '1', '1', '2023-01-30 02:32:29', '2023-01-30 05:59:11'),
+(3, 'Manager', 'admin', 1, 1, '1', '1', '2023-01-30 02:34:43', '2023-01-31 04:22:46'),
+(4, 'Front Desk Officer', 'admin', 1, 1, '1', NULL, '2023-01-30 02:35:45', '2023-01-30 02:35:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(10, 2),
+(10, 3),
+(11, 1),
+(11, 2),
+(11, 3),
+(12, 1),
+(12, 2),
+(12, 3),
+(13, 1),
+(13, 2),
+(14, 1),
+(14, 2),
+(14, 3),
+(15, 1),
+(15, 2),
+(15, 3),
+(16, 1),
+(16, 2),
+(16, 3),
+(17, 1),
+(17, 2),
+(18, 1),
+(18, 2),
+(18, 3),
+(19, 1),
+(19, 2),
+(19, 3),
+(20, 1),
+(20, 2),
+(20, 3),
+(21, 1),
+(21, 2),
+(22, 1),
+(22, 2),
+(22, 3),
+(23, 1),
+(23, 2),
+(23, 3),
+(24, 1),
+(24, 2),
+(24, 3),
+(25, 1),
+(25, 2),
+(26, 1),
+(26, 2),
+(26, 3),
+(27, 1),
+(27, 2),
+(27, 3),
+(28, 1),
+(28, 2),
+(28, 3),
+(29, 1),
+(29, 2),
+(30, 1),
+(30, 2),
+(30, 3),
+(31, 1),
+(31, 2),
+(31, 3),
+(32, 1),
+(32, 2),
+(32, 3),
+(33, 1),
+(33, 2),
+(34, 1),
+(34, 2),
+(34, 3),
+(35, 1),
+(35, 2),
+(35, 3),
+(36, 1),
+(36, 2),
+(36, 3),
+(37, 1),
+(37, 2),
+(38, 1),
+(38, 2),
+(38, 3),
+(39, 1),
+(39, 2),
+(39, 3),
+(40, 1),
+(40, 2),
+(40, 3),
+(41, 1),
+(41, 2),
+(42, 1),
+(42, 2),
+(42, 3),
+(42, 4),
+(43, 1),
+(43, 2),
+(43, 3),
+(43, 4),
+(44, 1),
+(44, 2),
+(44, 3),
+(44, 4),
+(45, 1),
+(45, 2),
+(46, 1),
+(46, 2),
+(46, 3),
+(46, 4),
+(47, 1),
+(47, 2),
+(47, 3),
+(47, 4),
+(48, 1),
+(48, 2),
+(48, 3),
+(48, 4),
+(49, 1),
+(50, 1),
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(54, 2),
+(54, 3),
+(55, 1),
+(55, 2),
+(56, 1),
+(56, 2),
+(57, 1),
+(57, 2),
+(58, 1),
+(58, 2),
+(58, 3),
+(59, 1),
+(59, 2),
+(60, 1),
+(60, 2),
+(61, 1),
+(61, 2),
+(62, 1),
+(62, 2),
+(62, 3),
+(63, 1),
+(63, 2),
+(63, 3),
+(64, 1),
+(64, 2),
+(64, 3),
+(65, 1),
+(65, 2),
+(66, 1),
+(66, 2),
+(66, 3),
+(67, 1),
+(67, 2),
+(67, 3),
+(68, 1),
+(68, 2),
+(68, 3),
+(69, 1),
+(69, 2),
+(70, 1),
+(70, 2),
+(70, 3),
+(71, 1),
+(71, 2),
+(71, 3),
+(72, 1),
+(72, 2),
+(72, 3),
+(73, 1),
+(73, 2),
+(74, 1),
+(74, 2),
+(74, 3),
+(75, 1),
+(75, 2),
+(75, 3),
+(76, 1),
+(76, 2),
+(76, 3),
+(77, 1),
+(77, 2),
+(78, 1),
+(78, 2),
+(79, 1),
+(79, 2),
+(80, 1),
+(80, 2),
+(81, 1);
 
 -- --------------------------------------------------------
 
@@ -1243,8 +1623,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `gender`, `date_of_birth`, `phone`, `address`, `city`, `state`, `postal_code`, `country`, `admin_comment`, `profile_photo`, `cover_photo`, `is_active`, `is_delete`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(1, 'Raisul', 'Showmin', 'raisul.syp@gmail.com', NULL, '$2y$10$8SHpXdo.ipSuthNmUs7LnODtm8KT0yzJUd1zRv8Ec6nImOSwRS8B.', NULL, 'Male', '1995-10-03', '01680078100', 'H-2445/1, Uttarkhan Mazar Para', 'Dhaka', NULL, '1230', 'Bangladesh', NULL, 'Raisul-1674020067.jpg', 'Raisul-1674020067.jpg', 1, 1, NULL, '5', '2022-12-26 03:59:03', '2023-01-17 23:34:27'),
-(2, 'Ashraf', 'Khan', 'ashraf.khan@gmail.com', NULL, '$2y$10$3/WZUREEcEE/YqfdmX85E.EPxmy5Lbj1w/FxVl2ZId.1jvNIo7Sh6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-01 09:26:32', '2023-01-01 09:26:32');
+(1, 'Raisul', 'Showmin', 'raisul.syp@gmail.com', NULL, '$2y$10$MFNbhH4PhJDnHO2/9jTWrOhw2o7QtgLycJ9C5HltaXRrcVQLJwg16', 'UjMU4oOSzQvRABdcyYimSHFVxyvILjTDO8UkP18BXtHxiiK9495dEgoGxrjc', 'Male', '1995-10-03', '01680078100', 'House-2445/1, Uttarkhan Mazar Para', 'Dhaka', NULL, '1230', 'Bangladesh', NULL, 'Raisul-1672639586.jpg', 'Raisul-1672658442.jpg', 1, 1, NULL, '5', '2022-12-25 21:59:03', '2023-01-16 22:20:30'),
+(2, 'Sharif', 'Bhuiyan', 'mahmudpharma01@gmail.com', NULL, '$2y$10$fdchtOvwSTXS6Krqg66/SO7uVQV/HD432ienaLQea1ifUfHGEydXi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-06 06:58:42', '2023-01-06 06:58:42'),
+(3, 'Ariful islam', 'Pranto', 'arifulislampranto4@gmail.com', NULL, '$2y$10$twtSgZCu9a9/TWkiYtL5bugQkZB0B/UGWEYM54t7mJPqNBjWNf96.', NULL, 'Male', '1997-04-07', '01521318489', 'Mirpur Dohs', 'Dhaka', NULL, NULL, 'Bangladesh', NULL, 'Ariful islam-1673035275.jpeg', NULL, 1, 1, NULL, '5', '2023-01-06 07:53:21', '2023-01-06 08:01:15'),
+(4, 'Sajidur', 'Rahman', 'sajid@startechbd.com', NULL, '$2y$10$7.Tg9Qqak2EPbnZQujEh0uFkAowzRl1y2gqq7jIBxFxjz0/yvtiUq', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-06 22:56:47', '2023-01-06 22:56:47'),
+(5, 'Sajeeb', 'Debnath', 'sajeebdebnath.cse@gmail.com', NULL, '$2y$10$A6R4v5vpguz3ZccSTZKU9OvQTX4Ksxp8Br3n3MI2WeOKSSOvh.f9K', NULL, 'Male', '1998-05-24', '01610916343', 'adad', 'aad', 'Dhaka', '2323', 'Bangladesh', NULL, 'Sajeeb-1673769521.png', 'Sajeeb-1673769521.jpg', 1, 1, NULL, '5', '2023-01-07 05:19:14', '2023-01-14 19:58:41'),
+(6, 'Raisul', 'Islam', 'rishowmin.seu38@gmail.com', NULL, '$2y$10$USCWF9n01ZlozBkf/ejKUebkNXYN8CwEWoZWjcMBRUAinYPBga00e', NULL, 'Male', '2022-11-15', '01680078100', 'Uttara', 'Dhaka', NULL, '1230', 'Bangladesh', NULL, NULL, NULL, 1, 1, NULL, '5', '2023-01-10 18:23:07', '2023-01-10 18:27:46'),
+(7, 'Raihan', 'Sadaat', 'raihansadaat@gmail.com', NULL, '$2y$10$nJ9eFEHtWAOsFpkvUUs.GO8c1XN9CH65btghx5wGJBfG1BAbwEWtu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-11 01:32:26', '2023-01-11 01:32:26'),
+(8, 'Sajeeb', 'Debnath', 'sajeebdebnath336@gmail.com', NULL, '$2y$10$3rDY4qjSc8pVyB91R3Wa4uaB8f0Jd83t0WM4.VO0lKsrSqrOys6cC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-18 23:41:37', '2023-01-18 23:41:37'),
+(9, 'MD RASEL BABU', 'ROCKY', 'raselhrocky@gmail.com', NULL, '$2y$10$9w5J2t3eBzdK/Z0tiPdXtup/2YwvQ38mAqNx2uxbFJQvqime8lyTi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-20 23:43:06', '2023-01-20 23:43:06'),
+(10, 'Fidah', 'Hossain', 'fida.tahrim.hossain@gmail.com', NULL, '$2y$10$3zQWaZHrdwyokI.SAtEpyu7QiwZgYrzhaD8DkUgkoqJ9LuAfTRglG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-25 08:54:59', '2023-01-25 08:54:59'),
+(11, 'Shiblee', 'Azam', 'shiblee.azam@gmail.com', NULL, '$2y$10$dCPWSNOA4i99YEiBPsXiY.gUbvsoDh2l7Z7.XA2HPJNHUaiqMnlAm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2023-01-27 17:31:25', '2023-01-27 17:31:25');
 
 --
 -- Indexes for dumped tables
@@ -1426,10 +1815,31 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
 -- Indexes for table `personal_access_tokens`
@@ -1438,6 +1848,20 @@ ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
 -- Indexes for table `users`
@@ -1454,7 +1878,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1466,7 +1890,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `hb_bookings`
 --
 ALTER TABLE `hb_bookings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `hb_country`
@@ -1550,7 +1974,7 @@ ALTER TABLE `hb_room_facilities`
 -- AUTO_INCREMENT for table `hb_room_images`
 --
 ALTER TABLE `hb_room_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `hb_settings`
@@ -1586,7 +2010,7 @@ ALTER TABLE `hb_webpages`
 -- AUTO_INCREMENT for table `hb_websliders`
 --
 ALTER TABLE `hb_websliders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `hb_webtestimonials`
@@ -1610,7 +2034,13 @@ ALTER TABLE `hb_wellness_images`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1619,10 +2049,16 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -1673,6 +2109,25 @@ ALTER TABLE `hb_room_images`
 --
 ALTER TABLE `hb_wellness_images`
   ADD CONSTRAINT `hb_wellness_images_wellness_id_foreign` FOREIGN KEY (`wellness_id`) REFERENCES `hb_wellness` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

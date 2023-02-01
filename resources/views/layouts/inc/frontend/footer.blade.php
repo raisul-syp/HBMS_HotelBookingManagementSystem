@@ -86,7 +86,7 @@
                 <div class="col-lg-12">
                     <div class="footer_bottom_inner">
                         @foreach ($settings as $item)
-                        <p>{{ $item->name }} © <span class="copyright-year"></span> | Developed By <a href="https://sypsolutions.com.bd/">SYP Solutions Ltd.</a></p>
+                        <p>{{ $item->name }} © <span class="copyright-year"></span> | Developed By <a href="https://sypsolutions.com.bd/" target="_blank">SYP Solutions Ltd.</a></p>
                         @endforeach
                     </div>
                 </div>
