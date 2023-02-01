@@ -223,7 +223,7 @@
                                     <input id="total_childs" name="total_childs" value="{{ $total_childs }}" hidden>
                                     <input id="booking_status" name="booking_status" value="3" hidden>
                                     <input id="booking_comment" name="booking_comment" value="Booking created by Guest" hidden>
-                                    <input id="created_by" name="created_by" value="2" hidden>
+                                    <input id="created_by" name="created_by" value="6" hidden>
                                     </div>
                                 </div>
                                 <div class="card-footer">

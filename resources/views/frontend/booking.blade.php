@@ -135,7 +135,7 @@
                                     <input id="staff_id" name="staff_id" value="1" hidden>
                                     <input id="booking_status" name="booking_status" value="0" hidden>
                                     <input id="booking_comment" name="booking_comment" value="Booking created by Guest" hidden>
-                                    <input id="created_by" name="created_by" value="2" hidden>
+                                    <input id="created_by" name="created_by" value="6" hidden>
                                 </div>
                                 <div class="card-footer">
                                     <div class="d-grid">
